@@ -25,7 +25,7 @@ from playwright.sync_api import sync_playwright
 from . import beyin, dagitim
 from .film import film_yap, kapak_kare
 from .instagram import Instagram, InstagramHatasi
-from .ortak import CIKTI, bugun, gecmis, gecmis_guncelle, gecmis_yaz, json_kaydet, log, marka, marka_kodlari, simdi
+from .ortak import CIKTI, bugun, gizle, gecmis, gecmis_guncelle, gecmis_yaz, json_kaydet, log, marka, marka_kodlari, simdi
 
 
 # ---------------- video kalite denetimi ----------------
@@ -97,7 +97,7 @@ def uret(kod: str, tarayici, klasor: Path) -> dict:
         except Exception as e:
             son_hata = e
             log(f"{senaryo['format']} üretilemedi ({e}); başka format deneniyor")
-            traceback.print_exc()
+            log(traceback.format_exc())
             atla.add(senaryo["format"])
             continue
         senaryo["metin_kaynagi"] = kaynak
@@ -247,7 +247,7 @@ def kontrol() -> int:
                 satir.append(f"FB sayfa ✗ {str(e)[:120]}")
         else:
             satir.append("FB sayfa – kimlik yok")
-        print("  ".join(satir), flush=True)
+        print(gizle("  ".join(satir)), flush=True)
     return hata
 
 
@@ -280,7 +280,7 @@ def nabiz() -> int:
             sorun.append(f"- **{marka(kod)['ad']}**: {k.get('durum')} — {str(k.get('hata', ''))[:300]}")
     if sorun:
         print("Bugün paylaşılamayan markalar (yarın sistem kendisi yeniden dener):\n")
-        print("\n".join(sorun))
+        print(gizle("\n".join(sorun)))
         return 1
     print("Bugün dört markanın paylaşımı da tamam.")
     return 0
@@ -331,7 +331,7 @@ def main(argv=None) -> int:
         except Exception as e:
             hata = 1
             log(f"{kod} HATA: {e}")
-            traceback.print_exc()
+            log(traceback.format_exc())
             gecmis_guncelle(kod, {"tarih": bugun(), "tur": "reels", "durum": "hata", "hata": str(e)[:300], "format": "?", "anahtar": ""})
     return hata
 

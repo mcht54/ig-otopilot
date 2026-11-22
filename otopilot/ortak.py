@@ -52,8 +52,22 @@ def slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")[:60]
 
 
+_GIZLI = [
+    (re.compile(r"(access_token|api_key|key|token|client_secret|refresh_token)=([^&\s\"']+)", re.I), r"\1=***"),
+    (re.compile(r"(Bearer|OAuth)\s+[A-Za-z0-9._\-]{12,}", re.I), r"\1 ***"),
+    (re.compile(r"\b(EAA[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{20,}|AQ\.[A-Za-z0-9_\-]{20,}|ya29\.[A-Za-z0-9_\-]+|gsk_[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,})"), "***"),
+]
+
+
+def gizle(metin: str) -> str:
+    """Depo herkese açık: hata mesajlarında geçebilecek anahtar/jetonları loga ve kayıt dosyasına yazmadan önce siler."""
+    for desen, yerine in _GIZLI:
+        metin = desen.sub(yerine, metin)
+    return metin
+
+
 def log(*a) -> None:
-    print(f"[{simdi():%H:%M:%S}]", *a, flush=True)
+    print(f"[{simdi():%H:%M:%S}]", gizle(" ".join(str(x) for x in a)), flush=True)
 
 
 # ---------------- kalıcı geçmiş ----------------
@@ -72,7 +86,7 @@ def gecmis(kod: str) -> list[dict]:
 def gecmis_yaz(kod: str, kayitlar: list[dict]) -> None:
     p = _gecmis_yol(kod)
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps(kayitlar, ensure_ascii=False, indent=1), encoding="utf-8")
+    p.write_text(gizle(json.dumps(kayitlar, ensure_ascii=False, indent=1)), encoding="utf-8")
 
 
 def gecmis_guncelle(kod: str, kayit: dict) -> None:

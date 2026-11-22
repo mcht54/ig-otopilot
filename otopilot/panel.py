@@ -13,7 +13,7 @@ import sys
 import requests
 
 from .dagitim import PLATFORM_AD
-from .ortak import gecmis, marka, marka_kodlari, simdi
+from .ortak import gecmis, log, marka, marka_kodlari, simdi
 
 PANEL = os.environ.get("PANEL_URL", "https://panel.mchttasarim.com.tr")
 AUD = "mchttasarim-panel-icerik"
@@ -66,9 +66,9 @@ def gonder() -> int:
     try:
         r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}", json={"bolumler": ozet(), "ekler": {}}, timeout=60,
                           headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
-        print(f"panel: {r.status_code} {r.text[:160]}", flush=True)
+        log(f"panel: {r.status_code} {r.text[:160]}")
     except Exception as e:
-        print(f"panel senkronu atlandı: {e}", flush=True)
+        log(f"panel senkronu atlandı: {e}")
     return 0
 
 

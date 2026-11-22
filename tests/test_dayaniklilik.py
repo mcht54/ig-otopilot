@@ -90,3 +90,13 @@ def test_gemini_model_kesfi_en_yeni_flash_secilir():
     s = model_sirala(adlar)
     assert s[:3] == ["gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-2.0-flash"] and s[3] == "gemini-3.9-flash-preview-11-2026"
     assert not any(x in " ".join(s) for x in ("pro", "image", "tts", "embedding"))
+
+
+def test_anahtarlar_loga_ve_kayda_yazilmaz(gecici_durum, capsys):
+    hata = ("HTTPSConnectionPool: url: /v25.0/123?fields=id&access_token=EAAGabcdefghijklmnopqrstuvwxyz123 "
+            "Authorization: Bearer abcdefghijklmnop1234 key=AIzaSyAbcdefghijklmnopqrstuvwxyz AQ.Ab8RN6Lhoabcdefghijklmnopqrstu")
+    ortak.log(hata)
+    ortak.gecmis_guncelle("sgb", {"tarih": "2026-01-01", "tur": "reels", "hata": hata})
+    for metin in (capsys.readouterr().out, (gecici_durum / "sgb" / "gecmis.json").read_text()):
+        assert "EAAG" not in metin and "abcdefghijklmnop1234" not in metin and "AIzaSy" not in metin and "AQ.Ab8" not in metin
+        assert "fields=id" in metin
