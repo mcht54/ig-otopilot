@@ -24,8 +24,8 @@ jobs:
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
           cache: pip
@@ -36,7 +36,7 @@ jobs:
             echo "apt denemesi $i başarısız"; sleep 20
           done
           pip install -q -r requirements.txt
-      - uses: actions/cache@v5
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
@@ -47,9 +47,11 @@ jobs:
             echo "tarayıcı kurulum denemesi $i başarısız"; sleep 20
           done
       - name: Üret (paylaşmadan)
+        env:
+          GIRDI_MARKA: ${{ inputs.marka }}
         run: |
           ARGS="--zorla"
-          if [ -n "${{ inputs.marka }}" ]; then ARGS="$ARGS --marka ${{ inputs.marka }}"; fi
+          case "$GIRDI_MARKA" in sitemucidi|davetiyeler|sgb|markakarnem) ARGS="$ARGS --marka $GIRDI_MARKA";; "") ;; *) echo "geçersiz marka"; exit 1;; esac
           python -m otopilot.calistir uret $ARGS || true
       - name: Ön sürüme yükle
         run: |

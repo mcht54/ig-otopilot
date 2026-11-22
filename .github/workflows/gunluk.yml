@@ -68,9 +68,9 @@ jobs:
       TT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.TT_MARKAKARNEM_REFRESH_TOKEN }}
       GH_TOKEN: ${{ github.token }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
 
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
           cache: pip
@@ -83,7 +83,7 @@ jobs:
           done
           pip install -q -r requirements.txt
 
-      - uses: actions/cache@v5
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
         with:
           path: ~/.cache/ms-playwright
           key: pw-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
@@ -98,10 +98,13 @@ jobs:
       - name: Üret ve paylaş
         id: uret
         continue-on-error: true
+        env:  # form girdileri komuta doğrudan yazılmaz (komut enjeksiyonuna karşı); yalnız bilinen marka kodu kabul edilir
+          GIRDI_MARKA: ${{ inputs.marka }}
+          GIRDI_ZORLA: ${{ inputs.zorla }}
         run: |
           ARGS=""
-          if [ -n "${{ inputs.marka }}" ]; then ARGS="--marka ${{ inputs.marka }}"; fi
-          if [ "${{ inputs.zorla }}" = "true" ]; then ARGS="$ARGS --zorla"; fi
+          case "$GIRDI_MARKA" in sitemucidi|davetiyeler|sgb|markakarnem) ARGS="--marka $GIRDI_MARKA";; "") ;; *) echo "geçersiz marka"; exit 1;; esac
+          if [ "$GIRDI_ZORLA" = "true" ]; then ARGS="$ARGS --zorla"; fi
           python -m otopilot.calistir otomatik $ARGS
 
       - name: Rapor
