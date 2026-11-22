@@ -41,6 +41,8 @@ def marka(kod: str) -> dict:
     with open(MARKALAR / f"{kod}.yaml", encoding="utf-8") as f:
         m = yaml.safe_load(f)
     m["logo_yol"] = str(KOK / m["logo"])
+    if m.get("maskot"):
+        m["maskot_yol"] = str(KOK / m["maskot"])
     return m
 
 

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import re
 
-from . import getir, temiz
+from . import getir, iddia_temizle, sitede_var, temiz
 
 SITE = "https://www.davetiyeler.tr"
 API = f"{SITE}/wp-json/wc/store/v1"
@@ -164,7 +164,14 @@ def siparis_nasil(ctx) -> dict | None:
     }
 
 
+def hediye_suruyor() -> bool:
+    """'Basılı davetiyeye ₺650 dijital davetiye hediye' kampanyası anasayfada hâlâ yazıyor mu?"""
+    return sitede_var(f"{SITE}/", r"650") and sitede_var(f"{SITE}/", r"hediye")
+
+
 def kampanya(ctx) -> dict | None:
+    if not hediye_suruyor():
+        return None
     kats = kategoriler()
     kat = kats.get("kampanyali-davetiyeler")
     if not kat:
@@ -196,4 +203,12 @@ def kampanya(ctx) -> dict | None:
     }
 
 
-FORMATLAR = {"model_vitrin": model_vitrin, "dijital_davetiye": dijital_davetiye, "siparis_nasil": siparis_nasil, "kampanya": kampanya}
+def _hediye_kontrollu(f):
+    def sar(ctx):
+        s = f(ctx)
+        return s if hediye_suruyor() else iddia_temizle(s, r"hediye|650\+KDV|650 değerinde", "Tüm modeller sitede")
+    return sar
+
+
+FORMATLAR = {"model_vitrin": _hediye_kontrollu(model_vitrin), "dijital_davetiye": _hediye_kontrollu(dijital_davetiye),
+             "siparis_nasil": _hediye_kontrollu(siparis_nasil), "kampanya": kampanya}

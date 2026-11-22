@@ -28,6 +28,7 @@ def _marka_js(marka: dict) -> dict:
     alan = ("ad", "site_kisa", "cta", "renk")
     m = {k: marka[k] for k in alan}
     m["logo_yol"] = Path(marka["logo_yol"]).as_uri()
+    m["maskot_yol"] = Path(marka["maskot_yol"]).as_uri() if marka.get("maskot_yol") else ""
     return m
 
 

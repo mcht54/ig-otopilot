@@ -3,6 +3,7 @@ ad: MarkaKarnem
 site: https://markakarnem.com.tr
 site_kisa: markakarnem.com.tr
 logo: fontlar/markakarnem-logo.png
+maskot: fontlar/markakarnem-maskot.png  # videolarda logo yerine maskot
 renk: {ana: "#C8102E", koyu: "#141519", vurgu: "#C9A24A", acik: "#FFF3CF", yazi: "#FFFFFF"}
 konum: Sakarya
 hedef_kitle: >
@@ -18,6 +19,7 @@ deger_onerisi:
 anahtar_kelimeler: [ücretsiz seo analizi, google'da çıkmak, google haritalar, google işletme profili, instagram etkileşim oranı, dijital görünürlük]
 etiketler: ["#seo", "#googleişletmeprofili", "#googleharitalar", "#dijitalpazarlama", "#esnaf", "#küçükişletme", "#sakarya", "#instagramipuçları", "#yerelseo", "#markaskoru"]
 cta: Ücretsiz karnenizi profildeki linkten çıkarın
+kaydet_satiri: İşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.
 yasak_ifadeler: [garanti, "%100 başarı", 1 numara, birinci sıra, en ucuz, bedava]
 saat: {reels: "13:30", hikaye: "09:00"}
 formatlar: {soru_cevap: 3, yerel_karne: 2, arac_demo: 1, ornek_rapor: 1, sektor_ipucu: 2}

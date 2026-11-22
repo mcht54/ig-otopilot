@@ -1,8 +1,14 @@
 name: Bağlantı kontrolü
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 6 * * 1"   # her pazartesi 09:30 TR: Meta anahtarı ve sayfa erişimi hâlâ geçerli mi?
+permissions:
+  contents: read
+  issues: write
 jobs:
   kontrol:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       PYTHONPATH: .
       IG_TOKEN: ${{ secrets.IG_TOKEN }}
@@ -15,8 +21,15 @@ jobs:
       META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
       META_MARKAKARNEM_PAGE_ID: ${{ secrets.META_MARKAKARNEM_PAGE_ID }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
-      - run: pip install -q requests PyYAML Pillow playwright==1.65.2
-      - run: python -m otopilot.calistir kontrol
+      - run: pip install -q -r requirements.txt
+      - run: python -m otopilot.calistir kontrol | tee kontrol.txt
+      - name: Bağlantı koptuysa bildirim
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          { echo "Meta bağlantısı koptu; paylaşımlar duracak. Çoğunlukla sistem kullanıcısı anahtarı (IG_TOKEN) yenilenmeli ya da sayfa ataması kaldırılmış."; echo; echo '```'; cat kontrol.txt; echo '```'; } > k.md
+          gh issue create --title "⚠️ Instagram/Facebook bağlantısı koptu $(date +%d.%m.%Y)" --body-file k.md

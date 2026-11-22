@@ -1,5 +1,6 @@
+# Sürümler sabit: aylar sonra yeni bir sürüm üretimi bozmasın (yükseltme bilinçli yapılır)
 playwright==1.65.2
-requests>=2.32
-PyYAML>=6.0
-Pillow>=11.0
-pytest>=8.0
+requests==2.34.2
+PyYAML==6.0.4
+Pillow==13.0.0
+pytest==9.2.0

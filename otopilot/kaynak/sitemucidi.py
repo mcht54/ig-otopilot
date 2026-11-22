@@ -5,7 +5,7 @@ from pathlib import Path
 
 from ..film import yazma_eylemleri
 from ..kayit import tikla, yeni_sayfa
-from . import ekran_goruntusu, getir
+from . import ekran_goruntusu, getir, iddia_temizle, sitede_var
 
 SITE = "https://www.sitemucidi.com.tr"
 
@@ -251,4 +251,13 @@ def tema_paket(ctx) -> dict | None:
     }
 
 
-FORMATLAR = {"sektor_demo": sektor_demo, "ozellik": ozellik, "yz_arama": yz_arama, "tema_paket": tema_paket}
+def _deneme_kontrollu(f):
+    """'7 gün deneme' sitede artık yazmıyorsa videoya/açıklamaya girmesin."""
+    def sar(ctx):
+        s = f(ctx)
+        return s if sitede_var(f"{SITE}/", r"7 gün") else iddia_temizle(s, r"7 gün", "Sitenizi ücretsiz oluşturun")
+    return sar
+
+
+FORMATLAR = {k: _deneme_kontrollu(v) for k, v in
+             {"sektor_demo": sektor_demo, "ozellik": ozellik, "yz_arama": yz_arama, "tema_paket": tema_paket}.items()}

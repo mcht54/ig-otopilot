@@ -65,6 +65,9 @@ def taslak_kur(kod: str, marka: dict, format_ad: str, ctx: dict) -> dict | None:
         return None
     s["format"] = format_ad
     s["olgular"] = [o for o in s.get("olgular", []) if o]
+    liste = next((x for x in s["sahneler"] if x.get("tip") == "liste"), None)
+    if liste:
+        s["tam_maddeler"] = list(liste.get("maddeler", []))
     # kural metinleri her zaman sınır içinde kalsın (güvenlik ağı)
     return slot_yaz(s, {k: _kisalt(v, slot_sinir(k)) for k, v in slotlar(s).items()})
 
@@ -134,10 +137,13 @@ def kural_aciklama(senaryo: dict, marka: dict, rnd: random.Random) -> str:
     satirlar.append("")
     if liste:
         satirlar.append(liste["baslik"])
-        satirlar += [f"✔️ {m}" for m in liste["maddeler"]]
+        tam = senaryo.get("tam_maddeler") if len(senaryo.get("tam_maddeler") or []) == len(liste["maddeler"]) else None
+        satirlar += [f"✔️ {m}" for m in (tam or liste["maddeler"])]
         satirlar.append("")
     ak = senaryo.get("anahtar_kelime")
-    if ak:
+    if marka.get("kaydet_satiri"):
+        satirlar.append(marka["kaydet_satiri"])
+    elif ak:
         satirlar.append(f"{ak[:1].upper() + ak[1:]} arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.")
     satirlar.append(f"👉 {marka['cta']}: {marka['site_kisa']}")
     satirlar.append("")
@@ -250,15 +256,49 @@ def planla(kod: str, marka: dict, tarayici, klasor, atla: set[str] | None = None
     if zorla:
         sira = [zorla] + [f for f in sira if f != zorla]
     hatalar = []
-    for f in [x for x in sira if x not in (atla or set())]:
-        try:
-            s = taslak_kur(kod, marka, f, ctx)
-        except Exception as e:  # site geçici hata verirse sıradaki formata geç
-            hatalar.append(f"{f}: {e}")
-            log(f"format {f} kurulamadı: {e}")
-            continue
-        if s:
-            s["tohum"] = tohum
-            s["denenen_formatlar"] = sira
-            return s
+    for tur in ("normal", "gevsek"):
+        if tur == "gevsek":  # aylar içinde konu havuzu tükendiyse yalnız son 14 günü tekrar sayma
+            ctx["kullanilan"] = ctx["kullanilan_yakin"]
+        for f in [x for x in sira if x not in (atla or set())]:
+            try:
+                s = taslak_kur(kod, marka, f, ctx)
+            except Exception as e:  # site geçici hata verirse sıradaki formata geç
+                hatalar.append(f"{f}: {e}")
+                log(f"format {f} kurulamadı: {e}")
+                continue
+            if s:
+                s["tohum"] = tohum
+                s["denenen_formatlar"] = sira
+                return s
+    if YEDEK not in (atla or set()):
+        log(f"{kod}: hiçbir format kurulamadı ({hatalar}); ağsız yedek içerik kullanılıyor")
+        s = yedek_icerik(kod, marka, ctx)
+        s["tohum"] = tohum
+        s["denenen_formatlar"] = sira + [YEDEK]
+        return s
     raise RuntimeError(f"hiçbir format kurulamadı: {hatalar}")
+
+
+YEDEK = "yedek"
+
+
+def yedek_icerik(kod: str, marka: dict, ctx: dict) -> dict:
+    """Site/veri kaynağı tamamen erişilemezken bile o günün paylaşımı düşmesin: yalnız marka profilindeki
+    (doğrulanmış) değer önerileriyle, internete ihtiyaç duymayan kart videosu."""
+    rnd = ctx["rnd"]
+    ak = rnd.choice(marka["anahtar_kelimeler"])
+    maddeler = list(marka["deger_onerisi"])[:4]
+    basliklar = [f"{ak[:1].upper() + ak[1:]} için bilmeniz gerekenler", f"{marka['ad']} ne işe yarar?", f"Neden {marka['ad']}?"]
+    baslik = rnd.choice(basliklar)
+    s = {
+        "format": YEDEK, "anahtar": f"yedek:{ctx['tarih']}", "konu": baslik, "anahtar_kelime": ak,
+        "olgular": maddeler,
+        "sahneler": [
+            {"tur": "kart", "tip": "kapak", "sure": 2.8, "etiket": marka["ad"], "baslik": baslik, "alt": marka["cta"]},
+            {"tur": "kart", "tip": "liste", "sure": 5.6, "etiket": "Kısaca", "baslik": f"{marka['ad']} ile", "maddeler": maddeler},
+            {"tur": "kart", "tip": "cta", "sure": 3.2, "baslik": marka["ad"]},  # şablon site ve CTA satırını kendisi ekler
+        ],
+        "hikaye": {"etiket": marka["ad"], "baslik": baslik, "alt": marka["cta"]},
+    }
+    s["tam_maddeler"] = list(maddeler)
+    return slot_yaz(s, {k: _kisalt(v, slot_sinir(k)) for k, v in slotlar(s).items()})

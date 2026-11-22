@@ -64,7 +64,9 @@ def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
     if h.get("kayit_url"):
         return {"tur": "sayfa", "url": h["kayit_url"], "sure": 7.0, "ust_yazi": h.get("baslik"),
                 "eylemler": [{"t": 1.4, "tikla": "davetiyeyi aç"}]}
-    return {"tur": "kart", "tip": "hikaye", "sure": 6.0, "gorsel": h.get("gorsel") or kapak_uri, "telefon": h.get("telefon"),
+    # Görselsiz hikâyede Reels kapağı (üzerinde yazı var) zemin yapılmaz: yazılar üst üste biniyordu; telefon çerçevesinde kullanılabilir
+    gorsel = h.get("gorsel") or (kapak_uri if h.get("telefon") else None)
+    return {"tur": "kart", "tip": "hikaye", "sure": 6.0, "gorsel": gorsel, "telefon": h.get("telefon"),
             "etiket": h.get("etiket"), "baslik": h.get("baslik") or senaryo["konu"], "alt": h.get("alt")}
 
 
@@ -72,7 +74,7 @@ def uret(kod: str, tarayici, klasor: Path) -> dict:
     m = marka(kod)
     atla: set[str] = set()
     son_hata = None
-    for deneme in range(3):
+    for deneme in range(len(m["formatlar"]) + 2):  # her format bir kez + ağsız yedek
         senaryo = beyin.planla(kod, m, tarayici, klasor, atla=atla)
         rnd = random.Random(senaryo["tohum"])
         senaryo, aciklama, kaynak = beyin.parlat(senaryo, m, kod, rnd)
@@ -102,7 +104,7 @@ def uret(kod: str, tarayici, klasor: Path) -> dict:
         (klasor / "aciklama.txt").write_text(aciklama, encoding="utf-8")
         json_kaydet(klasor / "senaryo.json", senaryo)
         return {"senaryo": senaryo, "aciklama": aciklama, "reel": reel, "hikaye": hikaye, "kapak": kapak}
-    raise RuntimeError(f"3 denemede içerik üretilemedi: {son_hata}")
+    raise RuntimeError(f"hiçbir formatla içerik üretilemedi: {son_hata}")
 
 
 def gunluk(kod: str, zorla: bool = False) -> dict:
@@ -267,6 +269,23 @@ def anahtar_yenile() -> None:
         log(f"{kod}: anahtar {'güncellendi' if r.returncode == 0 else 'GÜNCELLENEMEDİ: ' + r.stderr[:200]}")
 
 
+def nabiz() -> int:
+    """Gün sonu (22:00) denetimi: bugün Instagram'a paylaşılamayan marka varsa listeler ve 1 döner (akış e-posta bildirimi açar)."""
+    sorun = []
+    for kod in marka_kodlari():
+        k = next((x for x in gecmis(kod) if x.get("tarih") == bugun() and x.get("tur") == "reels"), None)
+        if not k:
+            sorun.append(f"- **{marka(kod)['ad']}**: bugün hiç üretim yapılmadı")
+        elif k.get("durum") != "yayinlandi":
+            sorun.append(f"- **{marka(kod)['ad']}**: {k.get('durum')} — {str(k.get('hata', ''))[:300]}")
+    if sorun:
+        print("Bugün paylaşılamayan markalar (yarın sistem kendisi yeniden dener):\n")
+        print("\n".join(sorun))
+        return 1
+    print("Bugün dört markanın paylaşımı da tamam.")
+    return 0
+
+
 # ---------------- zamanlama ----------------
 
 def zamani_gelenler() -> list[str]:
@@ -282,7 +301,7 @@ def zamani_gelenler() -> list[str]:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol"])
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz"])
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
@@ -297,6 +316,8 @@ def main(argv=None) -> int:
         return 0
     if a.komut == "kontrol":
         return kontrol()
+    if a.komut == "nabiz":
+        return nabiz()
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
     hata = 0
     for kod in kodlar:

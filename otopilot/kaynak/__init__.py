@@ -1,6 +1,7 @@
 """Sitelerden canlı veri okuma yardımcıları (yalnız herkese açık sayfalar/API'ler)."""
 from __future__ import annotations
 
+import functools
 import html as _html
 import re
 from html.parser import HTMLParser
@@ -19,6 +20,31 @@ def getir(url: str, **kw) -> requests.Response:
     r = _oturum.get(url, timeout=30, **kw)
     r.raise_for_status()
     return r
+
+
+@functools.lru_cache(maxsize=32)
+def sitede_var(url: str, desen: str) -> bool:
+    """Bir tanıtım iddiası (kampanya, deneme süresi...) sitede HÂLÂ yazıyor mu? Site okunamazsa False:
+    doğrulanamayan iddia videoya girmez. Aylar sonra kampanya bittiğinde otomasyon eski kampanyayı anlatmasın diye."""
+    try:
+        return re.search(desen, temiz(getir(url).text), re.I) is not None
+    except Exception:
+        return False
+
+
+def iddia_temizle(s: dict | None, desen: str, yerine_baslik: str) -> dict | None:
+    """Doğrulanamayan iddiayı senaryodan çıkarır: olgulardan siler, ekran yazısında geçiyorsa nötr metne çevirir."""
+    if not s:
+        return s
+    r = re.compile(desen, re.I)
+    s["olgular"] = [o for o in s.get("olgular", []) if not r.search(str(o))]
+    for sh in [*s.get("sahneler", []), s.get("hikaye") or {}]:
+        for alan in ("etiket", "baslik", "alt", "ust_yazi"):
+            if sh.get(alan) and r.search(sh[alan]):
+                sh[alan] = yerine_baslik if alan == "baslik" else ""
+        if sh.get("maddeler"):
+            sh["maddeler"] = [m for m in sh["maddeler"] if not r.search(m)] or sh["maddeler"][:1]
+    return s
 
 
 def temiz(s: str) -> str:
