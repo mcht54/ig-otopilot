@@ -81,3 +81,12 @@ def test_nabiz(gecici_durum, capsys):
     assert calistir.nabiz() == 0
     ortak.gecmis_guncelle("sgb", {"tarih": ortak.bugun(), "tur": "reels", "durum": "hata", "hata": "token", "anahtar": "a", "format": "f"})
     assert calistir.nabiz() == 1 and "Sapanca" in capsys.readouterr().out
+
+
+def test_gemini_model_kesfi_en_yeni_flash_secilir():
+    from otopilot.llm import model_sirala
+    adlar = ["gemini-2.0-flash", "gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-3.9-flash-preview-11-2026",
+             "gemini-3.8-pro", "gemini-3.8-flash-image", "gemini-3.8-flash-tts", "text-embedding-004"]
+    s = model_sirala(adlar)
+    assert s[:3] == ["gemini-3.8-flash", "gemini-3.8-flash-lite", "gemini-2.0-flash"] and s[3] == "gemini-3.9-flash-preview-11-2026"
+    assert not any(x in " ".join(s) for x in ("pro", "image", "tts", "embedding"))

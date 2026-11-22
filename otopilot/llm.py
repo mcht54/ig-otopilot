@@ -11,7 +11,38 @@ import requests
 
 from .ortak import log
 
-GEMINI_MODELLER = [m for m in os.environ.get("GEMINI_MODELLER", "gemini-2.5-flash,gemini-2.0-flash").split(",") if m]
+# Model adları sabit yazılmaz: Google eski modelleri emekliye ayırınca (404) otomasyon kural metnine düşüyordu.
+# GEMINI_MODELLER verilirse önce onlar denenir; ardından hesabın erişebildiği en yeni "flash" modeller kendiliğinden bulunur.
+GEMINI_MODELLER = [m for m in os.environ.get("GEMINI_MODELLER", "").split(",") if m]
+_ATLA = ("image", "tts", "audio", "live", "embed", "vision", "thinking", "learnlm", "robotics", "computer")
+_kesif: list[str] | None = None
+
+
+def model_sirala(adlar: list[str]) -> list[str]:
+    """Kararlı modeller önce (önizlemeler habersiz kalkabiliyor), sonra en yeni sürüm, tam > lite."""
+    def puan(ad: str):
+        m = re.search(r"gemini-(\d+(?:\.\d+)?)", ad)
+        surum = float(m.group(1)) if m else 0.0
+        return (not re.search(r"preview|exp", ad), surum, "lite" not in ad, -len(ad))
+    secilen = [a for a in adlar if "flash" in a and not any(x in a for x in _ATLA)]
+    return sorted(dict.fromkeys(secilen), key=puan, reverse=True)
+
+
+def _gemini_modelleri(anahtar: str) -> list[str]:
+    global _kesif
+    if _kesif is None:
+        try:
+            r = requests.get("https://generativelanguage.googleapis.com/v1beta/models", params={"pageSize": 200},
+                             headers={"x-goog-api-key": anahtar}, timeout=30)
+            r.raise_for_status()
+            adlar = [m["name"].removeprefix("models/") for m in r.json().get("models", [])
+                     if "generateContent" in m.get("supportedGenerationMethods", [])]
+            _kesif = model_sirala(adlar)[:4]
+            log(f"gemini modelleri: {', '.join(_kesif) or 'yok'}")
+        except Exception as e:
+            log(f"gemini model listesi alınamadı: {str(e)[:160]}")
+            _kesif = []
+    return list(dict.fromkeys(GEMINI_MODELLER + _kesif))
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
 
@@ -31,7 +62,7 @@ def _gemini(sistem: str, istem: str) -> str | None:
     anahtar = os.environ.get("GEMINI_API_KEY")
     if not anahtar:
         return None
-    for model in GEMINI_MODELLER:
+    for model in _gemini_modelleri(anahtar):
         for deneme in range(2):
             try:
                 r = requests.post(
