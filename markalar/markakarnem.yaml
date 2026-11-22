@@ -1,0 +1,23 @@
+kod: markakarnem
+ad: MarkaKarnem
+site: https://markakarnem.com.tr
+site_kisa: markakarnem.com.tr
+logo: fontlar/markakarnem-logo.png
+renk: {ana: "#C8102E", koyu: "#141519", vurgu: "#C9A24A", acik: "#FFF3CF", yazi: "#FFFFFF"}
+konum: Sakarya
+hedef_kitle: >
+  Google'da, Haritalar'da ve Instagram'da yeterince görünmediğini düşünen esnaf ve küçük işletme sahipleri
+  (restoran, kafe, kuaför, klinik, otel, emlak...). "Google'da neden çıkmıyorum?" diye sorarlar, teknik bilgileri yoktur.
+ses_tonu: >
+  Teşhis koyan, net, öğretici; korkutmadan eksikleri gösterir ve tek somut adım verir. Rakam yalnız ölçülmüş
+  veriden yazılır. Sıralama garantisi yok. "Siz" diye hitap edilir.
+deger_onerisi:
+  - Web sitesi, Google İşletme Profili ve Instagram 52 kontrolle ücretsiz analiz edilir
+  - Marka Skoru ve öncelikli adımlar gösterilir
+  - Sakarya'da sektör bazında ölçülmüş dijital karne verileri yayınlanır
+anahtar_kelimeler: [ücretsiz seo analizi, google'da çıkmak, google haritalar, google işletme profili, instagram etkileşim oranı, dijital görünürlük]
+etiketler: ["#seo", "#googleişletmeprofili", "#googleharitalar", "#dijitalpazarlama", "#esnaf", "#küçükişletme", "#sakarya", "#instagramipuçları", "#yerelseo", "#markaskoru"]
+cta: Ücretsiz karnenizi profildeki linkten çıkarın
+yasak_ifadeler: [garanti, "%100 başarı", 1 numara, birinci sıra, en ucuz, bedava]
+saat: {reels: "13:30", hikaye: "09:00"}
+formatlar: {soru_cevap: 3, yerel_karne: 2, arac_demo: 1, ornek_rapor: 1, sektor_ipucu: 2}

@@ -21,6 +21,8 @@ jobs:
       IG_DAVETIYELER_TOKEN: ${{ secrets.IG_DAVETIYELER_TOKEN }}
       IG_SGB_ID: ${{ secrets.IG_SGB_ID }}
       IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
+      IG_MARKAKARNEM_ID: ${{ secrets.IG_MARKAKARNEM_ID }}
+      IG_MARKAKARNEM_TOKEN: ${{ secrets.IG_MARKAKARNEM_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

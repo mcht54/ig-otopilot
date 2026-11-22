@@ -3,13 +3,14 @@ name: Günlük içerik
 on:
   schedule:
     - cron: "5 9 * * *"    # 12:05 TR → Site Mucidi (12:30)
+    - cron: "5 10 * * *"   # 13:05 TR → MarkaKarnem (13:30)
     - cron: "35 15 * * *"  # 18:35 TR → Bungalov (19:00)
     - cron: "35 16 * * *"  # 19:35 TR → Davetiyeler (20:00)
     - cron: "0 19 * * *"   # 22:00 TR → kaçan ya da hata veren varsa yeniden dener
   workflow_dispatch:
     inputs:
       marka:
-        description: "Marka kodu (sitemucidi / davetiyeler / sgb). Boş = saati gelenler"
+        description: "Marka kodu (sitemucidi / davetiyeler / sgb / markakarnem). Boş = saati gelenler"
         required: false
       zorla:
         description: "Bugün yapılmış olsa da yeniden üret"
@@ -41,6 +42,8 @@ jobs:
       IG_DAVETIYELER_TOKEN: ${{ secrets.IG_DAVETIYELER_TOKEN }}
       IG_SGB_ID: ${{ secrets.IG_SGB_ID }}
       IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
+      IG_MARKAKARNEM_ID: ${{ secrets.IG_MARKAKARNEM_ID }}
+      IG_MARKAKARNEM_TOKEN: ${{ secrets.IG_MARKAKARNEM_TOKEN }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4

@@ -1,6 +1,6 @@
 # IG Otopilot — kurulum ve işleyiş
 
-Site Mucidi, Davetiyeler.TR ve Sapanca Güvenilir Bungalov Instagram hesaplarına **her gün 1 Reels + 1 hikâye**
+Site Mucidi, Davetiyeler.TR, Sapanca Güvenilir Bungalov ve MarkaKarnem Instagram hesaplarına **her gün 1 Reels + 1 hikâye**
 üretip kendiliğinden paylaşan sistem. Tamamen ücretsiz: GitHub Actions (bilgisayar kapalıyken çalışır),
 Gemini/Groq ücretsiz katman (yoksa kural motoru), Instagram Graph API.
 
@@ -16,7 +16,7 @@ Gemini/Groq ücretsiz katman (yoksa kural motoru), Instagram Graph API.
 | 6. Yayın | Video Instagram'a doğrudan yüklenir (barındırma gerekmez): önce Reels (akışta da görünür), sonra hikâye. |
 | 7. Öğrenme | Sonraki günlerde 24 saati geçen gönderilerin ölçümleri çekilir, skorlanır; iyi giden formatların ağırlığı artar, en iyi/zayıf kancalar yapay zekâya örnek verilir. |
 
-**Saatler** (`markalar/*.yaml` → `saat.reels`): Site Mucidi 12:30, Bungalov 19:00, Davetiyeler 20:00.
+**Saatler** (`markalar/*.yaml` → `saat.reels`): Site Mucidi 12:30, MarkaKarnem 13:30, Bungalov 19:00, Davetiyeler 20:00.
 GitHub zamanlayıcısı 30 dk kadar gecikebilir; 22:00'deki ek çalıştırma hata vereni yeniden dener.
 
 ## Formatlar
@@ -29,6 +29,9 @@ GitHub zamanlayıcısı 30 dk kadar gecikebilir; 22:00'deki ek çalıştırma ha
   (basılı davetiyeye ₺650 değerinde dijital davetiye hediye).
 - **Bungalov:** `guvenlik_ipucu` / `rehber` (sitedeki rehberler), `belge_sorgula` (+ Bakanlık kaydındaki belgeli
   tesis sayısı), `isletme_davet` (tesis sahiplerine komisyonsuz listeleme). Fotoğraflar temsilidir.
+- **MarkaKarnem:** `soru_cevap` (soru/sözlük/rehber sayfaları), `sektor_ipucu`, `yerel_karne` (Sakarya'da ölçülmüş
+  sektör verisi: en sık eksik %, medyan Marka Skoru), `arac_demo` (etkileşim oranı aracına rakam yazılıp sonuç
+  gösterilir — tarayıcıda hesaplar, API/yapay zekâ bütçesi harcamaz), `ornek_rapor`. Gerçek analiz başlatılmaz.
 
 Yeni format eklemek: `otopilot/kaynak/<marka>.py` içine fonksiyon yazıp `FORMATLAR`'a ve `markalar/<marka>.yaml`
 `formatlar` ağırlığına ekleyin.
@@ -70,7 +73,7 @@ developers.facebook.com → Uygulamalarım → **Mchttasarım Marka Yönetim** �
 R=mcht54/ig-otopilot
 gh secret set GEMINI_API_KEY -R $R        # aistudio.google.com/apikey (ücretsiz)
 gh secret set GROQ_API_KEY -R $R          # isteğe bağlı yedek: console.groq.com (ücretsiz)
-for K in SITEMUCIDI DAVETIYELER SGB; do gh secret set IG_${K}_ID -R $R; gh secret set IG_${K}_TOKEN -R $R; done
+for K in SITEMUCIDI DAVETIYELER SGB MARKAKARNEM; do gh secret set IG_${K}_ID -R $R; gh secret set IG_${K}_TOKEN -R $R; done
 gh secret set GH_PAT -R $R                # anahtar yenileme için: yalnız bu depoda "Secrets: write" izinli ince taneli token
 gh variable set IG_API -R $R --body instagram
 ```

@@ -100,4 +100,4 @@ def test_zamanlama(monkeypatch):
     monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-22T12:05")
     assert "sitemucidi" in calistir.zamani_gelenler() and "sgb" not in calistir.zamani_gelenler()
     monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-22T19:35")
-    assert set(calistir.zamani_gelenler()) == {"sitemucidi", "sgb", "davetiyeler"}
+    assert set(calistir.zamani_gelenler()) == {"sitemucidi", "sgb", "davetiyeler", "markakarnem"}

@@ -11,10 +11,10 @@ import re
 import statistics
 
 from . import llm
-from .kaynak import davetiyeler, sgb, sitemucidi
+from .kaynak import davetiyeler, markakarnem, sgb, sitemucidi
 from .ortak import gecmis, kullanilan_anahtarlar, log, simdi
 
-KAYNAKLAR = {"sitemucidi": sitemucidi, "davetiyeler": davetiyeler, "sgb": sgb}
+KAYNAKLAR = {"sitemucidi": sitemucidi, "davetiyeler": davetiyeler, "sgb": sgb, "markakarnem": markakarnem}
 
 # Slot → en fazla karakter (videoda okunabilirlik + Instagram arayüzü)
 SINIR = {"etiket": 26, "baslik": 62, "alt": 84, "ust_yazi": 46, "madde": 54}
