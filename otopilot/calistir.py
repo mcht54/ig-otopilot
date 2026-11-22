@@ -54,6 +54,11 @@ def video_denetle(yol: Path, en_az: float = 5, en_cok: float = 90) -> list[str]:
             if sapma < 6:
                 h.append(f"%{int(oran*100)} noktasında boş kare")
             tmp.unlink()
+    # ses: sessiz video yayınlanmaz (müzik/anlatım duyulmalı)
+    v = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(yol), "-af", "volumedetect", "-f", "null", "-"], capture_output=True, text=True)
+    m = re.search(r"mean_volume:\s*(-?[\d.]+) dB", v.stderr)
+    if not m or float(m.group(1)) < -40:
+        h.append(f"ses yok/çok kısık ({m.group(1) if m else '?'} dB)")
     return h
 
 
@@ -85,12 +90,16 @@ def uret(kod: str, tarayici, klasor: Path) -> dict:
             atla.add(senaryo["format"])
             continue
         try:
-            reel = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"])
+            from . import ses
+            anlatim, anlatim_kaynagi = ses.anlatim_yaz(senaryo, m)
+            reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim)
+            senaryo.update(anlatim=anlatim, anlatim_kaynagi=anlatim_kaynagi, ses_kaynagi=ses_kaynagi)
+            log(f"anlatım ({anlatim_kaynagi}, ses: {ses_kaynagi}): {' / '.join(anlatim)}")
             vh = video_denetle(reel)
             if vh:
                 raise RuntimeError(f"video kalite: {vh}")
             kapak = kapak_kare(reel, klasor / "kapak.jpg", 1.2)
-            hikaye = film_yap(tarayici, [hikaye_sahnesi(senaryo, kapak.as_uri())], m, klasor, "hikaye", senaryo["tohum"] + "h")
+            hikaye, _ = film_yap(tarayici, [hikaye_sahnesi(senaryo, kapak.as_uri())], m, klasor, "hikaye", senaryo["tohum"] + "h")
             hh = video_denetle(hikaye, en_az=3, en_cok=15)
             if hh:
                 raise RuntimeError(f"hikâye kalite: {hh}")

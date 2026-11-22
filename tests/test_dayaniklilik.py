@@ -100,3 +100,39 @@ def test_anahtarlar_loga_ve_kayda_yazilmaz(gecici_durum, capsys):
     for metin in (capsys.readouterr().out, (gecici_durum / "sgb" / "gecmis.json").read_text()):
         assert "EAAG" not in metin and "abcdefghijklmnop1234" not in metin and "AIzaSy" not in metin and "AQ.Ab8" not in metin
         assert "fields=id" in metin
+
+
+def test_konusma_metni_ve_anlatim_denetimi():
+    from otopilot import ses
+    m = ortak.marka("markakarnem")
+    assert ses.konusma_metni("%53 eksik (LocalBusiness) verisi?. markakarnem.com.tr ₺650+KDV", m) == "yüzde 53 eksik verisi? MarkaKarnem 650 lira artı KDV"
+    s = {"olgular": ["17 işletme ölçüldü"], "sahneler": [{"tip": "kapak", "baslik": "Sakarya'da 17 işletme"}, {"tip": "cta", "baslik": "Skorunuzu görün"}]}
+    assert not ses.anlatim_denetle(["17 işletmeyi ölçtük, sonuç şaşırtıcı!", "Linki profilde!"], s, m)
+    assert any("kaynaksız" in h for h in ses.anlatim_denetle(["250 işletme!", "Linki profilde"], s, m))
+    assert ses.anlatim_denetle(["tek satır"], s, m)  # satır sayısı tutmuyor
+    assert len(ses.kural_anlatim(s, m)) == 2
+
+
+def test_ses_bolme_ve_miks(tmp_path):
+    import numpy as np
+    from otopilot import ses
+    sr = ses.SR
+    ton = lambda d: (np.sin(2 * np.pi * 220 * np.arange(int(d * sr)) / sr) * 0.5).astype(np.float32)
+    sus = lambda d: np.zeros(int(d * sr), dtype=np.float32)
+    x = np.concatenate([sus(0.2), ton(1.2), sus(0.5), ton(0.9), sus(0.6), ton(1.5), sus(0.3)])
+    p = ses.bol(x, 3, ["bir iki üç dört", "beş altı", "yedi sekiz dokuz on"])
+    assert [round(len(k) / sr, 1) for k in p] == [1.2, 0.9, 1.5]
+    m = ortak.marka("sgb")
+    yol = ses.miks(6.0, [(0.2, ton(1.0))], m, "t", tmp_path / "a.wav")
+    import wave
+    with wave.open(str(yol)) as w:
+        assert w.getnchannels() == 2 and w.getframerate() == sr and abs(w.getnframes() / sr - 6.0) < 0.01
+
+
+@pytest.mark.parametrize("kod", ["sitemucidi", "davetiyeler", "sgb", "markakarnem"])
+def test_muzik_her_marka_sessiz_degil(kod):
+    import numpy as np
+    from otopilot import muzik
+    a = muzik.uret(4.0, ortak.marka(kod), "2026-11-23")
+    assert a.shape[1] == 2 and 0.5 < np.max(np.abs(a)) <= 0.81 and np.sqrt(np.mean(a ** 2)) > 0.03
+    assert np.array_equal(a, muzik.uret(4.0, ortak.marka(kod), "2026-11-23"))  # aynı tohum aynı müzik

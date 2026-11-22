@@ -155,7 +155,7 @@ def muzik_sec(tohum: str) -> Path | None:
     return random.Random(tohum).choice(parcalar)
 
 
-def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None) -> Path:
+def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None, hazir_ses: Path | None = None) -> Path:
     sureler = [_sure(k) for k in klipler]
     girdiler = []
     for k in klipler:
@@ -170,9 +170,13 @@ def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None) -> Pa
     if not filtre:
         filtre.append("[0:v]null[v0]")
         onceki = "[v0]"
-    ses_girdi = ["-i", str(muzik)] if muzik else ["-f", "lavfi", "-t", f"{toplam:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
     si = len(klipler)
-    filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=in:d=0.4,afade=t=out:st={max(0, toplam - 1.2):.3f}:d=1.2,volume=0.6[a]")
+    if hazir_ses:  # seslendirme + müzik miksi hazır (ses.miks): seviyesine dokunulmaz
+        ses_girdi = ["-i", str(hazir_ses)]
+        filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.6):.3f}:d=0.6[a]")
+    else:
+        ses_girdi = ["-i", str(muzik)] if muzik else ["-f", "lavfi", "-t", f"{toplam:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
+        filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=in:d=0.4,afade=t=out:st={max(0, toplam - 1.2):.3f}:d=1.2,volume=0.6[a]")
     komut = ["ffmpeg", "-y", "-loglevel", "error", *girdiler, *ses_girdi,
              "-filter_complex", ";".join(filtre), "-map", onceki, "-map", "[a]",
              "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", "30",
@@ -189,15 +193,38 @@ def klip_uret(tarayici, sahne: dict, marka: dict, cikti: Path) -> Path:
     return sayfa_klip(tarayici, sahne, marka, cikti)
 
 
-def film_yap(tarayici, sahneler: list[dict], marka: dict, klasor: Path, ad: str, tohum: str) -> Path:
+SES_ONCE = 0.25   # sahne açıldıktan sonra konuşmanın başlama payı (sn)
+SES_SONRA = 0.45  # konuşma bittikten sonra sahnenin kalma payı (sn)
+EN_UZUN_SAHNE = 10.0
+
+
+def film_yap(tarayici, sahneler: list[dict], marka: dict, klasor: Path, ad: str, tohum: str,
+             anlatim: list[str] | None = None) -> tuple[Path, str]:
+    """Videoyu üretir; (yol, ses_kaynagi) döner. Anlatım varsa sahne süreleri konuşmaya göre uzar ve her satır
+    kendi sahnesinin başında başlar; her durumda fon müziği çalar (ses: gemini | edge | yok)."""
+    from . import ses
     klasor.mkdir(parents=True, exist_ok=True)
+    sahneler = [dict(s) for s in sahneler]
+    parcalar, kaynak = (ses.seslendir(anlatim, marka) if anlatim else (None, "yok"))
+    if parcalar:
+        for sh, p in zip(sahneler, parcalar):
+            gerek = SES_ONCE + len(p) / ses.SR + SES_SONRA + GECIS
+            sh["sure"] = round(min(max(sh.get("sure", 3.0), gerek), EN_UZUN_SAHNE), 2)
     klipler = []
     for i, sahne in enumerate(sahneler):
         klipler.append(klip_uret(tarayici, sahne, marka, klasor / f"{ad}-s{i:02d}.mp4"))
-    son = birlestir(klipler, klasor / f"{ad}.mp4", muzik_sec(tohum))
-    for k in klipler:
+    sureler = [_sure(k) for k in klipler]
+    toplam = sum(sureler) - GECIS * (len(klipler) - 1)
+    konusmalar, an = [], 0.0
+    for i, d in enumerate(sureler):
+        if parcalar:
+            konusmalar.append((an + (0.12 if i == 0 else SES_ONCE), parcalar[i]))
+        an += d - GECIS
+    miks = ses.miks(toplam, konusmalar, marka, tohum, klasor / f"{ad}-ses.wav")
+    son = birlestir(klipler, klasor / f"{ad}.mp4", hazir_ses=miks)
+    for k in [*klipler, miks]:
         k.unlink(missing_ok=True)
-    return son
+    return son, kaynak
 
 
 def kapak_kare(video: Path, cikti: Path, saniye: float = 1.2) -> Path:

@@ -24,3 +24,6 @@ yasak_ifadeler: [garanti, "%100", 1 numara, birinci sıra, en ucuz, bedava site]
 saat: {reels: "12:30", hikaye: "09:30"}
 # format: başlangıç ağırlığı (ölçüm geldikçe otomatik güncellenir)
 formatlar: {sektor_demo: 4, ozellik: 2, yz_arama: 2, tema_paket: 1}
+# Seslendirme (Gemini TTS sesi, yedek Microsoft sesi) ve fon müziği havası
+ses: {gemini: Puck, edge: tr-TR-AhmetNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Esnafa müjde verir gibi enerjik, hızlı tempolu, vurgulu ve gülümseyerek oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
+muzik: {hava: enerjik, tempo: 122, ton: A}

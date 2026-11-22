@@ -21,3 +21,5 @@ cta: Belgeli bungalovlar profildeki linkte
 yasak_ifadeler: [garanti, en ucuz, "%100", rezervasyon yap]
 saat: {reels: "19:00", hikaye: "11:30"}
 formatlar: {guvenlik_ipucu: 3, rehber: 3, belge_sorgula: 1, isletme_davet: 1}
+ses: {gemini: Zephyr, edge: tr-TR-EmelNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Tatil planlayan birini dolandırıcılıktan korur gibi dikkat çekici, güven veren, enerjik ve vurgulu oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
+muzik: {hava: sicak, tempo: 106, ton: G}
