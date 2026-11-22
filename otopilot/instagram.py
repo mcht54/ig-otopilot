@@ -5,6 +5,7 @@ Ortam değişkenleri (marka kodu büyük harfle, ör. SITEMUCIDI):
   IG_<KOD>_ID     Instagram hesap kimliği (ig-user-id)
   IG_<KOD>_TOKEN  Erişim anahtarı
   IG_API          "instagram" (Instagram ile Giriş, graph.instagram.com) ya da "facebook" (graph.facebook.com)
+  ya da: IG_TOKEN (Meta sistem kullanıcısı, süresiz) + META_<KOD>_IG_ID → graph.facebook.com
 """
 from __future__ import annotations
 
@@ -26,9 +27,11 @@ class InstagramHatasi(RuntimeError):
 class Instagram:
     def __init__(self, kod: str):
         k = kod.upper()
-        self.kimlik = os.environ.get(f"IG_{k}_ID", "")
-        self.anahtar = os.environ.get(f"IG_{k}_TOKEN", "")
-        api = os.environ.get(f"IG_{k}_API") or os.environ.get("IG_API", "instagram")
+        # 1) Markaya özel anahtar (Instagram ile Giriş) ya da 2) Meta sistem kullanıcısı (süresiz, sayfaya bağlı hesap)
+        self.kimlik = os.environ.get(f"IG_{k}_ID") or os.environ.get(f"META_{k}_IG_ID", "")
+        ozel = os.environ.get(f"IG_{k}_TOKEN", "")
+        self.anahtar = ozel or os.environ.get("IG_TOKEN", "")
+        api = os.environ.get(f"IG_{k}_API") or (os.environ.get("IG_API", "instagram") if ozel else "facebook")
         self.kok = f"https://graph.{'instagram' if api == 'instagram' else 'facebook'}.com/{SURUM}"
 
     @property

@@ -92,3 +92,22 @@ Bundan sonra paylaşım tamamen otomatik. Durdurmak için `--body kapali`. Hata 
 - Instagram ile Giriş anahtarları 60 gün geçerli; `anahtar.yml` her pazartesi uzatır (GH_PAT gerekir).
 - Sitelerin tasarımı değişirse (ör. sihirbazdaki "Bilgiler"/"Önizleme" düğme adları) ilgili format kalite
   kapısında düşer, diğer formatlar çalışmaya devam eder; hata issue'su gelir.
+
+## Çok platform (Dijital Çırak düzeni) ve panel takibi
+
+Her Reels; Instagram Reels + hikâye, **Facebook sayfası Reels**, **YouTube Shorts** (markanın kendi kanalı) ve
+**TikTok** (inceleme onayı yokken telefona taslak) olarak dağıtılır. Anahtarı olmayan platform atlanır.
+
+| Sır | Ne |
+|---|---|
+| `IG_TOKEN` | Meta sistem kullanıcısı anahtarı (süresiz; Dijital Çırak'taki ile aynı). Sayfalar + Instagram hesapları sistem kullanıcısına atanmalı |
+| `META_<KOD>_IG_ID`, `META_<KOD>_PAGE_ID` | Markanın sayfaya bağlı Instagram hesap kimliği ve Facebook sayfa kimliği |
+| `YT_CLIENT_ID`, `YT_CLIENT_SECRET` | Dijital Çırak'taki YouTube OAuth istemcisi (ortak) |
+| `YT_<KOD>_REFRESH_TOKEN` | Markanın kendi kanalı seçilerek alınan yenileme anahtarı |
+| `TT_CLIENT_KEY`, `TT_CLIENT_SECRET`, `TT_<KOD>_REFRESH_TOKEN` | TikTok uygulaması (ortak) + markanın hesabı |
+
+`<KOD>`: SITEMUCIDI, DAVETIYELER, SGB, MARKAKARNEM. `IG_TOKEN + META_<KOD>_IG_ID` varsa markaya özel `IG_<KOD>_TOKEN` gerekmez.
+
+**Panel:** her çalıştırmanın sonunda `python -m otopilot.panel` son 14 günü (tarih, marka, format, konu, platform
+platform durum + bağlantı, ölçüm/skor) GitHub OIDC ile `panel.mchttasarim.com.tr/api/icerik-takvimi/senkron/ig_otopilot`
+ucuna gönderir; panelde anahtar tutulmaz. Panelin `KANALLAR` listesinde `ig_otopilot` tanımlı olmalı.

@@ -101,3 +101,27 @@ def test_zamanlama(monkeypatch):
     assert "sitemucidi" in calistir.zamani_gelenler() and "sgb" not in calistir.zamani_gelenler()
     monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-22T19:35")
     assert set(calistir.zamani_gelenler()) == {"sitemucidi", "sgb", "davetiyeler", "markakarnem"}
+
+
+def test_dagitim_anahtarsiz_platformu_atlar_ve_dusen_digerini_durdurmaz(monkeypatch, tmp_path):
+    from otopilot import dagitim
+    for k in list(__import__("os").environ):
+        if k.startswith(("YT_", "TT_", "META_", "IG_")):
+            monkeypatch.delenv(k)
+    monkeypatch.setenv("YT_CLIENT_ID", "x"); monkeypatch.setenv("YT_SGB_REFRESH_TOKEN", "x")
+    monkeypatch.setenv("TT_CLIENT_KEY", "x"); monkeypatch.setenv("TT_SGB_REFRESH_TOKEN", "x")
+    monkeypatch.setattr(dagitim.time, "sleep", lambda s: None)
+    monkeypatch.setitem(dagitim.PLATFORMLAR, "youtube", (dagitim.PLATFORMLAR["youtube"][0], lambda *a: (_ for _ in ()).throw(RuntimeError("kota"))))
+    monkeypatch.setitem(dagitim.PLATFORMLAR, "tiktok", (dagitim.PLATFORMLAR["tiktok"][0], lambda *a: "tiktok-taslak:SEND_TO_USER_INBOX:1"))
+    s = dagitim.dagit("sgb", tmp_path / "v.mp4", "Başlık\n📞 wa.me/905", [])
+    assert s["facebook"].startswith("atlandı") and s["youtube"].startswith("HATA") and s["tiktok"].startswith("tiktok-taslak")
+    assert "wa.me" not in dagitim.tiktok_metni("a\nwa.me/1\nb")
+
+
+def test_instagram_sistem_anahtari(monkeypatch):
+    from otopilot.instagram import Instagram
+    for k in ("IG_SGB_ID", "IG_SGB_TOKEN"):
+        monkeypatch.delenv(k, raising=False)
+    monkeypatch.setenv("IG_TOKEN", "sistem"); monkeypatch.setenv("META_SGB_IG_ID", "178")
+    ig = Instagram("sgb")
+    assert ig.hazir and ig.kimlik == "178" and "graph.facebook.com" in ig.kok

@@ -24,6 +24,7 @@ concurrency:
 permissions:
   contents: write
   issues: write
+  id-token: write  # panel 'İçerik takvimi' senkronu (GitHub OIDC; panelde anahtar yok)
 
 jobs:
   uret:
@@ -44,6 +45,27 @@ jobs:
       IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
       IG_MARKAKARNEM_ID: ${{ secrets.IG_MARKAKARNEM_ID }}
       IG_MARKAKARNEM_TOKEN: ${{ secrets.IG_MARKAKARNEM_TOKEN }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+      TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+      META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
+      META_SITEMUCIDI_PAGE_ID: ${{ secrets.META_SITEMUCIDI_PAGE_ID }}
+      YT_SITEMUCIDI_REFRESH_TOKEN: ${{ secrets.YT_SITEMUCIDI_REFRESH_TOKEN }}
+      TT_SITEMUCIDI_REFRESH_TOKEN: ${{ secrets.TT_SITEMUCIDI_REFRESH_TOKEN }}
+      META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
+      META_DAVETIYELER_PAGE_ID: ${{ secrets.META_DAVETIYELER_PAGE_ID }}
+      YT_DAVETIYELER_REFRESH_TOKEN: ${{ secrets.YT_DAVETIYELER_REFRESH_TOKEN }}
+      TT_DAVETIYELER_REFRESH_TOKEN: ${{ secrets.TT_DAVETIYELER_REFRESH_TOKEN }}
+      META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}
+      META_SGB_PAGE_ID: ${{ secrets.META_SGB_PAGE_ID }}
+      YT_SGB_REFRESH_TOKEN: ${{ secrets.YT_SGB_REFRESH_TOKEN }}
+      TT_SGB_REFRESH_TOKEN: ${{ secrets.TT_SGB_REFRESH_TOKEN }}
+      META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
+      META_MARKAKARNEM_PAGE_ID: ${{ secrets.META_MARKAKARNEM_PAGE_ID }}
+      YT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.YT_MARKAKARNEM_REFRESH_TOKEN }}
+      TT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.TT_MARKAKARNEM_REFRESH_TOKEN }}
       GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v4
@@ -102,6 +124,10 @@ jobs:
         run: |
           { echo "Çalıştırma: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; echo; cat rapor.md; } > hata.md
           gh issue create --title "⚠️ Instagram otomasyonu hata verdi $(date +%d.%m.%Y)" --body-file hata.md
+
+      - name: Panel senkronu (MCHT panel → İçerik takvimi)
+        if: always()
+        run: python -m otopilot.panel
 
       - name: Durumu kaydet (geçmiş + ölçümler)
         if: always()

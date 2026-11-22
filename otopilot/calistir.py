@@ -12,6 +12,7 @@ import datetime as dt
 import json
 import os
 import random
+import re
 import statistics
 import subprocess
 import sys
@@ -21,7 +22,7 @@ from pathlib import Path
 from PIL import Image, ImageStat
 from playwright.sync_api import sync_playwright
 
-from . import beyin
+from . import beyin, dagitim
 from .film import film_yap, kapak_kare
 from .instagram import Instagram, InstagramHatasi
 from .ortak import CIKTI, bugun, gecmis, gecmis_guncelle, gecmis_yaz, json_kaydet, log, marka, marka_kodlari, simdi
@@ -133,8 +134,8 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
     }
     if yayin_acik:
         if not ig.hazir:
+            kayit["hata"] = f"Instagram anahtarı yok (IG_{kod.upper()}_ID/TOKEN ya da IG_TOKEN + META_{kod.upper()}_IG_ID)"
             kayit["durum"] = "hata"
-            kayit["hata"] = f"IG_{kod.upper()}_ID / IG_{kod.upper()}_TOKEN tanımlı değil"
             log(kayit["hata"])
         else:
             try:
@@ -149,6 +150,18 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
             except InstagramHatasi as e:
                 kayit.update(durum="hata", hata=str(e)[:300])
                 log(f"Reels paylaşılamadı: {e}")
+        # Diğer platformlar (Facebook, YouTube Shorts, TikTok) Instagram'dan bağımsız denenir
+        etiketler = re.findall(r"#\w+", sonuc["aciklama"])
+        kayit["platformlar"] = dagitim.dagit(kod, sonuc["reel"], sonuc["aciklama"], etiketler)
+        kayit["platformlar"]["instagram"] = kayit.get("link") or (f"HATA: {kayit['hata']}" if kayit.get("hata") else "atlandı: anahtar yok")
+        kayit["platformlar"]["instagram_hikaye"] = ("http-ig-hikaye:" + kayit["hikaye_id"]) if kayit.get("hikaye_id") else (
+            f"HATA: {kayit['hikaye_hata']}" if kayit.get("hikaye_hata") else "atlandı")
+        degerler = [str(v) for v in kayit["platformlar"].values()]
+        if any(v.startswith(("http", "tiktok-taslak")) for v in degerler):
+            kayit["durum"] = "yayinlandi"
+        elif all(v.startswith("atlandı") for v in degerler if v) and not ig.hazir:
+            # bu markanın hiçbir hesabı henüz bağlı değil: hata sayma, önizleme olarak kalsın
+            kayit.update(durum="onizleme", hata=None, not_="hiçbir platform anahtarı yok")
     gecmis_guncelle(kod, kayit)
     log(f"{kod}: {kayit['durum']} — {kayit['format']} — {kayit['baslik']}")
     return kayit
