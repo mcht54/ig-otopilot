@@ -220,6 +220,35 @@ def rapor(tarih: str | None = None) -> str:
     return "\n".join(satir)
 
 
+def kontrol() -> int:
+    """Bağlantı denemesi: her markanın Instagram hesabını ve Facebook sayfa erişimini okur (paylaşım yapmaz, anahtar yazdırmaz)."""
+    from .dagitim import _sayfa_anahtari
+    hata = 0
+    for kod in marka_kodlari():
+        ig = Instagram(kod)
+        satir = [f"{kod:12}"]
+        if ig.hazir:
+            try:
+                h = ig.hesap()
+                satir.append(f"IG ✓ @{h.get('username')} ({h.get('followers_count')} takipçi)")
+            except InstagramHatasi as e:
+                hata = 1
+                satir.append(f"IG ✗ {str(e)[:120]}")
+        else:
+            satir.append("IG – anahtar/kimlik yok")
+        if os.environ.get(f"META_{kod.upper()}_PAGE_ID"):
+            try:
+                _sayfa_anahtari(kod)
+                satir.append("FB sayfa ✓")
+            except Exception as e:
+                hata = 1
+                satir.append(f"FB sayfa ✗ {str(e)[:120]}")
+        else:
+            satir.append("FB sayfa – kimlik yok")
+        print("  ".join(satir), flush=True)
+    return hata
+
+
 def anahtar_yenile() -> None:
     """Instagram ile Giriş anahtarlarını uzatır ve GitHub sırrına yazar (GH_PAT gerekir). Anahtar yazdırılmaz."""
     pat, depo = os.environ.get("GH_PAT"), os.environ.get("GITHUB_REPOSITORY")
@@ -253,7 +282,7 @@ def zamani_gelenler() -> list[str]:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile"])
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol"])
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
@@ -266,6 +295,8 @@ def main(argv=None) -> int:
     if a.komut == "yenile":
         anahtar_yenile()
         return 0
+    if a.komut == "kontrol":
+        return kontrol()
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
     hata = 0
     for kod in kodlar:

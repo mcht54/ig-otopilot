@@ -1,0 +1,22 @@
+name: Bağlantı kontrolü
+on: [workflow_dispatch]
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
+      META_SITEMUCIDI_PAGE_ID: ${{ secrets.META_SITEMUCIDI_PAGE_ID }}
+      META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
+      META_DAVETIYELER_PAGE_ID: ${{ secrets.META_DAVETIYELER_PAGE_ID }}
+      META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}
+      META_SGB_PAGE_ID: ${{ secrets.META_SGB_PAGE_ID }}
+      META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
+      META_MARKAKARNEM_PAGE_ID: ${{ secrets.META_MARKAKARNEM_PAGE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -q requests PyYAML Pillow playwright==1.65.2
+      - run: python -m otopilot.calistir kontrol
