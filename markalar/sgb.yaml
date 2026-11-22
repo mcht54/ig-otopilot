@@ -1,0 +1,23 @@
+kod: sgb
+ad: Sapanca Güvenilir Bungalov
+site: https://sapancaguvenilirbungalov.com.tr
+site_kisa: sapancaguvenilirbungalov.com.tr
+logo: fontlar/sgb-logo.png
+renk: {ana: "#0E6F6C", koyu: "#0A2F2E", vurgu: "#E9B949", acik: "#FBF7F0", yazi: "#FFFFFF"}
+konum: Sapanca
+hedef_kitle: >
+  Sapanca'da bungalov kiralamak isteyen çiftler ve aileler (balayı, hafta sonu, kış tatili).
+  En büyük korkuları kapora dolandırıcılığı, kaçak/belgesiz tesis ve fotoğraftakinden farklı çıkan yer.
+ses_tonu: >
+  Güven veren, sakin, bilgilendirici; korku satmadan uyarır. Somut adım verir. Fotoğraflar
+  temsilidir; belirli bir tesisi övmez veya kötülemez. Rezervasyon/ödeme almadığımızı unutma.
+deger_onerisi:
+  - Yalnız Bakanlık belgeli bungalovlar listelenir, belge numarası görünür
+  - Kapora göndermeden önce belge ve işletme bilgisi nasıl kontrol edilir anlatılır
+  - Komisyon yok; tesisle doğrudan telefon/WhatsApp ile görüşülür
+anahtar_kelimeler: [sapanca bungalov, güvenilir bungalov, sapanca jakuzili bungalov, sapanca kiralık bungalov, bungalov dolandırıcılığı, belgeli bungalov]
+etiketler: ["#sapanca", "#sapancabungalov", "#bungalov", "#sapancagölü", "#bungalovtatili", "#jakuzilibungalov", "#haftasonu", "#balayı", "#sakarya", "#tinyhouse"]
+cta: Belgeli bungalovlar profildeki linkte
+yasak_ifadeler: [garanti, en ucuz, "%100", rezervasyon yap]
+saat: {reels: "19:00", hikaye: "11:30"}
+formatlar: {guvenlik_ipucu: 3, rehber: 3, belge_sorgula: 1, isletme_davet: 1}

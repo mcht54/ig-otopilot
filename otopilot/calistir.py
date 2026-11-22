@@ -1,0 +1,275 @@
+"""Komut satırı:
+  python -m otopilot.calistir otomatik            # saati gelmiş ve bugün yapılmamış markalar
+  python -m otopilot.calistir uret --marka sgb    # tek marka, şimdi (YAYIN=acik değilse yalnız önizleme)
+  python -m otopilot.calistir olc                 # tüm markaların ölçümlerini güncelle
+
+YAYIN=acik ortam değişkeni yoksa hiçbir şey paylaşılmaz, yalnız cikti/ altına önizleme üretilir.
+"""
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import json
+import os
+import random
+import statistics
+import subprocess
+import sys
+import traceback
+from pathlib import Path
+
+from PIL import Image, ImageStat
+from playwright.sync_api import sync_playwright
+
+from . import beyin
+from .film import film_yap, kapak_kare
+from .instagram import Instagram, InstagramHatasi
+from .ortak import CIKTI, bugun, gecmis, gecmis_guncelle, gecmis_yaz, json_kaydet, log, marka, marka_kodlari, simdi
+
+
+# ---------------- video kalite denetimi ----------------
+
+def video_denetle(yol: Path, en_az: float = 5, en_cok: float = 90) -> list[str]:
+    h = []
+    c = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height:format=duration,size",
+                        "-of", "json", str(yol)], capture_output=True, text=True)
+    if c.returncode:
+        return ["ffprobe okuyamadı"]
+    bilgi = json.loads(c.stdout)
+    akis, bicim = bilgi["streams"][0], bilgi["format"]
+    if (akis["width"], akis["height"]) != (1080, 1920):
+        h.append(f"boyut {akis['width']}x{akis['height']}")
+    sure = float(bicim["duration"])
+    if not en_az <= sure <= en_cok:
+        h.append(f"süre {sure:.1f}s")
+    if int(bicim["size"]) > 250 * 1024 * 1024:
+        h.append("dosya çok büyük")
+    # boş/tek renk kare (yüklenemeyen sayfa) var mı?
+    tmp = yol.with_suffix(".kare.jpg")
+    for oran in (0.1, 0.35, 0.6, 0.85):
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{sure * oran:.2f}", "-i", str(yol), "-frames:v", "1", str(tmp)], check=False)
+        if tmp.exists():
+            sapma = statistics.mean(ImageStat.Stat(Image.open(tmp).convert("L")).stddev)
+            if sapma < 6:
+                h.append(f"%{int(oran*100)} noktasında boş kare")
+            tmp.unlink()
+    return h
+
+
+# ---------------- üretim ----------------
+
+def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
+    h = senaryo.get("hikaye", {})
+    if h.get("kayit_url"):
+        return {"tur": "sayfa", "url": h["kayit_url"], "sure": 7.0, "ust_yazi": h.get("baslik"),
+                "eylemler": [{"t": 1.4, "tikla": "davetiyeyi aç"}]}
+    return {"tur": "kart", "tip": "hikaye", "sure": 6.0, "gorsel": h.get("gorsel") or kapak_uri, "telefon": h.get("telefon"),
+            "etiket": h.get("etiket"), "baslik": h.get("baslik") or senaryo["konu"], "alt": h.get("alt")}
+
+
+def uret(kod: str, tarayici, klasor: Path) -> dict:
+    m = marka(kod)
+    atla: set[str] = set()
+    son_hata = None
+    for deneme in range(3):
+        senaryo = beyin.planla(kod, m, tarayici, klasor, atla=atla)
+        rnd = random.Random(senaryo["tohum"])
+        senaryo, aciklama, kaynak = beyin.parlat(senaryo, m, kod, rnd)
+        hatalar = beyin.metin_denetle(senaryo, aciklama, m)
+        if hatalar:
+            log(f"{senaryo['format']} metin kalite hatası: {hatalar}; başka format deneniyor")
+            son_hata = hatalar
+            atla.add(senaryo["format"])
+            continue
+        try:
+            reel = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"])
+            vh = video_denetle(reel)
+            if vh:
+                raise RuntimeError(f"video kalite: {vh}")
+            kapak = kapak_kare(reel, klasor / "kapak.jpg", 1.2)
+            hikaye = film_yap(tarayici, [hikaye_sahnesi(senaryo, kapak.as_uri())], m, klasor, "hikaye", senaryo["tohum"] + "h")
+            hh = video_denetle(hikaye, en_az=3, en_cok=15)
+            if hh:
+                raise RuntimeError(f"hikâye kalite: {hh}")
+        except Exception as e:
+            son_hata = e
+            log(f"{senaryo['format']} üretilemedi ({e}); başka format deneniyor")
+            traceback.print_exc()
+            atla.add(senaryo["format"])
+            continue
+        senaryo["metin_kaynagi"] = kaynak
+        (klasor / "aciklama.txt").write_text(aciklama, encoding="utf-8")
+        json_kaydet(klasor / "senaryo.json", senaryo)
+        return {"senaryo": senaryo, "aciklama": aciklama, "reel": reel, "hikaye": hikaye, "kapak": kapak}
+    raise RuntimeError(f"3 denemede içerik üretilemedi: {son_hata}")
+
+
+def gunluk(kod: str, zorla: bool = False) -> dict:
+    tarih = bugun()
+    yayin_acik = os.environ.get("YAYIN") == "acik"
+    onceki = next((k for k in gecmis(kod) if k.get("tarih") == tarih and k.get("tur") == "reels"), None)
+    if onceki and onceki.get("durum") in ("yayinlandi", "onizleme") and not zorla:
+        if not (yayin_acik and onceki["durum"] == "onizleme"):
+            log(f"{kod}: bugün zaten yapıldı ({onceki['durum']})")
+            return onceki
+    ig = Instagram(kod)
+    if ig.hazir:
+        try:
+            olc(kod, ig)
+        except Exception as e:
+            log(f"{kod} ölçüm hatası: {e}")
+    klasor = CIKTI / tarih / kod
+    with sync_playwright() as p:
+        tarayici = p.chromium.launch(args=["--disable-gpu", "--font-render-hinting=none"])
+        try:
+            sonuc = uret(kod, tarayici, klasor)
+        finally:
+            tarayici.close()
+    s = sonuc["senaryo"]
+    kayit = {
+        "tarih": tarih, "tur": "reels", "format": s["format"], "anahtar": s["anahtar"], "ek_anahtarlar": s.get("ek_anahtarlar", []),
+        "konu": s["konu"], "baslik": next((x.get("baslik") for x in s["sahneler"] if x.get("baslik")), s["konu"]),
+        "metin_kaynagi": s["metin_kaynagi"], "durum": "onizleme", "klasor": str(klasor.relative_to(CIKTI.parent)),
+    }
+    if yayin_acik:
+        if not ig.hazir:
+            kayit["durum"] = "hata"
+            kayit["hata"] = f"IG_{kod.upper()}_ID / IG_{kod.upper()}_TOKEN tanımlı değil"
+            log(kayit["hata"])
+        else:
+            try:
+                b = ig.reels(sonuc["reel"], sonuc["aciklama"])
+                kayit.update(durum="yayinlandi", medya_id=b["id"], link=b.get("permalink"), yayin_zamani=simdi().isoformat())
+                try:
+                    h = ig.hikaye(sonuc["hikaye"])
+                    kayit["hikaye_id"] = h["id"]
+                except InstagramHatasi as e:
+                    kayit["hikaye_hata"] = str(e)[:300]
+                    log(f"hikâye paylaşılamadı: {e}")
+            except InstagramHatasi as e:
+                kayit.update(durum="hata", hata=str(e)[:300])
+                log(f"Reels paylaşılamadı: {e}")
+    gecmis_guncelle(kod, kayit)
+    log(f"{kod}: {kayit['durum']} — {kayit['format']} — {kayit['baslik']}")
+    return kayit
+
+
+# ---------------- ölçüm ve öğrenme ----------------
+
+def olc(kod: str, ig: Instagram | None = None) -> None:
+    ig = ig or Instagram(kod)
+    if not ig.hazir:
+        return
+    ks = gecmis(kod)
+    sinir_eski = (simdi() - dt.timedelta(days=21)).isoformat()
+    sinir_yeni = (simdi() - dt.timedelta(hours=24)).isoformat()
+    for k in ks:
+        if k.get("medya_id") and sinir_eski <= k.get("yayin_zamani", "") <= sinir_yeni:
+            try:
+                k["olcum"] = ig.olcumler(k["medya_id"])
+                k["olcum_zamani"] = simdi().isoformat()
+            except InstagramHatasi as e:
+                log(f"ölçüm alınamadı {k['medya_id']}: {e}")
+    olculen = [k for k in ks if k.get("olcum")]
+    if olculen:
+        erisim = [max(1, k["olcum"].get("reach") or 0) for k in olculen]
+        oran = [((k["olcum"].get("likes") or 0) + 2 * (k["olcum"].get("comments") or 0) + 3 * (k["olcum"].get("saved") or 0)
+                 + 4 * (k["olcum"].get("shares") or 0)) / max(1, k["olcum"].get("reach") or 0) for k in olculen]
+        me, mo = statistics.median(erisim) or 1, statistics.median(oran) or 1e-6
+        for k, e, o in zip(olculen, erisim, oran):
+            k["skor"] = round(0.5 * e / me + 0.5 * o / mo, 3)
+    gecmis_yaz(kod, ks)
+
+
+# ---------------- rapor ve anahtar yenileme ----------------
+
+def rapor(tarih: str | None = None) -> str:
+    """Bugünün içerikleri için Markdown özet (önizleme e-postası / hata bildirimi)."""
+    tarih = tarih or bugun()
+    satir = [f"## {tarih} içerikleri", ""]
+    for kod in marka_kodlari():
+        k = next((x for x in gecmis(kod) if x.get("tarih") == tarih and x.get("tur") == "reels"), None)
+        if not k:
+            continue
+        m = marka(kod)
+        satir.append(f"### {m['ad']} — {k.get('durum')}")
+        satir.append(f"- Format: `{k.get('format')}` · Konu: {k.get('konu', '')} · Metin: {k.get('metin_kaynagi', '-')}")
+        if k.get("link"):
+            satir.append(f"- Instagram: {k['link']}")
+        if k.get("hata"):
+            satir.append(f"- **Hata:** {k['hata']}")
+        if k.get("hikaye_hata"):
+            satir.append(f"- **Hikâye hatası:** {k['hikaye_hata']}")
+        yol = CIKTI.parent / k.get("klasor", "") / "aciklama.txt"
+        if k.get("klasor") and yol.exists():
+            satir += ["", "<details><summary>Açıklama metni</summary>", "", "```", yol.read_text(encoding="utf-8"), "```", "</details>"]
+        satir.append("")
+    return "\n".join(satir)
+
+
+def anahtar_yenile() -> None:
+    """Instagram ile Giriş anahtarlarını uzatır ve GitHub sırrına yazar (GH_PAT gerekir). Anahtar yazdırılmaz."""
+    pat, depo = os.environ.get("GH_PAT"), os.environ.get("GITHUB_REPOSITORY")
+    for kod in marka_kodlari():
+        ig = Instagram(kod)
+        if not ig.hazir:
+            continue
+        yeni = ig.anahtar_yenile()
+        if not yeni:
+            continue
+        if not (pat and depo):
+            log(f"{kod}: anahtar yenilendi ama GH_PAT yok, sırra yazılamadı")
+            continue
+        r = subprocess.run(["gh", "secret", "set", f"IG_{kod.upper()}_TOKEN", "-R", depo], input=yeni, text=True,
+                           env={**os.environ, "GH_TOKEN": pat}, capture_output=True)
+        log(f"{kod}: anahtar {'güncellendi' if r.returncode == 0 else 'GÜNCELLENEMEDİ: ' + r.stderr[:200]}")
+
+
+# ---------------- zamanlama ----------------
+
+def zamani_gelenler() -> list[str]:
+    s = simdi()
+    sonuc = []
+    for kod in marka_kodlari():
+        saat = marka(kod)["saat"]["reels"]
+        hh, mm = map(int, saat.split(":"))
+        if s.hour * 60 + s.minute >= hh * 60 + mm - 30:  # GitHub zamanlayıcısı gecikebilir
+            sonuc.append(kod)
+    return sonuc
+
+
+def main(argv=None) -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile"])
+    ap.add_argument("--marka", action="append")
+    ap.add_argument("--zorla", action="store_true")
+    ap.add_argument("--format", help="deneme için formatı zorla")
+    a = ap.parse_args(argv)
+    if a.format:
+        os.environ["OTOPILOT_FORMAT"] = a.format
+    if a.komut == "rapor":
+        print(rapor())
+        return 0
+    if a.komut == "yenile":
+        anahtar_yenile()
+        return 0
+    kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
+    hata = 0
+    for kod in kodlar:
+        try:
+            if a.komut == "olc":
+                olc(kod)
+            else:
+                k = gunluk(kod, zorla=a.zorla)
+                if k.get("durum") == "hata":
+                    hata = 1
+        except Exception as e:
+            hata = 1
+            log(f"{kod} HATA: {e}")
+            traceback.print_exc()
+            gecmis_guncelle(kod, {"tarih": bugun(), "tur": "reels", "durum": "hata", "hata": str(e)[:300], "format": "?", "anahtar": ""})
+    return hata
+
+
+if __name__ == "__main__":
+    sys.exit(main())

@@ -1,0 +1,24 @@
+kod: davetiyeler
+ad: Davetiyeler.TR
+site: https://www.davetiyeler.tr
+site_kisa: davetiyeler.tr
+logo: fontlar/davetiyeler-logo.png
+renk: {ana: "#7A1F2B", koyu: "#2A1A16", vurgu: "#C9A15B", acik: "#FBF6EE", yazi: "#FFFFFF"}
+konum: Sakarya
+hedef_kitle: >
+  Düğün, nişan, nikah, kına ve sünnet hazırlığındaki çiftler ve aileler (çoğunlukla 22-35 yaş
+  gelin adayları ve anneleri). Model, fiyat, teslim süresi ve "nasıl sipariş veririm" merak ederler.
+ses_tonu: >
+  Sıcak, zarif, heyecan paylaşan. Kısa cümleler. Fiyat yalnız sitedeki gerçek fiyattan yazılır;
+  uydurma indirim yok. "Siz" diye hitap edilir.
+deger_onerisi:
+  - Düğün, nişan, nikah, kına, sünnet için 1.700+ davetiye modeli
+  - Basılı davetiyede siparişten önce tasarım taslağı onayınıza gelir
+  - Dijital davetiye animasyonlu açılış, LCV, geri sayım ve harita ile tek linkle WhatsApp'tan paylaşılır
+  - Sakarya'dan Türkiye'nin her yerine gönderim
+anahtar_kelimeler: [davetiye modelleri, düğün davetiyesi, nikah davetiyesi, kına davetiyesi, sünnet davetiyesi, dijital davetiye]
+etiketler: ["#davetiye", "#düğündavetiyesi", "#nikahdavetiyesi", "#kınadavetiyesi", "#sünnetdavetiyesi", "#dijitaldavetiye", "#gelinadayı", "#düğünhazırlığı", "#nişandavetiyesi", "#davetiyemodelleri"]
+cta: Tüm modeller profildeki linkte
+yasak_ifadeler: [garanti, en ucuz, bedava, "%100"]
+saat: {reels: "20:00", hikaye: "10:30"}
+formatlar: {model_vitrin: 4, dijital_davetiye: 2, siparis_nasil: 1, kampanya: 1}

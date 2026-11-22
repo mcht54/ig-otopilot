@@ -1,0 +1,112 @@
+name: Günlük içerik
+
+on:
+  schedule:
+    - cron: "5 9 * * *"    # 12:05 TR → Site Mucidi (12:30)
+    - cron: "35 15 * * *"  # 18:35 TR → Bungalov (19:00)
+    - cron: "35 16 * * *"  # 19:35 TR → Davetiyeler (20:00)
+    - cron: "0 19 * * *"   # 22:00 TR → kaçan ya da hata veren varsa yeniden dener
+  workflow_dispatch:
+    inputs:
+      marka:
+        description: "Marka kodu (sitemucidi / davetiyeler / sgb). Boş = saati gelenler"
+        required: false
+      zorla:
+        description: "Bugün yapılmış olsa da yeniden üret"
+        type: boolean
+        default: false
+
+concurrency:
+  group: otopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  uret:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      TZ: Europe/Istanbul
+      PYTHONPATH: .
+      YAYIN: ${{ vars.YAYIN }}
+      IG_API: ${{ vars.IG_API }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      IG_SITEMUCIDI_ID: ${{ secrets.IG_SITEMUCIDI_ID }}
+      IG_SITEMUCIDI_TOKEN: ${{ secrets.IG_SITEMUCIDI_TOKEN }}
+      IG_DAVETIYELER_ID: ${{ secrets.IG_DAVETIYELER_ID }}
+      IG_DAVETIYELER_TOKEN: ${{ secrets.IG_DAVETIYELER_TOKEN }}
+      IG_SGB_ID: ${{ secrets.IG_SGB_ID }}
+      IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Araçlar
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-core fonts-noto-color-emoji >/dev/null
+          pip install -q -r requirements.txt
+
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+
+      - name: Tarayıcı
+        run: python -m playwright install --with-deps chromium
+
+      - name: Üret ve paylaş
+        id: uret
+        continue-on-error: true
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.marka }}" ]; then ARGS="--marka ${{ inputs.marka }}"; fi
+          if [ "${{ inputs.zorla }}" = "true" ]; then ARGS="$ARGS --zorla"; fi
+          python -m otopilot.calistir otomatik $ARGS
+
+      - name: Rapor
+        run: python -m otopilot.calistir rapor > rapor.md
+
+      - name: Önizleme (YAYIN açık değilken videoları e-postayla gönder)
+        if: vars.YAYIN != 'acik'
+        run: |
+          mkdir -p dagit
+          for d in cikti/*/*/; do
+            kod=$(basename "$d")
+            [ -f "$d/reel.mp4" ] && cp "$d/reel.mp4" "dagit/${kod}-reels.mp4"
+            [ -f "$d/hikaye.mp4" ] && cp "$d/hikaye.mp4" "dagit/${kod}-hikaye.mp4"
+            [ -f "$d/kapak.jpg" ] && cp "$d/kapak.jpg" "dagit/${kod}-kapak.jpg"
+          done
+          if ls dagit/* >/dev/null 2>&1; then
+            ETIKET="onizleme-$(date +%Y%m%d)-${{ github.run_number }}"
+            gh release create "$ETIKET" dagit/* --prerelease --title "Önizleme $(date +%d.%m.%Y %H:%M)" --notes-file rapor.md
+            URL=$(gh release view "$ETIKET" --json url -q .url)
+            { echo "Videolar: $URL"; echo; cat rapor.md; } > issue.md
+            gh issue create --title "Önizleme $(date +%d.%m.%Y) — onay bekliyor" --body-file issue.md
+          fi
+
+      - name: Hata bildirimi
+        if: steps.uret.outcome == 'failure'
+        run: |
+          { echo "Çalıştırma: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; echo; cat rapor.md; } > hata.md
+          gh issue create --title "⚠️ Instagram otomasyonu hata verdi $(date +%d.%m.%Y)" --body-file hata.md
+
+      - name: Durumu kaydet (geçmiş + ölçümler)
+        if: always()
+        run: |
+          git config user.name "ig-otopilot"
+          git config user.email "ig-otopilot@users.noreply.github.com"
+          git add durum
+          if ! git diff --cached --quiet; then
+            git commit -qm "durum: $(date +%F_%H:%M)"
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          fi

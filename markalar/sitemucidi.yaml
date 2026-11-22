@@ -1,0 +1,26 @@
+kod: sitemucidi
+ad: Site Mucidi
+site: https://www.sitemucidi.com.tr
+site_kisa: sitemucidi.com.tr
+logo: fontlar/sitemucidi-logo.svg
+renk: {ana: "#C60001", koyu: "#0F0D24", vurgu: "#FF8A3D", acik: "#F6F4EF", yazi: "#FFFFFF"}
+konum: Sakarya
+hedef_kitle: >
+  Web sitesi olmayan ya da eski sitesinden memnun olmayan esnaf ve küçük işletmeler
+  (kuaför, oto servis, diş kliniği, restoran, emlak, avukat, usta...). Teknikten anlamazlar,
+  pahalı ajans ve uzun süreç korkusu vardır.
+ses_tonu: >
+  Samimi, net, esnafın diliyle. Teknik terim yok; varsa bir cümlede açıklanır. Abartı, sahte
+  garanti, "1 numara" iddiası yok. "Siz" diye hitap edilir.
+deger_onerisi:
+  - 3 dakikada, kod bilmeden, ücretsiz deneyerek web sitesi kurulur
+  - 199 hazır tasarım, sektöre göre önerilir
+  - WhatsApp butonu, Google Haritalar, randevu/teklif formu gibi özellikler tek tıkla açılır
+  - İnsanlar artık ChatGPT/Gemini'ye soruyor; yapay zekâ cevabı web sitelerinden derler. Sitesi olmayan işletme önerilmez
+anahtar_kelimeler: [web sitesi kurma, ücretsiz web sitesi, hazır web sitesi, esnaf web sitesi, web sitesi yaptırmak, Google'da çıkmak]
+etiketler: ["#websitesi", "#websitesikurma", "#esnaf", "#küçükişletme", "#dijitalpazarlama", "#sakarya", "#hazırsite", "#yapayzeka", "#googledaçıkmak", "#girişimcilik"]
+cta: Profildeki linkten ücretsiz dene
+yasak_ifadeler: [garanti, "%100", 1 numara, birinci sıra, en ucuz, bedava site]
+saat: {reels: "12:30", hikaye: "09:30"}
+# format: başlangıç ağırlığı (ölçüm geldikçe otomatik güncellenir)
+formatlar: {sektor_demo: 4, ozellik: 2, yz_arama: 2, tema_paket: 1}

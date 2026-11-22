@@ -1,0 +1,30 @@
+name: Instagram anahtarını yenile
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # her pazartesi 09:00 TR (anahtarlar 60 gün geçerli)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  yenile:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
+      IG_API: ${{ vars.IG_API }}
+      GH_PAT: ${{ secrets.GH_PAT }}
+      IG_SITEMUCIDI_ID: ${{ secrets.IG_SITEMUCIDI_ID }}
+      IG_SITEMUCIDI_TOKEN: ${{ secrets.IG_SITEMUCIDI_TOKEN }}
+      IG_DAVETIYELER_ID: ${{ secrets.IG_DAVETIYELER_ID }}
+      IG_DAVETIYELER_TOKEN: ${{ secrets.IG_DAVETIYELER_TOKEN }}
+      IG_SGB_ID: ${{ secrets.IG_SGB_ID }}
+      IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q requests PyYAML Pillow playwright==1.65.2
+      - run: python -m otopilot.calistir yenile

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face { font-family: "M"; src: url("../fontlar/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+:root { --ana:#C60001; --koyu:#0F0D24; --vurgu:#FF8A3D; --acik:#F6F4EF; --yazi:#fff; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 405px; height: 720px; overflow: hidden; background: var(--koyu); font-family: "M", sans-serif; color: var(--yazi); -webkit-font-smoothing: antialiased; }
+.sahne { position: absolute; inset: 0; overflow: hidden; }
+/* Instagram arayüzü: üst ~80px ve alt ~150px'e önemli yazı koyma */
+.guvenli { position: absolute; left: 26px; right: 26px; top: 86px; bottom: 158px; display: flex; flex-direction: column; }
+.zemin { position: absolute; inset: -4%; background-size: cover; background-position: center; animation: kb var(--sure) linear both; }
+.zemin.bulanik { filter: blur(14px) brightness(.55); inset: -8%; }
+.karartma { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.05) 30%, rgba(0,0,0,.25) 55%, rgba(0,0,0,.85) 100%); }
+.renkli { position: absolute; inset: 0; background: radial-gradient(120% 80% at 80% 0%, var(--ana) 0%, transparent 60%), var(--koyu); }
+.acikzemin { position: absolute; inset: 0; background: var(--acik); }
+.etiket { align-self: flex-start; background: var(--ana); color: #fff; font-weight: 800; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; }
+.etiket.vurgu { background: var(--vurgu); color: var(--koyu); }
+h1 { font-weight: 900; font-size: 38px; line-height: 1.05; letter-spacing: -.02em; text-wrap: balance; }
+h2 { font-weight: 800; font-size: 27px; line-height: 1.12; letter-spacing: -.01em; text-wrap: balance; }
+p.alt { font-weight: 500; font-size: 16px; line-height: 1.4; opacity: .92; text-wrap: pretty; }
+.koyu-yazi { color: var(--koyu); }
+.gir { animation: gir .55s cubic-bezier(.2,.8,.2,1) both; }
+.sol { animation: sol .5s cubic-bezier(.2,.8,.2,1) both; }
+.buyu { animation: buyu .6s cubic-bezier(.2,.9,.25,1.15) both; }
+@keyframes gir { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes sol { from { opacity: 0; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+@keyframes buyu { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: none; } }
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.09); } }
+@keyframes cikis { to { opacity: 0; } }
+.madde { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(6px); border-radius: 16px; padding: 13px 14px; font-weight: 600; font-size: 16px; line-height: 1.3; }
+.madde b { flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--vurgu); color: var(--koyu); font-weight: 900; font-size: 14px; }
+.izgara { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.izgara figure { position: relative; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.izgara img { width: 100%; height: 100%; object-fit: cover; }
+.izgara figcaption { position: absolute; left: 6px; bottom: 6px; background: rgba(255,255,255,.94); color: var(--koyu); font-size: 10.5px; font-weight: 700; padding: 4px 7px; border-radius: 8px; max-width: calc(100% - 12px); }
+.izgara .no { position: absolute; top: 6px; left: 6px; width: 24px; height: 24px; border-radius: 50%; background: var(--ana); color: #fff; display: grid; place-items: center; font-weight: 900; font-size: 13px; }
+.urunkart { background: #fff; border-radius: 22px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.urunkart img { width: 100%; height: 300px; object-fit: cover; display: block; }
+.urunkart .bilgi { padding: 14px 16px 16px; color: var(--koyu); }
+.urunkart .ad { font-weight: 800; font-size: 17px; line-height: 1.2; }
+.fiyat { display: inline-block; margin-top: 8px; background: var(--ana); color: #fff; font-weight: 900; font-size: 19px; padding: 6px 12px; border-radius: 10px; }
+.rakam { font-weight: 900; font-size: 120px; line-height: .9; letter-spacing: -.04em; color: var(--vurgu); }
+.telefon { position: relative; margin: 0 auto; width: 236px; height: 470px; border-radius: 34px; background: #0b0b0f; padding: 9px; box-shadow: 0 25px 60px rgba(0,0,0,.45), 0 0 0 2px rgba(255,255,255,.12); }
+.telefon .ekran { width: 100%; height: 100%; border-radius: 26px; overflow: hidden; background: #fff; }
+.telefon img { width: 100%; display: block; }
+.telefon.tel-alt { position: absolute; left: 50%; margin-left: -118px; top: 330px; height: 520px; animation-name: yuksel; }
+@keyframes yuksel { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: none; } }
+.logo { height: 54px; width: auto; max-width: 220px; object-fit: contain; }
+.logokutu { align-self: center; background: #fff; border-radius: 18px; padding: 12px 18px; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.url { align-self: center; background: #fff; color: var(--koyu); font-weight: 800; font-size: 17px; padding: 12px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.ok { align-self: center; font-size: 15px; font-weight: 700; opacity: .9; }
+.marka-alt { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+</style>
+</head>
+<body>
+<div id="kok"></div>
+<script>
+const S = window.SAHNE, M = window.MARKA;
+for (const [k, v] of Object.entries(M.renk)) document.documentElement.style.setProperty("--" + k, v);
+const sure = S.sure || 3;
+document.documentElement.style.setProperty("--sure", sure + "s");
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const gecik = (el, s) => { el.style.animationDelay = s + "s"; return el; };
+const yap = (html) => { const d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; };
+const kok = document.getElementById("kok");
+const sahne = yap('<div class="sahne"></div>'); kok.appendChild(sahne);
+const zemin = (url, bulanik) => url ? sahne.appendChild(yap(`<div class="zemin ${bulanik ? "bulanik" : ""}" style="background-image:url('${url}')"></div>`)) : sahne.appendChild(yap('<div class="renkli"></div>'));
+const g = () => sahne.appendChild(yap('<div class="guvenli"></div>'));
+
+const T = {
+  kapak() {
+    if (S.telefon) {
+      sahne.appendChild(yap('<div class="renkli"></div>'));
+      const k = g(); k.style.gap = "12px"; k.style.top = "92px";
+      if (S.etiket) k.appendChild(gecik(yap(`<div class="etiket vurgu sol">${esc(S.etiket)}</div>`), .1));
+      k.appendChild(gecik(yap(`<h1 class="gir" style="font-size:32px">${esc(S.baslik)}</h1>`), .25));
+      if (S.alt) k.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), .6));
+      const t = sahne.appendChild(gecik(yap(`<div class="telefon tel-alt buyu"><div class="ekran"><img src="${S.gorsel}"></div></div>`), .45));
+      return;
+    }
+    zemin(S.gorsel); if (S.gorsel) sahne.appendChild(yap('<div class="karartma"></div>'));
+    const k = g(); k.style.justifyContent = "flex-end"; k.style.gap = "14px";
+    if (S.etiket) k.appendChild(gecik(yap(`<div class="etiket sol">${esc(S.etiket)}</div>`), .15));
+    k.appendChild(gecik(yap(`<h1 class="gir">${esc(S.baslik)}</h1>`), .3));
+    if (S.alt) k.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), .75));
+  },
+  liste() {
+    zemin(S.gorsel, true);
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "12px";
+    if (S.etiket) k.appendChild(gecik(yap(`<div class="etiket vurgu sol">${esc(S.etiket)}</div>`), .1));
+    k.appendChild(gecik(yap(`<h2 class="gir" style="margin-bottom:6px">${esc(S.baslik)}</h2>`), .2));
+    const n = S.maddeler.length, ara = Math.min(1.1, (sure - 1.6) / n);
+    S.maddeler.forEach((m, i) => k.appendChild(gecik(yap(`<div class="madde sol"><b>${i + 1}</b><span>${esc(m)}</span></div>`), .6 + i * ara)));
+  },
+  izgara() {
+    zemin(S.zemin, true);
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "14px";
+    k.appendChild(gecik(yap(`<h2 class="gir">${esc(S.baslik)}</h2>`), .1));
+    const iz = k.appendChild(yap('<div class="izgara"></div>'));
+    S.gorseller.slice(0, 4).forEach((u, i) => iz.appendChild(gecik(yap(`<figure class="buyu"><img src="${u}"><span class="no">${i + 1}</span>${S.yazilar && S.yazilar[i] ? `<figcaption>${esc(S.yazilar[i])}</figcaption>` : ""}</figure>`), .35 + i * .3)));
+    if (S.alt) k.appendChild(gecik(yap(`<p class="alt gir" style="text-align:center">${esc(S.alt)}</p>`), 1.8));
+  },
+  urun() {
+    zemin(S.gorsel, true);
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "14px";
+    if (S.etiket) k.appendChild(gecik(yap(`<div class="etiket sol">${esc(S.etiket)}</div>`), .1));
+    const kart = k.appendChild(gecik(yap(`<div class="urunkart buyu"><img src="${S.gorsel}"><div class="bilgi"><div class="ad">${esc(S.baslik)}</div>${S.fiyat ? `<span class="fiyat">${esc(S.fiyat)}</span>` : ""}${S.alt ? `<p class="alt" style="margin-top:8px;font-size:14px">${esc(S.alt)}</p>` : ""}</div></div>`), .2));
+  },
+  rakam() {
+    sahne.appendChild(yap('<div class="renkli"></div>'));
+    if (S.gorsel) zemin(S.gorsel, true).style.opacity = .5;
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "10px";
+    if (S.etiket) k.appendChild(gecik(yap(`<div class="etiket sol">${esc(S.etiket)}</div>`), .1));
+    k.appendChild(gecik(yap(`<div class="rakam buyu">${esc(S.rakam)}</div>`), .25));
+    k.appendChild(gecik(yap(`<h2 class="gir">${esc(S.baslik)}</h2>`), .6));
+    if (S.alt) k.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), 1.0));
+  },
+  telefon() {
+    sahne.appendChild(yap('<div class="renkli"></div>'));
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "16px";
+    k.appendChild(gecik(yap(`<h2 class="gir" style="text-align:center;font-size:23px">${esc(S.baslik)}</h2>`), .1));
+    const t = k.appendChild(gecik(yap(`<div class="telefon buyu"><div class="ekran"><img src="${S.gorsel}"></div></div>`), .3));
+  },
+  cta() {
+    sahne.appendChild(yap('<div class="renkli"></div>'));
+    const k = g(); k.style.justifyContent = "center"; k.style.gap = "18px"; k.style.textAlign = "center";
+    k.appendChild(gecik(yap(`<div class="logokutu buyu"><img class="logo" src="${M.logo_yol}"></div>`), .1));
+    k.appendChild(gecik(yap(`<h2 class="gir">${esc(S.baslik)}</h2>`), .4));
+    if (S.alt) k.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), .7));
+    k.appendChild(gecik(yap(`<div class="url buyu">${esc(M.site_kisa)}</div>`), 1.0));
+    k.appendChild(gecik(yap(`<div class="ok gir">↑ ${esc(M.cta)}</div>`), 1.3));
+  },
+  hikaye() {
+    if (S.telefon) { sahne.appendChild(yap('<div class="renkli"></div>')); sahne.appendChild(gecik(yap(`<div class="telefon tel-alt buyu" style="top:300px"><div class="ekran"><img src="${S.gorsel}"></div></div>`), .2)); }
+    else { zemin(S.gorsel); sahne.appendChild(yap('<div class="karartma"></div>')); }
+    const k = g(); k.style.top = "110px"; k.style.bottom = "140px"; k.style.justifyContent = S.telefon ? "flex-start" : "space-between"; k.style.gap = "14px";
+    k.appendChild(gecik(yap(`<div class="logokutu buyu" style="align-self:flex-start;padding:8px 12px"><img class="logo" style="height:34px" src="${M.logo_yol}"></div>`), .1));
+    const alt = k.appendChild(yap('<div style="display:flex;flex-direction:column;gap:12px"></div>'));
+    if (S.etiket) alt.appendChild(gecik(yap(`<div class="etiket vurgu sol">${esc(S.etiket)}</div>`), .3));
+    alt.appendChild(gecik(yap(`<h1 class="gir" style="font-size:${S.telefon ? 28 : 34}px">${esc(S.baslik)}</h1>`), .5));
+    if (S.alt) alt.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), .9));
+    if (!S.telefon) alt.appendChild(gecik(yap(`<div class="url gir" style="align-self:flex-start;font-size:15px">${esc(M.site_kisa)}</div>`), 1.3));
+  },
+  _eskiHikaye() {
+    zemin(S.gorsel); sahne.appendChild(yap('<div class="karartma"></div>'));
+    const k = g(); k.style.top = "110px"; k.style.bottom = "140px"; k.style.justifyContent = "space-between";
+    k.appendChild(gecik(yap(`<div class="logokutu buyu" style="align-self:flex-start;padding:8px 12px"><img class="logo" style="height:34px" src="${M.logo_yol}"></div>`), .1));
+    const alt = k.appendChild(yap('<div style="display:flex;flex-direction:column;gap:12px"></div>'));
+    if (S.etiket) alt.appendChild(gecik(yap(`<div class="etiket vurgu sol">${esc(S.etiket)}</div>`), .3));
+    alt.appendChild(gecik(yap(`<h1 class="gir" style="font-size:34px">${esc(S.baslik)}</h1>`), .5));
+    if (S.alt) alt.appendChild(gecik(yap(`<p class="alt gir">${esc(S.alt)}</p>`), .9));
+    alt.appendChild(gecik(yap(`<div class="url gir" style="align-self:flex-start;font-size:15px">${esc(M.site_kisa)}</div>`), 1.3));
+  },
+};
+(T[S.tip] || T.kapak)();
+if (S.tip !== "cta" && S.tip !== "hikaye") sahne.appendChild(yap(`<div class="marka-alt">${esc(M.ad)}</div>`));
+</script>
+</body>
+</html>
