@@ -290,6 +290,9 @@ def kontrol() -> int:
             if "error" in j:
                 print(f"anahtar izinleri: {j['error'].get('message', '')[:200]}", flush=True)
             d = j.get("data", {})
+            pr = requests.get(f"{GRAPH}/me/permissions", params={"access_token": os.environ["IG_TOKEN"]}, timeout=30).json()
+            print("  verilen izinler: " + ", ".join(f"{x['permission']}={x['status']}" for x in pr.get("data", [])) if "data" in pr
+                  else f"  izin listesi okunamadı: {pr.get('error', {}).get('message', '')[:160]}", flush=True)
             if d.get("scopes"):
                 print(f"  izinler: {d['scopes']}", flush=True)
             print(f"anahtar geçerli={d.get('is_valid')} bitiş={d.get('expires_at')}", flush=True)
