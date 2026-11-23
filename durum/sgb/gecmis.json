@@ -10,5 +10,33 @@
   "metin_kaynagi": "kural",
   "durum": "onizleme",
   "klasor": "cikti/2026-11-22/sgb"
+ },
+ {
+  "tarih": "2026-11-23",
+  "tur": "reels",
+  "format": "isletme_davet",
+  "anahtar": "isletme:48",
+  "ek_anahtarlar": [],
+  "konu": "Belgeli tesisler için komisyonsuz listeleme",
+  "baslik": "Komisyon ödemeden misafir sizi doğrudan arasın",
+  "metin_kaynagi": "gemini",
+  "durum": "hata",
+  "klasor": "cikti/2026-11-23/sgb",
+  "anlatim": [
+   "Sapanca'da bakanlık belgeli tesisiniz var ama komisyonlardan yoruldunuz mu?",
+   "Misafir sizi telefon veya WhatsApp'tan doğrudan arasın, kurucu dönemde ücretsiz listelenin!",
+   "Beş dakikada başvurup belgenizi doğrulatarak tesisinizi sahte ilanlara karşı koruyun.",
+   "Tesisinizi ücretsiz ekleyin, başvuru profildeki linkte!"
+  ],
+  "ses_kaynagi": "gemini",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-23-sgb.jpg?v=y",
+  "hata": "17841442087566298/media: (#10) Requires instagram_content_publish permission to manage the object",
+  "platformlar": {
+   "facebook": "HATA: facebook başlatma 403: {\"error\":{\"message\":\"(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A9BOZL8ol837GETshL_qaiT\"}}",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "HATA: 17841442087566298/media: (#10) Requires instagram_content_publish permission to manage the object",
+   "instagram_hikaye": "atlandı"
+  }
  }
 ]
