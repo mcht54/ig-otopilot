@@ -1,0 +1,210 @@
+{
+ "2026-11-24": {
+  "id": "2026-11-24-markakarnem",
+  "gun": "2026-11-24",
+  "kod": "markakarnem",
+  "format": "sektor_ipucu",
+  "konu": "Hukuk büroları internette nasıl görünüyor?",
+  "anahtar": "sektor:hukuk",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "sektor:hukuk",
+   "konu": "Hukuk büroları internette nasıl görünüyor?",
+   "anahtar_kelime": "hukuk büroları internette nasıl görünüyor",
+   "olgular": [
+    "Sayfa: Hukuk büroları internette nasıl görünüyor?",
+    "Özet: Hukuk büronuzun web sitesi, Google İşletme Profili ve iletişim bilgilerinin nasıl göründüğünü analiz edin; bilgilendirici ve tutarlı bir varlık oluşturun.",
+    "Müşteri sizi nasıl buluyor?: Hukuk için tipik dijital karar süreci. Hukuki destek arayan kişi çoğu zaman stresli bir durumdadır ve önce büronun hangi alanlarda çalıştığını, nerede olduğunu ve nasıl ulaşılabileceğini anlamak ister. Avukatlık mesleğinde tanıtıma ilişkin meslek kuralları bulunduğundan, reklam dili yerine açık, bil",
+    "Üç kanal, tek görünüm: Hukuk büroları için her kanalın rolü farklıdır. Analiz üçünü birlikte ve birbiriyle tutarlılığıyla inceler. Profil bilgileri Yorumlar Kategori",
+    "Google görünürlüğü Google İşletme Profili: Google İşletme Profili, büronun konumunu, çalışma saatlerini ve telefonunu gösterir. Doğru kategori, güncel adres ve web sitesi bağlantısı, büroyu arayan kişinin doğru yere ulaşmasına yardımcı olur. Randevu için büroyu arayın",
+    "Instagram Sosyal vitrin: Instagram bu sektörde birincil kanal olmayabilir; kullanılıyorsa büro bilgileri ve web sitesiyle tutarlı olması, düzenli ve bilgilendirici paylaşımlar yapılması yeterlidir.",
+    "Web sitesi Dijital merkez: Web sitesi; çalışma alanlarını, büro bilgilerini ve iletişim yollarını sade ve bilgilendirici bir dille anlatmak için temel alandır. Meslek kurallarına uygun, tanıtımdan çok bilgilendirmeye odaklanan içerik bu sektörde daha uygundur. Açık sayfa başlıkları ve açıklamalar, arama motorlarının sayfaları",
+    "Analiz kapsamı: Web sitesi16 SEO15 Google İşletme Profili12 Instagram9",
+    "Nerelerde fırsat olabilir?: Hukuk büroları için sık karşılaşılan dijital görünürlük eksikleri. Kendi raporunuzda yalnızca işletmeniz için ölçülen sonuçları görürsünüz."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sektörünüze özel",
+     "baslik": "Hukuk büroları internette nasıl görünüyor?",
+     "alt": "Cevabı 15 saniyede"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Müşteri sizi nasıl buluyor?",
+      "Üç kanal, tek görünüm",
+      "Google görünürlüğü Google İşletme Profili",
+      "Instagram Sosyal vitrin"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sektorler/hukuk",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sektörünüze özel",
+    "baslik": "Hukuk büroları internette nasıl görünüyor?",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "sektor_ipucu",
+   "tam_maddeler": [
+    "Müşteri sizi nasıl buluyor?",
+    "Üç kanal, tek görünüm",
+    "Google görünürlüğü Google İşletme Profili",
+    "Instagram Sosyal vitrin"
+   ],
+   "tohum": "markakarnem:2026-11-24",
+   "denenen_formatlar": [
+    "sektor_ipucu",
+    "arac_demo",
+    "yerel_karne",
+    "soru_cevap",
+    "ornek_rapor"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Hukuk büroları internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #markaskoru #sakarya",
+  "anlatim": [
+   "Hukuk büroları internette nasıl görünüyor? Cevabı 15 saniyede!",
+   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
+   "Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-markakarnem.jpg?v=dc1e4013",
+  "olusturma": "2026-11-23T03:47:10+03:00"
+ },
+ "2026-11-25": {
+  "id": "2026-11-25-markakarnem",
+  "gun": "2026-11-25",
+  "kod": "markakarnem",
+  "format": "soru_cevap",
+  "konu": "Web Sitem Google'da Neden Yükselmiyor?",
+  "anahtar": "soru:web-sitem-google-da-neden-yukselmiyor",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "soru:web-sitem-google-da-neden-yukselmiyor",
+   "konu": "Web Sitem Google'da Neden Yükselmiyor?",
+   "anahtar_kelime": "web sitem google'da neden yükselmiyor",
+   "olgular": [
+    "Sayfa: Web Sitem Google'da Neden Yükselmiyor?",
+    "Özet: Siteniz dizinde ama yükselmiyorsa en sık nedenler: arama niyetine uymayan sayfa, ince içerik, karışık konular, zayıf mobil deneyim ve güven eksikliği.",
+    "Kısa cevap: Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği aramaya tam cevap vermemesidir: sayfa başka bir soruya cevap veriyor, içerik çok kısa ya da genel, birden fazla konu tek sayfada karışmış olabilir. Bunlara zayıf mobil deneyim ve işletmenin çevrimiçi bilinirliğinin dü",
+    "Kısaca: Sorun çoğu zaman cevap eksikliğidir: Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği aramaya tam cevap vermemesidir. Sayfa başka bir soruya cevap veriyor olabilir. İçerik çok kısa ya da genel olabilir. Birden fazla konu da tek sayfada karışmış olabilir. Bunlara zayıf mobil deneyim ve işletmenin çevrim",
+    "En sık 5 neden: ",
+    "Arama niyeti uyuşmuyor: Google, aramanın arkasındaki amacı anlamaya çalışır. Birisi \"halı nasıl yıkanır\" yazıyorsa bilgi arıyordur. \"Halı yıkama fiyatları\" yazıyorsa hizmet almaya yakındır. Sayfanız ürün ya da hizmet satıyorsa ama arayan bilgi istiyorsa (ya da tersi), sayfa ne kadar düzgün olursa olsun yükselmekte zorlanab",
+    "İçerik ince: Birkaç cümlelik bir hizmet açıklaması, arayanın sorularını karşılamaz. Örneğin bir diş kliniği sayfasında yalnızca \"implant hizmeti veriyoruz\" yazıyorsa, insanların merak ettiği şeyler cevapsız kalır: Süreç nasıl işliyor? Kimler için uygun? Önce ne yapılıyor? Randevu nasıl alınıyor? Müşterilerinizin",
+    "Konu karışık: Tüm hizmetlerin tek sayfada toplandığı sitelerde, hiçbir hizmet için güçlü bir sayfa olmaz. Google hangi sayfayı hangi aramaya göstereceğini seçmekte zorlanır. Okuyan kişi de aradığını bulmak için uzun uzun kaydırmak zorunda kalır. Her ana hizmet için ayrı bir sayfa düşünün. Her sayfada tek bir ana ",
+    "Deneyim zayıf: Sayfa mobilde okunmuyorsa, çok yavaş açılıyorsa ya da iletişim bilgisine ulaşmak zorsa, ziyaretçi hızla çıkar. Yerel işletmeler için bu özellikle önemlidir, çünkü insanlar çoğunlukla telefondan arar. Sitenizi kendi telefonunuzdan açıp bir müşteri gibi gezin. Yazılar küçük mü, düğmelere basmak zor mu"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Soru-cevap",
+     "baslik": "Web Sitem Google'da Neden Yükselmiyor?",
+     "alt": "Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Kısaca: Sorun çoğu zaman cevap eksikliğidir",
+      "En sık 5 neden",
+      "Arama niyeti uyuşmuyor",
+      "İçerik ince"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sorular/web-sitem-google-da-neden-yukselmiyor",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Soru-cevap",
+    "baslik": "Web Sitem Google'da Neden Yükselmiyor?",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "soru_cevap",
+   "tam_maddeler": [
+    "Kısaca: Sorun çoğu zaman cevap eksikliğidir",
+    "En sık 5 neden",
+    "Arama niyeti uyuşmuyor",
+    "İçerik ince"
+   ],
+   "tohum": "markakarnem:2026-11-25",
+   "denenen_formatlar": [
+    "arac_demo",
+    "soru_cevap",
+    "ornek_rapor",
+    "yerel_karne",
+    "sektor_ipucu"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Web Sitem Google'da Neden Yükselmiyor?\nSiteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…\n\nBilmeniz gerekenler\n✔️ Kısaca: Sorun çoğu zaman cevap eksikliğidir\n✔️ En sık 5 neden\n✔️ Arama niyeti uyuşmuyor\n✔️ İçerik ince\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #yerelseo #dijitalpazarlama #googleharitalar",
+  "anlatim": [
+   "Web Sitem Google'da Neden Yükselmiyor?",
+   "Bilmeniz gerekenler: Kısaca: Sorun çoğu zaman cevap eksikliğidir, En sık 5 neden.",
+   "Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: soru_cevap formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-markakarnem.jpg?v=72ea0493",
+  "olusturma": "2026-11-23T03:47:56+03:00"
+ }
+}
