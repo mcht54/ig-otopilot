@@ -305,6 +305,7 @@ def _duzenleme_uygula(oge: dict, satirlar: dict[str, str]) -> None:
             s["sahneler"][kapak][k[2:]] = v[: beyin.SINIR[k[2:]]]
         elif re.fullmatch(r"a\d+", k) and int(k[1:]) < len(oge["anlatim"]):
             oge["anlatim"][int(k[1:])] = ses.konusma_metni(v, marka(oge["kod"]))
+            oge["anlatim_kaynagi"] = "panel"  # elle düzeltilen anlatım paylaşım günü yeniden yazılmaz
 
 
 def panel_isle(yanit: dict, tarayici) -> dict:

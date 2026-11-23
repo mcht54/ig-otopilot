@@ -79,6 +79,11 @@ def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama
     from . import ses
     if anlatim and len(anlatim) == len(senaryo["sahneler"]):
         anlatim_kaynagi = senaryo.get("anlatim_kaynagi") or "plan"
+        if anlatim_kaynagi == "kural":  # planda kota doluyken kalıp metin yazıldıysa paylaşım günü yapay zekâyla yeniden dene
+            yeni, yeni_kaynak = ses.anlatim_yaz(senaryo, m)
+            if yeni_kaynak != "kural":
+                anlatim, anlatim_kaynagi = yeni, yeni_kaynak
+        anlatim = [ses.konusma_metni(a, m) for a in anlatim]  # eski planlarda rakam/işaret kalmasın
     else:
         anlatim, anlatim_kaynagi = ses.anlatim_yaz(senaryo, m)
     reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim)
@@ -105,6 +110,7 @@ def uret(kod: str, tarayici, klasor: Path, hazir: dict | None = None) -> dict:
         try:
             s = beyin.iddia_kontrol(kod, hazir["senaryo"])  # plan günler önce kuruldu: kampanya/deneme hâlâ geçerli mi
             log(f"{kod}: bugünün planı kullanılıyor ({hazir['format']}: {hazir['konu']})")
+            s["anlatim_kaynagi"] = hazir.get("anlatim_kaynagi") or "plan"
             return _uret_bir(kod, m, tarayici, klasor, s, hazir["aciklama"], s.get("metin_kaynagi", "plan"), hazir.get("anlatim"))
         except Exception as e:
             log(f"{kod}: plan üretilemedi ({e}); içerik baştan kuruluyor")
