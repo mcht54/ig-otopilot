@@ -13,6 +13,7 @@ import json
 import os
 import random
 import re
+import shutil
 import statistics
 import subprocess
 import sys
@@ -181,8 +182,15 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
         "tarih": tarih, "tur": "reels", "format": s["format"], "anahtar": s["anahtar"], "ek_anahtarlar": s.get("ek_anahtarlar", []),
         "konu": s["konu"], "baslik": next((x.get("baslik") for x in s["sahneler"] if x.get("baslik")), s["konu"]),
         "metin_kaynagi": s["metin_kaynagi"], "durum": "onizleme", "klasor": str(klasor.relative_to(CIKTI.parent)),
-        "anlatim": s.get("anlatim"), "ses_kaynagi": s.get("ses_kaynagi"),
+        "anlatim": s.get("anlatim"), "ses_kaynagi": s.get("ses_kaynagi"), "aciklama": sonuc["aciklama"],
     }
+    try:  # video yedeği: bir platform hata verirse sonradan yalnız o platforma gönderilebilsin (eksik komutu)
+        yedek = CIKTI / f"{tarih}-{kod}-reel.mp4"
+        shutil.copyfile(sonuc["reel"], yedek)
+        if plan.yukle(yedek):
+            kayit["video_yedek"] = yedek.name
+    except Exception as e:
+        log(f"video yedeği yüklenemedi: {e}")
     try:  # panelde geçmiş içeriğin kapağı görünsün (GitHub sürüm dosyası; sunucuya yük yok)
         on = CIKTI / f"{tarih}-{kod}.jpg"
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(sonuc["kapak"]), "-vf", "scale=360:-2", "-q:v", "5", str(on)], check=True)
@@ -223,6 +231,45 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
     gecmis_guncelle(kod, kayit)
     log(f"{kod}: {kayit['durum']} — {kayit['format']} — {kayit['baslik']}")
     return kayit
+
+
+def eksik(kodlar: list[str] | None = None) -> int:
+    """Bugün yayınlanmış ama bir platforma (Facebook vb.) gidememiş içeriği yalnız o platforma gönderir.
+    Instagram'a tekrar göndermez. Video: sürüm yedeği, yoksa Instagram'daki yayından."""
+    import requests
+    from . import plan
+    tarih, tamam = bugun(), 0
+    for kod in kodlar or marka_kodlari():
+        k = next((x for x in gecmis(kod) if x.get("tarih") == tarih and x.get("tur") == "reels"), None)
+        pl = (k or {}).get("platformlar") or {}
+        hatali = [p for p, v in pl.items() if str(v).startswith("HATA") and p not in ("instagram", "instagram_hikaye")]
+        if not k or k.get("durum") != "yayinlandi" or not hatali:
+            continue
+        klasor = CIKTI / "eksik" / kod
+        klasor.mkdir(parents=True, exist_ok=True)
+        video = plan.indir(k["video_yedek"], klasor) if k.get("video_yedek") else None
+        aciklama = k.get("aciklama") or ""
+        try:
+            if (not video or not aciklama) and k.get("medya_id"):
+                md = Instagram(kod)._istek("GET", k["medya_id"], fields="media_url,caption")
+                aciklama = aciklama or md.get("caption", "")
+                if not video and md.get("media_url"):
+                    video = klasor / "reel.mp4"
+                    r = requests.get(md["media_url"], timeout=300)
+                    r.raise_for_status()
+                    video.write_bytes(r.content)
+        except Exception as e:
+            log(f"{kod}: eksik platform için video alınamadı: {gizle(str(e))[:160]}")
+            continue
+        if not video or not aciklama:
+            log(f"{kod}: eksik platform için video/açıklama yok")
+            continue
+        log(f"{kod}: eksik platformlar tamamlanıyor: {', '.join(hatali)}")
+        k["platformlar"] = dagitim.dagit(kod, video, aciklama, re.findall(r"#\w+", aciklama), onceki=pl)
+        gecmis_guncelle(kod, k)
+        tamam += sum(1 for p in hatali if str(k["platformlar"].get(p, "")).startswith("http"))
+    log(f"eksik: {tamam} platform tamamlandı")
+    return 0
 
 
 # ---------------- ölçüm ve öğrenme ----------------
@@ -377,6 +424,7 @@ def plan_komutu() -> int:
     for kod in marka_kodlari():
         tut |= {f"{g}-{kod}{u}" for g in plan.oku(kod) for u in (".jpg", ".zip", "-ses.npz")}
         tut |= {f"{k['tarih']}-{kod}.jpg" for k in gecmis(kod) if k.get("tarih", "") >= (simdi().date() - dt.timedelta(days=15)).isoformat()}
+        tut |= {k["video_yedek"] for k in gecmis(kod) if k.get("video_yedek") and k.get("tarih", "") >= (simdi().date() - dt.timedelta(days=3)).isoformat()}
     plan.temizle(tut)
     log(f"plan: {yeni} yeni gün, panel: {len(sonuc['uygulanan'])} uygulandı, {len(sonuc['reddedilen'])} reddedildi, {len(sonuc['tanitim'])} tanıtım")
     return 0
@@ -414,7 +462,7 @@ def zamani_gelenler() -> list[str]:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz", "plan", "etkilesim"])
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz", "plan", "etkilesim", "eksik"])
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
@@ -436,6 +484,8 @@ def main(argv=None) -> int:
     if a.komut == "etkilesim":
         from . import etkilesim
         return etkilesim.calistir()
+    if a.komut == "eksik":
+        return eksik(a.marka)
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
     hata = 0
     for kod in kodlar:

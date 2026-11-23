@@ -111,6 +111,11 @@ jobs:
           if [ "$GIRDI_ZORLA" = "true" ]; then ARGS="$ARGS --zorla"; fi
           python -m otopilot.calistir otomatik $ARGS
 
+      - name: Eksik platformları tamamla (Instagram'a gitti ama Facebook vb. gitmediyse yalnız onlara gönderir)
+        if: vars.YAYIN == 'acik'
+        continue-on-error: true
+        run: python -m otopilot.calistir eksik
+
       - name: Rapor
         run: python -m otopilot.calistir rapor > rapor.md
 
