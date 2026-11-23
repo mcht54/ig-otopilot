@@ -136,3 +136,26 @@ def test_muzik_her_marka_sessiz_degil(kod):
     a = muzik.uret(4.0, ortak.marka(kod), "2026-11-23")
     assert a.shape[1] == 2 and 0.5 < np.max(np.abs(a)) <= 0.81 and np.sqrt(np.mean(a ** 2)) > 0.03
     assert np.array_equal(a, muzik.uret(4.0, ortak.marka(kod), "2026-11-23"))  # aynı tohum aynı müzik
+
+
+def test_ucret_freni_kota_dolunca_bir_daha_denenmez(monkeypatch):
+    from otopilot import llm
+    monkeypatch.setenv("GEMINI_API_KEY", "test")
+    monkeypatch.setattr(llm, "_kesif", ["gemini-x-flash"])
+    monkeypatch.setattr(llm, "_kota_doldu", set())
+    monkeypatch.setattr(llm, "_sayac", {"istek": 0})
+    cagri = []
+    class Y:
+        status_code = 429
+        text = '{"error": "Quota exceeded for metric: GenerateRequestsPerDayPerProjectPerModel-FreeTier"}'
+    monkeypatch.setattr(llm.requests, "post", lambda *a, **k: cagri.append(1) or Y())
+    assert llm.json_sor("s", "i") is None and llm.json_sor("s", "i") is None
+    assert len(cagri) == 1, "günlük kota dolunca aynı çalıştırmada tekrar istek atılmaz"
+
+
+def test_ucret_freni_istek_tavani(monkeypatch):
+    from otopilot import llm
+    monkeypatch.setattr(llm, "ISTEK_TAVANI", 3)
+    monkeypatch.setattr(llm, "_kota_doldu", set())
+    monkeypatch.setattr(llm, "_sayac", {"istek": 0})
+    assert [llm.izin("gemini") for _ in range(5)] == [True, True, True, False, False]

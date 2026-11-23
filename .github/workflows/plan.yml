@@ -24,6 +24,7 @@ jobs:
       TZ: Europe/Istanbul
       PYTHONPATH: .
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      YZ_ISTEK_TAVANI: "200"  # ilk kurulumda 28 içerik; yine yalnız ücretsiz katman
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       IG_TOKEN: ${{ secrets.IG_TOKEN }}
       META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}

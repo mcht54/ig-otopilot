@@ -172,12 +172,14 @@ def _gemini_ses(satirlar: list[str], marka: dict) -> np.ndarray | None:
                  "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": ayar.get("gemini", "Puck")}}}}}
     for model in _ses_modelleri(anahtar):
         for deneme in range(2):
+            if not llm.izin("gemini-ses"):
+                return None
             try:
                 r = requests.post(f"{GEMINI}/models/{model}:generateContent", json=govde, timeout=180,
                                   headers={"x-goog-api-key": anahtar})
-                if r.status_code == 429 and "PerDay" in r.text:
-                    log(f"gemini ses {model}: günlük kota doldu")
-                    break
+                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
+                    llm.kota_doldu("gemini-ses", r.text)
+                    return None
                 if r.status_code in (429, 500, 503):
                     log(f"gemini ses {model} {r.status_code}, bekleniyor")
                     import time

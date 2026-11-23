@@ -45,6 +45,31 @@ def _gemini_modelleri(anahtar: str) -> list[str]:
     return list(dict.fromkeys(GEMINI_MODELLER + _kesif))
 GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
 
+# ÜCRET FRENİ: yalnız ücretsiz katman. Gemini projelerine ödeme hesabı BAĞLANMAZ (bağlı değilken kota dolunca Google
+# ücret yazmaz, 429 döner). Ek güvence: çalıştırma başına istek tavanı + günlük kota dolunca o çalıştırmada bir daha denenmez.
+ISTEK_TAVANI = int(os.environ.get("YZ_ISTEK_TAVANI", "80"))
+_sayac = {"istek": 0}
+_kota_doldu: set[str] = set()
+
+
+def izin(saglayici: str) -> bool:
+    """Bu çalıştırmada bu sağlayıcıya istek atılabilir mi (tavan / kota freni)."""
+    if saglayici in _kota_doldu:
+        return False
+    if _sayac["istek"] >= ISTEK_TAVANI:
+        if "tavan" not in _kota_doldu:
+            log(f"yapay zekâ istek tavanı ({ISTEK_TAVANI}) doldu; bu çalıştırmada kural metni/yedek ses kullanılacak")
+            _kota_doldu.add("tavan")
+        return False
+    _sayac["istek"] += 1
+    return True
+
+
+def kota_doldu(saglayici: str, yanit_metni: str = "") -> None:
+    if saglayici not in _kota_doldu:
+        log(f"{saglayici}: günlük ücretsiz kota doldu; bu çalıştırmada bir daha denenmeyecek (ücretli katmana geçilmez)")
+    _kota_doldu.add(saglayici)
+
 
 def _json_ayikla(metin: str):
     metin = metin.strip()
@@ -64,6 +89,8 @@ def _gemini(sistem: str, istem: str) -> str | None:
         return None
     for model in _gemini_modelleri(anahtar):
         for deneme in range(2):
+            if not izin("gemini"):
+                return None
             try:
                 r = requests.post(
                     f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
@@ -75,6 +102,9 @@ def _gemini(sistem: str, istem: str) -> str | None:
                     },
                     timeout=90,
                 )
+                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
+                    kota_doldu("gemini", r.text)
+                    return None
                 if r.status_code == 429 or r.status_code >= 500:
                     log(f"gemini {model} {r.status_code}, bekleniyor")
                     time.sleep(8 * (deneme + 1))
@@ -89,7 +119,7 @@ def _gemini(sistem: str, istem: str) -> str | None:
 
 def _groq(sistem: str, istem: str) -> str | None:
     anahtar = os.environ.get("GROQ_API_KEY")
-    if not anahtar:
+    if not anahtar or not izin("groq"):
         return None
     try:
         r = requests.post(
@@ -103,6 +133,9 @@ def _groq(sistem: str, istem: str) -> str | None:
             },
             timeout=90,
         )
+        if r.status_code == 429:
+            kota_doldu("groq", r.text)
+            return None
         r.raise_for_status()
         return r.json()["choices"][0]["message"]["content"]
     except Exception as e:
