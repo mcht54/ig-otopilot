@@ -75,9 +75,13 @@ def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
             "etiket": h.get("etiket"), "baslik": h.get("baslik") or senaryo["konu"], "alt": h.get("alt")}
 
 
-def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama: str, kaynak: str, anlatim: list[str] | None = None) -> dict:
+def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama: str, kaynak: str, anlatim: list[str] | None = None,
+              hazir_parcalar: list | None = None) -> dict:
     from . import ses
-    if anlatim and len(anlatim) == len(senaryo["sahneler"]):
+    if hazir_parcalar and anlatim and len(anlatim) == len(hazir_parcalar) == len(senaryo["sahneler"]):
+        anlatim_kaynagi = senaryo.get("anlatim_kaynagi") or "plan"  # ses günler önce üretildi ve denetlendi: metne dokunulmaz
+    elif anlatim and len(anlatim) == len(senaryo["sahneler"]):
+        hazir_parcalar = None
         anlatim_kaynagi = senaryo.get("anlatim_kaynagi") or "plan"
         if anlatim_kaynagi == "kural":  # planda kota doluyken kalıp metin yazıldıysa paylaşım günü yapay zekâyla yeniden dene
             yeni, yeni_kaynak = ses.anlatim_yaz(senaryo, m)
@@ -85,8 +89,10 @@ def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama
                 anlatim, anlatim_kaynagi = yeni, yeni_kaynak
         anlatim = [ses.konusma_metni(a, m) for a in anlatim]  # eski planlarda rakam/işaret kalmasın
     else:
+        hazir_parcalar = None
         anlatim, anlatim_kaynagi = ses.anlatim_yaz(senaryo, m)
-    reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim)
+    reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim,
+                                 hazir_parcalar=hazir_parcalar)
     senaryo.update(anlatim=anlatim, anlatim_kaynagi=anlatim_kaynagi, ses_kaynagi=ses_kaynagi)
     log(f"anlatım ({anlatim_kaynagi}, ses: {ses_kaynagi}): {' / '.join(anlatim)}")
     vh = video_denetle(reel)
@@ -111,7 +117,11 @@ def uret(kod: str, tarayici, klasor: Path, hazir: dict | None = None) -> dict:
             s = beyin.iddia_kontrol(kod, hazir["senaryo"])  # plan günler önce kuruldu: kampanya/deneme hâlâ geçerli mi
             log(f"{kod}: bugünün planı kullanılıyor ({hazir['format']}: {hazir['konu']})")
             s["anlatim_kaynagi"] = hazir.get("anlatim_kaynagi") or "plan"
-            return _uret_bir(kod, m, tarayici, klasor, s, hazir["aciklama"], s.get("metin_kaynagi", "plan"), hazir.get("anlatim"))
+            from . import plan
+            parcalar = plan.hazir_ses(hazir, klasor)
+            log(f"{kod}: {'önceden hazırlanmış ve denetlenmiş ses kullanılıyor' if parcalar else 'hazır ses yok; ses şimdi üretilecek'}")
+            return _uret_bir(kod, m, tarayici, klasor, s, hazir["aciklama"], s.get("metin_kaynagi", "plan"), hazir.get("anlatim"),
+                             hazir_parcalar=parcalar)
         except Exception as e:
             log(f"{kod}: plan üretilemedi ({e}); içerik baştan kuruluyor")
             log(traceback.format_exc())
@@ -336,11 +346,16 @@ def plan_komutu() -> int:
             yeni = plan.hafta_plani(tarayici)
         finally:
             tarayici.close()
+    try:
+        sesli = plan.ses_hazirla()
+        log(f"ses hazırlama: {sesli} plan gününe denetlenmiş ses eklendi")
+    except Exception as e:
+        log(f"ses hazırlama çalışmadı: {type(e).__name__}: {str(e)[:160]}")
     panel.onay(sonuc)
     panel.gonder()
     tut = set()
     for kod in marka_kodlari():
-        tut |= {f"{g}-{kod}.{u}" for g in plan.oku(kod) for u in ("jpg", "zip")}
+        tut |= {f"{g}-{kod}{u}" for g in plan.oku(kod) for u in (".jpg", ".zip", "-ses.npz")}
         tut |= {f"{k['tarih']}-{kod}.jpg" for k in gecmis(kod) if k.get("tarih", "") >= (simdi().date() - dt.timedelta(days=15)).isoformat()}
     plan.temizle(tut)
     log(f"plan: {yeni} yeni gün, panel: {len(sonuc['uygulanan'])} uygulandı, {len(sonuc['reddedilen'])} reddedildi, {len(sonuc['tanitim'])} tanıtım")

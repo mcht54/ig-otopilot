@@ -174,7 +174,7 @@ def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None, hazir
     if hazir_ses:  # seslendirme + müzik miksi hazır (ses.miks): seviyesine dokunulmaz
         ses_girdi = ["-i", str(hazir_ses)]
         # sınırlayıcı: AAC kodlamada bile tepe -1 dBFS'yi aşamaz (cızırtı/kırpılma olmaz)
-        filtre.append(f"[{si}:a]apad,atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.8):.3f}:d=0.8,"
+        filtre.append(f"[{si}:a]apad,atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.3):.3f}:d=0.3,"
                       f"alimiter=limit=0.84:attack=2:release=50:level=false,volume=0.95[a]")
     else:
         ses_girdi = ["-i", str(muzik)] if muzik else ["-f", "lavfi", "-t", f"{toplam:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
@@ -198,21 +198,25 @@ def klip_uret(tarayici, sahne: dict, marka: dict, cikti: Path) -> Path:
 SES_ONCE = 0.25   # sahne açıldıktan sonra konuşmanın başlama payı (sn)
 SES_SONRA = 0.45  # konuşma bittikten sonra sahnenin kalma payı (sn)
 EN_UZUN_SAHNE = 8.0
+SON_PAY = 2.0     # son konuşmadan sonra müziğin yavaşça sönmesi için (2026-11-23: "ses bir anda gidiyor")
 
 
 def film_yap(tarayici, sahneler: list[dict], marka: dict, klasor: Path, ad: str, tohum: str,
-             anlatim: list[str] | None = None) -> tuple[Path, str]:
+             anlatim: list[str] | None = None, hazir_parcalar: list | None = None) -> tuple[Path, str]:
     """Videoyu üretir; (yol, ses_kaynagi) döner. Anlatım varsa sahne süreleri konuşmaya göre uzar ve her satır
     kendi sahnesinin başında başlar; her durumda fon müziği çalar (ses: gemini | edge | yok)."""
     from . import ses
     klasor.mkdir(parents=True, exist_ok=True)
     sahneler = [dict(s) for s in sahneler]
-    parcalar, kaynak = (ses.seslendir(anlatim, marka) if anlatim else (None, "yok"))
+    if hazir_parcalar and anlatim and len(hazir_parcalar) == len(anlatim):
+        parcalar, kaynak = [ses.parazit_temizle(p) for p in hazir_parcalar], "plan-hazir"
+    else:
+        parcalar, kaynak = (ses.seslendir(anlatim, marka) if anlatim else (None, "yok"))
     if parcalar:
         for i, (sh, p) in enumerate(zip(sahneler, parcalar)):
             son = i == len(sahneler) - 1
-            gerek = SES_ONCE + len(p) / ses.SR + SES_SONRA + (1.0 if son else GECIS)  # son sahnede sönüş payı: konuşma kesilmez
-            sh["sure"] = round(min(max(sh.get("sure", 3.0), gerek), EN_UZUN_SAHNE + (1.0 if son else 0)), 2)
+            gerek = SES_ONCE + len(p) / ses.SR + SES_SONRA + (SON_PAY if son else GECIS)  # son sahnede sönüş payı: konuşma kesilmez
+            sh["sure"] = round(min(max(sh.get("sure", 3.0), gerek), EN_UZUN_SAHNE + (SON_PAY if son else 0)), 2)
     klipler = []
     for i, sahne in enumerate(sahneler):
         klipler.append(klip_uret(tarayici, sahne, marka, klasor / f"{ad}-s{i:02d}.mp4"))

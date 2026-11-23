@@ -272,6 +272,81 @@ def hafta_plani(tarayici, kodlar: list[str] | None = None, en_cok: int | None = 
     return yeni
 
 
+# ---------------- ses önceden hazırlama ----------------
+# Seslendirme paylaşım anında değil, günler önce üretilir ve dinleme denetiminden geçirilir (2026-11-23: paylaşım anında
+# ücretsiz ses kotası bitince video sessiz çıktı). Gece çalıştırmalarında (21:00-11:00 TR) yapılır: o saatlerde günün
+# paylaşımları bitmiştir, kalan ücretsiz kota boşa gitmez; paylaşım saatlerinin kotası canlı üretime kalır.
+SES_EN_COK = 4
+
+
+def ses_imza(anlatim: list[str]) -> str:
+    return hashlib.sha1(json.dumps(anlatim, ensure_ascii=False).encode()).hexdigest()[:10]
+
+
+def ses_hazir_mi(oge: dict) -> bool:
+    return bool(oge.get("ses")) and oge["ses"] == ses_imza(oge.get("anlatim") or [])
+
+
+def ses_hazirla(kodlar: list[str] | None = None, en_cok: int = SES_EN_COK, saat_serbest: bool = False) -> int:
+    """Sesi olmayan (ya da anlatımı panelden değişmiş) plan günlerine, en yakın günden başlayarak ses üretir."""
+    import numpy as np
+    saat = simdi().hour
+    if not saat_serbest and not (saat >= 21 or saat < 11):
+        log("ses hazırlama: gündüz kotası canlı paylaşımlara ayrılı; gece çalıştırmasında yapılacak")
+        return 0
+    bugun, kodlar = simdi().date(), kodlar or marka_kodlari()
+    hazir, basarisiz = 0, 0
+    for i in range(1, PLAN_GUN + 1):
+        gun = (bugun + dt.timedelta(days=i)).isoformat()
+        for kod in kodlar:
+            p = oku(kod)
+            oge = p.get(gun)
+            if not oge or ses_hazir_mi(oge):
+                continue
+            if hazir >= en_cok or basarisiz >= 2:
+                return hazir
+            m = beyin.guncel_marka(kod)
+            if oge.get("anlatim_kaynagi") == "kural":  # kota doluyken yazılmış kalıp metin: önce yapay zekâyla iyileştir
+                yeni, yk = ses.anlatim_yaz(oge["senaryo"], m)
+                if yk != "kural":
+                    oge["anlatim"], oge["anlatim_kaynagi"] = yeni, yk
+            oge["anlatim"] = [ses.konusma_metni(a, m) for a in oge["anlatim"]]
+            parcalar, kaynak = ses.seslendir(oge["anlatim"], m)
+            if not parcalar:
+                basarisiz += 1
+                log(f"ses hazırlanamadı ({kod} {gun}); sonraki çalıştırmada yeniden denenecek")
+                continue
+            f = CIKTI / "plan" / f"{oge['id']}-ses.npz"
+            f.parent.mkdir(parents=True, exist_ok=True)
+            np.savez_compressed(f, *[np.asarray(x, dtype=np.float32) for x in parcalar])
+            if not yukle(f):
+                basarisiz += 1
+                continue
+            oge["ses"], oge["ses_kaynagi"] = ses_imza(oge["anlatim"]), kaynak
+            p[gun] = oge
+            yaz(kod, p)
+            hazir += 1
+            log(f"ses hazır: {kod} {gun} ({kaynak})")
+    return hazir
+
+
+def hazir_ses(oge: dict, klasor: Path) -> list | None:
+    """Plan öğesinin önceden üretilmiş, denetlenmiş sesi (anlatım değişmediyse)."""
+    if not ses_hazir_mi(oge):
+        return None
+    import numpy as np
+    f = indir(f"{oge['id']}-ses.npz", klasor.parent / "_indir")
+    if not f:
+        return None
+    try:
+        with np.load(f, allow_pickle=False) as d:
+            parcalar = [d[f"arr_{i}"] for i in range(len(d.files))]
+    except Exception as e:
+        log(f"hazır ses okunamadı: {type(e).__name__}")
+        return None
+    return parcalar if len(parcalar) == len(oge["anlatim"]) else None
+
+
 # ---------------- üretim günü ----------------
 
 def bugunku(kod: str, klasor: Path) -> dict | None:

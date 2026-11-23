@@ -524,6 +524,9 @@ def fon(sure: float, marka: dict, tohum: str) -> np.ndarray:
     return muzik.uret(sure, marka, tohum)
 
 
+SONUS = 1.8  # video sonunda müziğin sönme süresi (sn)
+
+
 def miks(sure: float, konusmalar: list[tuple[float, np.ndarray]], marka: dict, tohum: str, cikti: Path) -> Path:
     """konusmalar: (başlangıç sn, mono ses). Konuşma varken müzik kısılır (ducking). 44,1 kHz stereo wav yazar.
     Cızırtı önlemi (2026-11-23): dosya videodan 0.5 sn uzun, son 0.8 sn yumuşak söner, tepe -1 dBFS altında (kırpılma yok)."""
@@ -553,9 +556,9 @@ def miks(sure: float, konusmalar: list[tuple[float, np.ndarray]], marka: dict, t
     else:
         kazanc = np.full(n, 0.70, dtype=np.float32)
     sonuc = m * kazanc[:, None] + ses[:, None]
-    son_bas = max(0, n_video - int(0.8 * SR))
+    son_bas = max(0, n_video - int(SONUS * SR))
     zarf = np.ones(n, dtype=np.float32)
-    zarf[son_bas:n_video] = np.linspace(1, 0, n_video - son_bas) ** 2
+    zarf[son_bas:n_video] = (0.5 + 0.5 * np.cos(np.linspace(0, np.pi, n_video - son_bas))) ** 1.5  # yumuşak, kulakta kesilmez
     zarf[n_video:] = 0
     sonuc = sonuc * zarf[:, None]
     tepe = float(np.max(np.abs(sonuc))) or 1.0
