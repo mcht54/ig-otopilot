@@ -366,7 +366,10 @@ def kontrol() -> int:
                 gorev = next((a.get("tasks") for a in (g.json() or {}).get("data", []) if a.get("id") == sayfa), "sayfa listede yok") if g.ok else None
                 b = requests.get(f"{GRAPH}/{sayfa}", params={"fields": "instagram_business_account,connected_instagram_account", "access_token": t}, timeout=30).json()
                 bagli = (b.get("instagram_business_account") or b.get("connected_instagram_account") or {}).get("id")
-                satir.append("IG↔sayfa bağlı" if bagli and bagli == getattr(ig, "kimlik", None) else f"IG↔sayfa BAĞLI DEĞİL ({'başka hesap' if bagli else 'bağlantı yok'})")
+                ib = (b.get("instagram_business_account") or {}).get("id")
+                cb = (b.get("connected_instagram_account") or {}).get("id")
+                kim = getattr(ig, "kimlik", None)
+                satir.append(f"IG↔sayfa işletme={'✓' if ib == kim else ('başka' if ib else 'yok')} bağlı={'✓' if cb == kim else ('başka' if cb else 'yok')}")
                 satir.append(f"FB sayfa ✓ {sayfa} görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
             except Exception as e:
                 hata = 1
