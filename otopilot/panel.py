@@ -117,3 +117,18 @@ def onay(yuk: dict) -> None:
 
 if __name__ == "__main__":
     sys.exit(gonder())
+
+
+def etkilesim(yuk: dict) -> dict | None:
+    """Yorum/DM köprüsü: {adaylar: [id], durumlar} → {bilinmeyen, gonderilecek}; {yeni: [...], sonuc: [...]} → panel kaydeder.
+    İçerik loglanmaz (depo herkese açık). Panel erişilemezse None."""
+    try:
+        r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}/etkilesim", json=yuk, timeout=60,
+                          headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
+        if not r.ok:
+            log(f"panel etkileşim: {r.status_code}")
+            return None
+        return r.json()
+    except Exception as e:
+        log(f"panel etkileşimine ulaşılamadı: {type(e).__name__}")
+        return None

@@ -373,7 +373,7 @@ def zamani_gelenler() -> list[str]:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz", "plan"])
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz", "plan", "etkilesim"])
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
@@ -392,6 +392,9 @@ def main(argv=None) -> int:
         return nabiz()
     if a.komut == "plan":
         return plan_komutu()
+    if a.komut == "etkilesim":
+        from . import etkilesim
+        return etkilesim.calistir()
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
     hata = 0
     for kod in kodlar:

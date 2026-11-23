@@ -1,0 +1,43 @@
+name: Yorum ve mesajlar
+
+# Her 20 dakikada: yeni yorum/DM'leri toplar, yapay zekâ cevap TASLAĞI yazar, panele bırakır (telefona bildirim);
+# panelde onaylanan cevapları gönderir. Yorum/mesaj içeriği depoya ve loglara YAZILMAZ (depo herkese açık).
+on:
+  schedule:
+    - cron: "*/20 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: etkilesim
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write   # panel köprüsü (GitHub OIDC; panelde anahtar yok)
+
+jobs:
+  etkilesim:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      TZ: Europe/Istanbul
+      PYTHONPATH: .
+      YZ_ISTEK_TAVANI: "40"
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
+      META_SITEMUCIDI_PAGE_ID: ${{ secrets.META_SITEMUCIDI_PAGE_ID }}
+      META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
+      META_DAVETIYELER_PAGE_ID: ${{ secrets.META_DAVETIYELER_PAGE_ID }}
+      META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}
+      META_SGB_PAGE_ID: ${{ secrets.META_SGB_PAGE_ID }}
+      META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
+      META_MARKAKARNEM_PAGE_ID: ${{ secrets.META_MARKAKARNEM_PAGE_ID }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q requests==2.34.2 PyYAML==6.0.4 numpy==2.5.5 Pillow==13.0.0 playwright==1.65.2
+      - run: python -m otopilot.calistir etkilesim
