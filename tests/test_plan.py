@@ -103,3 +103,18 @@ def test_buyume_ve_panel_ozeti(durum):
     assert oz[-1]["durum"] == "senaryo" and oz[-1]["duzenlenebilir"] and [s["id"] for s in oz[-1]["satirlar"]] == ["k.baslik", "k.alt", "a0", "a1"]
     e = panel.ekler()
     assert {u["anahtar"] for u in e["urunler"]} == set(ortak.marka_kodlari()) and e["markalar"]["sgb"]["takipci"] == 150
+
+
+def test_hafta_plani_once_yakin_gun_ve_sinir(durum, monkeypatch):
+    kurulan = []
+    monkeypatch.setattr(plan.beyin, "guncel_marka", lambda kod: ortak.marka(kod))
+    monkeypatch.setattr(plan, "_kur_otomatik", lambda kod, m, t, k, gun, ek, onceki: {"gun": gun, "kod": kod})
+    def tamamla(kod, m, oge, gun, t, k):
+        kurulan.append((gun.isoformat(), kod))
+        return {**_oge(kod, gun.isoformat()), "anahtar": f"{kod}:{gun}"}
+    monkeypatch.setattr(plan, "_tamamla", tamamla)
+    assert plan.hafta_plani(None, ["sgb", "davetiyeler"], en_cok=3) == 3
+    yarin = (ortak.simdi().date() + dt.timedelta(days=1)).isoformat()
+    obur = (ortak.simdi().date() + dt.timedelta(days=2)).isoformat()
+    assert kurulan == [(yarin, "sgb"), (yarin, "davetiyeler"), (obur, "sgb")], "önce tüm markaların yarını"
+    assert plan.hafta_plani(None, ["sgb", "davetiyeler"], en_cok=50) == 11  # kalan: 14 - 3

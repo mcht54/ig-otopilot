@@ -365,9 +365,9 @@ def miks(sure: float, konusmalar: list[tuple[float, np.ndarray]], marka: dict, t
         aktif = (np.abs(ses) > 0.02).astype(np.float32)
         w = int(0.25 * SR)
         aktif = np.convolve(aktif, np.ones(w) / w, mode="same").clip(0, 1)
-        kazanc = 0.30 - 0.20 * np.minimum(aktif * 3, 1)  # konuşurken 0.10, arada 0.30
+        kazanc = 0.50 - 0.24 * np.minimum(aktif * 3, 1)  # konuşurken 0.26 (arkada net duyulur), arada 0.50
     else:
-        kazanc = np.full(n, 0.55, dtype=np.float32)
+        kazanc = np.full(n, 0.70, dtype=np.float32)
     sonuc = m * kazanc[:, None] + ses[:, None]
     tepe = np.max(np.abs(sonuc)) or 1.0
     sonuc = (sonuc / max(tepe, 1.0) * 0.97 * 32767).astype("<i2")

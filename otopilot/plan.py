@@ -28,6 +28,7 @@ from .kaynak import ekran_goruntusu, getir, temiz
 from .ortak import CIKTI, DURUM, json_kaydet, log, marka, marka_kodlari, simdi
 
 PLAN_GUN = 7
+EN_COK_YENI = 8  # çalıştırma başına kurulan en çok yeni gün (çalıştırma kısa kalsın; günde 5 çalıştırmada hafta dolar)
 SURUM = "plan"
 YER = "{{KLASOR}}"
 
@@ -238,17 +239,26 @@ def _klasor(kod: str, gun: dt.date) -> Path:
     return k
 
 
-def hafta_plani(tarayici, kodlar: list[str] | None = None) -> int:
-    """Eksik günleri doldurur (var olanlara dokunmaz); geçmiş günleri plandan çıkarır. Kurulan öğe sayısı."""
+def hafta_plani(tarayici, kodlar: list[str] | None = None, en_cok: int | None = None) -> int:
+    """Eksik günleri doldurur (var olanlara dokunmaz); geçmiş günleri plandan çıkarır. Önce en yakın gün: tüm markaların
+    yarını, sonra öbür günü... Çalıştırma başına en çok EN_COK_YENI öğe (kalan uzak günler sonraki çalıştırmaya)."""
     bugun = simdi().date()
+    kodlar = kodlar or marka_kodlari()
+    sinir = EN_COK_YENI if en_cok is None else en_cok
+    planlar = {kod: {g: x for g, x in oku(kod).items() if g >= bugun.isoformat()} for kod in kodlar}
+    for kod in kodlar:
+        yaz(kod, planlar[kod])  # geçmiş günler temizlenir
+    markalar: dict[str, dict] = {}
     yeni = 0
-    for kod in kodlar or marka_kodlari():
-        m = beyin.guncel_marka(kod)
-        p = {g: x for g, x in oku(kod).items() if g >= bugun.isoformat()}
-        for i in range(1, PLAN_GUN + 1):
-            gun = bugun + dt.timedelta(days=i)
+    for i in range(1, PLAN_GUN + 1):
+        gun = bugun + dt.timedelta(days=i)
+        for kod in kodlar:
+            p = planlar[kod]
             if gun.isoformat() in p:
                 continue
+            if yeni >= sinir:
+                return yeni
+            m = markalar.setdefault(kod, beyin.guncel_marka(kod))
             ek = {x["anahtar"] for x in p.values()} | {a for x in p.values() for a in x.get("ek_anahtarlar", [])}
             onceki = (p.get((gun - dt.timedelta(days=1)).isoformat()) or {}).get("format")
             try:
