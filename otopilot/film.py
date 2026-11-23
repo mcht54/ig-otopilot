@@ -173,7 +173,9 @@ def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None, hazir
     si = len(klipler)
     if hazir_ses:  # seslendirme + müzik miksi hazır (ses.miks): seviyesine dokunulmaz
         ses_girdi = ["-i", str(hazir_ses)]
-        filtre.append(f"[{si}:a]apad,atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.8):.3f}:d=0.8[a]")
+        # sınırlayıcı: AAC kodlamada bile tepe -1 dBFS'yi aşamaz (cızırtı/kırpılma olmaz)
+        filtre.append(f"[{si}:a]apad,atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.8):.3f}:d=0.8,"
+                      f"alimiter=limit=0.84:attack=2:release=50:level=false,volume=0.95[a]")
     else:
         ses_girdi = ["-i", str(muzik)] if muzik else ["-f", "lavfi", "-t", f"{toplam:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
         filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=in:d=0.4,afade=t=out:st={max(0, toplam - 1.2):.3f}:d=1.2,volume=0.6[a]")

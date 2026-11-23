@@ -64,6 +64,7 @@ def konusma_metni(metin: str, marka: dict) -> str:
     m = re.sub(r"\s*\+\s*KDV", " artı KDV", m)
     m = re.sub(r"\b[\w-]+\.(?:com\.tr|net\.tr|org\.tr|com|tr|net)\b", marka["ad"], m)
     m = m.replace("&", " ve ").replace("…", "").replace("→", "").replace("|", ",")
+    m = re.sub(r"(\d+)\s*/\s*100\b", r"100 üzerinden \1", m)  # 77/100 → "100 üzerinden 77"
     m = re.sub(r"\s*\([^)]*\)", "", m)          # parantez içi (İngilizce terim vb.) okunmaz
     m = re.sub(r"(^|[.!?]\s+)\d+[.)]\s+", r"\1", m)  # "1. Tasarımı seçin" → "Tasarımı seçin"
     m = m.replace(" — ", ", ").replace("—", ", ")
@@ -89,7 +90,7 @@ def _kural_satiri(sh: dict, marka: dict, ilk: bool) -> str:
     elif tip == "liste":
         s = f"{b}: " + ", ".join(sh.get("maddeler", [])[:2]) + "."
     elif tip == "rakam":
-        s = f"{b}: {sh.get('rakam', '')}!"
+        s = f"{sh.get('rakam', '')}! {a}" if a else f"{sh.get('rakam', '')}!"  # başlık ekranda; tekrar okunmaz
     elif tip == "cta":
         s = f"{b}. {marka['cta']}!"
     elif sh.get("tur") == "sayfa":
