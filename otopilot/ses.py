@@ -450,9 +450,15 @@ def miks(sure: float, konusmalar: list[tuple[float, np.ndarray]], marka: dict, t
     for an, p in konusmalar:
         i = int(an * SR)
         if i < n:
-            p = p[: n - i]
+            p = np.array(p[: n - i], dtype=np.float32)
             tepe = np.max(np.abs(p)) or 1.0
-            ses[i:i + len(p)] += p / tepe * 0.9
+            p = p / tepe * 0.9
+            gi, ci = min(len(p), int(0.015 * SR)), min(len(p), int(0.06 * SR))  # tık/cızırtı olmasın: kenarlar yumuşak
+            if gi:
+                p[:gi] *= np.linspace(0, 1, gi)
+            if ci:
+                p[-ci:] *= np.linspace(1, 0, ci) ** 2
+            ses[i:i + len(p)] += p
     m = fon(sure, marka, tohum)[:n]
     if len(m) < n:
         m = np.pad(m, ((0, n - len(m)), (0, 0)))
@@ -470,7 +476,7 @@ def miks(sure: float, konusmalar: list[tuple[float, np.ndarray]], marka: dict, t
     zarf[n_video:] = 0
     sonuc = sonuc * zarf[:, None]
     tepe = float(np.max(np.abs(sonuc))) or 1.0
-    sonuc = (sonuc / tepe * 0.89 * 32767).astype("<i2")  # tepe ≈ -1 dBFS: AAC kodlamada taşma/kırpılma olmaz
+    sonuc = (sonuc / tepe * 0.79 * 32767).astype("<i2")  # tepe ≈ -2 dBFS: AAC kodlamada taşma/kırpılma payı
     with wave.open(str(cikti), "wb") as w_:
         w_.setnchannels(2)
         w_.setsampwidth(2)
