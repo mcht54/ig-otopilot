@@ -45,6 +45,8 @@ def ozet(gun: int = 14) -> list[dict]:
         for k in gecmis(kod):
             if k.get("tur") != "reels" or k.get("tarih", "") < sinir:
                 continue
+            if k.get("durum") == "onizleme" and k.get("tarih", "") < bugun:
+                continue  # yayın açılmadan önceki deneme üretimi; hiç paylaşılmadı, panelde "bekliyor" diye kalmasın
             p = k.get("platformlar") or {}
             satirlar.append({
                 "id": f"{k['tarih'].replace('-', '')}-{kod}", "gun": k["tarih"], "saat": m["saat"]["reels"],
@@ -52,7 +54,8 @@ def ozet(gun: int = 14) -> list[dict]:
                 "durum": {"yayinlandi": "yayinlandi", "hata": "hata"}.get(k.get("durum"), "uretildi"),
                 "platformlar": [{"anahtar": a, "ad": PLATFORM_AD.get(a, a), "durum": _durum(p.get(a)),
                                  "link": str(p.get(a)).split(" ")[0] if str(p.get(a, "")).startswith("https://") else None}
-                                for a in ("instagram", "instagram_hikaye", "facebook", "youtube", "tiktok")],
+                                for a in ("instagram", "instagram_hikaye", "facebook", "youtube", "tiktok")
+                                if not str(p.get(a, "")).startswith("atlandı")],  # hesabı bağlanmamış platform gösterilmez
                 "satirlar": _anlatim_satirlari(k.get("anlatim")), "duzenlenebilir": False, "kilit_nedeni": "Yayınlandı",
                 "gorsel": k.get("gorsel"), "neden": None,
                 "format": k.get("format"), "skor": k.get("skor"), "olcum": k.get("olcum"),
