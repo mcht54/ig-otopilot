@@ -285,8 +285,13 @@ def kontrol() -> int:
     hata = 0
     if os.environ.get("IG_TOKEN"):  # anahtarın izinleri (anahtarın kendisi yazılmaz): hangi izin hangi hesaplar için verilmiş
         try:
-            d = requests.get(f"{GRAPH}/debug_token", params={"input_token": os.environ["IG_TOKEN"], "access_token": os.environ["IG_TOKEN"]},
-                             timeout=30).json().get("data", {})
+            j = requests.get(f"{GRAPH}/debug_token", params={"input_token": os.environ["IG_TOKEN"], "access_token": os.environ["IG_TOKEN"]},
+                             timeout=30).json()
+            if "error" in j:
+                print(f"anahtar izinleri: {j['error'].get('message', '')[:200]}", flush=True)
+            d = j.get("data", {})
+            if d.get("scopes"):
+                print(f"  izinler: {d['scopes']}", flush=True)
             print(f"anahtar geçerli={d.get('is_valid')} bitiş={d.get('expires_at')}", flush=True)
             for g in d.get("granular_scopes", []):
                 print(f"  izin {g.get('scope')}: {g.get('target_ids', 'tümü')}", flush=True)
