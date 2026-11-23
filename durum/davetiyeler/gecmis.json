@@ -15,5 +15,41 @@
   "metin_kaynagi": "kural",
   "durum": "onizleme",
   "klasor": "cikti/2026-11-22/davetiyeler"
+ },
+ {
+  "tarih": "2026-11-23",
+  "tur": "reels",
+  "format": "kampanya",
+  "anahtar": "kampanya:48",
+  "ek_anahtarlar": [
+   "urun:29882",
+   "urun:29798",
+   "urun:28982",
+   "urun:28722"
+  ],
+  "konu": "Kampanyalı davetiyeler + dijital davetiye hediye",
+  "baslik": "Kampanyalı davetiye alana dijital olanı hediye",
+  "metin_kaynagi": "gemini",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-23/davetiyeler",
+  "anlatim": [
+   "Basılı davetiyenizi alırken dijital davetiyenizin de hediye olarak e-postanıza geldiğini biliyor muydunuz?",
+   "Oval kesim detaylı dikdörtgen zarflı on dokuz farklı kampanyalı model sizi bekliyor.",
+   "Sipariş onayındaki kodla altı yüz elli lira artı KDV değerindeki dijital davetiyenizi oluşturup hemen paylaşın.",
+   "Tüm modeller profildeki linkte!"
+  ],
+  "ses_kaynagi": "gemini",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-23-davetiyeler.jpg?v=y",
+  "medya_id": "17977628796179733",
+  "link": "https://www.instagram.com/reel/DgFFd9KCBih/",
+  "yayin_zamani": "2026-11-23T12:43:49.451171+03:00",
+  "hikaye_id": "18003175131009948",
+  "platformlar": {
+   "facebook": "HATA: facebook başlatma 403: {\"error\":{\"message\":\"(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"AXfEejFcxfnfYS5NB-UrSlc\"}}",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgFFd9KCBih/",
+   "instagram_hikaye": "http-ig-hikaye:18003175131009948"
+  }
  }
 ]
