@@ -298,8 +298,8 @@ def kontrol() -> int:
         if os.environ.get(f"META_{kod.upper()}_PAGE_ID"):
             try:
                 sayfa, t = _sayfa_anahtari(kod)
-                g = requests.get(f"{GRAPH}/me", params={"fields": "id,name,tasks", "access_token": t}, timeout=30)
-                gorev = (g.json() or {}).get("tasks") if g.ok else None
+                g = requests.get(f"{GRAPH}/me/accounts", params={"fields": "id,tasks", "limit": 50, "access_token": os.environ["IG_TOKEN"]}, timeout=30)
+                gorev = next((a.get("tasks") for a in (g.json() or {}).get("data", []) if a.get("id") == sayfa), "sayfa listede yok") if g.ok else None
                 satir.append(f"FB sayfa ✓ görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
             except Exception as e:
                 hata = 1
