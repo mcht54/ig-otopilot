@@ -364,6 +364,9 @@ def kontrol() -> int:
                 sayfa, t = _sayfa_anahtari(kod)
                 g = requests.get(f"{GRAPH}/me/accounts", params={"fields": "id,tasks", "limit": 50, "access_token": os.environ["IG_TOKEN"]}, timeout=30)
                 gorev = next((a.get("tasks") for a in (g.json() or {}).get("data", []) if a.get("id") == sayfa), "sayfa listede yok") if g.ok else None
+                b = requests.get(f"{GRAPH}/{sayfa}", params={"fields": "instagram_business_account,connected_instagram_account", "access_token": t}, timeout=30).json()
+                bagli = (b.get("instagram_business_account") or b.get("connected_instagram_account") or {}).get("id")
+                satir.append("IG↔sayfa bağlı" if bagli and bagli == getattr(ig, "kimlik", None) else f"IG↔sayfa BAĞLI DEĞİL ({'başka hesap' if bagli else 'bağlantı yok'})")
                 satir.append(f"FB sayfa ✓ {sayfa} görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
             except Exception as e:
                 hata = 1
