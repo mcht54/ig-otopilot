@@ -96,7 +96,7 @@ def yerel_karne(ctx) -> dict | None:
             if "eksik" in b["baslik"].lower():
                 for x in b["metin"]:
                     r = re.match(r"([^:]+):\s*ölçülen işletmelerin %(\d+)'?\w*\s+eksik", x)
-                    if r:
+                    if r and 0 < int(r.group(2)) < 100:  # %100/%0 uç değer: ölçüm boşluğu olabilir, videoda kullanılmaz
                         eksikler.append((r.group(1).strip(), r.group(2)))
         sayi = re.search(r"(\d+)\s+[^.]*?işletmesinin", m["aciklama"])
         medyan = re.search(r"medyan Marka Skoru (\d+)/100", m["aciklama"])

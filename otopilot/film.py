@@ -195,7 +195,7 @@ def klip_uret(tarayici, sahne: dict, marka: dict, cikti: Path) -> Path:
 
 SES_ONCE = 0.25   # sahne açıldıktan sonra konuşmanın başlama payı (sn)
 SES_SONRA = 0.45  # konuşma bittikten sonra sahnenin kalma payı (sn)
-EN_UZUN_SAHNE = 10.0
+EN_UZUN_SAHNE = 8.0
 
 
 def film_yap(tarayici, sahneler: list[dict], marka: dict, klasor: Path, ad: str, tohum: str,

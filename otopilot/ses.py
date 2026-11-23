@@ -106,18 +106,23 @@ def anlatim_denetle(satirlar, senaryo: dict, marka: dict) -> list[str]:
     return hatalar
 
 
-def anlatim_yaz(senaryo: dict, marka: dict) -> tuple[list[str], str]:
+def anlatim_yaz(senaryo: dict, marka: dict, kod: str | None = None) -> tuple[list[str], str]:
     """Sahne başına bir konuşma satırı. Gemini denetimden geçemezse kural metni."""
     sahneler = []
     for i, sh in enumerate(senaryo["sahneler"]):
-        kelime = max(5, round(min(sh.get("sure", 3) + 2.5, 9) * 2.6))
+        kelime = max(4, min(13, round(sh.get("sure", 3) * 2.3)))  # Reels 15-30 sn: kısa, vurucu
         sahneler.append(f"{i + 1}. sahne ({sh.get('tip') or sh.get('tur')}, en çok {kelime} kelime) ekranda: " + " | ".join(_sahne_yazilari(sh)))
     sistem = (f"{marka['ad']} için Instagram Reels anlatım metni yazıyorsun. {VARSAYILAN_TARZ}\n"
               f"Hedef kitle: {marka['hedef_kitle'].strip()}\n"
               "KURALLAR: Türkçe, 'siz' diye hitap. Her sahneye TEK satır. 1. satır ilk saniyede durduran çarpıcı bir kanca "
               "(soru ya da şaşırtan tespit). Ekrandaki yazıyı kelimesi kelimesine okuma; canlı, akıcı, merak uyandıran anlatıcı dili kullan. "
               "Son satır harekete çağrı (" + marka["cta"] + "). Rakam yalnız OLGULAR'da ya da ekranda varsa. Web adresi, emoji, etiket yok. "
+              "OLGULAR'da ya da ekranda olmayan hiçbir özellik, hizmet, süre, kargo/teslimat, fiyat ya da vaat SÖYLEME. "
+              "Toplam en çok 60 kelime; video 30 saniyeyi geçmesin. "
               f"Yasak: {', '.join(marka.get('yasak_ifadeler', []))}. Kelime sınırlarına uy.")
+    if kod or marka.get("kod"):
+        from . import strateji
+        sistem += "\n" + strateji.baglam(kod or marka["kod"], marka)
     istem = ("OLGULAR:\n- " + "\n- ".join(map(str, senaryo.get("olgular", []))) + "\n\nSAHNELER:\n" + "\n".join(sahneler)
              + f'\n\nYalnız JSON döndür: {{"satirlar": [{len(sahneler)} satır]}}')
     try:

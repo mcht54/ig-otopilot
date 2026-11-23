@@ -24,3 +24,20 @@ saat: {reels: "20:00", hikaye: "10:30"}
 formatlar: {model_vitrin: 4, dijital_davetiye: 2, siparis_nasil: 1, kampanya: 1}
 ses: {gemini: Laomedeia, edge: tr-TR-EmelNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Düğün telaşındaki çifte güzel bir haber verir gibi sıcak, neşeli, enerjik ve akıcı oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
 muzik: {hava: sicak, tempo: 104, ton: F}
+strateji:
+  kitle_icgorusu:
+    - Düğün/nişan/sünnet hazırlığındaki çift ve aileler; bütçe, zaman ve "herkese yetişir mi" stresi yaşıyor
+    - Davetiye seçimi Pinterest/Instagram'da görsel ilhamla başlıyor; model detayı (zarf, mühür, yazı tipi, renk) çok dikkat çekiyor
+    - Kim gelecek belli olmaması (LCV) ve uzaktaki misafire ulaştırma en büyük dertlerden
+    - Yazım hatası korkusu: isim, tarih, salon yanlış basılır mı
+  dikkat_ettikleri: [modelin gerçek fotoğrafı, kâğıt/zarf kalitesi, kaç günde hazır olur, adet ve fiyat, yazım kontrolü, dijital davetiyenin telefonda nasıl açıldığı]
+  itirazlar: [dijital davetiye soğuk durur, büyükler kullanamaz, basılı pahalı, kargo gecikir]
+  ozellikler:
+    - Basılı davetiye 100-1000 adet; fiyat teklif usulü; baskı öncesi yazım kontrolü WhatsApp'tan
+    - Kategoriler - düğün, nişan, nikah, kına, sünnet, lüks, şeffaf, mühürlü, kare, minimal ve yeni sezon
+    - Dijital davetiye - animasyonlu açılış, müzik, fotoğraf, geri sayım, harita, LCV ile katılım bildirimi, tek linkle WhatsApp'tan paylaşım
+    - Dijital davetiye 4 adımda oluşturulur ve yayınlanmadan önce tam haliyle önizlenir
+    - Kampanya varken basılı davetiye alana dijital davetiye hediye (yalnız sitede yazdığı sürece söylenir)
+  icerik_sutunlari: [model vitrini ve stil seçimi, dijital davetiye nasıl açılır, sipariş ve adet ipuçları, düğün hazırlık takvimi ipuçları, sezon/kampanya]
+  kanca_kaliplari: ["Davetiyen telefonda böyle açılsın", "Kaç davetiye bastırmalı? Çoğu kişi bunu yanlış hesaplıyor", "Bu 4 modelden hangisi senin tarzın?", "Düğüne 2 ay kala davetiye için en geç ne zaman?"]
+  kacinilacaklar: [olmayan teslim süresi ya da fiyat söylemek, başka firmayı kötülemek, sitede bitmiş kampanyayı anlatmak]

@@ -58,11 +58,29 @@ def _kisalt(v: str, n: int) -> str:
     return v if len(v) <= n else v[: n - 1].rsplit(" ", 1)[0].rstrip(",;:—-") + "…"
 
 
+def guncel_marka(kod: str) -> dict:
+    """Marka profili + o anki aşaması (ör. Bungalov'da listede tesis yokken içerik tesis sahiplerine döner)."""
+    from .ortak import marka as _marka
+    m = _marka(kod)
+    ayar = getattr(KAYNAKLAR.get(kod), "asama_ayari", None)
+    if ayar:
+        try:
+            ek = ayar(m)
+            if ek:
+                log(f"{kod}: aşama {ek.get('asama')} ({ek})")
+            m.update(ek)
+        except Exception as e:
+            log(f"{kod}: aşama okunamadı ({e}); varsayılan")
+    return m
+
+
 def taslak_kur(kod: str, marka: dict, format_ad: str, ctx: dict) -> dict | None:
     f = KAYNAKLAR[kod].FORMATLAR[format_ad]
     s = f(ctx)
     if not s:
         return None
+    if marka.get("asama") == "kurulus" and hasattr(KAYNAKLAR[kod], "kurulus_temizle"):
+        s = KAYNAKLAR[kod].kurulus_temizle(s)
     s["format"] = format_ad
     s["olgular"] = [o for o in s.get("olgular", []) if o]
     liste = next((x for x in s["sahneler"] if x.get("tip") == "liste"), None)
@@ -189,7 +207,8 @@ def parlat(senaryo: dict, marka: dict, kod: str, rnd: random.Random) -> tuple[di
         "hashtag_havuzu": marka["etiketler"],
         "cikti_bicimi": {"slotlar": {"<aynı anahtar>": "<yeni metin>"}, "aciklama": "<caption>", "neden": "<1 cümle: bu açıyı neden seçtin>"},
     }, ensure_ascii=False)
-    yanit = llm.json_sor(_sistem(marka), istem)
+    from . import strateji
+    yanit = llm.json_sor(_sistem(marka) + "\n" + strateji.baglam(kod, marka), istem)
     if not yanit or not isinstance(yanit.get("slotlar"), dict):
         log("yapay zekâ yanıtı yok → kural metni")
         return senaryo, kural, "kural"
@@ -201,6 +220,8 @@ def parlat(senaryo: dict, marka: dict, kod: str, rnd: random.Random) -> tuple[di
         log("yapay zekâ metni kaliteden geçmedi → kural metni:", "; ".join(hatalar[:4]))
         return senaryo, kural, "kural"
     log(f"metin: {yanit.get('_saglayici')} — {yanit.get('neden', '')[:120]}")
+    aday, aciklama, rapor = strateji.editor(aday, aciklama, marka, kod, slotlar, slot_yaz, slot_sinir, metin_denetle)
+    aday["editor"] = rapor
     return aday, aciklama, yanit.get("_saglayici", "llm")
 
 
@@ -315,6 +336,10 @@ def iddia_kontrol(kod: str, senaryo: dict) -> dict:
     if kod == "davetiyeler":
         if not davetiyeler.hediye_suruyor():
             return iddia_temizle(senaryo, r"hediye|650\+KDV|650 değerinde", "Tüm modeller sitede")
+    elif kod == "sgb":
+        m = guncel_marka("sgb")
+        if m.get("asama") == "kurulus":
+            return sgb.kurulus_temizle(senaryo)
     elif kod == "sitemucidi":
         from .kaynak import sitede_var
         if not sitede_var(f"{sitemucidi.SITE}/", r"7 gün"):

@@ -27,3 +27,21 @@ formatlar: {sektor_demo: 4, ozellik: 2, yz_arama: 2, tema_paket: 1}
 # Seslendirme (Gemini TTS sesi, yedek Microsoft sesi) ve fon müziği havası
 ses: {gemini: Puck, edge: tr-TR-AhmetNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Esnafa müjde verir gibi enerjik, hızlı tempolu, vurgulu ve gülümseyerek oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
 muzik: {hava: enerjik, tempo: 122, ton: A}
+# İçerik stratejisi: her metin yazımında yapay zekâya verilir (gerçek insan gibi düşünmesi için). Yalnız doğru bilgi.
+strateji:
+  kitle_icgorusu:
+    - Esnaf "web sitesi pahalı, uğraştırır, ajans aylarca oyalar" diye düşünüyor; zamanı yok, teknik bilgisi yok
+    - Müşteri Google'da ve haritada arıyor; sitesi olmayan esnaf rakibine kaybettiğini çoğu zaman fark etmiyor
+    - Yapay zekâ asistanları (ChatGPT, Gemini) işletme önerirken bilgisi net siteleri öne çıkarıyor
+    - Önce kendi sektörüne uygun hazır örneği görmek istiyor; "benim işime uyar mı" sorusu karar verdirir
+  dikkat_ettikleri: [kendi sektörüne özel görünüm, ne kadar sürede biter, telefonda nasıl görünür, WhatsApp butonu, Google'da çıkar mı, sonradan kendim değiştirebilir miyim]
+  itirazlar: [pahalıdır, kodlama gerekir, sonra bakımını kim yapacak, şablon gibi durur]
+  ozellikler:
+    - Sektöre hazır temalar; işletme adı yazılınca site o isimle anında önizlenir
+    - Sihirbazla 3 dakikada kurulum; oluşturmak ücretsiz, kaydedince 7 gün denenir, yayına almak ücretlidir
+    - WhatsApp butonu, harita, online randevu, teklif formu, galeri, müşteri yorumları, SSS
+    - Google İşletme bağlantısı, Instagram vitrini, ürün kataloğu, blog, İngilizce ikinci dil, gelişmiş SEO paketi
+    - Özellikler sihirbazda tek tıkla açılıp kapanır; fiyat seçilen özelliklere göre anında görünür
+  icerik_sutunlari: [sektör sektör 3 dakikada site demosu, esnafın gerçek derdi ve çözümü, yapay zekâ aramasında görünmek, tek özellik tek fayda, tema vitrini]
+  kanca_kaliplari: ["[Sektör] sahibiysen bu 3 dakikayı izle", "Müşterin seni Google'da arayınca ne görüyor?", "ChatGPT'ye '[şehir]de [sektör]' yazdık, bakın kimi önerdi", "Ajans 3 hafta dedi, biz 3 dakikada kurduk"]
+  kacinilacaklar: [rakip firma adı vermek, kesin Google sıralaması vaadi, gerçek olmayan müşteri hikâyesi, fiyatı yanlış söylemek]

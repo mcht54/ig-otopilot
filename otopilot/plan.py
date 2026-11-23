@@ -178,7 +178,8 @@ def ozel_icerik(kod: str, m: dict, istek: str, tarayici, klasor: Path, gun: dt.d
              "\"kapak\": {\"etiket\": \"≤26 karakter\", \"baslik\": \"≤62 karakter kanca\", \"alt\": \"≤84\"}, "
              "\"liste\": {\"etiket\": \"≤26\", \"baslik\": \"≤62\", \"maddeler\": [\"3 madde, her biri ≤54 karakter\"]}, "
              "\"cta\": {\"baslik\": \"≤62\", \"alt\": \"≤84\"}, \"hikaye\": {\"etiket\": \"≤26\", \"baslik\": \"≤62\", \"alt\": \"≤84\"}}")
-    v = llm.json_sor(sistem, istem)
+    from . import strateji
+    v = llm.json_sor(sistem + "\n" + strateji.baglam(kod, m), istem)
     if not v:
         raise RuntimeError("yapay zekâ şu an yanıt vermedi")
     if not v.get("uygun", True):
@@ -242,7 +243,7 @@ def hafta_plani(tarayici, kodlar: list[str] | None = None) -> int:
     bugun = simdi().date()
     yeni = 0
     for kod in kodlar or marka_kodlari():
-        m = marka(kod)
+        m = beyin.guncel_marka(kod)
         p = {g: x for g, x in oku(kod).items() if g >= bugun.isoformat()}
         for i in range(1, PLAN_GUN + 1):
             gun = bugun + dt.timedelta(days=i)
@@ -329,7 +330,7 @@ def panel_isle(yanit: dict, tarayici) -> dict:
             g = dt.date.fromisoformat(gun)
             k = _klasor(kod, g)
             p = oku(kod)
-            p[gun] = _tamamla(kod, marka(kod), ozel_icerik(kod, marka(kod), d["istek"], tarayici, k, g), g, tarayici, k)
+            p[gun] = _tamamla(kod, marka(kod), ozel_icerik(kod, beyin.guncel_marka(kod), d["istek"], tarayici, k, g), g, tarayici, k)
             yaz(kod, p)
             uygulanan.append(d["id"])
         except ValueError as e:
@@ -349,7 +350,7 @@ def panel_isle(yanit: dict, tarayici) -> dict:
         g = bos[0]
         try:
             k = _klasor(kod, g)
-            oge = ozel_icerik(kod, marka(kod), t["metin"], tarayici, k, g)
+            oge = ozel_icerik(kod, beyin.guncel_marka(kod), t["metin"], tarayici, k, g)
             oge["kaynak"], oge["tanitim_id"] = "tanitim", t["id"]
             p[g.isoformat()] = _tamamla(kod, marka(kod), oge, g, tarayici, k)
             yaz(kod, p)

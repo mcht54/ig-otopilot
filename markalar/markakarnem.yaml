@@ -25,3 +25,19 @@ saat: {reels: "13:30", hikaye: "09:00"}
 formatlar: {soru_cevap: 3, yerel_karne: 2, arac_demo: 1, ornek_rapor: 1, sektor_ipucu: 2}
 ses: {gemini: Fenrir, edge: tr-TR-AhmetNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Şaşırtıcı bir sırrı açıklar gibi merak uyandırarak, enerjik ve vurgulu oku; rakamları özellikle vurgula; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
 muzik: {hava: enerjik, tempo: 118, ton: D}
+strateji:
+  kitle_icgorusu:
+    - Esnaf "neden Google'da çıkmıyorum, rakibim neden üstte" diye soruyor ama nedenini bilmiyor
+    - Ölçülmüş somut rakam ve "sizde de var mı" sorusu çok dikkat çekiyor; korkutmadan eksik göstermek işe yarar
+    - Teknik terimden kaçıyor; tek somut adım istiyor
+  dikkat_ettikleri: [ücretsiz mi, ne kadar sürer, benim sektörümde durum ne, rakibime göre neredeyim, ilk ne yapmalıyım]
+  itirazlar: [SEO pahalı ve karmaşık, ajanslar boş vaat veriyor, zamanım yok]
+  ozellikler:
+    - Web sitesi, Google İşletme Profili ve Instagram 52 kontrolle ücretsiz analiz edilir
+    - Marka Skoru ve öncelikli adımlar listesi verilir; örnek rapor sitede görülebilir
+    - Sakarya'da sektör sektör ölçülmüş dijital karne verileri yayınlanır (yerel karne)
+    - Ücretsiz Instagram etkileşim oranı aracı tarayıcıda hesaplar
+    - SEO soru-cevapları ve sözlük sade dille anlatır
+  icerik_sutunlari: [sektör karnesi rakamları, tek soru tek cevap, ücretsiz araç demosu, örnek rapor turu, hızlı kazanım ipuçları]
+  kanca_kaliplari: ["Sakarya'da [sektör] işletmelerinin yüzde X'inde bu eksik", "Google'da neden çıkmıyorsunuz? 3 sebep", "İşletmenizin skoru kaç? 2 dakikada görün", "Bu ayarı yapmayan işletme haritada görünmüyor"]
+  kacinilacaklar: [sıralama garantisi, ölçülmemiş rakam, belirli bir işletmeyi teşhir etmek, korkutucu dil]

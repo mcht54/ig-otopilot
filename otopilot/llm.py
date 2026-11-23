@@ -159,5 +159,37 @@ def json_sor(sistem: str, istem: str) -> dict | None:
     return None
 
 
+def ara(istem: str) -> dict | None:
+    """Google Arama destekli Gemini çağrısı (ücretsiz katman). {"metin", "kaynaklar": [{uri, baslik}]} ya da None."""
+    anahtar = os.environ.get("GEMINI_API_KEY")
+    if not anahtar:
+        return None
+    for model in _gemini_modelleri(anahtar):
+        for deneme in range(2):
+            if not izin("gemini-ara"):
+                return None
+            try:
+                r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                                  headers={"x-goog-api-key": anahtar}, timeout=120,
+                                  json={"contents": [{"parts": [{"text": istem}]}], "tools": [{"google_search": {}}],
+                                        "generationConfig": {"temperature": 0.4}})
+                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
+                    kota_doldu("gemini-ara", r.text)
+                    return None
+                if r.status_code in (429, 500, 503):
+                    time.sleep(8 * (deneme + 1))
+                    continue
+                r.raise_for_status()
+                c = r.json()["candidates"][0]
+                gm = c.get("groundingMetadata") or {}
+                return {"metin": "".join(p.get("text", "") for p in c["content"]["parts"]),
+                        "kaynaklar": [{"uri": ch.get("web", {}).get("uri", ""), "baslik": ch.get("web", {}).get("title", "")}
+                                      for ch in gm.get("groundingChunks", [])]}
+            except Exception as e:
+                log(f"gemini arama {model} hata: {str(e)[:160]}")
+                break
+    return None
+
+
 def var_mi() -> bool:
     return bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("GROQ_API_KEY"))

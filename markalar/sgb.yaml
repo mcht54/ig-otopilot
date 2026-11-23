@@ -23,3 +23,26 @@ saat: {reels: "19:00", hikaye: "11:30"}
 formatlar: {guvenlik_ipucu: 3, rehber: 3, belge_sorgula: 1, isletme_davet: 1}
 ses: {gemini: Zephyr, edge: tr-TR-EmelNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Tatil planlayan birini dolandırıcılıktan korur gibi dikkat çekici, güven veren, enerjik ve vurgulu oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
 muzik: {hava: sicak, tempo: 106, ton: G}
+strateji:
+  kitle_icgorusu:
+    - Misafir tarafı - Sapanca'da kapora dolandırıcılığı korkusu çok yüksek; "gerçek mi, belgeli mi" diye soruyor
+    - Misafir jakuzi, şömine, göl manzarası, hafta sonu fiyatı ve fotoğrafın gerçek olup olmadığına bakıyor
+    - İşletme tarafı - belgeli işletmeler sahte hesapların kendi fotoğraflarını kullanmasından ve komisyonlu platformlardan şikâyetçi
+    - İşletme sahibi doğrudan misafir, komisyonsuzluk ve güven rozeti ister
+  dikkat_ettikleri: [Bakanlık belgesi, gerçek fotoğraf, doğrudan iletişim, komisyon, sahte hesaptan korunma, başvurunun kolaylığı]
+  itirazlar: [yine bir aracı site, ücretli olur, başvuru uğraştırır, misafir gelir mi]
+  ozellikler:
+    - Yalnız Bakanlık belgesi doğrulanmış tesisler listelenir; belge Bakanlık kaydıyla eşleştirilir ve telefonla teyit edilir
+    - Komisyon ve rezervasyon aracılığı yok; misafir tesisi telefon/WhatsApp ile doğrudan arar
+    - Kurucu tesisler ilk dönemde ücretsiz listelenir ve sonraki dönem için indirimli fiyat garantisi alır
+    - İşletme panelinde görüntülenme, telefon ve WhatsApp tıklamaları günlük görünür
+    - Doğrulanmış numara ve belge başka bir hesapta kullanılamaz (sahte ilana karşı koruma)
+    - Misafir için rehberler, belge sorgulama anlatımı, numara doğrulama ve şikâyet bildirme
+  icerik_sutunlari: [işletme sahiplerine davet ve avantajlar, sahte hesap/kapora uyarısı, belge sorgulama, Sapanca tatil rehberi]
+  kanca_kaliplari: ["Bungalovunuzun fotoğraflarıyla sahte hesap açılmış olabilir", "Komisyon ödemeden misafir sizi doğrudan arasın", "Kapora göndermeden önce bu 3 şeye bakın", "Sapanca'da 374 belgeli tesis var; misafir sizi nasıl ayırt etsin?"]
+  kacinilacaklar: [listede olmayan tesisi varmış gibi göstermek, belirli bir tesisi kötülemek, olmayan misafir sayısı vaadi]
+# Aşamalar: sitede listelenen tesis yokken içerik tesis sahiplerine döner (otopilot/kaynak/sgb.py → asama)
+asamalar:
+  kurulus:
+    formatlar: {isletme_davet: 3, sahte_ilan_isletme: 2, kurucu_tesis: 2, basvuru_adimlari: 2, belgeli_ayirt: 2, guvenlik_ipucu: 2, belge_sorgula: 1}
+    cta: "Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte"

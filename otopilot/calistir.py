@@ -100,7 +100,7 @@ def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama
 
 def uret(kod: str, tarayici, klasor: Path, hazir: dict | None = None) -> dict:
     """hazir: bugünün plan öğesi (panelde görülen/düzenlenen içerik). Üretilemezse içerik baştan kurulur."""
-    m = marka(kod)
+    m = beyin.guncel_marka(kod)
     if hazir:
         try:
             s = beyin.iddia_kontrol(kod, hazir["senaryo"])  # plan günler önce kuruldu: kampanya/deneme hâlâ geçerli mi
@@ -319,6 +319,9 @@ def plan_komutu() -> int:
                 plan.hesap_kaydet(kod, ig.hesap())
             except Exception as e:
                 log(f"{kod} hesap bilgisi alınamadı: {e}")
+    from . import strateji
+    for kod in marka_kodlari():  # haftalık araştırma (tutan içerikler, rakipler, sorular, mevsim); eskiyse yenilenir
+        strateji.arastir(kod, beyin.guncel_marka(kod))
     yanit = panel.gonder(donus=True) or {}
     with sync_playwright() as p:
         tarayici = p.chromium.launch(args=["--disable-gpu", "--font-render-hinting=none"])
