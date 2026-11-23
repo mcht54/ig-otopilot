@@ -141,7 +141,7 @@ def test_muzik_her_marka_sessiz_degil(kod):
 def test_ucret_freni_kota_dolunca_bir_daha_denenmez(monkeypatch):
     from otopilot import llm
     monkeypatch.setenv("GEMINI_API_KEY", "test")
-    monkeypatch.setattr(llm, "_kesif", ["gemini-x-flash"])
+    monkeypatch.setattr(llm, "_kesif", ["gemini-x-flash", "gemini-y-flash"])
     monkeypatch.setattr(llm, "_kota_doldu", set())
     monkeypatch.setattr(llm, "_sayac", {"istek": 0})
     cagri = []
@@ -150,7 +150,7 @@ def test_ucret_freni_kota_dolunca_bir_daha_denenmez(monkeypatch):
         text = '{"error": "Quota exceeded for metric: GenerateRequestsPerDayPerProjectPerModel-FreeTier"}'
     monkeypatch.setattr(llm.requests, "post", lambda *a, **k: cagri.append(1) or Y())
     assert llm.json_sor("s", "i") is None and llm.json_sor("s", "i") is None
-    assert len(cagri) == 1, "günlük kota dolunca aynı çalıştırmada tekrar istek atılmaz"
+    assert len(cagri) == 2, "her modelin kotası bir kez denenir; dolan model aynı çalıştırmada tekrar denenmez"
 
 
 def test_ucret_freni_istek_tavani(monkeypatch):

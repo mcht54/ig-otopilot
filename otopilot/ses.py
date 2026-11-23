@@ -42,6 +42,8 @@ def konusma_metni(metin: str, marka: dict) -> str:
     m = re.sub(r"\b[\w-]+\.(?:com\.tr|net\.tr|org\.tr|com|tr|net)\b", marka["ad"], m)
     m = m.replace("&", " ve ").replace("…", "").replace("→", "").replace("|", ",")
     m = re.sub(r"\s*\([^)]*\)", "", m)          # parantez içi (İngilizce terim vb.) okunmaz
+    m = re.sub(r"(^|[.!?]\s+)\d+[.)]\s+", r"\1", m)  # "1. Tasarımı seçin" → "Tasarımı seçin"
+    m = m.replace(" — ", ", ").replace("—", ", ")
     m = re.sub(r"[#*_]", "", m)
     m = re.sub(r"\s*([?!])\s*[.!]+", r"\1", m)   # "?." "!." → tek işaret
     m = re.sub(r"\.{2,}", ".", m).replace(":.", ".").replace(": :", ":")
@@ -67,7 +69,8 @@ def _kural_satiri(sh: dict, marka: dict, ilk: bool) -> str:
     elif tip == "cta":
         s = f"{b}. {marka['cta']}!"
     elif sh.get("tur") == "sayfa":
-        s = sh.get("ust_yazi") or next((e["ust_yazi"] for e in sh.get("eylemler", []) if e.get("ust_yazi")), "") or "İşte gerçek ekran."
+        y = sh.get("ust_yazi") or next((e["ust_yazi"] for e in sh.get("eylemler", []) if e.get("ust_yazi")), "")
+        s = f"Şimdi gerçek ekranda bakalım: {y}" if y else "Şimdi gerçek ekranda bakalım."
     else:
         s = f"{b}. {a}" if a else b
     s = s.strip(" .") + ("!" if ilk else ".")
@@ -180,6 +183,8 @@ def _gemini_ses(satirlar: list[str], marka: dict, yonerge: bool = True) -> np.nd
              "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                  "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": ayar.get("gemini", "Puck")}}}}}
     for model in _ses_modelleri(anahtar):
+        if f"gemini-ses:{model}" in llm._kota_doldu:
+            continue
         for deneme in range(2):
             if not llm.izin("gemini-ses"):
                 return None
@@ -187,8 +192,8 @@ def _gemini_ses(satirlar: list[str], marka: dict, yonerge: bool = True) -> np.nd
                 r = requests.post(f"{GEMINI}/models/{model}:generateContent", json=govde, timeout=180,
                                   headers={"x-goog-api-key": anahtar})
                 if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
-                    llm.kota_doldu("gemini-ses", r.text)
-                    return None
+                    llm.kota_doldu(f"gemini-ses:{model}", r.text)
+                    break
                 if r.status_code in (429, 500, 503):
                     log(f"gemini ses {model} {r.status_code}, bekleniyor")
                     import time

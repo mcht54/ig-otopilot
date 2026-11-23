@@ -88,6 +88,8 @@ def _gemini(sistem: str, istem: str) -> str | None:
     if not anahtar:
         return None
     for model in _gemini_modelleri(anahtar):
+        if f"gemini:{model}" in _kota_doldu:
+            continue
         for deneme in range(2):
             if not izin("gemini"):
                 return None
@@ -103,8 +105,8 @@ def _gemini(sistem: str, istem: str) -> str | None:
                     timeout=90,
                 )
                 if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
-                    kota_doldu("gemini", r.text)
-                    return None
+                    kota_doldu(f"gemini:{model}", r.text)  # kota model başına: sıradaki ücretsiz modele geç
+                    break
                 if r.status_code == 429 or r.status_code >= 500:
                     log(f"gemini {model} {r.status_code}, bekleniyor")
                     time.sleep(8 * (deneme + 1))
@@ -165,6 +167,8 @@ def ara(istem: str) -> dict | None:
     if not anahtar:
         return None
     for model in _gemini_modelleri(anahtar):
+        if f"gemini-ara:{model}" in _kota_doldu:
+            continue
         for deneme in range(2):
             if not izin("gemini-ara"):
                 return None
@@ -174,8 +178,8 @@ def ara(istem: str) -> dict | None:
                                   json={"contents": [{"parts": [{"text": istem}]}], "tools": [{"google_search": {}}],
                                         "generationConfig": {"temperature": 0.4}})
                 if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
-                    kota_doldu("gemini-ara", r.text)
-                    return None
+                    kota_doldu(f"gemini-ara:{model}", r.text)
+                    break
                 if r.status_code in (429, 500, 503):
                     time.sleep(8 * (deneme + 1))
                     continue
