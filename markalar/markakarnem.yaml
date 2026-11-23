@@ -23,7 +23,7 @@ kaydet_satiri: İşletmenizin Google'da nasıl göründüğünü merak ediyorsan
 yasak_ifadeler: [garanti, "%100 başarı", 1 numara, birinci sıra, en ucuz, bedava]
 saat: {reels: "13:30", hikaye: "09:00"}
 formatlar: {soru_cevap: 3, yerel_karne: 2, arac_demo: 1, ornek_rapor: 1, sektor_ipucu: 2}
-ses: {gemini: Fenrir, edge: tr-TR-AhmetNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Şaşırtıcı bir sırrı açıklar gibi merak uyandırarak, enerjik ve vurgulu oku; rakamları özellikle vurgula; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
+ses: {gemini: Fenrir, edge: tr-TR-AhmetNeural, ton_en: "curious, dramatic and energetic (emphasize the numbers)"}
 muzik: {hava: enerjik, tempo: 118, ton: D}
 strateji:
   kitle_icgorusu:

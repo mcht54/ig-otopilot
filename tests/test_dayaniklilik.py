@@ -159,3 +159,16 @@ def test_ucret_freni_istek_tavani(monkeypatch):
     monkeypatch.setattr(llm, "_kota_doldu", set())
     monkeypatch.setattr(llm, "_sayac", {"istek": 0})
     assert [llm.izin("gemini") for _ in range(5)] == [True, True, True, False, False]
+
+
+def test_talimat_sesli_okunursa_reddedilir():
+    """2026-11-23: Gemini TTS uzun talimatı da okudu. Konuşma süresi metne göre şişerse ses reddedilmeli."""
+    import numpy as np
+    from otopilot import ses
+    sr = ses.SR
+    konus = lambda d: (np.sin(2 * np.pi * 180 * np.arange(int(d * sr)) / sr) * 0.4).astype(np.float32)
+    satirlar = ["Sakarya'daki oteller dijitalde görünür mü?", "On yedi tesisi inceledik!", "Kendi skorunuzu görün!"]
+    harf = sum(map(len, satirlar))
+    normal = konus(harf / 16)          # ~16 harf/sn
+    sisik = konus(harf / 16 + 11)      # başına ~11 sn talimat okunmuş
+    assert ses._toplam_makul(normal, satirlar) and not ses._toplam_makul(sisik, satirlar)

@@ -166,12 +166,16 @@ def _yeniden_ornekle(x: np.ndarray, kaynak: int) -> np.ndarray:
     return np.interp(np.linspace(0, len(x) - 1, n), np.arange(len(x)), x).astype(np.float32)
 
 
-def _gemini_ses(satirlar: list[str], marka: dict) -> np.ndarray | None:
+def _gemini_ses(satirlar: list[str], marka: dict, yonerge: bool = True) -> np.ndarray | None:
+    """Gemini TTS. Uzun Türkçe talimat VERİLMEZ (model talimatı da sesli okuyabiliyor — 2026-11-23 hatası);
+    yalnız modelin yönerge olarak tanıdığı kısa İngilizce kalıp ("Say ...:") ya da hiç yönerge yok."""
     anahtar = os.environ.get("GEMINI_API_KEY")
     if not anahtar:
         return None
     ayar = marka.get("ses") or {}
-    metin = (ayar.get("tarz") or VARSAYILAN_TARZ) + " Her satırdan sonra yarım saniye dur:\n\n" + "\n".join(satirlar)
+    govde_metin = "\n".join(satirlar)
+    ton = ayar.get("ton_en", "excited, energetic and captivating")
+    metin = f"Say in a {ton} Turkish storyteller voice:\n{govde_metin}" if yonerge else govde_metin
     govde = {"contents": [{"parts": [{"text": metin}]}],
              "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                  "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": ayar.get("gemini", "Puck")}}}}}
@@ -275,26 +279,51 @@ def bol(x: np.ndarray, adet: int, satirlar: list[str]) -> list[np.ndarray]:
 
 
 def seslendir(satirlar: list[str], marka: dict) -> tuple[list[np.ndarray] | None, str]:
-    """Satır başına ses parçası (44,1 kHz mono). Hiçbir sağlayıcı olmazsa (None, 'yok')."""
-    tek = _gemini_ses(satirlar, marka)
-    if tek is not None:
+    """Satır başına ses parçası (44,1 kHz mono). Hiçbir sağlayıcı olmazsa (None, 'yok').
+    Ses metne göre fazla uzunsa (yönerge/fazladan söz okunmuş) reddedilir: önce yönergesiz yeniden, sonra edge-tts."""
+    for yonerge in (True, False):
+        tek = _gemini_ses(satirlar, marka, yonerge)
+        if tek is None:
+            break
+        if not _toplam_makul(tek, satirlar):
+            log(f"gemini sesi metne göre fazla uzun/kısa (yönerge={'var' if yonerge else 'yok'}); fazladan okuma olabilir → reddedildi")
+            continue
         parcalar = bol(tek, len(satirlar), satirlar)
         if _makul(parcalar, satirlar):
             return parcalar, "gemini"
-        log("gemini sesi satırlara makul bölünemedi; edge-tts deneniyor")
+        log("gemini sesi satırlara makul bölünemedi")
+    log("edge-tts deneniyor")
     parcalar = _edge_ses(satirlar, marka)
     if parcalar and _makul(parcalar, satirlar):
         return parcalar, "edge"
     return None, "yok"
 
 
+HIZ = (9.0, 24.0)  # Türkçe seslendirmede saniyedeki harf (boşluk dahil) makul aralığı
+
+
+def _konusma_suresi(x: np.ndarray) -> float:
+    """Sessizlikler hariç konuşma süresi (sn)."""
+    e = _enerji(x)
+    if not len(e):
+        return 0.0
+    return float(np.sum(e > max(e.max() * 0.04, 1e-4)) * 0.02)
+
+
+def _toplam_makul(x: np.ndarray, satirlar: list[str]) -> bool:
+    """Tüm ses, metnin uzunluğuna uygun mu? Talimat ya da fazladan cümle okunduysa konuşma süresi şişer → False."""
+    sn = _konusma_suresi(x)
+    harf = sum(len(s) for s in satirlar)
+    return sn > 0.5 and HIZ[0] <= harf / sn <= HIZ[1] * 1.15
+
+
 def _makul(parcalar: list[np.ndarray], satirlar: list[str]) -> bool:
-    """Her satır duyulabilir ve hızı insan konuşması aralığında mı (yarım kalan/boş/aşırı uzun ses elenir)."""
+    """Her satır duyulabilir ve hızı insan konuşması aralığında mı (yarım kalan/boş/fazladan okuma elenir)."""
     if len(parcalar) != len(satirlar):
         return False
     for p, s in zip(parcalar, satirlar):
-        sn = len(p) / SR
-        if sn < 0.5 or not (5 <= len(s) / max(sn, 0.1) <= 30):
+        sn = _konusma_suresi(p)
+        if sn < 0.4 or not (HIZ[0] * 0.8 <= len(s) / max(sn, 0.1) <= HIZ[1] * 1.3):
             return False
     return True
 

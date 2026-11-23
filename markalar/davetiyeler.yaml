@@ -22,7 +22,7 @@ cta: Tüm modeller profildeki linkte
 yasak_ifadeler: [garanti, en ucuz, bedava, "%100"]
 saat: {reels: "20:00", hikaye: "10:30"}
 formatlar: {model_vitrin: 4, dijital_davetiye: 2, siparis_nasil: 1, kampanya: 1}
-ses: {gemini: Laomedeia, edge: tr-TR-EmelNeural, tarz: "Sen heyecanlı, çarpıcı ve dinleten bir Instagram Reels anlatıcısısın. Düğün telaşındaki çifte güzel bir haber verir gibi sıcak, neşeli, enerjik ve akıcı oku; doğal Türkçe telaffuz. Satır sonlarında kısa nefes payı bırak."}
+ses: {gemini: Laomedeia, edge: tr-TR-EmelNeural, ton_en: "warm, joyful and excited"}
 muzik: {hava: sicak, tempo: 104, ton: F}
 strateji:
   kitle_icgorusu:
