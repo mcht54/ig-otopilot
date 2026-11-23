@@ -18,25 +18,30 @@
   "anahtar": "isletme:48",
   "ek_anahtarlar": [],
   "konu": "Belgeli tesisler için komisyonsuz listeleme",
-  "baslik": "Komisyon ödemeden misafir sizi doğrudan arasın",
-  "metin_kaynagi": "gemini",
-  "durum": "hata",
+  "baslik": "Belgeli bungalovunuzu komisyonsuz listeleyin",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
   "klasor": "cikti/2026-11-23/sgb",
   "anlatim": [
-   "Sapanca'da bakanlık belgeli tesisiniz var ama komisyonlardan yoruldunuz mu?",
-   "Misafir sizi telefon veya WhatsApp'tan doğrudan arasın, kurucu dönemde ücretsiz listelenin!",
-   "Beş dakikada başvurup belgenizi doğrulatarak tesisinizi sahte ilanlara karşı koruyun.",
-   "Tesisinizi ücretsiz ekleyin, başvuru profildeki linkte!"
+   "Belgeli bungalovunuzu komisyonsuz listeleyin! Misafir sizi doğrudan arasın!",
+   "Aracı yok, komisyon yok: Misafir sizi telefon veya WhatsApp ile arar, Kurucu tesisler ücretsiz listelenir.",
+   "Şimdi gerçek ekranda bakalım: Başvuru dört adım.",
+   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
   ],
   "ses_kaynagi": "gemini",
+  "aciklama": "Belgeli bungalovunuzu komisyonsuz listeleyin\nMisafir sizi doğrudan arasın\n\nAracı yok, komisyon yok\n✔️ Misafir sizi telefon veya WhatsApp ile arar\n✔️ Kurucu tesisler ücretsiz listelenir\n✔️ Görüntülenme ve tıklamaları panelde görürsünüz\n\nSapanca bungalov işletmesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #bungalov #balayı #bungalovtatili",
+  "video_yedek": "2026-11-23-sgb-reel.mp4",
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-23-sgb.jpg?v=y",
-  "hata": "17841442087566298/media: (#10) Requires instagram_content_publish permission to manage the object",
+  "medya_id": "18126082114938268",
+  "link": "https://www.instagram.com/reel/DgFJOPAheyQ/",
+  "yayin_zamani": "2026-11-23T13:16:36.258285+03:00",
+  "hikaye_id": "18034155644683260",
   "platformlar": {
-   "facebook": "HATA: facebook başlatma 403: {\"error\":{\"message\":\"(#200) Subject does not have permission to post videos on this target, due to lack of pages_manage_posts permission.\",\"type\":\"OAuthException\",\"code\":200,\"fbtrace_id\":\"A9BOZL8ol837GETshL_qaiT\"}}",
+   "facebook": "https://www.facebook.com/reel/1499279765449525",
    "youtube": "atlandı: anahtar yok",
    "tiktok": "atlandı: anahtar yok",
-   "instagram": "HATA: 17841442087566298/media: (#10) Requires instagram_content_publish permission to manage the object",
-   "instagram_hikaye": "atlandı"
+   "instagram": "https://www.instagram.com/reel/DgFJOPAheyQ/",
+   "instagram_hikaye": "http-ig-hikaye:18034155644683260"
   }
  }
 ]
