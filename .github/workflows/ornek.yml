@@ -65,5 +65,5 @@ jobs:
             for f in reel.mp4 hikaye.mp4 kapak.jpg aciklama.txt senaryo.json; do if [ -f "$d/$f" ]; then cp "$d/$f" "dagit/${kod}-$f"; fi; done
           done
           ls -la dagit
-          ETIKET="ornek-$(date +%Y%m%d-%H%M)"
+          ETIKET="ornek-$(date +%Y%m%d-%H%M)-${GITHUB_RUN_ID}"
           gh release create "$ETIKET" dagit/* --prerelease --title "Örnek içerik $(date '+%d.%m.%Y %H:%M') (paylaşılmadı)" --notes "Paylaşım kapalı örnek üretim."
