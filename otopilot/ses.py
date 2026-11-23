@@ -82,7 +82,7 @@ def _sahne_yazilari(sh: dict) -> list[str]:
     return [str(x) for x in y]
 
 
-def _kural_satiri(sh: dict, marka: dict, ilk: bool) -> str:
+def _kural_satiri(sh: dict, marka: dict, ilk: bool, ilk_sayfa: bool = True) -> str:
     tip = sh.get("tip") or sh.get("tur")
     b, a = sh.get("baslik") or "", sh.get("alt") or ""
     if tip == "kapak":
@@ -95,7 +95,11 @@ def _kural_satiri(sh: dict, marka: dict, ilk: bool) -> str:
         s = f"{b}. {marka['cta']}!"
     elif sh.get("tur") == "sayfa":
         y = sh.get("ust_yazi") or next((e["ust_yazi"] for e in sh.get("eylemler", []) if e.get("ust_yazi")), "")
-        s = f"Şimdi gerçek ekranda bakalım: {y}" if y else "Şimdi gerçek ekranda bakalım."
+        y = re.sub(r"^\s*\d+\s*[.)]\s*", "", y)  # "1. Tasarımınızı seçin" → "Tasarımınızı seçin"
+        if ilk_sayfa:
+            s = f"Şimdi gerçek ekranda bakalım: {y}" if y else "Şimdi gerçek ekranda bakalım."
+        else:
+            s = y or (b or "Bu kadar kolay")
     else:
         s = f"{b}. {a}" if a else b
     s = s.strip(" .") + ("!" if ilk else ".")
@@ -103,7 +107,11 @@ def _kural_satiri(sh: dict, marka: dict, ilk: bool) -> str:
 
 
 def kural_anlatim(senaryo: dict, marka: dict) -> list[str]:
-    return [_kural_satiri(sh, marka, i == 0) for i, sh in enumerate(senaryo["sahneler"])]
+    out, sayfa_goruldu = [], False
+    for i, sh in enumerate(senaryo["sahneler"]):
+        out.append(_kural_satiri(sh, marka, i == 0, not sayfa_goruldu))
+        sayfa_goruldu = sayfa_goruldu or sh.get("tur") == "sayfa"
+    return out
 
 
 def _rakamlar(metin: str) -> set[str]:
@@ -280,9 +288,80 @@ def _sessizlik_kirp(x: np.ndarray) -> np.ndarray:
     return x[max(0, aktif[0] * n - n): min(len(x), (aktif[-1] + 2) * n)]
 
 
+def _merkez(x: np.ndarray) -> float:
+    """Spektral ağırlık merkezi (Hz). Konuşma ~1-2,5 kHz; tıslama/parazit 4 kHz üstü."""
+    if len(x) < 64:
+        return 0.0
+    F = np.abs(np.fft.rfft(x * np.hanning(len(x))))
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    return float((F * f).sum() / max(F.sum(), 1e-9))
+
+
+PARAZIT_SURE, PARAZIT_HZ = 0.40, 3500.0
+
+
+def parazit_temizle(x: np.ndarray) -> np.ndarray:
+    """Gemini TTS'in sesin başına/sonuna eklediği kısa, tıslama gibi gürültüyü atar (videonun sonundaki cızırtının kaynağı,
+    2026-11-23). Ölçüt: sessizlikle ayrılmış, ≤0,4 sn ve spektral merkezi 3,5 kHz üstü uç ses adacığı."""
+    e = _enerji(x)
+    if not len(e):
+        return x
+    pen = int(0.02 * SR)
+    aktif = e > max(e.max() * 0.04, 1e-4)
+    adalar, bas, bosluk = [], None, 0
+    for i, a in enumerate(aktif):
+        if a:
+            if bas is None:
+                bas = i
+            bosluk = 0
+        elif bas is not None:
+            bosluk += 1
+            if bosluk >= 3:  # ≥60 ms sessizlik adacığı kapatır
+                adalar.append([bas, i - bosluk + 1])
+                bas, bosluk = None, 0
+    if bas is not None:
+        adalar.append([bas, len(aktif) - bosluk])
+    if len(adalar) < 2:
+        return x
+    def parazit(a):
+        b, s_ = a[0] * pen, a[1] * pen
+        return (s_ - b) / SR <= PARAZIT_SURE and _merkez(x[b:s_]) > PARAZIT_HZ
+    while len(adalar) >= 2 and parazit(adalar[-1]):
+        adalar.pop()
+    while len(adalar) >= 2 and parazit(adalar[0]):
+        adalar.pop(0)
+    b, s_ = adalar[0][0] * pen, adalar[-1][1] * pen
+    return x[max(0, b - pen): min(len(x), s_ + 2 * pen)]
+
+
+def _whisper_bol(x: np.ndarray, satirlar: list[str]) -> list[np.ndarray] | None:
+    """Sessizlikle bölünemeyen (satır arası duraksız) seslendirmeyi Whisper kelime zamanlarıyla satırlara böler."""
+    try:
+        x16 = np.interp(np.linspace(0, len(x) - 1, int(len(x) * 16000 / SR)), np.arange(len(x)), x).astype(np.float32)
+        parca, _ = _model().transcribe(x16, language="tr", beam_size=1, word_timestamps=True,
+                                       condition_on_previous_text=False, vad_filter=False)
+        kel = [w for p in parca for w in (p.words or [])]
+    except Exception as e:
+        log(f"kelime zamanıyla bölme çalışmadı: {type(e).__name__}")
+        return None
+    say = [max(1, len(_sade(s).split())) for s in satirlar]
+    if len(kel) < len(satirlar):
+        return None
+    sinirlar, onceki = [], 0
+    for o in np.cumsum(say)[:-1] / sum(say):
+        i = min(max(int(round(o * len(kel))), onceki + 1), len(kel) - 1)
+        aday = [j for j in (i - 1, i, i + 1) if onceki < j <= len(kel) - 1]
+        j = max(aday, key=lambda j: kel[j].start - kel[j - 1].end)  # en uzun duraksama
+        sinirlar.append(int((kel[j - 1].end + kel[j].start) / 2 * SR))
+        onceki = j
+    if sorted(set(sinirlar)) != sinirlar:
+        return None
+    return [parazit_temizle(_sessizlik_kirp(k)) for k in np.split(x, sinirlar)]
+
+
 def bol(x: np.ndarray, adet: int, satirlar: list[str]) -> list[np.ndarray]:
     """Tek parça seslendirmeyi satırlara böler: en uzun (adet-1) sessizlik sınır sayılır; yetmezse harf oranıyla."""
-    x = _sessizlik_kirp(x)
+    x = _sessizlik_kirp(parazit_temizle(x))
     if adet <= 1:
         return [x]
     e = _enerji(x)
@@ -302,7 +381,7 @@ def bol(x: np.ndarray, adet: int, satirlar: list[str]) -> list[np.ndarray]:
         oran = np.cumsum([len(s) for s in satirlar])[:-1] / sum(len(s) for s in satirlar)
         sinirlar = [int(o * len(x)) for o in oran]
     kesik = np.split(x, sinirlar)
-    return [_sessizlik_kirp(k) for k in kesik]
+    return [parazit_temizle(_sessizlik_kirp(k)) for k in kesik]
 
 
 YEDEK_SESLER = ["Kore", "Charon", "Puck", "Zephyr", "Fenrir"]
@@ -323,8 +402,11 @@ def seslendir(satirlar: list[str], marka: dict) -> tuple[list[np.ndarray] | None
             continue
         parcalar = bol(tek, len(satirlar), satirlar)
         if not _makul(parcalar, satirlar):
-            log(f"gemini sesi ({ses_adi}) satırlara makul bölünemedi → reddedildi")
-            continue
+            parcalar = _whisper_bol(_sessizlik_kirp(parazit_temizle(tek)), satirlar)
+            if not parcalar or not _makul(parcalar, satirlar):
+                log(f"gemini sesi ({ses_adi}) satırlara makul bölünemedi → reddedildi")
+                continue
+            log("satırlar kelime zamanlarıyla bölündü")
         sonuc = dogrula(parcalar, satirlar)
         if sonuc is True:
             return parcalar, "gemini"
