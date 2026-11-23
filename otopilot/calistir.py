@@ -283,13 +283,22 @@ def kontrol() -> int:
     import requests
     from .dagitim import GRAPH, _sayfa_anahtari
     hata = 0
+    if os.environ.get("IG_TOKEN"):  # anahtarın izinleri (anahtarın kendisi yazılmaz): hangi izin hangi hesaplar için verilmiş
+        try:
+            d = requests.get(f"{GRAPH}/debug_token", params={"input_token": os.environ["IG_TOKEN"], "access_token": os.environ["IG_TOKEN"]},
+                             timeout=30).json().get("data", {})
+            print(f"anahtar geçerli={d.get('is_valid')} bitiş={d.get('expires_at')}", flush=True)
+            for g in d.get("granular_scopes", []):
+                print(f"  izin {g.get('scope')}: {g.get('target_ids', 'tümü')}", flush=True)
+        except Exception as e:
+            print(f"anahtar izinleri okunamadı: {type(e).__name__}", flush=True)
     for kod in marka_kodlari():
         ig = Instagram(kod)
         satir = [f"{kod:12}"]
         if ig.hazir:
             try:
                 h = ig.hesap()
-                satir.append(f"IG ✓ @{h.get('username')} ({h.get('followers_count')} takipçi)")
+                satir.append(f"IG ✓ @{h.get('username')} ({h.get('followers_count')} takipçi) kimlik={ig.kimlik}")
             except InstagramHatasi as e:
                 hata = 1
                 satir.append(f"IG ✗ {str(e)[:120]}")
@@ -300,7 +309,7 @@ def kontrol() -> int:
                 sayfa, t = _sayfa_anahtari(kod)
                 g = requests.get(f"{GRAPH}/me/accounts", params={"fields": "id,tasks", "limit": 50, "access_token": os.environ["IG_TOKEN"]}, timeout=30)
                 gorev = next((a.get("tasks") for a in (g.json() or {}).get("data", []) if a.get("id") == sayfa), "sayfa listede yok") if g.ok else None
-                satir.append(f"FB sayfa ✓ görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
+                satir.append(f"FB sayfa ✓ {sayfa} görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
             except Exception as e:
                 hata = 1
                 satir.append(f"FB sayfa ✗ {str(e)[:120]}")
