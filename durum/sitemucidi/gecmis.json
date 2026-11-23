@@ -10,5 +10,37 @@
   "metin_kaynagi": "kural",
   "durum": "onizleme",
   "klasor": "cikti/2026-11-22/sitemucidi"
+ },
+ {
+  "tarih": "2026-11-23",
+  "tur": "reels",
+  "format": "sektor_demo",
+  "anahtar": "tema:tir",
+  "ek_anahtarlar": [],
+  "konu": "Lojistik için Tır teması ile 3 dakikada site",
+  "baslik": "Lojistik firman için 3 dakikada hazır site",
+  "metin_kaynagi": "gemini",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-23/sitemucidi",
+  "anlatim": [
+   "Lojistik veya nakliye firmanız var ama internette güçlü görünmüyor musunuz?",
+   "Tır temasını seçip firma adınızı yazın, siteniz üç dakikada anında hazırlansın!",
+   "Bakın, Hızlı Nakliyat için hazırladığımız bu tasarım anında canlıya geldi!",
+   "Çapraz kesim kapak, animasyonlu geçişler ve renkli hizmet kartlarıyla harika görünün.",
+   "Profildeki linkten ücretsiz oluşturun, kaydedip yedi gün boyunca deneyin!"
+  ],
+  "ses_kaynagi": "gemini",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-23-sitemucidi.jpg?v=y",
+  "medya_id": "18118861154596203",
+  "link": "https://www.instagram.com/reel/DgFCag9kQor/",
+  "yayin_zamani": "2026-11-23T12:17:01.271251+03:00",
+  "hikaye_id": "17987015396901631",
+  "platformlar": {
+   "facebook": "HATA: 403 Client Error: Forbidden for url: https://graph.facebook.com/v25.0/1375567352317461/video_reels",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgFCag9kQor/",
+   "instagram_hikaye": "http-ig-hikaye:17987015396901631"
+  }
  }
 ]
