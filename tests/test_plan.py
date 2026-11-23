@@ -42,7 +42,7 @@ def test_duzenleme_uygulanir_gecmis_gun_reddedilir(durum):
         {"id": "d2", "bolum_id": f"{bugun}-sgb", "satirlar": {"a0": "x"}}]}, None)
     assert sonuc["uygulanan"] == ["d1"] and sonuc["reddedilen"][0]["id"] == "d2"
     o = plan.oku("sgb")[yarin]
-    assert o["senaryo"]["sahneler"][0]["baslik"] == "Yeni başlık" and o["anlatim"][1] == "yüzde 20 indirim yok"
+    assert o["senaryo"]["sahneler"][0]["baslik"] == "Yeni başlık" and o["anlatim"][1] == "yüzde yirmi indirim yok"
 
 
 def test_tanitim_ilk_otomatik_gune_yerlesir(durum, monkeypatch):

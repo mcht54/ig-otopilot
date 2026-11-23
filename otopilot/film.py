@@ -173,7 +173,7 @@ def birlestir(klipler: list[Path], cikti: Path, muzik: Path | None = None, hazir
     si = len(klipler)
     if hazir_ses:  # seslendirme + müzik miksi hazır (ses.miks): seviyesine dokunulmaz
         ses_girdi = ["-i", str(hazir_ses)]
-        filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.6):.3f}:d=0.6[a]")
+        filtre.append(f"[{si}:a]apad,atrim=0:{toplam:.3f},afade=t=out:st={max(0, toplam - 0.8):.3f}:d=0.8[a]")
     else:
         ses_girdi = ["-i", str(muzik)] if muzik else ["-f", "lavfi", "-t", f"{toplam:.3f}", "-i", "anullsrc=r=44100:cl=stereo"]
         filtre.append(f"[{si}:a]atrim=0:{toplam:.3f},afade=t=in:d=0.4,afade=t=out:st={max(0, toplam - 1.2):.3f}:d=1.2,volume=0.6[a]")
@@ -207,9 +207,10 @@ def film_yap(tarayici, sahneler: list[dict], marka: dict, klasor: Path, ad: str,
     sahneler = [dict(s) for s in sahneler]
     parcalar, kaynak = (ses.seslendir(anlatim, marka) if anlatim else (None, "yok"))
     if parcalar:
-        for sh, p in zip(sahneler, parcalar):
-            gerek = SES_ONCE + len(p) / ses.SR + SES_SONRA + GECIS
-            sh["sure"] = round(min(max(sh.get("sure", 3.0), gerek), EN_UZUN_SAHNE), 2)
+        for i, (sh, p) in enumerate(zip(sahneler, parcalar)):
+            son = i == len(sahneler) - 1
+            gerek = SES_ONCE + len(p) / ses.SR + SES_SONRA + (1.0 if son else GECIS)  # son sahnede sönüş payı: konuşma kesilmez
+            sh["sure"] = round(min(max(sh.get("sure", 3.0), gerek), EN_UZUN_SAHNE + (1.0 if son else 0)), 2)
     klipler = []
     for i, sahne in enumerate(sahneler):
         klipler.append(klip_uret(tarayici, sahne, marka, klasor / f"{ad}-s{i:02d}.mp4"))

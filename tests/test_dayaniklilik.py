@@ -105,7 +105,7 @@ def test_anahtarlar_loga_ve_kayda_yazilmaz(gecici_durum, capsys):
 def test_konusma_metni_ve_anlatim_denetimi():
     from otopilot import ses
     m = ortak.marka("markakarnem")
-    assert ses.konusma_metni("%53 eksik (LocalBusiness) verisi?. markakarnem.com.tr ₺650+KDV", m) == "yüzde 53 eksik verisi? MarkaKarnem 650 lira artı KDV"
+    assert ses.konusma_metni("%53 eksik (LocalBusiness) verisi?. markakarnem.com.tr ₺650+KDV", m) == "yüzde elli üç eksik verisi? MarkaKarnem altı yüz elli lira artı KDV"
     s = {"olgular": ["17 işletme ölçüldü"], "sahneler": [{"tip": "kapak", "baslik": "Sakarya'da 17 işletme"}, {"tip": "cta", "baslik": "Skorunuzu görün"}]}
     assert not ses.anlatim_denetle(["17 işletmeyi ölçtük, sonuç şaşırtıcı!", "Linki profilde!"], s, m)
     assert any("kaynaksız" in h for h in ses.anlatim_denetle(["250 işletme!", "Linki profilde"], s, m))
@@ -126,7 +126,7 @@ def test_ses_bolme_ve_miks(tmp_path):
     yol = ses.miks(6.0, [(0.2, ton(1.0))], m, "t", tmp_path / "a.wav")
     import wave
     with wave.open(str(yol)) as w:
-        assert w.getnchannels() == 2 and w.getframerate() == sr and abs(w.getnframes() / sr - 6.0) < 0.01
+        assert w.getnchannels() == 2 and w.getframerate() == sr and abs(w.getnframes() / sr - 6.5) < 0.01  # video + 0.5 sn güvenlik payı (sonu sessiz)
 
 
 @pytest.mark.parametrize("kod", ["sitemucidi", "davetiyeler", "sgb", "markakarnem"])
@@ -172,3 +172,33 @@ def test_talimat_sesli_okunursa_reddedilir():
     normal = konus(harf / 16)          # ~16 harf/sn
     sisik = konus(harf / 16 + 11)      # başına ~11 sn talimat okunmuş
     assert ses._toplam_makul(normal, satirlar) and not ses._toplam_makul(sisik, satirlar)
+
+
+def test_sayi_yazi():
+    from otopilot.ses import sayi_yazi
+    assert [sayi_yazi(n) for n in (0, 7, 17, 53, 100, 374, 1000, 1700, 2026, 650000)] == [
+        "sıfır", "yedi", "on yedi", "elli üç", "yüz", "üç yüz yetmiş dört", "bin", "bin yedi yüz", "iki bin yirmi altı", "altı yüz elli bin"]
+
+
+def test_dinleme_denetimi_yabanci_dil_ve_uyumsuz_metni_reddeder(monkeypatch):
+    import numpy as np
+    from otopilot import ses
+    p = [np.zeros(100, dtype=np.float32)] * 2
+    satir = ["Sakarya'daki oteller görünür mü?", "Kendi skorunuzu görün!"]
+    cevaplar = iter([("Say in a curious dramatic voice", "en", 0.8)])
+    monkeypatch.setattr(ses, "dinle", lambda x: next(cevaplar))
+    assert ses.dogrula(p, satir) is False, "İngilizce başlayan ses reddedilir"
+    cevaplar = iter([("Sakarya daki oteller görünür mü", "tr", 0.97), ("Kendi skorunuzu görün", "tr", 0.98)])
+    assert ses.dogrula(p, satir) is True
+    cevaplar = iter([("Sakarya daki oteller görünür mü", "tr", 0.97), ("bambaşka bir cümle okundu burada", "tr", 0.9)])
+    assert ses.dogrula(p, satir) is False, "metinle uyuşmayan satır reddedilir"
+    monkeypatch.setattr(ses, "dinle", lambda x: (_ for _ in ()).throw(ImportError("yok")))
+    assert ses.dogrula(p, satir) is None
+
+
+def test_gecerli_ses_yoksa_muzikle_cikar_robotik_ses_yok(monkeypatch):
+    from otopilot import ses
+    monkeypatch.setattr(ses, "_gemini_ses", lambda satirlar, marka, ses_adi: None)
+    kullanildi = []
+    monkeypatch.setattr(ses, "_edge_ses", lambda s, m: kullanildi.append(1))
+    assert ses.seslendir(["Merhaba!"], ortak.marka("davetiyeler")) == (None, "yok") and not kullanildi
