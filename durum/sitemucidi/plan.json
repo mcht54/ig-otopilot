@@ -190,5 +190,289 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-sitemucidi.jpg?v=492b3329",
   "olusturma": "2026-11-23T03:48:23+03:00"
+ },
+ "2026-11-26": {
+  "id": "2026-11-26-sitemucidi",
+  "gun": "2026-11-26",
+  "kod": "sitemucidi",
+  "format": "sektor_demo",
+  "konu": "Oto servis ve tamir için Usta teması ile 3 dakikada site",
+  "anahtar": "tema:usta",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "tema:usta",
+   "konu": "Oto servis ve tamir için Usta teması ile 3 dakikada site",
+   "anahtar_kelime": "oto servis ve tamir web sitesi",
+   "olgular": [
+    "Tema: Usta — Yerel hizmet ve randevu işletmeleri için hızlı aksiyon odaklı düzen",
+    "Uygun sektörler: Oto servis ve tamir, Tesisat ve tadilat, Temizlik hizmetleri, Yerel hizmet işletmeleri",
+    "Tema açıklaması: Kemerli fotoğraf çerçevesi, büyük ara/randevu düğmesi ve havada duran çalışma saatleri kartı. Oto servis, tesisat, tadilat, temizlik gibi yerel hizmet işletmeleri için.",
+    "Öne çıkanlar: Kemerli fotoğraf ve saat kartı; Telefonla tek dokunuşta arama; Hizmet listesi; Harita ile konum",
+    "Videoda örnek işletme adı: Usta Oto Servis (gerçek işletme değil)",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir, yayına almak ücretlidir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-usta.png",
+     "etiket": "Oto servis ve tamir",
+     "baslik": "Oto servis ve tamir için 3 dakikada web sitesi",
+     "alt": "Kod yok, ajans yok, bekleme yok."
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/olustur?tema=usta",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "bekle": 0.8,
+     "ust_yazi": "1. Tasarımınızı seçin",
+     "sure": 5.95,
+     "eylemler": [
+      {
+       "t": 1.1,
+       "tikla": "Bilgiler"
+      },
+      {
+       "t": 1.2,
+       "ust_yazi": "2. İşletme adınızı yazın"
+      },
+      {
+       "t": 1.6,
+       "odak": "İşletme adı"
+      },
+      {
+       "t": 1.62,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.7000000000000002,
+       "tus": "U"
+      },
+      {
+       "t": 1.7700000000000002,
+       "tus": "s"
+      },
+      {
+       "t": 1.8400000000000003,
+       "tus": "t"
+      },
+      {
+       "t": 1.9100000000000001,
+       "tus": "a"
+      },
+      {
+       "t": 1.9800000000000002,
+       "tus": " "
+      },
+      {
+       "t": 2.0500000000000003,
+       "tus": "O"
+      },
+      {
+       "t": 2.12,
+       "tus": "t"
+      },
+      {
+       "t": 2.1900000000000004,
+       "tus": "o"
+      },
+      {
+       "t": 2.2600000000000002,
+       "tus": " "
+      },
+      {
+       "t": 2.33,
+       "tus": "S"
+      },
+      {
+       "t": 2.4000000000000004,
+       "tus": "e"
+      },
+      {
+       "t": 2.47,
+       "tus": "r"
+      },
+      {
+       "t": 2.54,
+       "tus": "v"
+      },
+      {
+       "t": 2.6100000000000003,
+       "tus": "i"
+      },
+      {
+       "t": 2.68,
+       "tus": "s"
+      },
+      {
+       "t": 3.25,
+       "tikla": "Önizleme"
+      },
+      {
+       "t": 3.35,
+       "ust_yazi": "3. Siteniz hazır"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "html_yol": "{{KLASOR}}/onizleme-usta.html",
+     "kaydir": true,
+     "sure": 7.5,
+     "kaydir_px": 3200,
+     "ust_yazi": "Usta teması — gerçek önizleme"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "file://{{KLASOR}}/kapak-usta.png",
+     "etiket": "Hazır gelir",
+     "baslik": "Bu temada neler var?",
+     "maddeler": [
+      "Kemerli fotoğraf ve saat kartı",
+      "Telefonla tek dokunuşta arama",
+      "Hizmet listesi"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitenizi şimdi ücretsiz oluşturun",
+     "alt": "Kaydedin, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-usta.png",
+    "etiket": "Yeni video",
+    "baslik": "Oto servis ve tamir sitesi 3 dakikada nasıl kurulur?",
+    "alt": "Adım adım izleyin"
+   },
+   "format": "sektor_demo",
+   "tam_maddeler": [
+    "Kemerli fotoğraf ve saat kartı",
+    "Telefonla tek dokunuşta arama",
+    "Hizmet listesi"
+   ],
+   "tohum": "sitemucidi:2026-11-26",
+   "denenen_formatlar": [
+    "sektor_demo",
+    "tema_paket",
+    "yz_arama",
+    "ozellik"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Oto servis ve tamir için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Kemerli fotoğraf ve saat kartı\n✔️ Telefonla tek dokunuşta arama\n✔️ Hizmet listesi\n\nOto servis ve tamir web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #girişimcilik #küçükişletme",
+  "anlatim": [
+   "Oto servis ve tamir için üç dakikada web sitesi! Kod yok, ajans yok, bekleme yok!",
+   "Şimdi gerçek ekranda bakalım: Tasarımınızı seçin.",
+   "Usta teması, gerçek önizleme.",
+   "Bu temada neler var?: Kemerli fotoğraf ve saat kartı, Telefonla tek dokunuşta arama.",
+   "Sitenizi şimdi ücretsiz oluşturun. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-sitemucidi.jpg?v=0eaea233",
+  "olusturma": "2026-11-23T13:33:36+03:00"
+ },
+ "2026-11-27": {
+  "id": "2026-11-27-sitemucidi",
+  "gun": "2026-11-27",
+  "kod": "sitemucidi",
+  "format": "tema_paket",
+  "konu": "Baskı Evi teması üç pakette",
+  "anahtar": "paket:baskievi",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "paket:baskievi",
+   "konu": "Baskı Evi teması üç pakette",
+   "anahtar_kelime": "hazır web sitesi",
+   "olgular": [
+    "Baskı Evi temasının Yalın, Vizyon ve Premium paketleri var; paket yükseldikçe hareket ve ek bölümler artar.",
+    "Önizlemeler sitedeki gerçek tema önizlemesidir.",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-baskievi.png",
+     "etiket": "Aynı tema, 3 paket",
+     "baslik": "Hangisi sizin işletmenize uyar?",
+     "alt": "Baskı Evi teması"
+    },
+    {
+     "tur": "kart",
+     "tip": "telefon",
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-baskievi-yalin.png",
+     "baslik": "Yalın paket"
+    },
+    {
+     "tur": "kart",
+     "tip": "telefon",
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-baskievi-vizyon.png",
+     "baslik": "Vizyon paket"
+    },
+    {
+     "tur": "kart",
+     "tip": "telefon",
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-baskievi.png",
+     "baslik": "Premium paket"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Yorumlara tercihinizi yazın",
+     "alt": "Ücretsiz oluşturun, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/paket-baskievi-yalin.png",
+    "etiket": "Anket",
+    "baslik": "Yalın mı, Premium mu?",
+    "alt": "Videoda üçünü karşılaştırdık"
+   },
+   "format": "tema_paket",
+   "tohum": "sitemucidi:2026-11-27",
+   "denenen_formatlar": [
+    "tema_paket",
+    "ozellik",
+    "yz_arama",
+    "sektor_demo"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Hangisi sizin işletmenize uyar?\nBaskı Evi teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #yapayzeka #googledaçıkmak",
+  "anlatim": [
+   "Hangisi sizin işletmenize uyar? Baskı Evi teması!",
+   "Yalın paket.",
+   "Vizyon paket.",
+   "Premium paket.",
+   "Yorumlara tercihinizi yazın. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sitemucidi.jpg?v=760a1566",
+  "olusturma": "2026-11-23T13:34:35+03:00"
  }
 }

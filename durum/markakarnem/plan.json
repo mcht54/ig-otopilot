@@ -206,5 +206,201 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-markakarnem.jpg?v=72ea0493",
   "olusturma": "2026-11-23T03:47:56+03:00"
+ },
+ "2026-11-26": {
+  "id": "2026-11-26-markakarnem",
+  "gun": "2026-11-26",
+  "kod": "markakarnem",
+  "format": "yerel_karne",
+  "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
+  "anahtar": "yerel:guzellik-kuafor:2026-11",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "yerel:guzellik-kuafor:2026-11",
+   "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
+   "anahtar_kelime": "sakarya güzellik & kuaför",
+   "olgular": [
+    "Sakarya'daki 9 güzellik & kuaför işletmesinin ölçülen dijital görünürlüğü: medyan Marka Skoru 88/100 ve en sık görülen eksikler.",
+    "Yerel işletme (LocalBusiness) verisi: ölçülen işletmelerin %75'sinde eksik",
+    "Yapısal veri (schema.org): ölçülen işletmelerin %50'sinde eksik",
+    "Yöntem: Bu sayfa, Ekim 2026 – Kasım 2026 arasında MarkaKarnem ile analiz edilen 9 farklı Sakarya güzellik & kuaför işletmesinin herkese açık verilerinden (web sitesi ve Google İşletme Profili) hesaplanır. Her işletmenin en son analizi kullanılır; i"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sakarya verisi",
+     "baslik": "Sakarya'da güzellik & kuaför işletmelerini ölçtük",
+     "alt": "9 işletme, gerçek ölçüm"
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.6,
+     "etiket": "En sık eksik",
+     "rakam": "%75",
+     "baslik": "Yerel işletme (LocalBusiness) verisi eksik",
+     "alt": "Ölçülen işletmeler içinde"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "Diğer eksikler",
+     "baslik": "Sık görülen sorunlar",
+     "maddeler": [
+      "Yapısal veri (schema.org): %50 eksik"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.4,
+     "etiket": "Bölge medyanı",
+     "rakam": "88",
+     "baslik": "Ortanca Marka Skoru (100 üzerinden)",
+     "alt": "Siz bunun neresindesiniz?"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Kendi skorunuzu görün",
+     "alt": "Ücretsiz, 52 kontrol"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sakarya verisi",
+    "baslik": "Güzellik & Kuaför: en sık eksik yerel işletme…",
+    "alt": "Ölçülenlerin %75'inde"
+   },
+   "format": "yerel_karne",
+   "tam_maddeler": [
+    "Yapısal veri (schema.org): %50 eksik"
+   ],
+   "tohum": "markakarnem:2026-11-26",
+   "denenen_formatlar": [
+    "yerel_karne",
+    "sektor_ipucu",
+    "ornek_rapor",
+    "arac_demo",
+    "soru_cevap"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Sakarya'da güzellik & kuaför işletmelerini ölçtük\n9 işletme, gerçek ölçüm\n\nSık görülen sorunlar\n✔️ Yapısal veri (schema.org): %50 eksik\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #sakarya #googleharitalar",
+  "anlatim": [
+   "Sakarya'da güzellik ve kuaför işletmelerini ölçtük! dokuz işletme, gerçek ölçüm!",
+   "yüzde yetmiş beş! Ölçülen işletmeler içinde.",
+   "Sık görülen sorunlar: Yapısal veri: yüzde elli eksik.",
+   "seksen sekiz! Siz bunun neresindesiniz?",
+   "Kendi skorunuzu görün. Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yerel_karne formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-markakarnem.jpg?v=2536e95b",
+  "olusturma": "2026-11-23T13:33:06+03:00"
+ },
+ "2026-11-27": {
+  "id": "2026-11-27-markakarnem",
+  "gun": "2026-11-27",
+  "kod": "markakarnem",
+  "format": "ornek_rapor",
+  "konu": "MarkaKarnem raporunda neler var",
+  "anahtar": "ornek:2026-11",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "ornek:2026-11",
+   "konu": "MarkaKarnem raporunda neler var",
+   "anahtar_kelime": "ücretsiz seo analizi",
+   "olgular": [
+    "Tam MarkaKarnenin neler içerdiğini gösteren örnek rapor. İşletme ve değerler örnektir; gerçek bir işletmeye ait değildir.",
+    "Web sitesi, Google İşletme Profili ve Instagram 52 kontrolle analiz edilir.",
+    "Rapor bölümleri: Marka Skoru, Analiz kapsamı, Toplam tespit, Öncelikli alan, Öncelikli bulgular, Kanal skorları, Kontrol sonuçları, Tespit akışı"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Örnek rapor",
+     "baslik": "İşletmenizin dijital karnesi böyle görünür",
+     "alt": "Örnek işletme üzerinden"
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/ornek-rapor",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "sure": 8.0,
+     "kaydir": true,
+     "kaydir_px": 3200,
+     "kaydir_oran": 0.8,
+     "ust_yazi": "Skor, öncelikli bulgular, kanal kanal kontrol"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "52 kontrol",
+     "baslik": "Üç kanal birden",
+     "maddeler": [
+      "Web sitesi",
+      "Google İşletme Profili",
+      "Instagram"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Kendi karnenizi çıkarın",
+     "alt": "Ücretsiz, birkaç dakika"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Örnek rapor",
+    "baslik": "Dijital karneniz kaç puan?",
+    "alt": "Örneği profilde izleyin"
+   },
+   "format": "ornek_rapor",
+   "tam_maddeler": [
+    "Web sitesi",
+    "Google İşletme Profili",
+    "Instagram"
+   ],
+   "tohum": "markakarnem:2026-11-27",
+   "denenen_formatlar": [
+    "ornek_rapor",
+    "sektor_ipucu",
+    "arac_demo",
+    "soru_cevap",
+    "yerel_karne"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "İşletmenizin dijital karnesi böyle görünür\nÖrnek işletme üzerinden\n\nÜç kanal birden\n✔️ Web sitesi\n✔️ Google İşletme Profili\n✔️ Instagram\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #markaskoru #instagramipuçları #sakarya",
+  "anlatim": [
+   "İşletmenizin dijital karnesi böyle görünür! Örnek işletme üzerinden!",
+   "Şimdi gerçek ekranda bakalım: Skor, öncelikli bulgular, kanal kanal kontrol.",
+   "Üç kanal birden: Web sitesi, Google İşletme Profili.",
+   "Kendi karnenizi çıkarın. Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: ornek_rapor formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-markakarnem.jpg?v=2c5230a6",
+  "olusturma": "2026-11-23T13:33:56+03:00"
  }
 }

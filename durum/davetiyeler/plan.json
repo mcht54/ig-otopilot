@@ -227,5 +227,232 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-davetiyeler.jpg?v=d077e06c",
   "olusturma": "2026-11-23T03:47:48+03:00"
+ },
+ "2026-11-26": {
+  "id": "2026-11-26-davetiyeler",
+  "gun": "2026-11-26",
+  "kod": "davetiyeler",
+  "format": "model_vitrin",
+  "konu": "Nikah davetiyesi modelleri",
+  "anahtar": "kategori:nikah-davetiyeleri:2026-11-26",
+  "ek_anahtarlar": [
+   "urun:22912",
+   "urun:22480",
+   "urun:22648",
+   "urun:22816"
+  ],
+  "senaryo": {
+   "anahtar": "kategori:nikah-davetiyeleri:2026-11-26",
+   "ek_anahtarlar": [
+    "urun:22912",
+    "urun:22480",
+    "urun:22648",
+    "urun:22816"
+   ],
+   "konu": "Nikah davetiyesi modelleri",
+   "anahtar_kelime": "nikah davetiyesi modelleri",
+   "olgular": [
+    "Kategori: Nikah Davetiyeleri (875 model)",
+    "Model 1: Şeffaf Kare Düğün Davetiyesi – Model 7111 — Şeffaf Kare Düğün Davetiyesi – Model 7111 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Model 2: Şeffaf Kare Düğün Davetiyesi – Model 7069 — Şeffaf Kare Düğün Davetiyesi – Model 7069 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Model 3: Şeffaf Kare Düğün Davetiyesi – Model 7084 — Şeffaf Kare Düğün Davetiyesi – Model 7084 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Model 4: Şeffaf Kare Düğün Davetiyesi – Model 7098 — Şeffaf Kare Düğün Davetiyesi – Model 7098 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Basılı davetiyede fiyat teklif usulüdür; adet 100-1000 arası seçilir.",
+    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye (sitede yazıyor)."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
+     "etiket": "Nikah davetiyesi",
+     "baslik": "Nikah davetiyesi seçemeyenlere 4 model",
+     "alt": "Sonuna kadar izleyin, favorinizi yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7069-900.webp",
+     "etiket": "Model 2",
+     "baslik": "Şeffaf Kare Düğün – Model 7069"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7084-900.webp",
+     "etiket": "Model 3",
+     "baslik": "Şeffaf Kare Düğün – Model 7084"
+    },
+    {
+     "tur": "kart",
+     "tip": "izgara",
+     "sure": 4.0,
+     "zemin": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7098-900.webp",
+     "gorseller": [
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7069-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7084-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7098-900.webp"
+     ],
+     "yazilar": [
+      "Şeffaf Kare Düğün – Model…",
+      "Şeffaf Kare Düğün – Model…",
+      "Şeffaf Kare Düğün – Model…",
+      "Şeffaf Kare Düğün – Model…"
+     ],
+     "baslik": "Hangisi sizin tarzınız?",
+     "alt": "Yoruma numarasını yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "875 nikah davetiyesi modeli",
+     "alt": "Basılı davetiyeye dijital davetiye hediye"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
+    "etiket": "Yeni modeller",
+    "baslik": "Nikah davetiyesi arayanlara 4 öneri",
+    "alt": "Hangisini seçerdiniz?"
+   },
+   "format": "model_vitrin",
+   "tohum": "davetiyeler:2026-11-26",
+   "denenen_formatlar": [
+    "model_vitrin",
+    "dijital_davetiye",
+    "siparis_nasil",
+    "kampanya"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Nikah davetiyesi seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nNikah davetiyesi modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #dijitaldavetiye #nikahdavetiyesi",
+  "anlatim": [
+   "Nikah davetiyesi seçemeyenlere dört model! Sonuna kadar izleyin, favorinizi yazın!",
+   "Şeffaf Kare Düğün – Model yedi bin altmış dokuz.",
+   "Şeffaf Kare Düğün – Model yedi bin seksen dört.",
+   "Hangisi sizin tarzınız? Yoruma numarasını yazın.",
+   "sekiz yüz yetmiş beş nikah davetiyesi modeli. Tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: model_vitrin formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-davetiyeler.jpg?v=e84df04d",
+  "olusturma": "2026-11-23T13:32:58+03:00"
+ },
+ "2026-11-27": {
+  "id": "2026-11-27-davetiyeler",
+  "gun": "2026-11-27",
+  "kod": "davetiyeler",
+  "format": "siparis_nasil",
+  "konu": "Basılı davetiye nasıl sipariş edilir",
+  "anahtar": "siparis:48",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "siparis:48",
+   "konu": "Basılı davetiye nasıl sipariş edilir",
+   "anahtar_kelime": "davetiye siparişi",
+   "olgular": [
+    "Adet seçilir: 100, 200, 300, 400, 500, 600, 700, 800 veya 1000. Hane başına bir adet + birkaç yedek önerilir.",
+    "Sipariş formuna isimler, tarih, saat ve mekân yazılır.",
+    "Fiyat için teklif istenir; baskı öncesi metin ve yazım kontrolü WhatsApp'tan yapılır.",
+    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye; kod sipariş onayında e-postaya gelir.",
+    "Örnek model: Lüks Kare Düğün Davetiyesi – Model 5150"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
+     "etiket": "Sipariş rehberi",
+     "baslik": "Davetiye siparişi 3 adımda",
+     "alt": "Kaç adet lazım? Videonun sonunda"
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.davetiyeler.tr/urun/luks-davetiye-5150/",
+     "sure": 6.0,
+     "once_tikla": [
+      "Kabul",
+      "Tamam"
+     ],
+     "kaydir": true,
+     "kaydir_px": 650,
+     "ust_yazi": "1. Modeli seçin, adedi belirleyin"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
+     "etiket": "Adım adım",
+     "baslik": "Sonrası çok kolay",
+     "maddeler": [
+      "İsim, tarih, saat ve mekânı yazın",
+      "Teklifinizi alın",
+      "Yazım kontrolü WhatsApp'tan, sonra baskı"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
+     "etiket": "İpucu",
+     "rakam": "+%10",
+     "baslik": "Hane sayısına yedek ekleyin",
+     "alt": "Son dakika davetlileri unutulmasın"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Dijital davetiye de hediye",
+     "alt": "Basılı davetiye siparişine ₺650 değerinde"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
+    "etiket": "Sipariş ipucu",
+    "baslik": "Kaç davetiye bastırmalı?",
+    "alt": "Hane sayısı + %10 yedek"
+   },
+   "format": "siparis_nasil",
+   "tam_maddeler": [
+    "İsim, tarih, saat ve mekânı yazın",
+    "Teklifinizi alın",
+    "Yazım kontrolü WhatsApp'tan, sonra baskı"
+   ],
+   "tohum": "davetiyeler:2026-11-27",
+   "denenen_formatlar": [
+    "siparis_nasil",
+    "dijital_davetiye",
+    "model_vitrin",
+    "kampanya"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Davetiye siparişi 3 adımda\nKaç adet lazım? Videonun sonunda\n\nSonrası çok kolay\n✔️ İsim, tarih, saat ve mekânı yazın\n✔️ Teklifinizi alın\n✔️ Yazım kontrolü WhatsApp'tan, sonra baskı\n\nDavetiye siparişi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #düğünhazırlığı #gelinadayı",
+  "anlatim": [
+   "Davetiye siparişi üç adımda! Kaç adet lazım? Videonun sonunda!",
+   "Şimdi gerçek ekranda bakalım: Modeli seçin, adedi belirleyin.",
+   "Sonrası çok kolay: İsim, tarih, saat ve mekânı yazın, Teklifinizi alın.",
+   "yüzde on fazla! Son dakika davetlileri unutulmasın.",
+   "Dijital davetiye de hediye. Tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: siparis_nasil formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-davetiyeler.jpg?v=7ea63be1",
+  "olusturma": "2026-11-23T13:33:49+03:00"
  }
 }
