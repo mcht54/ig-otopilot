@@ -37,11 +37,11 @@ def format_carpani(kod: str) -> dict[str, float]:
     return {f: max(0.5, min(2.0, statistics.mean(v) / ort)) for f, v in skorlar.items() if len(v) >= 2}
 
 
-def format_sirasi(kod: str, marka: dict, rnd: random.Random) -> list[str]:
+def format_sirasi(kod: str, marka: dict, rnd: random.Random, gun: dt.date | None = None, onceki_format: str | None = None) -> list[str]:
     taban = dict(marka["formatlar"])
     carpan = format_carpani(kod)
-    dun = (simdi().date() - dt.timedelta(days=1)).isoformat()
-    dunku = next((k["format"] for k in gecmis(kod) if k.get("tarih") == dun and k.get("tur") == "reels"), None)
+    dun = ((gun or simdi().date()) - dt.timedelta(days=1)).isoformat()
+    dunku = onceki_format or next((k["format"] for k in gecmis(kod) if k.get("tarih") == dun and k.get("tur") == "reels"), None)
     agirlik = {f: w * carpan.get(f, 1.0) * (0.25 if f == dunku else 1.0) for f, w in taban.items()}
     if rnd.random() < 0.15:  # keşif: arada az denenen formatı da dene
         agirlik = {f: 1.0 for f in taban}
@@ -241,17 +241,22 @@ def metin_denetle(senaryo: dict, aciklama: str, marka: dict, referans: dict | No
 
 # ---------------- ana giriş ----------------
 
-def planla(kod: str, marka: dict, tarayici, klasor, atla: set[str] | None = None) -> dict:
-    tohum = f"{kod}:{simdi().date().isoformat()}"
+def planla(kod: str, marka: dict, tarayici, klasor, atla: set[str] | None = None, gun: dt.date | None = None,
+           ek_kullanilan: set[str] | None = None, onceki_format: str | None = None) -> dict:
+    """gun verilirse o gün için (ileri tarihli plan) kurar; ek_kullanilan: haftalık plandaki diğer günlerin anahtarları."""
+    g = gun or simdi().date()
+    an = simdi() if gun is None else dt.datetime.combine(g, dt.time(12, 0), tzinfo=simdi().tzinfo)
+    tohum = f"{kod}:{g.isoformat()}"
     rnd = random.Random(tohum)
+    ek = set(ek_kullanilan or ())
     ctx = {
-        "tarayici": tarayici, "marka": marka, "klasor": klasor, "rnd": rnd, "simdi": simdi(),
-        "tarih": simdi().date().isoformat(),
-        "kullanilan": kullanilan_anahtarlar(kod, 120) | {a for k in gecmis(kod) for a in k.get("ek_anahtarlar", [])},
-        "kullanilan_yakin": kullanilan_anahtarlar(kod, 14),
+        "tarayici": tarayici, "marka": marka, "klasor": klasor, "rnd": rnd, "simdi": an,
+        "tarih": g.isoformat(),
+        "kullanilan": kullanilan_anahtarlar(kod, 120) | {a for k in gecmis(kod) for a in k.get("ek_anahtarlar", [])} | ek,
+        "kullanilan_yakin": kullanilan_anahtarlar(kod, 14) | ek,
     }
     klasor.mkdir(parents=True, exist_ok=True)
-    sira = format_sirasi(kod, marka, rnd)
+    sira = format_sirasi(kod, marka, rnd, g, onceki_format)
     zorla = os.environ.get("OTOPILOT_FORMAT")
     if zorla:
         sira = [zorla] + [f for f in sira if f != zorla]
@@ -302,3 +307,16 @@ def yedek_icerik(kod: str, marka: dict, ctx: dict) -> dict:
     }
     s["tam_maddeler"] = list(maddeler)
     return slot_yaz(s, {k: _kisalt(v, slot_sinir(k)) for k, v in slotlar(s).items()})
+
+
+def iddia_kontrol(kod: str, senaryo: dict) -> dict:
+    """Üretim günü son kontrol (plan günler önce kurulmuş olabilir): kampanya/deneme iddiası sitede artık yoksa çıkarılır."""
+    from .kaynak import iddia_temizle
+    if kod == "davetiyeler":
+        if not davetiyeler.hediye_suruyor():
+            return iddia_temizle(senaryo, r"hediye|650\+KDV|650 değerinde", "Tüm modeller sitede")
+    elif kod == "sitemucidi":
+        from .kaynak import sitede_var
+        if not sitede_var(f"{sitemucidi.SITE}/", r"7 gün"):
+            return iddia_temizle(senaryo, r"7 gün", "Sitenizi ücretsiz oluşturun")
+    return senaryo

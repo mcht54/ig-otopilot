@@ -1,0 +1,68 @@
+name: Plan ve panel istekleri
+
+# Günde 5 kez: panelden gelen düzenleme / "Konuyu değiştir" / "Ne paylaşılsın?" isteklerini yapay zekâyla işler,
+# her marka için önümüzdeki 7 günün planını (kapak önizlemesi + anlatım) tamamlar, takipçi sayılarını kaydeder.
+# Paylaşım YAPMAZ. Ağır iş burada; panel yalnız özet JSON tutar, görseller GitHub sürüm dosyasından gösterilir.
+on:
+  schedule:
+    - cron: "0 4,8,12,16,20 * * *"   # 07, 11, 15, 19, 23 TR
+  workflow_dispatch:
+
+concurrency:
+  group: otopilot
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # plan.json kaydı + plan sürüm dosyaları
+  id-token: write   # panel senkronu (GitHub OIDC; panelde anahtar yok)
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    env:
+      TZ: Europe/Istanbul
+      PYTHONPATH: .
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
+      META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
+      META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}
+      META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Araçlar
+        run: |
+          for i in 1 2 3; do  # paket aynası/listesi geçici bozuksa yeniden dene
+            sudo apt-get update -qq && sudo apt-get install -y -qq --fix-missing ffmpeg fonts-noto-core fonts-noto-color-emoji >/dev/null && break
+            echo "apt denemesi $i başarısız"; sleep 20
+          done
+          pip install -q -r requirements.txt
+      - uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('requirements.txt') }}
+      - name: Tarayıcı
+        run: |
+          for i in 1 2 3; do
+            sudo apt-get update -qq; python -m playwright install --with-deps chromium && break
+            echo "tarayıcı kurulum denemesi $i başarısız"; sleep 20
+          done
+      - name: Plan + panel istekleri
+        run: python -m otopilot.calistir plan
+      - name: Planı kaydet
+        if: always()
+        run: |
+          git config user.name "ig-otopilot"
+          git config user.email "ig-otopilot@users.noreply.github.com"
+          git add durum
+          if ! git diff --cached --quiet; then
+            git commit -qm "plan: $(date +%F_%H:%M)"
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          fi

@@ -31,7 +31,13 @@ def _durum(v: str) -> str:
     return "bekliyor"
 
 
+def _anlatim_satirlari(anlatim: list[str] | None) -> list[dict]:
+    return [{"id": f"a{i}", "kim": f"Anlatıcı · {i + 1}. sahne", "metin": t, "ekran": False} for i, t in enumerate(anlatim or [])]
+
+
 def ozet(gun: int = 14) -> list[dict]:
+    from . import plan
+    bugun = simdi().date().isoformat()
     sinir = (simdi().date() - dt.timedelta(days=gun)).isoformat()
     satirlar = []
     for kod in marka_kodlari():
@@ -47,10 +53,33 @@ def ozet(gun: int = 14) -> list[dict]:
                 "platformlar": [{"anahtar": a, "ad": PLATFORM_AD.get(a, a), "durum": _durum(p.get(a)),
                                  "link": str(p.get(a)).split(" ")[0] if str(p.get(a, "")).startswith("https://") else None}
                                 for a in ("instagram", "instagram_hikaye", "facebook", "youtube", "tiktok")],
-                "satirlar": [], "duzenlenebilir": False, "kilit_nedeni": "Otomatik üretildi",
+                "satirlar": _anlatim_satirlari(k.get("anlatim")), "duzenlenebilir": False, "kilit_nedeni": "Yayınlandı",
+                "gorsel": k.get("gorsel"), "neden": None,
                 "format": k.get("format"), "skor": k.get("skor"), "olcum": k.get("olcum"),
             })
+        yapildi = {k.get("tarih") for k in gecmis(kod) if k.get("tur") == "reels"}
+        for g, o in plan.oku(kod).items():  # ileri tarihli plan (bugün henüz üretilmediyse bugünkü de)
+            if g < bugun or g in yapildi:
+                continue
+            s = o["senaryo"]
+            kapak = next((sh for sh in s["sahneler"] if sh.get("tip") == "kapak"), s["sahneler"][0])
+            ekran = [{"id": "k.baslik", "kim": "Kapak başlığı (ekranda)", "metin": kapak.get("baslik") or "", "ekran": True}]
+            if kapak.get("alt"):
+                ekran.append({"id": "k.alt", "kim": "Kapak alt yazısı (ekranda)", "metin": kapak["alt"], "ekran": True})
+            satirlar.append({
+                "id": o["id"], "gun": g, "saat": m["saat"]["reels"], "baslik": kapak.get("baslik") or o["konu"], "bolum_no": None,
+                "hedef": m["ad"], "sektor": kod, "konu": o["konu"], "durum": "senaryo", "platformlar": [],
+                "satirlar": ekran + _anlatim_satirlari(o.get("anlatim")),
+                "duzenlenebilir": g > bugun, "kilit_nedeni": None if g > bugun else "Bugün üretiliyor",
+                "gorsel": o.get("gorsel"), "neden": o.get("neden"), "format": o.get("format"),
+            })
     return sorted(satirlar, key=lambda x: (x["gun"], x["saat"]))
+
+
+def ekler() -> dict:
+    from . import plan
+    return {"urunler": [{"anahtar": k, "ad": marka(k)["ad"]} for k in marka_kodlari()],
+            "markalar": {k: plan.buyume(k) for k in marka_kodlari()}}
 
 
 def _belge() -> str:
@@ -62,14 +91,28 @@ def _belge() -> str:
     return r.json()["value"]
 
 
-def gonder() -> int:
+def gonder(donus: bool = False):
+    """Takvimi panele bırakır; donus=True ise panelin bekleyen düzenleme/istek/tanıtımlarını döndürür (hata olursa {})."""
     try:
-        r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}", json={"bolumler": ozet(), "ekler": {}}, timeout=60,
+        r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}", json={"bolumler": ozet(), "ekler": ekler()}, timeout=60,
                           headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
         log(f"panel: {r.status_code} {r.text[:160]}")
+        if donus:
+            return r.json() if r.ok else {}
     except Exception as e:
         log(f"panel senkronu atlandı: {e}")
-    return 0
+    return {} if donus else 0
+
+
+def onay(yuk: dict) -> None:
+    if not any(yuk.get(k) for k in ("uygulanan", "reddedilen", "tanitim")):
+        return
+    try:
+        r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}/onay", json=yuk, timeout=60,
+                          headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
+        log(f"panel onay: {r.status_code} {r.text[:160]}")
+    except Exception as e:
+        log(f"panel onayı gönderilemedi: {e}")
 
 
 if __name__ == "__main__":

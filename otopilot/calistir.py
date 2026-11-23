@@ -75,8 +75,40 @@ def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
             "etiket": h.get("etiket"), "baslik": h.get("baslik") or senaryo["konu"], "alt": h.get("alt")}
 
 
-def uret(kod: str, tarayici, klasor: Path) -> dict:
+def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama: str, kaynak: str, anlatim: list[str] | None = None) -> dict:
+    from . import ses
+    if anlatim and len(anlatim) == len(senaryo["sahneler"]):
+        anlatim_kaynagi = senaryo.get("anlatim_kaynagi") or "plan"
+    else:
+        anlatim, anlatim_kaynagi = ses.anlatim_yaz(senaryo, m)
+    reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim)
+    senaryo.update(anlatim=anlatim, anlatim_kaynagi=anlatim_kaynagi, ses_kaynagi=ses_kaynagi)
+    log(f"anlatım ({anlatim_kaynagi}, ses: {ses_kaynagi}): {' / '.join(anlatim)}")
+    vh = video_denetle(reel)
+    if vh:
+        raise RuntimeError(f"video kalite: {vh}")
+    kapak = kapak_kare(reel, klasor / "kapak.jpg", 1.2)
+    hikaye, _ = film_yap(tarayici, [hikaye_sahnesi(senaryo, kapak.as_uri())], m, klasor, "hikaye", senaryo["tohum"] + "h")
+    hh = video_denetle(hikaye, en_az=3, en_cok=15)
+    if hh:
+        raise RuntimeError(f"hikâye kalite: {hh}")
+    senaryo["metin_kaynagi"] = kaynak
+    (klasor / "aciklama.txt").write_text(aciklama, encoding="utf-8")
+    json_kaydet(klasor / "senaryo.json", senaryo)
+    return {"senaryo": senaryo, "aciklama": aciklama, "reel": reel, "hikaye": hikaye, "kapak": kapak}
+
+
+def uret(kod: str, tarayici, klasor: Path, hazir: dict | None = None) -> dict:
+    """hazir: bugünün plan öğesi (panelde görülen/düzenlenen içerik). Üretilemezse içerik baştan kurulur."""
     m = marka(kod)
+    if hazir:
+        try:
+            s = beyin.iddia_kontrol(kod, hazir["senaryo"])  # plan günler önce kuruldu: kampanya/deneme hâlâ geçerli mi
+            log(f"{kod}: bugünün planı kullanılıyor ({hazir['format']}: {hazir['konu']})")
+            return _uret_bir(kod, m, tarayici, klasor, s, hazir["aciklama"], s.get("metin_kaynagi", "plan"), hazir.get("anlatim"))
+        except Exception as e:
+            log(f"{kod}: plan üretilemedi ({e}); içerik baştan kuruluyor")
+            log(traceback.format_exc())
     atla: set[str] = set()
     son_hata = None
     for deneme in range(len(m["formatlar"]) + 2):  # her format bir kez + ağsız yedek
@@ -90,29 +122,13 @@ def uret(kod: str, tarayici, klasor: Path) -> dict:
             atla.add(senaryo["format"])
             continue
         try:
-            from . import ses
-            anlatim, anlatim_kaynagi = ses.anlatim_yaz(senaryo, m)
-            reel, ses_kaynagi = film_yap(tarayici, senaryo["sahneler"], m, klasor, "reel", senaryo["tohum"], anlatim=anlatim)
-            senaryo.update(anlatim=anlatim, anlatim_kaynagi=anlatim_kaynagi, ses_kaynagi=ses_kaynagi)
-            log(f"anlatım ({anlatim_kaynagi}, ses: {ses_kaynagi}): {' / '.join(anlatim)}")
-            vh = video_denetle(reel)
-            if vh:
-                raise RuntimeError(f"video kalite: {vh}")
-            kapak = kapak_kare(reel, klasor / "kapak.jpg", 1.2)
-            hikaye, _ = film_yap(tarayici, [hikaye_sahnesi(senaryo, kapak.as_uri())], m, klasor, "hikaye", senaryo["tohum"] + "h")
-            hh = video_denetle(hikaye, en_az=3, en_cok=15)
-            if hh:
-                raise RuntimeError(f"hikâye kalite: {hh}")
+            return _uret_bir(kod, m, tarayici, klasor, senaryo, aciklama, kaynak)
         except Exception as e:
             son_hata = e
             log(f"{senaryo['format']} üretilemedi ({e}); başka format deneniyor")
             log(traceback.format_exc())
             atla.add(senaryo["format"])
             continue
-        senaryo["metin_kaynagi"] = kaynak
-        (klasor / "aciklama.txt").write_text(aciklama, encoding="utf-8")
-        json_kaydet(klasor / "senaryo.json", senaryo)
-        return {"senaryo": senaryo, "aciklama": aciklama, "reel": reel, "hikaye": hikaye, "kapak": kapak}
     raise RuntimeError(f"hiçbir formatla içerik üretilemedi: {son_hata}")
 
 
@@ -124,17 +140,24 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
         if not (yayin_acik and onceki["durum"] == "onizleme"):
             log(f"{kod}: bugün zaten yapıldı ({onceki['durum']})")
             return onceki
+    from . import plan
     ig = Instagram(kod)
     if ig.hazir:
         try:
             olc(kod, ig)
+            plan.hesap_kaydet(kod, ig.hesap())
         except Exception as e:
             log(f"{kod} ölçüm hatası: {e}")
     klasor = CIKTI / tarih / kod
+    try:
+        hazir = plan.bugunku(kod, klasor)
+    except Exception as e:
+        log(f"{kod}: plan okunamadı ({e})")
+        hazir = None
     with sync_playwright() as p:
         tarayici = p.chromium.launch(args=["--disable-gpu", "--font-render-hinting=none"])
         try:
-            sonuc = uret(kod, tarayici, klasor)
+            sonuc = uret(kod, tarayici, klasor, hazir)
         finally:
             tarayici.close()
     s = sonuc["senaryo"]
@@ -142,7 +165,15 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
         "tarih": tarih, "tur": "reels", "format": s["format"], "anahtar": s["anahtar"], "ek_anahtarlar": s.get("ek_anahtarlar", []),
         "konu": s["konu"], "baslik": next((x.get("baslik") for x in s["sahneler"] if x.get("baslik")), s["konu"]),
         "metin_kaynagi": s["metin_kaynagi"], "durum": "onizleme", "klasor": str(klasor.relative_to(CIKTI.parent)),
+        "anlatim": s.get("anlatim"), "ses_kaynagi": s.get("ses_kaynagi"),
     }
+    try:  # panelde geçmiş içeriğin kapağı görünsün (GitHub sürüm dosyası; sunucuya yük yok)
+        on = CIKTI / f"{tarih}-{kod}.jpg"
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(sonuc["kapak"]), "-vf", "scale=360:-2", "-q:v", "5", str(on)], check=True)
+        if plan.yukle(on):
+            kayit["gorsel"] = plan.gorsel_url(on.name, "y")
+    except Exception as e:
+        log(f"kapak panele yüklenemedi: {e}")
     if yayin_acik:
         if not ig.hazir:
             kayit["hata"] = f"Instagram anahtarı yok (IG_{kod.upper()}_ID/TOKEN ya da IG_TOKEN + META_{kod.upper()}_IG_ID)"
@@ -278,6 +309,35 @@ def anahtar_yenile() -> None:
         log(f"{kod}: anahtar {'güncellendi' if r.returncode == 0 else 'GÜNCELLENEMEDİ: ' + r.stderr[:200]}")
 
 
+def plan_komutu() -> int:
+    """Gün içinde birkaç kez: panel isteklerini işler, 7 günlük planı tamamlar, takipçi sayılarını kaydeder, panele bildirir."""
+    from . import panel, plan
+    for kod in marka_kodlari():
+        ig = Instagram(kod)
+        if ig.hazir:
+            try:
+                plan.hesap_kaydet(kod, ig.hesap())
+            except Exception as e:
+                log(f"{kod} hesap bilgisi alınamadı: {e}")
+    yanit = panel.gonder(donus=True) or {}
+    with sync_playwright() as p:
+        tarayici = p.chromium.launch(args=["--disable-gpu", "--font-render-hinting=none"])
+        try:
+            sonuc = plan.panel_isle(yanit, tarayici)
+            yeni = plan.hafta_plani(tarayici)
+        finally:
+            tarayici.close()
+    panel.onay(sonuc)
+    panel.gonder()
+    tut = set()
+    for kod in marka_kodlari():
+        tut |= {f"{g}-{kod}.{u}" for g in plan.oku(kod) for u in ("jpg", "zip")}
+        tut |= {f"{k['tarih']}-{kod}.jpg" for k in gecmis(kod) if k.get("tarih", "") >= (simdi().date() - dt.timedelta(days=15)).isoformat()}
+    plan.temizle(tut)
+    log(f"plan: {yeni} yeni gün, panel: {len(sonuc['uygulanan'])} uygulandı, {len(sonuc['reddedilen'])} reddedildi, {len(sonuc['tanitim'])} tanıtım")
+    return 0
+
+
 def nabiz() -> int:
     """Gün sonu (22:00) denetimi: bugün Instagram'a paylaşılamayan marka varsa listeler ve 1 döner (akış e-posta bildirimi açar)."""
     sorun = []
@@ -310,7 +370,7 @@ def zamani_gelenler() -> list[str]:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz"])
+    ap.add_argument("komut", choices=["otomatik", "uret", "olc", "rapor", "yenile", "kontrol", "nabiz", "plan"])
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
@@ -327,6 +387,8 @@ def main(argv=None) -> int:
         return kontrol()
     if a.komut == "nabiz":
         return nabiz()
+    if a.komut == "plan":
+        return plan_komutu()
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
     hata = 0
     for kod in kodlar:
