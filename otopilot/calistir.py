@@ -280,7 +280,8 @@ def rapor(tarih: str | None = None) -> str:
 
 def kontrol() -> int:
     """Bağlantı denemesi: her markanın Instagram hesabını ve Facebook sayfa erişimini okur (paylaşım yapmaz, anahtar yazdırmaz)."""
-    from .dagitim import _sayfa_anahtari
+    import requests
+    from .dagitim import GRAPH, _sayfa_anahtari
     hata = 0
     for kod in marka_kodlari():
         ig = Instagram(kod)
@@ -296,8 +297,10 @@ def kontrol() -> int:
             satir.append("IG – anahtar/kimlik yok")
         if os.environ.get(f"META_{kod.upper()}_PAGE_ID"):
             try:
-                _sayfa_anahtari(kod)
-                satir.append("FB sayfa ✓")
+                sayfa, t = _sayfa_anahtari(kod)
+                g = requests.get(f"{GRAPH}/me", params={"fields": "id,name,tasks", "access_token": t}, timeout=30)
+                gorev = (g.json() or {}).get("tasks") if g.ok else None
+                satir.append(f"FB sayfa ✓ görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
             except Exception as e:
                 hata = 1
                 satir.append(f"FB sayfa ✗ {str(e)[:120]}")

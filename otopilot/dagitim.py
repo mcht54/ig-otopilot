@@ -44,12 +44,14 @@ def _sayfa_anahtari(kod: str) -> tuple[str, str]:
 def facebook(kod: str, video: Path, aciklama: str) -> str:
     sayfa, t = _sayfa_anahtari(kod)
     r = requests.post(f"{GRAPH}/{sayfa}/video_reels", data={"upload_phase": "start", "access_token": t}, timeout=60)
-    r.raise_for_status()
+    if not r.ok:
+        raise RuntimeError(f"facebook başlatma {r.status_code}: {r.text[:300]}")
     vid = r.json()["video_id"]
     veri = video.read_bytes()
     u = requests.post(f"https://rupload.facebook.com/video-upload/v25.0/{vid}", data=veri, timeout=900,
                       headers={"Authorization": f"OAuth {t}", "offset": "0", "file_size": str(len(veri))})
-    u.raise_for_status()
+    if not u.ok:
+        raise RuntimeError(f"facebook yükleme {u.status_code}: {u.text[:300]}")
     s = requests.post(f"{GRAPH}/{sayfa}/video_reels", timeout=60, data={
         "upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED", "description": aciklama, "access_token": t})
     if not s.ok:
