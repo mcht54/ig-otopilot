@@ -10,5 +10,37 @@
   "metin_kaynagi": "kural",
   "durum": "onizleme",
   "klasor": "cikti/2026-11-22/markakarnem"
+ },
+ {
+  "tarih": "2026-11-23",
+  "tur": "reels",
+  "format": "yerel_karne",
+  "anahtar": "yerel:otel-konaklama:2026-11",
+  "ek_anahtarlar": [],
+  "konu": "Sakarya Otel & Konaklama dijital karnesi",
+  "baslik": "Sakarya otel & konaklama dijital karnesi",
+  "metin_kaynagi": "gemini",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-23/markakarnem",
+  "anlatim": [
+   "Sakarya'daki oteller internette ne kadar görünür, hiç merak ettiniz mi?",
+   "İncelenen işletmelerin yüzde elli üç'ünde çalışma saatleri bile yazmıyor.",
+   "Yüzde seksen iki'sinde ise aramalarda öne çıkaran teknik altyapı eksik.",
+   "Sektörün ortalama marka skoru yetmiş yedi iken sizin durumunuz ne?",
+   "Ücretsiz karnenizi profildeki linkten hemen çıkarın."
+  ],
+  "ses_kaynagi": "gemini",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-23-markakarnem.jpg?v=y",
+  "medya_id": "18123141947052744",
+  "link": "https://www.instagram.com/reel/DgFDL0hCAd-/",
+  "yayin_zamani": "2026-11-23T12:23:53.923324+03:00",
+  "hikaye_id": "18120057047041723",
+  "platformlar": {
+   "facebook": "HATA: 403 Client Error: Forbidden for url: https://graph.facebook.com/v25.0/1414375391764304/video_reels",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgFDL0hCAd-/",
+   "instagram_hikaye": "http-ig-hikaye:18120057047041723"
+  }
  }
 ]
