@@ -325,6 +325,21 @@ def rapor(tarih: str | None = None) -> str:
     return "\n".join(satir)
 
 
+def sayfa_sitesi(sayfa: str, t: str, m: dict) -> str:
+    """Facebook sayfasının 'web sitesi' alanı markanın sitesini göstermiyorsa yazar (sayfa ↔ site kimlik bağı, SEO)."""
+    import requests
+    from .dagitim import GRAPH
+    site = m.get("site", "")
+    try:
+        w = requests.get(f"{GRAPH}/{sayfa}", params={"fields": "website", "access_token": t}, timeout=30).json().get("website", "") or ""
+        if m.get("site_kisa", "~") in w:
+            return "site ✓"
+        r = requests.post(f"{GRAPH}/{sayfa}", data={"website": site, "access_token": t}, timeout=30)
+        return "site yazıldı ✓" if r.ok else f"site yazılamadı ({r.status_code}: {r.text[:120]})"
+    except Exception as e:
+        return f"site ? {type(e).__name__}"
+
+
 def kontrol() -> int:
     """Bağlantı denemesi: her markanın Instagram hesabını ve Facebook sayfa erişimini okur (paylaşım yapmaz, anahtar yazdırmaz)."""
     import requests
@@ -371,6 +386,7 @@ def kontrol() -> int:
                 kim = getattr(ig, "kimlik", None)
                 satir.append(f"IG↔sayfa işletme={'✓' if ib == kim else ('başka' if ib else 'yok')} bağlı={'✓' if cb == kim else ('başka' if cb else 'yok')}")
                 satir.append(f"FB sayfa ✓ {sayfa} görevler={gorev}" if g.ok else f"FB sayfa ? ({g.status_code}: {g.text[:160]})")
+                satir.append(sayfa_sitesi(sayfa, t, marka(kod)))
             except Exception as e:
                 hata = 1
                 satir.append(f"FB sayfa ✗ {str(e)[:120]}")
