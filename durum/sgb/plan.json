@@ -413,5 +413,220 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sgb.jpg?v=6b96ea63",
   "olusturma": "2026-11-23T13:34:07+03:00"
+ },
+ "2026-11-28": {
+  "id": "2026-11-28-sgb",
+  "gun": "2026-11-28",
+  "kod": "sgb",
+  "format": "belge_sorgula",
+  "konu": "Bungalov belgesi nasıl sorgulanır",
+  "anahtar": "belge:48",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "belge:48",
+   "konu": "Bungalov belgesi nasıl sorgulanır",
+   "anahtar_kelime": "bungalov belge sorgulama",
+   "olgular": [
+    "Sapanca'da 374 belgeli konaklama tesisi kaydı var (Kasım 2026).",
+    "Neden önemli?: 2025 yılında Sakarya'da 1.619 bungalovun turizm belgesinin iptal edildiği açıklandı. Ayrıca yürürlükteki düzenlemelerle, Bakanlık belgesi olmayan konaklama tesislerinin internette ilan vermesi ve tanıtılması yasaklandı; ilan platformlarının belge numarasını göstermesi bekleniyor. Belgesiz bir tesis ",
+    "Sorgu nasıl yapılır?: Bakanlık belgeli tesis sorgu sayfasını açın. İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin. Tesis adını yazın ya da listeden bulun. Adın belgede biraz farklı yazılmış olabileceğini unutmayın; ilk kelimeyle aramak daha iyi sonuç verir. Kayıttaki adı, belge türünü ve ilçeyi, size ilanda verilen b",
+    "Belge türleri ne anlama geliyor?: Turizm İşletmesi Belgesi: Bakanlığın asgari standartlarını karşılayan ve denetlenen tesislere verilir. Basit Konaklama Turizm İşletmesi Belgesi: Daha küçük ölçekli konaklama tesisleri içindir; birçok bungalov tesisi bu belgeyle çalışır. Geçici Turizm İşletmesi Belgesi: Belirli şartlar tamamlanana ka",
+    "Bu sitede nasıl kontrol ediyoruz?: Listelediğimiz her tesisin belge numarası, tesis adı ve ilçesi yayına girmeden önce Bakanlık kaydıyla karşılaştırılır ve tesis sayfasında belge numarası gösterilir. Belgesi iptal edilen ya da askıya alınan tesis yayından kaldırılır. Yöntemin ayrıntıları doğrulama sayfamızda yazar."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/bungalov-ic-mekan-sicak-havuz.jpg",
+     "etiket": "Kapora göndermeden önce",
+     "baslik": "Bungalovun belgesi var mı? Kapora göndermeden bakın",
+     "alt": "Adım adım anlatıyoruz"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/orman-icinde-ahsap-bungalov.jpg",
+     "etiket": "Adım adım",
+     "baslik": "Belge nasıl sorgulanır?",
+     "maddeler": [
+      "Bakanlık belgeli tesis sorgu sayfasını açın",
+      "İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin",
+      "Tesis adını yazın ya da listeden bulun",
+      "Kayıttaki adı, belge türünü ve ilçeyi, size ilanda…"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.6,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/somineli-bungalov-salon.jpg",
+     "etiket": "Bakanlık kaydı",
+     "rakam": "374",
+     "baslik": "Sapanca'daki belgeli tesis sayısı",
+     "alt": "Kasım 2026 verisi"
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://sapancaguvenilirbungalov.com.tr/dogrulama/nasil-dogruluyoruz/",
+     "sure": 5.5,
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "ust_yazi": "Biz her tesisi böyle doğruluyoruz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Kapora göndermeden önce kontrol edin",
+     "alt": "Rehberin tamamı profildeki linkte"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/orman-icinde-a-frame-bungalov.jpg",
+    "etiket": "Güvenli tatil",
+    "baslik": "Kapora göndermeden önce belgeyi sorun",
+    "alt": "Nasıl yapılacağı profilde"
+   },
+   "format": "belge_sorgula",
+   "tam_maddeler": [
+    "Bakanlık belgeli tesis sorgu sayfasını açın",
+    "İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin",
+    "Tesis adını yazın ya da listeden bulun",
+    "Kayıttaki adı, belge türünü ve ilçeyi, size ilanda…"
+   ],
+   "tohum": "sgb:2026-11-28",
+   "denenen_formatlar": [
+    "belge_sorgula",
+    "basvuru_adimlari",
+    "kurucu_tesis",
+    "belgeli_ayirt",
+    "guvenlik_ipucu",
+    "sahte_ilan_isletme",
+    "isletme_davet"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Bungalovun belgesi var mı? Kapora göndermeden bakın\nAdım adım anlatıyoruz\n\nBelge nasıl sorgulanır?\n✔️ Bakanlık belgeli tesis sorgu sayfasını açın\n✔️ İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin\n✔️ Tesis adını yazın ya da listeden bulun\n✔️ Kayıttaki adı, belge türünü ve ilçeyi, size ilanda…\n\nBungalov belge sorgulama arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #balayı #haftasonu #tinyhouse",
+  "anlatim": [
+   "Bungalovun belgesi var mı? Kapora göndermeden bakın! Adım adım anlatıyoruz!",
+   "Belge nasıl sorgulanır?: Bakanlık belgeli tesis sorgu sayfasını açın, İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin.",
+   "üç yüz yetmiş dört! Kasım iki bin yirmi altı verisi.",
+   "Şimdi gerçek ekranda bakalım: Biz her tesisi böyle doğruluyoruz.",
+   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: belge_sorgula formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sgb.jpg?v=d10e39a1",
+  "olusturma": "2026-11-23T17:18:48+03:00"
+ },
+ "2026-11-29": {
+  "id": "2026-11-29-sgb",
+  "gun": "2026-11-29",
+  "kod": "sgb",
+  "format": "basvuru_adimlari",
+  "konu": "Tesis başvurusu adım adım",
+  "anahtar": "basvuru:48",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "basvuru:48",
+   "konu": "Tesis başvurusu adım adım",
+   "anahtar_kelime": "bungalov işletme başvurusu",
+   "olgular": [
+    "Bakanlık belgeli Sapanca bungalov tesisinizi komisyonsuz listeleyin. Misafir sizi doğrudan arar. Kurucu tesisler ücretsiz.",
+    "Nasıl çalışır?: Komisyon yok, rezervasyon aracılığı yok. Misafir sizi telefon ya da WhatsApp ile doğrudan arar; anlaşma sizinle misafir arasındadır. Kurucu tesisler ücretsiz. İlk dönemde katılan tesisler ücretsiz listelenir ve sonraki dönem için indirimli fiyat garantisi alır. Panelinizde gerçek istatistik. İlanınızın görüntülenmesi, telefon ve WhatsApp tıklamaları günlük olarak görünür.",
+    "Kimler başvurabilir?: Kültür ve Turizm Bakanlığı'ndan alınmış Turizm İşletmesi Belgesi, Geçici Turizm İşletmesi Belgesi, Basit Konaklama Turizm İşletmesi Belgesi ya da Turizm Amaçlı Konut İzin Belgesi olan tesisler. Mevzuat gereği belgesiz tesislerin internette tanıtımı yapılamaz; bu nedenle belgesiz başvuruları kabul edemiyoruz.",
+    "Başvuru adımları: Başvuru formunu doldurun: tesis bilgileri, belge türü ve numarası, iletişim bilgileriniz. Belgenin fotoğrafını eklemeniz kontrolü hızlandırır. Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla eşleştirir ve sahiplik ya da yetkinizi teyit etmek için sizi arar. Onaylanınca e-postanıza parola belirleme bağlantısı gelir; panelinizden fotoğraflarınızı, birimlerinizi ve fiyatlarınızı eklersiniz. Tele",
+    "Neden bu kadar kontrol?: Sapanca'da gerçek işletmelerin fotoğraflarıyla açılan sahte hesaplar hem misafirlere hem işletmelere zarar veriyor. Sıkı doğrulama, sizin adınıza açılabilecek sahte ilanlara karşı da koruma sağlar: doğrulanmış numaranız ve belgeniz başka bir hesapta kullanılamaz.",
+    "Tesisinizi ekleyin: Başvuru 5 dakika sürer. Hesabınız varsa panelinize giriş yapın. Başvuru formunu doldurun İşletme girişi"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/bungalov-ic-mekan-sicak-havuz.jpg",
+     "etiket": "Tesis sahiplerine",
+     "baslik": "Belgeli tesisinizi listelemek 4 adım",
+     "alt": "Kimler başvurabilir? Videonun sonunda"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 6.0,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/sobali-tiny-house-ic-mekan.jpg",
+     "etiket": "Adım adım",
+     "baslik": "Başvuru nasıl işler?",
+     "maddeler": [
+      "Başvuru formunu doldurun: tesis bilgileri, belge…",
+      "Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla…",
+      "Onaylanınca e-postanıza parola belirleme bağlantısı…",
+      "Telefon doğrulaması tamamlanınca ilanınız yayına girer"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/gol-manzarali-jakuzili-bungalov.jpg",
+     "etiket": "Kimler başvurabilir?",
+     "baslik": "Bakanlık belgesi olan tesisler",
+     "maddeler": [
+      "Turizm İşletmesi Belgesi",
+      "Basit Konaklama belgesi",
+      "Turizm Amaçlı Konut İzin Belgesi"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Tesisinizi ücretsiz ekleyin",
+     "alt": "Başvuru 5 dakika, link profilde"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/orman-icinde-a-frame-bungalov.jpg",
+    "etiket": "Başvuru",
+    "baslik": "Belgeli tesisinizi 4 adımda listeleyin",
+    "alt": "Form profildeki linkte"
+   },
+   "format": "basvuru_adimlari",
+   "tam_maddeler": [
+    "Başvuru formunu doldurun: tesis bilgileri, belge…",
+    "Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla…",
+    "Onaylanınca e-postanıza parola belirleme bağlantısı…",
+    "Telefon doğrulaması tamamlanınca ilanınız yayına girer"
+   ],
+   "tohum": "sgb:2026-11-29",
+   "denenen_formatlar": [
+    "basvuru_adimlari",
+    "isletme_davet",
+    "guvenlik_ipucu",
+    "kurucu_tesis",
+    "sahte_ilan_isletme",
+    "belgeli_ayirt",
+    "belge_sorgula"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Belgeli tesisinizi listelemek 4 adım\nKimler başvurabilir? Videonun sonunda\n\nBaşvuru nasıl işler?\n✔️ Başvuru formunu doldurun: tesis bilgileri, belge…\n✔️ Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla…\n✔️ Onaylanınca e-postanıza parola belirleme bağlantısı…\n✔️ Telefon doğrulaması tamamlanınca ilanınız yayına girer\n\nBungalov işletme başvurusu arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #bungalovtatili #haftasonu #balayı",
+  "anlatim": [
+   "Belgeli tesisinizi listelemek dört adım! Kimler başvurabilir? Videonun sonunda!",
+   "Başvuru nasıl işler?: Başvuru formunu doldurun: tesis bilgileri, belge, Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla.",
+   "Bakanlık belgesi olan tesisler: Turizm İşletmesi Belgesi, Basit Konaklama belgesi.",
+   "Tesisinizi ücretsiz ekleyin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: basvuru_adimlari formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-sgb.jpg?v=fbca7c13",
+  "olusturma": "2026-11-23T17:19:43+03:00"
  }
 }

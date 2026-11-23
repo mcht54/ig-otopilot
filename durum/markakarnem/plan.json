@@ -402,5 +402,213 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-markakarnem.jpg?v=2c5230a6",
   "olusturma": "2026-11-23T13:33:56+03:00"
+ },
+ "2026-11-28": {
+  "id": "2026-11-28-markakarnem",
+  "gun": "2026-11-28",
+  "kod": "markakarnem",
+  "format": "sektor_ipucu",
+  "konu": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+  "anahtar": "sektor:mobilya-dekorasyon",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "sektor:mobilya-dekorasyon",
+   "konu": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+   "anahtar_kelime": "mobilya ve dekorasyon mağazaları internette nasıl görünüyor",
+   "olgular": [
+    "Sayfa: Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+    "Özet: Mobilya mağazası ve dekorasyon işletmenizin web sitesi, Google profili ve Instagram görünürlüğünü analiz edin; showroom ve iletişim eksiklerini görün.",
+    "Müşteri sizi nasıl buluyor?: Mobilya & Dekorasyon için tipik dijital karar süreci. Mobilya ve dekorasyon alışverişi genellikle uzun bir araştırmayla başlar: müşteri önce internette stil ve ürünlere bakar, ardından showroom'u ziyaret etmek ister. Ürün görselleri, showroom adresi, çalışma saatleri ve ölçü ya da sipariş sürecine d",
+    "Üç kanal, tek görünüm: Mobilya ve dekorasyon mağazaları için her kanalın rolü farklıdır. Analiz üçünü birlikte ve birbiriyle tutarlılığıyla inceler. Profil bilgileri Yorumlar Kategori",
+    "Google görünürlüğü Google İşletme Profili: Google profili showroom'un konumunu, saatlerini ve telefonunu gösterir; mağaza içi fotoğraflar ve yorumlar ziyaret kararını destekler. Showroom: her gün 10:00–20:00",
+    "Instagram Sosyal vitrin: Instagram; yeni koleksiyonları, uygulama örneklerini ve showroom'u göstermek için uygundur. Profil ile web sitesi arasında bağlantı kurulması, ürünü beğenen kişinin detaylara ulaşmasını kolaylaştırır.",
+    "Web sitesi Dijital merkez: Web sitesi ürün kategorilerini, showroom bilgilerini ve iletişim ya da sipariş yolunu anlatır. Ürün sayfalarında açıklayıcı başlıklar, yeterli içerik ve görsellerin alternatif metinleri önemlidir. 5252kontrolle ölçülür Marka Skoru, bu kontrollerin sonuçlarından hesaplanır. Doğrulanamayan kontroller ",
+    "Analiz kapsamı: Web sitesi16 SEO15 Google İşletme Profili12 Instagram9",
+    "Nerelerde fırsat olabilir?: Mobilya ve dekorasyon mağazaları için sık karşılaşılan dijital görünürlük eksikleri. Kendi raporunuzda yalnızca işletmeniz için ölçülen sonuçları görürsünüz."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sektörünüze özel",
+     "baslik": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+     "alt": "Cevabı 15 saniyede"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Müşteri sizi nasıl buluyor?",
+      "Üç kanal, tek görünüm",
+      "Google görünürlüğü Google İşletme Profili",
+      "Instagram Sosyal vitrin"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sektorler/mobilya-dekorasyon",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sektörünüze özel",
+    "baslik": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "sektor_ipucu",
+   "tam_maddeler": [
+    "Müşteri sizi nasıl buluyor?",
+    "Üç kanal, tek görünüm",
+    "Google görünürlüğü Google İşletme Profili",
+    "Instagram Sosyal vitrin"
+   ],
+   "tohum": "markakarnem:2026-11-28",
+   "denenen_formatlar": [
+    "ornek_rapor",
+    "sektor_ipucu",
+    "soru_cevap",
+    "arac_demo",
+    "yerel_karne"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #googleharitalar #esnaf #küçükişletme",
+  "anlatim": [
+   "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor? Cevabı on beş saniyede!",
+   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
+   "Şimdi gerçek ekranda bakalım: Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-markakarnem.jpg?v=e60651b0",
+  "olusturma": "2026-11-23T17:18:35+03:00"
+ },
+ "2026-11-29": {
+  "id": "2026-11-29-markakarnem",
+  "gun": "2026-11-29",
+  "kod": "markakarnem",
+  "format": "sektor_ipucu",
+  "konu": "Temizlik şirketleri internette nasıl görünüyor?",
+  "anahtar": "sektor:temizlik-hizmetleri",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "sektor:temizlik-hizmetleri",
+   "konu": "Temizlik şirketleri internette nasıl görünüyor?",
+   "anahtar_kelime": "temizlik şirketleri internette nasıl görünüyor",
+   "olgular": [
+    "Sayfa: Temizlik şirketleri internette nasıl görünüyor?",
+    "Özet: Temizlik şirketinizin web sitesi, Google profili ve iletişim yollarının nasıl göründüğünü analiz edin; teklif ve güven unsurlarındaki eksikleri görün.",
+    "Müşteri sizi nasıl buluyor?: Temizlik Hizmetleri için tipik dijital karar süreci. Temizlik hizmeti alan kişi, evine ya da iş yerine birini kabul edeceği için güveni ön planda tutar. Hizmet kapsamı, hizmet bölgesi, ekip hakkında bilgi ve teklif alma kolaylığı karar sürecinde öne çıkar. Çoğu zaman birden fazla firmadan fiyat iste",
+    "Üç kanal, tek görünüm: Temizlik şirketleri için her kanalın rolü farklıdır. Analiz üçünü birlikte ve birbiriyle tutarlılığıyla inceler. Profil bilgileri Yorumlar Kategori",
+    "Google görünürlüğü Google İşletme Profili: Google profilinde doğru kategori, telefon, hizmet bölgesine uygun bilgiler ve güncel yorumlar güven oluşturmada rol oynar. Ücretsiz keşif için WhatsApp",
+    "Instagram Sosyal vitrin: Instagram; önce/sonra uygulamaları ve ekibi göstermek için kullanılabilir. Profilde teklif ve iletişim yönlendirmesi bulunması önemlidir.",
+    "Web sitesi Dijital merkez: Web sitesi hizmet türlerini, hizmet bölgelerini, firma bilgilerini ve hızlı teklif yolunu anlatır. Harekete geçirici çağrı ve WhatsApp bağlantısı, teklif sürecini kısaltır. 5252kontrolle ölçülür Marka Skoru, bu kontrollerin sonuçlarından hesaplanır. Doğrulanamayan kontroller skoru düşürmez; raporda ",
+    "Analiz kapsamı: Web sitesi16 SEO15 Google İşletme Profili12 Instagram9",
+    "Nerelerde fırsat olabilir?: Temizlik şirketleri için sık karşılaşılan dijital görünürlük eksikleri. Kendi raporunuzda yalnızca işletmeniz için ölçülen sonuçları görürsünüz."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sektörünüze özel",
+     "baslik": "Temizlik şirketleri internette nasıl görünüyor?",
+     "alt": "Cevabı 15 saniyede"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Müşteri sizi nasıl buluyor?",
+      "Üç kanal, tek görünüm",
+      "Google görünürlüğü Google İşletme Profili",
+      "Instagram Sosyal vitrin"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sektorler/temizlik-hizmetleri",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sektörünüze özel",
+    "baslik": "Temizlik şirketleri internette nasıl görünüyor?",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "sektor_ipucu",
+   "tam_maddeler": [
+    "Müşteri sizi nasıl buluyor?",
+    "Üç kanal, tek görünüm",
+    "Google görünürlüğü Google İşletme Profili",
+    "Instagram Sosyal vitrin"
+   ],
+   "tohum": "markakarnem:2026-11-29",
+   "denenen_formatlar": [
+    "sektor_ipucu",
+    "ornek_rapor",
+    "yerel_karne",
+    "arac_demo",
+    "soru_cevap"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Temizlik şirketleri internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #dijitalpazarlama #googleharitalar",
+  "anlatim": [
+   "Temizlik şirketleri internette nasıl görünüyor? Cevabı on beş saniyede!",
+   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
+   "Şimdi gerçek ekranda bakalım: Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-markakarnem.jpg?v=45893295",
+  "olusturma": "2026-11-23T17:19:31+03:00"
  }
 }

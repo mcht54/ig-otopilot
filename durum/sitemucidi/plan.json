@@ -474,5 +474,289 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sitemucidi.jpg?v=760a1566",
   "olusturma": "2026-11-23T13:34:35+03:00"
+ },
+ "2026-11-28": {
+  "id": "2026-11-28-sitemucidi",
+  "gun": "2026-11-28",
+  "kod": "sitemucidi",
+  "format": "sektor_demo",
+  "konu": "Ev temizliği için Işıl teması ile 3 dakikada site",
+  "anahtar": "tema:temizlik-prestij",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "tema:temizlik-prestij",
+   "konu": "Ev temizliği için Işıl teması ile 3 dakikada site",
+   "anahtar_kelime": "ev temizliği web sitesi",
+   "olgular": [
+    "Tema: Işıl — Ev temizliği için premium ve hareketli tasarım",
+    "Uygun sektörler: Ev temizliği, Ofis temizliği, Halı yıkama",
+    "Tema açıklaması: Temizlik sektörüne özel. Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.",
+    "Öne çıkanlar: Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.; Tam ekran aydınlık fotoğraf; Hizmet kartları; Teklif çağrısı",
+    "Videoda örnek işletme adı: Işıl Ev temizliği (gerçek işletme değil)",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir, yayına almak ücretlidir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-temizlik-prestij.png",
+     "etiket": "Ev temizliği",
+     "baslik": "Ev temizliği için 3 dakikada web sitesi",
+     "alt": "Kod yok, ajans yok, bekleme yok."
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/olustur?tema=temizlik-prestij",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "bekle": 0.8,
+     "ust_yazi": "1. Tasarımınızı seçin",
+     "sure": 6.09,
+     "eylemler": [
+      {
+       "t": 1.1,
+       "tikla": "Bilgiler"
+      },
+      {
+       "t": 1.2,
+       "ust_yazi": "2. İşletme adınızı yazın"
+      },
+      {
+       "t": 1.6,
+       "odak": "İşletme adı"
+      },
+      {
+       "t": 1.62,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.7000000000000002,
+       "tus": "I"
+      },
+      {
+       "t": 1.7700000000000002,
+       "tus": "ş"
+      },
+      {
+       "t": 1.8400000000000003,
+       "tus": "ı"
+      },
+      {
+       "t": 1.9100000000000001,
+       "tus": "l"
+      },
+      {
+       "t": 1.9800000000000002,
+       "tus": " "
+      },
+      {
+       "t": 2.0500000000000003,
+       "tus": "E"
+      },
+      {
+       "t": 2.12,
+       "tus": "v"
+      },
+      {
+       "t": 2.1900000000000004,
+       "tus": " "
+      },
+      {
+       "t": 2.2600000000000002,
+       "tus": "t"
+      },
+      {
+       "t": 2.33,
+       "tus": "e"
+      },
+      {
+       "t": 2.4000000000000004,
+       "tus": "m"
+      },
+      {
+       "t": 2.47,
+       "tus": "i"
+      },
+      {
+       "t": 2.54,
+       "tus": "z"
+      },
+      {
+       "t": 2.6100000000000003,
+       "tus": "l"
+      },
+      {
+       "t": 2.68,
+       "tus": "i"
+      },
+      {
+       "t": 2.75,
+       "tus": "ğ"
+      },
+      {
+       "t": 2.8200000000000003,
+       "tus": "i"
+      },
+      {
+       "t": 3.3900000000000006,
+       "tikla": "Önizleme"
+      },
+      {
+       "t": 3.4900000000000007,
+       "ust_yazi": "3. Siteniz hazır"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "html_yol": "{{KLASOR}}/onizleme-temizlik-prestij.html",
+     "kaydir": true,
+     "sure": 7.5,
+     "kaydir_px": 3200,
+     "ust_yazi": "Işıl teması — gerçek önizleme"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "file://{{KLASOR}}/kapak-temizlik-prestij.png",
+     "etiket": "Hazır gelir",
+     "baslik": "Bu temada neler var?",
+     "maddeler": [
+      "Tam ekran fotoğraflı, hareketli premium düzen…",
+      "Tam ekran aydınlık fotoğraf",
+      "Hizmet kartları"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitenizi şimdi ücretsiz oluşturun",
+     "alt": "Kaydedin, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-temizlik-prestij.png",
+    "etiket": "Yeni video",
+    "baslik": "Ev temizliği sitesi 3 dakikada nasıl kurulur?",
+    "alt": "Adım adım izleyin"
+   },
+   "format": "sektor_demo",
+   "tam_maddeler": [
+    "Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.",
+    "Tam ekran aydınlık fotoğraf",
+    "Hizmet kartları"
+   ],
+   "tohum": "sitemucidi:2026-11-28",
+   "denenen_formatlar": [
+    "sektor_demo",
+    "ozellik",
+    "yz_arama",
+    "tema_paket"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Ev temizliği için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.\n✔️ Tam ekran aydınlık fotoğraf\n✔️ Hizmet kartları\n\nEv temizliği web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #googledaçıkmak #girişimcilik",
+  "anlatim": [
+   "Ev temizliği için üç dakikada web sitesi! Kod yok, ajans yok, bekleme yok!",
+   "Şimdi gerçek ekranda bakalım: Tasarımınızı seçin.",
+   "Işıl teması, gerçek önizleme.",
+   "Bu temada neler var?: Tam ekran fotoğraflı, hareketli premium düzen, Tam ekran aydınlık fotoğraf.",
+   "Sitenizi şimdi ücretsiz oluşturun. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sitemucidi.jpg?v=bcc3de77",
+  "olusturma": "2026-11-23T17:19:08+03:00"
+ },
+ "2026-11-29": {
+  "id": "2026-11-29-sitemucidi",
+  "gun": "2026-11-29",
+  "kod": "sitemucidi",
+  "format": "tema_paket",
+  "konu": "Lojistik teması üç pakette",
+  "anahtar": "paket:lojistik",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "paket:lojistik",
+   "konu": "Lojistik teması üç pakette",
+   "anahtar_kelime": "hazır web sitesi",
+   "olgular": [
+    "Lojistik temasının Yalın, Vizyon ve Premium paketleri var; paket yükseldikçe hareket ve ek bölümler artar.",
+    "Önizlemeler sitedeki gerçek tema önizlemesidir.",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-lojistik-vizyon.png",
+     "etiket": "Aynı tema, 3 paket",
+     "baslik": "Hangisi sizin işletmenize uyar?",
+     "alt": "Lojistik teması"
+    },
+    {
+     "tur": "kart",
+     "tip": "telefon",
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-lojistik-yalin.png",
+     "baslik": "Yalın paket"
+    },
+    {
+     "tur": "kart",
+     "tip": "telefon",
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/paket-lojistik-vizyon.png",
+     "baslik": "Vizyon paket"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Yorumlara tercihinizi yazın",
+     "alt": "Ücretsiz oluşturun, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/paket-lojistik-yalin.png",
+    "etiket": "Anket",
+    "baslik": "Yalın mı, Premium mu?",
+    "alt": "Videoda üçünü karşılaştırdık"
+   },
+   "format": "tema_paket",
+   "tohum": "sitemucidi:2026-11-29",
+   "denenen_formatlar": [
+    "tema_paket",
+    "ozellik",
+    "sektor_demo",
+    "yz_arama"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Hangisi sizin işletmenize uyar?\nLojistik teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #googledaçıkmak #yapayzeka #dijitalpazarlama",
+  "anlatim": [
+   "Hangisi sizin işletmenize uyar? Lojistik teması!",
+   "Yalın paket.",
+   "Vizyon paket.",
+   "Yorumlara tercihinizi yazın. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-sitemucidi.jpg?v=d92e26bb",
+  "olusturma": "2026-11-23T17:20:03+03:00"
  }
 }
