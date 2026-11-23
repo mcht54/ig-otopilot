@@ -26,7 +26,7 @@ def _durum(v: str) -> str:
         return "taslak"
     if v.startswith("http"):
         return "paylasildi"
-    if v.startswith("HATA"):
+    if v.startswith(("HATA", "BELIRSIZ")):
         return "hata"
     return "bekliyor"
 
@@ -85,6 +85,18 @@ def ekler() -> dict:
             "markalar": {k: plan.buyume(k) for k in marka_kodlari()}}
 
 
+def _yanit_ozeti(r) -> str:
+    """Depo ve Actions logları herkese açık: panel yanıtının içeriği yazılmaz, yalnız durum kodu ve alan/öğe sayıları."""
+    try:
+        j = r.json()
+    except Exception:
+        return f"{r.status_code} (JSON değil)"
+    if isinstance(j, dict):
+        alanlar = ", ".join(f"{k}={len(v) if isinstance(v, (list, dict)) else 1}" for k, v in list(j.items())[:12])
+        return f"{r.status_code} [{alanlar}]"
+    return f"{r.status_code} ({type(j).__name__}, {len(j) if isinstance(j, list) else 1} öğe)"
+
+
 def _belge() -> str:
     url, tok = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL"), os.environ.get("ACTIONS_ID_TOKEN_REQUEST_TOKEN")
     if not url or not tok:
@@ -99,7 +111,7 @@ def gonder(donus: bool = False):
     try:
         r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}", json={"bolumler": ozet(), "ekler": ekler()}, timeout=60,
                           headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
-        log(f"panel: {r.status_code} {r.text[:160]}")
+        log(f"panel: {_yanit_ozeti(r)}")
         if donus:
             return r.json() if r.ok else {}
     except Exception as e:
@@ -113,7 +125,7 @@ def onay(yuk: dict) -> None:
     try:
         r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}/onay", json=yuk, timeout=60,
                           headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
-        log(f"panel onay: {r.status_code} {r.text[:160]}")
+        log(f"panel onay: {_yanit_ozeti(r)}")
     except Exception as e:
         log(f"panel onayı gönderilemedi: {e}")
 

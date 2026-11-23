@@ -75,7 +75,8 @@ def test_markakarnem_maskot_yolu():
     assert "maskot_yol" not in ortak.marka("sgb")
 
 
-def test_nabiz(gecici_durum, capsys):
+def test_nabiz(gecici_durum, capsys, monkeypatch):
+    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-23T22:00")  # 06:00'dan önce nabız dünü denetler; test saatten bağımsız olsun
     for kod in ortak.marka_kodlari():
         ortak.gecmis_guncelle(kod, {"tarih": ortak.bugun(), "tur": "reels", "durum": "yayinlandi", "anahtar": "a", "format": "f"})
     assert calistir.nabiz() == 0
@@ -196,9 +197,22 @@ def test_dinleme_denetimi_yabanci_dil_ve_uyumsuz_metni_reddeder(monkeypatch):
     assert ses.dogrula(p, satir) is None
 
 
-def test_gecerli_ses_yoksa_muzikle_cikar_robotik_ses_yok(monkeypatch):
+def test_gecerli_ses_yoksa_yayin_yok_ertelenir_robotik_ses_yok(monkeypatch, tmp_path):
+    """Kural (sahip): iyi anlatım sesi yoksa içerik yayınlanmaz (eskiden yalnız müzikle çıkıyordu). Robotik yedek ses de denenmez."""
     from otopilot import ses
     monkeypatch.setattr(ses, "_gemini_ses", lambda satirlar, marka, ses_adi: None)
     kullanildi = []
     monkeypatch.setattr(ses, "_edge_ses", lambda s, m: kullanildi.append(1))
-    assert ses.seslendir(["Merhaba!"], ortak.marka("davetiyeler")) == (None, "yok") and not kullanildi
+    m = ortak.marka("davetiyeler")
+    assert ses.seslendir(["Merhaba!"], m) == (None, "yok") and not kullanildi
+    # üretim zinciri: seslendirme 'yok' dönerse video yayına gidecek hâle gelmeden SesYok yükselir (gunluk → 'ertelendi')
+    video = []
+    def film_yap(tarayici, sahneler, marka, klasor, ad, tohum, anlatim=None, hazir_parcalar=None):
+        video.append(ad)
+        return tmp_path / f"{ad}.mp4", ses.seslendir(anlatim, marka)[1]
+    monkeypatch.setattr(calistir, "film_yap", film_yap)
+    monkeypatch.setattr(calistir, "video_denetle", lambda *a, **k: pytest.fail("ses yokken video denetime/yayına gitmemeli"))
+    senaryo = {"sahneler": [{"tur": "kart", "tip": "kapak", "baslik": "Davetiye"}], "tohum": "t", "anlatim_kaynagi": "gemini"}
+    with pytest.raises(calistir.SesYok):
+        calistir._uret_bir("davetiyeler", m, None, tmp_path, senaryo, "Açıklama", "plan", anlatim=["Merhaba!"])
+    assert video == ["reel"], "hikâye videosu da üretilmez"

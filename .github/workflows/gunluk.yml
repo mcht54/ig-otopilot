@@ -16,6 +16,10 @@ on:
         description: "Bugün yapılmış olsa da yeniden üret"
         type: boolean
         default: false
+      nabiz:
+        description: "Gün sonu nabzını da çalıştır (paylaşılamayan marka varsa bildirim)"
+        type: boolean
+        default: false
 
 concurrency:
   group: otopilot
@@ -143,11 +147,12 @@ jobs:
           { echo "Çalıştırma: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"; echo; cat rapor.md; } > hata.md
           gh issue create --title "⚠️ Instagram otomasyonu hata verdi $(date +%d.%m.%Y)" --body-file hata.md
 
-      - name: Gün sonu nabzı (22:00; paylaşılamayan marka varsa bildirim)
-        if: github.event.schedule == '0 19 * * *' && vars.YAYIN == 'acik'
+      - name: Gün sonu nabzı (22:00 ya da elle 'nabiz'; paylaşılamayan marka varsa bildirim)
+        if: (github.event.schedule == '0 19 * * *' || (github.event_name == 'workflow_dispatch' && inputs.nabiz)) && vars.YAYIN == 'acik'
         run: |
+          # gecikmeli çalıştırma gece yarısını geçerse nabiz 06:00'dan önce önceki günü denetler
           if ! python -m otopilot.calistir nabiz > nabiz.md; then
-            gh issue create --title "⚠️ Bugün paylaşılamayan marka var $(date +%d.%m.%Y)" --body-file nabiz.md
+            gh issue create --title "⚠️ Paylaşılamayan marka var $(date +%d.%m.%Y)" --body-file nabiz.md
           fi
 
       - name: Panel senkronu (MCHT panel → İçerik takvimi)
@@ -162,5 +167,13 @@ jobs:
           git add durum
           if ! git diff --cached --quiet; then
             git commit -qm "durum: $(date +%F_%H:%M)"
-            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+            gitti=0
+            for i in 1 2 3; do git pull -q --rebase && git push -q && { gitti=1; break; }; sleep 5; done
+            if [ "$gitti" != 1 ]; then echo "::error::durum 3 denemede gönderilemedi (kayıt kaybolabilir)"; exit 1; fi
           fi
+
+      - name: Paylaşım adımı başarısızsa çalıştırmayı başarısız bitir (durum ve panel yine de kaydedildi)
+        if: always() && steps.uret.outcome == 'failure'
+        run: |
+          echo "::error::Üret ve paylaş adımı hata verdi; ayrıntı yukarıda ve açılan bildirimde"
+          exit 1

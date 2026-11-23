@@ -1,7 +1,7 @@
 """Seslendirme + fon müziği. Kalıcı kural: her Reels anlatıcı, çarpıcı, heyecanlı, dinletecek tonda seslendirilir;
-arkada telifsiz müzik çalar, konuşurken müzik kısılır. Hiçbir adım paylaşımı durdurmaz:
+arkada telifsiz müzik çalar, konuşurken müzik kısılır. Geçerli anlatım sesi yoksa içerik o çalıştırmada yayınlanmaz (ertelenir):
   anlatım metni : Gemini (denetimli) → kural metni
-  ses           : Gemini TTS (markanın sesi) → edge-tts (Microsoft Türkçe nöral ses) → yalnız müzik
+  ses           : Gemini TTS (markanın sesi) → edge-tts (yalnız edge_izinli markada) → yoksa ertelenir
   müzik         : muzik/<kod>/*.mp3 ya da muzik/*.mp3 varsa o, yoksa kodla sentez (otopilot/muzik.py)
 """
 from __future__ import annotations
@@ -389,7 +389,8 @@ YEDEK_SESLER = ["Kore", "Charon", "Puck", "Zephyr", "Fenrir"]
 
 def seslendir(satirlar: list[str], marka: dict) -> tuple[list[np.ndarray] | None, str]:
     """Satır başına ses parçası (44,1 kHz mono). Her parça yazıya dökülüp metinle karşılaştırılır (Türkçe mi, doğru mu);
-    geçmezse başka Gemini sesiyle yeniden denenir. Hiçbiri geçmezse (None, 'yok') → video yalnız müzikle çıkar.
+    geçmezse başka Gemini sesiyle yeniden denenir. Hiçbiri geçmezse (None, 'yok') → içerik yayınlanmaz, ertelenir
+    (kural: iyi anlatım sesi olmadan paylaşım yok; calistir.SesYok).
     Kötü/yanlış ses yayına çıkmaz (2026-11-23: talimat okuma, yabancı dille başlama, robotik yedek ses şikâyetleri)."""
     ayar = marka.get("ses") or {}
     sesler = list(dict.fromkeys([ayar.get("gemini", "Puck"), *YEDEK_SESLER]))[:3]
@@ -415,7 +416,7 @@ def seslendir(satirlar: list[str], marka: dict) -> tuple[list[np.ndarray] | None
             return parcalar, "gemini-denetimsiz"
         log(f"gemini sesi ({ses_adi}) dinleme denetiminden geçmedi → başka sesle yeniden")
     if not ayar.get("edge_izinli"):
-        log("geçerli ses yok → video yalnız müzik ve ekran yazılarıyla çıkacak (kötü ses yayınlanmaz)")
+        log("geçerli ses yok → içerik bu çalıştırmada yayınlanmayacak, ertelenir (kötü ses ya da anlatımsız video yayınlanmaz)")
         return None, "yok"
     log("edge-tts deneniyor")
     parcalar = _edge_ses(satirlar, marka)

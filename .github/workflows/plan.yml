@@ -69,5 +69,7 @@ jobs:
           git add durum
           if ! git diff --cached --quiet; then
             git commit -qm "plan: $(date +%F_%H:%M)"
-            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+            gitti=0
+            for i in 1 2 3; do git pull -q --rebase && git push -q && { gitti=1; break; }; sleep 5; done
+            if [ "$gitti" != 1 ]; then echo "::error::durum 3 denemede gönderilemedi (kayıt kaybolabilir)"; exit 1; fi
           fi

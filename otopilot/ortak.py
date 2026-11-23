@@ -19,6 +19,14 @@ SABLON = KOK / "sablon"
 FONT = KOK / "fontlar"
 TR = ZoneInfo("Europe/Istanbul")
 
+
+
+class BelirsizYayin(RuntimeError):
+    """Paylaşım isteği gönderildi ama sonucu alınamadı (zaman aşımı, bağlantı kopması, okunamayan yanıt).
+    Gönderi yayımlanmış olabilir: otomatik yeniden denenmez (çift paylaşım riski), elle kontrol edilir.
+    Bilerek InstagramHatasi'nın alt sınıfı değildir; normal (güvenle yeniden denenebilir) hatalardan ayrı yakalanır."""
+
+
 UA = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
 
 
@@ -56,6 +64,9 @@ _GIZLI = [
     (re.compile(r"(access_token|api_key|key|token|client_secret|refresh_token)=([^&\s\"']+)", re.I), r"\1=***"),
     (re.compile(r"(Bearer|OAuth)\s+[A-Za-z0-9._\-]{12,}", re.I), r"\1 ***"),
     (re.compile(r"\b(EAA[A-Za-z0-9]{20,}|AIza[0-9A-Za-z_\-]{20,}|AQ\.[A-Za-z0-9_\-]{20,}|ya29\.[A-Za-z0-9_\-]+|gsk_[A-Za-z0-9]{20,}|gh[pousr]_[A-Za-z0-9]{20,})"), "***"),
+    # Instagram ile Giriş anahtarları (IGAA…, eski IGQV…) ve Google yenileme anahtarı (1//…)
+    (re.compile(r"\b(IGAA[0-9A-Za-z_\-]{20,}|IGQV[0-9A-Za-z_\-]{20,})"), "***"),
+    (re.compile(r"(?<![0-9A-Za-z])1//[0-9A-Za-z_\-]{20,}"), "***"),
 ]
 
 

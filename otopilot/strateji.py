@@ -18,6 +18,7 @@ from . import llm
 from .ortak import DURUM, gecmis, json_kaydet, log, simdi
 
 ARASTIRMA_GUN = 7
+BASARISIZ_SAAT = 24  # başarısız araştırma her plan çalıştırmasında yeniden denenip kota yakmasın
 NIS = {
     "sitemucidi": "esnaf ve küçük işletmeler için web sitesi kurma, Google'da ve yapay zekâ aramasında görünme",
     "davetiyeler": "düğün, nişan, kına ve sünnet davetiyesi; dijital davetiye; düğün hazırlığı",
@@ -47,10 +48,29 @@ def _json_bul(metin: str) -> dict | None:
         return None
 
 
+def _deneme_yeni(eski: dict) -> bool:
+    """Son deneme başarısızsa ve üzerinden BASARISIZ_SAAT geçmediyse True."""
+    if eski.get("durum") != "basarisiz" or not eski.get("son_deneme"):
+        return False
+    try:
+        return simdi() - dt.datetime.fromisoformat(eski["son_deneme"]) < dt.timedelta(hours=BASARISIZ_SAAT)
+    except (TypeError, ValueError):
+        return False
+
+
+def _basarisiz(kod: str, eski: dict, neden: str) -> dict:
+    """Deneme zamanı ve durumu kaydedilir; önceki başarılı bulgular (ve 'tarih') korunur."""
+    kayit = {**eski, "son_deneme": simdi().isoformat(), "durum": "basarisiz", "neden": neden[:160]}
+    json_kaydet(_yol(kod), kayit)
+    return kayit
+
+
 def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
-    """Haftada bir (Google Arama destekli). Başarısızsa eski araştırma kalır."""
+    """Haftada bir (Google Arama destekli). Başarısızsa eski araştırma kalır ve 24 saat yeniden denenmez."""
     eski = arastirma(kod)
     if not zorla and eski.get("tarih") and (simdi().date() - dt.date.fromisoformat(eski["tarih"])).days < ARASTIRMA_GUN:
+        return eski
+    if not zorla and _deneme_yeni(eski):
         return eski
     ay = simdi().strftime("%B %Y")
     istem = (f"Türkiye'de Instagram Reels ve TikTok'ta şu alanı araştır: {NIS.get(kod, m['ad'])}. Hedef kitle: {m['hedef_kitle'].strip()}\n"
@@ -66,13 +86,13 @@ def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
         sonuc = llm.ara(istem)
     except Exception as e:
         log(f"{kod} araştırma yapılamadı: {e}")
-        return eski
+        return _basarisiz(kod, eski, f"{type(e).__name__}")
     veri = _json_bul((sonuc or {}).get("metin", ""))
     if not veri:
-        log(f"{kod} araştırma yanıtı çözülemedi; eski araştırma kullanılıyor")
-        return eski
+        log(f"{kod} araştırma yanıtı {'alınamadı' if not sonuc else 'çözülemedi'}; eski araştırma kullanılıyor, {BASARISIZ_SAAT} saat yeniden denenmeyecek")
+        return _basarisiz(kod, eski, "yanıt yok" if not sonuc else "yanıt çözülemedi")
     temiz = {k: [str(x)[:220] for x in (veri.get(k) or [])][:8] for k in ("trendler", "kancalar", "rakip_dersleri", "sorular", "mevsim", "kacinilacak")}
-    temiz.update(tarih=simdi().date().isoformat(), kaynaklar=[k for k in (sonuc.get("kaynaklar") or [])][:12])
+    temiz.update(tarih=simdi().date().isoformat(), son_deneme=simdi().isoformat(), durum="basarili", kaynaklar=[k for k in (sonuc.get("kaynaklar") or [])][:12])
     json_kaydet(_yol(kod), temiz)
     log(f"{kod} araştırma güncellendi: {len(temiz['trendler'])} trend, {len(temiz['kancalar'])} kanca, {len(temiz['sorular'])} soru")
     return temiz

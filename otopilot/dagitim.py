@@ -17,7 +17,7 @@ from pathlib import Path
 
 import requests
 
-from .ortak import log
+from .ortak import BelirsizYayin, log
 
 GRAPH = "https://graph.facebook.com/v25.0"
 TT_API = "https://open.tiktokapis.com/v2"
@@ -52,10 +52,19 @@ def facebook(kod: str, video: Path, aciklama: str) -> str:
                       headers={"Authorization": f"OAuth {t}", "offset": "0", "file_size": str(len(veri))})
     if not u.ok:
         raise RuntimeError(f"facebook yükleme {u.status_code}: {u.text[:300]}")
-    s = requests.post(f"{GRAPH}/{sayfa}/video_reels", timeout=60, data={
-        "upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED", "description": aciklama, "access_token": t})
-    if not s.ok:
+    try:  # finish = yayımla: yanıt alınamazsa Reels yayımlanmış olabilir → yeniden denenmez
+        s = requests.post(f"{GRAPH}/{sayfa}/video_reels", timeout=60, data={
+            "upload_phase": "finish", "video_id": vid, "video_state": "PUBLISHED", "description": aciklama, "access_token": t})
+    except requests.RequestException as e:
+        raise BelirsizYayin(f"facebook finish yanıtı alınamadı ({type(e).__name__}); video {vid}") from e
+    if not s.ok:  # Meta'nın açıkça döndürdüğü hata: yayımlanmadı, yeniden denenebilir
         raise RuntimeError(f"facebook {s.status_code}: {s.text[:300]}")
+    try:
+        basari = s.json().get("success")
+    except ValueError as e:
+        raise BelirsizYayin(f"facebook finish yanıtı okunamadı; video {vid}") from e
+    if basari is not True:
+        raise RuntimeError(f"facebook finish başarısız: {s.text[:300]}")
     return f"https://www.facebook.com/reel/{vid}"
 
 
@@ -141,7 +150,7 @@ def tiktok_metni(aciklama: str) -> str:
 def dagit(kod: str, video: Path, aciklama: str, etiketler: list[str], onceki: dict | None = None) -> dict[str, str]:
     sonuc = dict(onceki or {})
     for p, (hazir, gonder) in PLATFORMLAR.items():
-        if str(sonuc.get(p, "")).startswith(("http", "tiktok-taslak")):
+        if str(sonuc.get(p, "")).startswith(("http", "tiktok-taslak", "BELIRSIZ")):  # belirsiz: elle kontrol, tekrar gönderilmez
             continue
         if not hazir(kod):
             sonuc[p] = "atlandı: anahtar yok"
@@ -150,6 +159,9 @@ def dagit(kod: str, video: Path, aciklama: str, etiketler: list[str], onceki: di
         for deneme in range(2):
             try:
                 sonuc[p] = gonder(kod, video, metin, etiketler)
+                break
+            except BelirsizYayin as e:  # yayımlanmış olabilir: ikinci deneme çift paylaşım yapar
+                sonuc[p] = f"BELIRSIZ: {str(e)[:300]}"
                 break
             except Exception as e:  # bir platform düşerse diğerleri yine denensin
                 sonuc[p] = f"HATA: {str(e)[:300]}"

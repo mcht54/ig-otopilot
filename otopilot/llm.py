@@ -71,6 +71,30 @@ def kota_doldu(saglayici: str, yanit_metni: str = "") -> None:
     _kota_doldu.add(saglayici)
 
 
+def kota_ayrinti(r) -> tuple[str, bool]:
+    """429 yanıtından yalnız quotaId ve retryDelay alanları (gövde/anahtar loglanmaz). (log metni, günlük kota mı) döner.
+    JSON çözülemezse ya da alan yoksa metindeki 'PerDay' / 'per day' ifadesine bakılır."""
+    kimlikler, gecikme = [], ""
+    try:
+        j = r.json()
+        hata = j.get("error") if isinstance(j, dict) else None
+        ayrintilar = (hata.get("details") or []) if isinstance(hata, dict) else []
+        for d in ayrintilar:
+            tur = str(d.get("@type", ""))
+            if tur.endswith("QuotaFailure"):
+                kimlikler += [str(v.get("quotaId", ""))[:120] for v in d.get("violations", []) if v.get("quotaId")]
+            elif tur.endswith("RetryInfo"):
+                gecikme = str(d.get("retryDelay", ""))[:20]
+    except Exception:
+        pass
+    metin = getattr(r, "text", "") or ""
+    gunluk = any("PerDay" in k for k in kimlikler) or "PerDay" in metin or "per day" in metin.lower()
+    parca = [f"quotaId={','.join(kimlikler)}"] if kimlikler else []
+    if gecikme:
+        parca.append(f"retryDelay={gecikme}")
+    return " ".join(parca) or "ayrıntı yok", gunluk
+
+
 def _json_ayikla(metin: str):
     metin = metin.strip()
     metin = re.sub(r"^```(?:json)?\s*|\s*```$", "", metin)
@@ -104,13 +128,18 @@ def _gemini(sistem: str, istem: str) -> str | None:
                     },
                     timeout=90,
                 )
-                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
-                    kota_doldu(f"gemini:{model}", r.text)  # kota model başına: sıradaki ücretsiz modele geç
-                    break
+                if r.status_code == 429:
+                    ayrinti, gunluk = kota_ayrinti(r)
+                    log(f"gemini {model} HTTP 429 ({ayrinti})")
+                    if gunluk:
+                        kota_doldu(f"gemini:{model}", r.text)  # kota model başına: sıradaki ücretsiz modele geç
+                        break
                 if r.status_code == 429 or r.status_code >= 500:
                     log(f"gemini {model} {r.status_code}, bekleniyor")
                     time.sleep(8 * (deneme + 1))
                     continue
+                if r.status_code >= 400:
+                    log(f"gemini {model} HTTP {r.status_code}")
                 r.raise_for_status()
                 return r.json()["candidates"][0]["content"]["parts"][0]["text"]
             except Exception as e:  # ağ, kota, beklenmeyen yanıt
@@ -177,7 +206,10 @@ def ara(istem: str) -> dict | None:
                                   headers={"x-goog-api-key": anahtar}, timeout=120,
                                   json={"contents": [{"parts": [{"text": istem}]}], "tools": [{"google_search": {}}],
                                         "generationConfig": {"temperature": 0.4}})
-                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
+                if r.status_code >= 400:  # yalnız durum kodu (gövde/anahtar loglanmaz)
+                    ayrinti = f" ({kota_ayrinti(r)[0]})" if r.status_code == 429 else ""
+                    log(f"gemini arama {model} HTTP {r.status_code}{ayrinti}")
+                if r.status_code == 429 and kota_ayrinti(r)[1]:
                     kota_doldu(f"gemini-ara:{model}", r.text)
                     break
                 if r.status_code in (429, 500, 503):

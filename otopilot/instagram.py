@@ -15,7 +15,7 @@ from pathlib import Path
 
 import requests
 
-from .ortak import log
+from .ortak import BelirsizYayin, log
 
 SURUM = os.environ.get("IG_GRAPH_SURUM", "v25.0")
 
@@ -38,14 +38,26 @@ class Instagram:
     def hazir(self) -> bool:
         return bool(self.kimlik and self.anahtar)
 
-    def _istek(self, yontem: str, yol: str, **params) -> dict:
+    def _ham_istek(self, yontem: str, yol: str, **params) -> tuple[int, dict]:
+        """Ağ/JSON hatalarını olduğu gibi yükseltir (requests.RequestException, ValueError); (durum kodu, yanıt) döner."""
         params["access_token"] = self.anahtar
         r = requests.request(yontem, f"{self.kok}/{yol}", params=params if yontem == "GET" else None,
                              data=params if yontem != "GET" else None, timeout=120)
         veri = r.json() if r.headers.get("content-type", "").startswith(("application/json", "text/javascript")) else {"ham": r.text[:300]}
-        if r.status_code >= 400 or "error" in veri:
-            hata = veri.get("error", veri)
-            raise InstagramHatasi(f"{yol}: {hata.get('message', hata) if isinstance(hata, dict) else hata}")
+        return r.status_code, veri
+
+    @staticmethod
+    def _hata_metni(yol: str, veri: dict) -> str:
+        hata = veri.get("error", veri)
+        return f"{yol}: {hata.get('message', hata) if isinstance(hata, dict) else hata}"
+
+    def _istek(self, yontem: str, yol: str, **params) -> dict:
+        try:
+            kod, veri = self._ham_istek(yontem, yol, **params)
+        except (requests.RequestException, ValueError) as e:  # ağ/zaman aşımı/okunamayan yanıt: normal (yeniden denenebilir) hata
+            raise InstagramHatasi(f"{yol}: {type(e).__name__}: {str(e)[:200]}") from e
+        if kod >= 400 or "error" in veri:
+            raise InstagramHatasi(self._hata_metni(yol, veri))
         return veri
 
     def hesap(self) -> dict:
@@ -55,9 +67,12 @@ class Instagram:
         """Resumable upload: kapsayıcı oluştur → baytları rupload'a gönder → işlenmesini bekle."""
         kap = self._istek("POST", f"{self.kimlik}/media", upload_type="resumable", **alanlar)
         boyut = video.stat().st_size
-        with open(video, "rb") as f:
-            r = requests.post(kap["uri"], data=f, timeout=600, headers={
-                "Authorization": f"OAuth {self.anahtar}", "offset": "0", "file_size": str(boyut)})
+        try:  # yayından önceki adım: ağ hatası güvenle yeniden denenebilir
+            with open(video, "rb") as f:
+                r = requests.post(kap["uri"], data=f, timeout=600, headers={
+                    "Authorization": f"OAuth {self.anahtar}", "offset": "0", "file_size": str(boyut)})
+        except requests.RequestException as e:
+            raise InstagramHatasi(f"yükleme: {type(e).__name__}") from e
         if r.status_code >= 400:
             raise InstagramHatasi(f"yükleme {r.status_code}: {r.text[:300]}")
         kimlik = kap["id"]
@@ -71,17 +86,34 @@ class Instagram:
         raise InstagramHatasi("işleme zaman aşımı")
 
     def _yayinla(self, kapsayici: str) -> dict:
+        """media_publish: yanıt alınamazsa (ağ/zaman aşımı/5xx/okunamayan yanıt) gönderi yayımlanmış olabilir → BelirsizYayin.
+        Yalnız Meta'nın açıkça döndürdüğü hata (ör. 'not ready', 4xx) kesin başarısızlıktır."""
+        yol = f"{self.kimlik}/media_publish"
         for deneme in range(5):
             try:
-                m = self._istek("POST", f"{self.kimlik}/media_publish", creation_id=kapsayici)
-                break
-            except InstagramHatasi as e:
+                kod, m = self._ham_istek("POST", yol, creation_id=kapsayici)
+            except (requests.RequestException, ValueError) as e:
+                raise BelirsizYayin(f"{yol}: yanıt alınamadı ({type(e).__name__}: {str(e)[:160]})") from e
+            if kod >= 500:
+                raise BelirsizYayin(f"{yol}: sunucu hatası {kod} ({self._hata_metni(yol, m)[:160]})")
+            if kod >= 400 or "error" in m:
+                e = InstagramHatasi(self._hata_metni(yol, m))
                 if "not ready" in str(e).lower() and deneme < 4:
                     time.sleep(15)
                     continue
-                raise
-        bilgi = self._istek("GET", m["id"], fields="id,permalink,timestamp")
-        return bilgi
+                raise e
+            if not m.get("id"):
+                raise BelirsizYayin(f"{yol}: yanıtta medya kimliği yok")
+            break
+        try:  # yayımlandı; bağlantı okunamazsa kimlik kaybolmasın (kayıt medya_id ile tutulur)
+            return self._istek("GET", m["id"], fields="id,permalink,timestamp")
+        except Exception as e:
+            log(f"yayımlandı ({m['id']}) ama bağlantı okunamadı: {str(e)[:160]}")
+            return {"id": m["id"], "permalink": None}
+
+    def son_medyalar(self, adet: int = 10) -> list[dict]:
+        """Hesaptaki son gönderiler (etkilesim.py ile aynı uç)."""
+        return self._istek("GET", f"{self.kimlik}/media", fields="id,permalink,timestamp", limit=adet).get("data", [])
 
     def reels(self, video: Path, aciklama: str, kapak_ms: int = 1200) -> dict:
         kap = self._yukle(video, media_type="REELS", caption=aciklama, share_to_feed="true", thumb_offset=str(kapak_ms))
