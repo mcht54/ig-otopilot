@@ -42,6 +42,51 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgFJOPAheyQ/",
    "instagram_hikaye": "http-ig-hikaye:18034155644683260"
+  },
+  "olcum": {
+   "reach": 105,
+   "views": 111,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1,
+   "ig_reels_avg_watch_time": 1802
+  },
+  "olcum_zamani": "2026-11-24T18:36:28.136914+03:00",
+  "skor": 1.0
+ },
+ {
+  "tarih": "2026-11-24",
+  "tur": "reels",
+  "format": "guvenlik_ipucu",
+  "anahtar": "rehber:bungalovda-gizli-kamera-nasil-kontrol-edilir",
+  "ek_anahtarlar": [],
+  "konu": "Bungalovda gizli kamera nasıl kontrol edilir?",
+  "baslik": "Bungalovda gizli kamera nasıl kontrol edilir?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-24/sgb",
+  "anlatim": [
+   "Bungalov tatilinizde gizli kamera olup olmadığını iki dakikada nasıl anlarsınız?",
+   "Prizleri ve duman dedektörünü inceleyin, karanlıkta telefon kamerasıyla kızılötesi taraması yapın.",
+   "Kamera bulursanız kesinlikle dokunmayın, hemen fotoğraflayıp polisi arayın.",
+   "Adım adım kontrol rehberinin tamamı profildeki linkte!"
+  ],
+  "ses_kaynagi": "gemini",
+  "aciklama": "Bungalovda gizli kamera nasıl kontrol edilir?\nKaydedin, tatilden önce lazım olacak\n\nBilmeniz gerekenler\n✔️ Göz kontrolü (2 dakika)\n✔️ Işık ve telefonla kontrol\n✔️ Wi-Fi listesi\n✔️ Kamera bulursanız\n\nSapanca bungalov arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #bungalovtatili #sakarya #balayı",
+  "video_yedek": "2026-11-24-sgb-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-sgb.jpg?v=y",
+  "medya_id": "17911645392334403",
+  "link": "https://www.instagram.com/reel/DgITS2VhV6e/",
+  "yayin_zamani": "2026-11-24T18:42:22.399344+03:00",
+  "hikaye_id": "18435374833147302",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1710155987125505",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgITS2VhV6e/",
+   "instagram_hikaye": "http-ig-hikaye:18435374833147302"
   }
  }
 ]
