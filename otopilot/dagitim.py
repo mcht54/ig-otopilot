@@ -22,7 +22,7 @@ from .ortak import BelirsizYayin, log
 GRAPH = "https://graph.facebook.com/v25.0"
 TT_API = "https://open.tiktokapis.com/v2"
 PLATFORM_AD = {"instagram": "Instagram Reels", "instagram_hikaye": "Instagram hikâye", "facebook": "Facebook Reels",
-               "youtube": "YouTube Shorts", "tiktok": "TikTok"}
+               "facebook_hikaye": "Facebook hikâye", "youtube": "YouTube Shorts", "tiktok": "TikTok"}
 
 
 def _e(ad: str, kod: str) -> str:
@@ -66,6 +66,35 @@ def facebook(kod: str, video: Path, aciklama: str) -> str:
     if basari is not True:
         raise RuntimeError(f"facebook finish başarısız: {s.text[:300]}")
     return f"https://www.facebook.com/reel/{vid}"
+
+
+def facebook_hikaye(kod: str, video: Path) -> str:
+    """Aynı Reels videosu sayfanın Facebook hikâyesine (Muhit'teki yol; hikâye en çok 60 sn)."""
+    sayfa, t = _sayfa_anahtari(kod)
+    r = requests.post(f"{GRAPH}/{sayfa}/video_stories", data={"upload_phase": "start", "access_token": t}, timeout=60)
+    if not r.ok or "video_id" not in r.json():
+        raise RuntimeError(f"facebook hikâye başlatma {r.status_code}: {r.text[:300]}")
+    vid = r.json()["video_id"]
+    yukle = r.json().get("upload_url") or f"https://rupload.facebook.com/video-upload/v25.0/{vid}"
+    veri = video.read_bytes()
+    u = requests.post(yukle, data=veri, timeout=900,
+                      headers={"Authorization": f"OAuth {t}", "offset": "0", "file_size": str(len(veri))})
+    if not u.ok:
+        raise RuntimeError(f"facebook hikâye yükleme {u.status_code}: {u.text[:300]}")
+    try:  # finish = yayımla: yanıt alınamazsa hikâye gitmiş olabilir → yeniden denenmez
+        s = requests.post(f"{GRAPH}/{sayfa}/video_stories", timeout=120,
+                          data={"upload_phase": "finish", "video_id": vid, "access_token": t})
+    except requests.RequestException as e:
+        raise BelirsizYayin(f"facebook hikâye finish yanıtı alınamadı ({type(e).__name__}); video {vid}") from e
+    if not s.ok:
+        raise RuntimeError(f"facebook hikâye {s.status_code}: {s.text[:300]}")
+    try:
+        j = s.json()
+    except ValueError as e:
+        raise BelirsizYayin(f"facebook hikâye finish yanıtı okunamadı; video {vid}") from e
+    if j.get("success") is not True and "post_id" not in j:
+        raise RuntimeError(f"facebook hikâye finish başarısız: {s.text[:300]}")
+    return f"http-fb-hikaye:{j.get('post_id') or vid}"
 
 
 # ---------------- YouTube Shorts (markanın kendi kanalı)
@@ -135,6 +164,8 @@ def tiktok(kod: str, video: Path, aciklama: str) -> str:
 PLATFORMLAR = {
     "facebook": (lambda k: _e("META_<KOD>_PAGE_ID", k) and (os.environ.get("IG_TOKEN") or _e("META_<KOD>_PAGE_TOKEN", k)),
                  lambda k, v, a, e: facebook(k, v, a)),
+    "facebook_hikaye": (lambda k: _e("META_<KOD>_PAGE_ID", k) and (os.environ.get("IG_TOKEN") or _e("META_<KOD>_PAGE_TOKEN", k)),
+                        lambda k, v, a, e: facebook_hikaye(k, v)),
     "youtube": (lambda k: os.environ.get("YT_CLIENT_ID") and _e("YT_<KOD>_REFRESH_TOKEN", k),
                 lambda k, v, a, e: youtube(k, v, a, e)),
     "tiktok": (lambda k: os.environ.get("TT_CLIENT_KEY") and _e("TT_<KOD>_REFRESH_TOKEN", k),

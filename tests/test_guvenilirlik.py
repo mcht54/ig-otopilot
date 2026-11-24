@@ -260,6 +260,8 @@ def fb(monkeypatch, tmp_path):
     def post(url, data=None, timeout=None, headers=None):
         if "rupload" in url:
             return Yanit({"success": True})
+        if "video_stories" in url:  # hikâye ayrı platform; Reels sayacını etkilemesin
+            return Yanit({"video_id": "h1"} if data["upload_phase"] == "start" else {"success": True, "post_id": "p1"})
         if data["upload_phase"] == "start":
             durum["baslat"] += 1
             return Yanit({"video_id": "v1"})
@@ -289,6 +291,12 @@ def test_facebook_finish_basari_dogrulanir(fb):
     assert s["facebook"].startswith("HATA") and fb["baslat"] == 2, "kesin başarısızlık yeniden denenir"
     fb["finish"] = Yanit({"success": True})
     assert dagitim.dagit("sgb", fb["video"], "Metin", [])["facebook"] == "https://www.facebook.com/reel/v1"
+
+
+def test_facebook_hikaye_reels_ile_birlikte_gider(fb):
+    fb["finish"] = Yanit({"success": True})
+    s = dagitim.dagit("sgb", fb["video"], "Metin", [])
+    assert s["facebook_hikaye"] == "http-fb-hikaye:p1" and s["facebook"].startswith("https://")
 
 
 def test_eksik_belirsiz_platformu_tekrar_gondermez(monkeypatch):

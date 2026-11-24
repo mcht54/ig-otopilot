@@ -54,8 +54,8 @@ def ozet(gun: int = 14) -> list[dict]:
                 "durum": {"yayinlandi": "yayinlandi", "hata": "hata"}.get(k.get("durum"), "uretildi"),
                 "platformlar": [{"anahtar": a, "ad": PLATFORM_AD.get(a, a), "durum": _durum(p.get(a)),
                                  "link": str(p.get(a)).split(" ")[0] if str(p.get(a, "")).startswith("https://") else None}
-                                for a in ("instagram", "instagram_hikaye", "facebook", "youtube", "tiktok")
-                                if not str(p.get(a, "")).startswith("atlandı")],  # hesabı bağlanmamış platform gösterilmez
+                                for a in ("instagram", "instagram_hikaye", "facebook", "facebook_hikaye", "youtube", "tiktok")
+                                if not str(p.get(a, "")).startswith("atlandı") and (a != "facebook_hikaye" or a in p)],  # hesabı bağlanmamış platform gösterilmez
                 "satirlar": _anlatim_satirlari(k.get("anlatim")), "duzenlenebilir": False, "kilit_nedeni": "Yayınlandı",
                 "gorsel": k.get("gorsel"), "neden": None,
                 "format": k.get("format"), "skor": k.get("skor"), "olcum": k.get("olcum"),

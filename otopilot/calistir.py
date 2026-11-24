@@ -317,6 +317,7 @@ def eksik(kodlar: list[str] | None = None) -> int:
         k = next((x for x in gecmis(kod) if x.get("tarih") == tarih and x.get("tur") == "reels"), None)
         pl = (k or {}).get("platformlar") or {}
         hatali = [p for p, v in pl.items() if str(v).startswith("HATA") and p not in ("instagram", "instagram_hikaye")]  # BELIRSIZ değil
+        hatali += [p for p in dagitim.PLATFORMLAR if pl and p not in pl]  # sonradan eklenen platform (ör. Facebook hikâye)
         if not k or k.get("durum") != "yayinlandi" or not hatali:
             continue
         klasor = CIKTI / "eksik" / kod
