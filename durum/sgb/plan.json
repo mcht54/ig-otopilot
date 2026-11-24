@@ -297,19 +297,21 @@
   },
   "aciklama": "Bungalovun belgesi var mı? Kapora göndermeden bakın\nAdım adım anlatıyoruz\n\nBelge nasıl sorgulanır?\n✔️ Bakanlık belgeli tesis sorgu sayfasını açın\n✔️ İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin\n✔️ Tesis adını yazın ya da listeden bulun\n✔️ Kayıttaki adı, belge türünü ve ilçeyi, size ilanda…\n\nBungalov belge sorgulama arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #bungalov #haftasonu #bungalovtatili",
   "anlatim": [
-   "Bungalovun belgesi var mı? Kapora göndermeden bakın! Adım adım anlatıyoruz!",
-   "Belge nasıl sorgulanır?: Bakanlık belgeli tesis sorgu sayfasını açın, İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin.",
-   "üç yüz yetmiş dört! Kasım iki bin yirmi altı verisi.",
-   "Şimdi gerçek ekranda bakalım: Biz her tesisi böyle doğruluyoruz.",
-   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+   "Sapanca'da kiralayacağınız bungalovun gerçekten resmi belgesi var mı?",
+   "Bakanlığın sorgu sayfasından Sakarya ve Sapanca'yı seçerek tesis adıyla hemen sorgulayabilirsiniz.",
+   "iki bin yirmi beş'te binden fazla belge iptal edildi, Sapanca'da şu an sadece üç yüz yetmiş dört belgeli tesis var.",
+   "Biz listelediğimiz her tesisin belge numarasını yayından önce Bakanlık kaydıyla birebir doğruluyoruz.",
+   "Belgeli tesisinizi platformumuza ücretsiz ekleyin, başvuru profildeki linkte!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: belge_sorgula formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-sgb.jpg?v=495a1696",
-  "olusturma": "2026-11-23T13:33:18+03:00"
+  "olusturma": "2026-11-23T13:33:18+03:00",
+  "ses": "039972bbae",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-27": {
   "id": "2026-11-27-sgb",

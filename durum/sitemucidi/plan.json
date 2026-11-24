@@ -373,19 +373,21 @@
   },
   "aciklama": "Oto servis ve tamir için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Kemerli fotoğraf ve saat kartı\n✔️ Telefonla tek dokunuşta arama\n✔️ Hizmet listesi\n\nOto servis ve tamir web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #girişimcilik #küçükişletme",
   "anlatim": [
-   "Oto servis ve tamir için üç dakikada web sitesi! Kod yok, ajans yok, bekleme yok!",
-   "Şimdi gerçek ekranda bakalım: Tasarımınızı seçin.",
-   "Usta teması, gerçek önizleme.",
-   "Bu temada neler var?: Kemerli fotoğraf ve saat kartı, Telefonla tek dokunuşta arama.",
-   "Sitenizi şimdi ücretsiz oluşturun. Profildeki linkten ücretsiz dene!"
+   "Oto servis veya tamir işletmeniz varsa bu üç dakikayı hemen izleyin!",
+   "Ajans beklemeden, üç basit adımda kendi sitenizi hemen oluşturun.",
+   "İşletme adınızı yazın, Usta teması anında canlıya hazır görünsün.",
+   "Tek dokunuşla arama, hizmet listesi ve harita konumu hazır geliyor.",
+   "Sitenizi hemen ücretsiz oluşturup yedi gün denemek için profildeki linkten deneyin."
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-sitemucidi.jpg?v=0eaea233",
-  "olusturma": "2026-11-23T13:33:36+03:00"
+  "olusturma": "2026-11-23T13:33:36+03:00",
+  "ses": "f571690f9f",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-27": {
   "id": "2026-11-27-sitemucidi",
