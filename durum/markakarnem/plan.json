@@ -195,7 +195,7 @@
   "aciklama": "Web Sitem Google'da Neden Yükselmiyor?\nSiteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…\n\nBilmeniz gerekenler\n✔️ Kısaca: Sorun çoğu zaman cevap eksikliğidir\n✔️ En sık 5 neden\n✔️ Arama niyeti uyuşmuyor\n✔️ İçerik ince\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #yerelseo #dijitalpazarlama #googleharitalar",
   "anlatim": [
    "Web Sitem Google'da Neden Yükselmiyor?",
-   "Bilmeniz gerekenler: Kısaca: Sorun çoğu zaman cevap eksikliğidir, En sık 5 neden.",
+   "Bilmeniz gerekenler: Kısaca: Sorun çoğu zaman cevap eksikliğidir, En sık beş neden.",
    "Tamamı sitede, ücretsiz.",
    "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
   ],
@@ -205,7 +205,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-markakarnem.jpg?v=72ea0493",
-  "olusturma": "2026-11-23T03:47:56+03:00"
+  "olusturma": "2026-11-23T03:47:56+03:00",
+  "ses": "958c17d432",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-26": {
   "id": "2026-11-26-markakarnem",
@@ -610,5 +612,213 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-markakarnem.jpg?v=45893295",
   "olusturma": "2026-11-23T17:19:31+03:00"
+ },
+ "2026-11-30": {
+  "id": "2026-11-30-markakarnem",
+  "gun": "2026-11-30",
+  "kod": "markakarnem",
+  "format": "soru_cevap",
+  "konu": "İnternetten Nasıl Müşteri Bulurum? Bugün Başlayabileceğiniz 3 Adım",
+  "anahtar": "soru:internetten-nasil-musteri-bulurum",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "soru:internetten-nasil-musteri-bulurum",
+   "konu": "İnternetten Nasıl Müşteri Bulurum? Bugün Başlayabileceğiniz 3 Adım",
+   "anahtar_kelime": "i̇nternetten nasıl müşteri bulurum",
+   "olgular": [
+    "Sayfa: İnternetten Nasıl Müşteri Bulurum? Bugün Başlayabileceğiniz 3 Adım",
+    "Özet: İnternetten müşteri bulmaya bugün başlamak için üç adım: aranınca bulunur olun, güven verin, ölçün. Kısa ve uygulanabilir cevap.",
+    "Kısa cevap: İnternetten müşteri bulmaya bugün başlamak için üç şey yapın: Google İşletme Profilinizi eksiksiz hale getirerek aranınca bulunur olun, web sitenizde ya da profilinizde ne yaptığınızı, fiyatın neye göre değiştiğini ve nasıl ulaşılacağını açıkça yazın, ve her yeni müşteriye sizi nereden bulduğunu sor",
+    "Önce şunu bilin: Müşteri ihtiyacı olunca arar: İnsanların büyük kısmı bir ihtiyaç doğduğunda arama yapar. Su kaçağı olan kişi tesisatçı arar. Saçını kestirmek isteyen kişi çevresindeki kuaförlere bakar. Bu yüzden amaç herkese kendinizi göstermek değil, ihtiyacı olan kişinin karşısına çıkmaktır. Bunun için en sağlam başlangıç noktası arama sonuçl",
+    "Aranınca bulunur olun: Google İşletme Profili ücretsizdir ve yerel işletmeler için en doğrudan görünürlük aracıdır. Profiliniz eksiksizse \"yakınımdaki …\" gibi aramalarda görünme şansınız artar. Bunun bir garantisi yoktur, ama eksik bir profille bu şansı baştan azaltmış olursunuz. Profilinizde şunların dolu ve doğru olduğu",
+    "Güven verin: Arayan kişi genellikle birkaç işletmeye bakıp karar verir. Fiyatı ya da konumu benzer iki işletme arasında seçimi çoğu zaman güven belirler. Güveni artıran şeyler şunlardır: Gerçek fotoğraflar: Gerçek bir ortam ve gerçek işler, \"burası gerçekten var\" hissi verir. Gerçek yorumlar: Memnun müşterinizde",
+    "Fiyatı nasıl anlatmalısınız?: Her işletme net fiyat veremeyebilir. Bu normaldir. Ama \"fiyat için arayın\" demek yerine fiyatın neye göre değiştiğini yazabilirsiniz. Bir örnek düşünelim: bir boya badana ustası olarak ücretin odanın büyüklüğüne, duvarın durumuna ve kullanılacak boyaya göre değiştiğini yazarsanız, müşteri ne bilgi v",
+    "Ulaşmayı kolaylaştırın: Telefon numaranız, mesaj yoluyla ulaşma seçeneğiniz ve adresiniz kolay bulunmalı. Müşteri size ulaşmak için uğraşıyorsa büyük ihtimalle bir sonraki işletmeye geçer. Mesajlara mümkün olduğunca çabuk yanıt vermek de fark yaratır.",
+    "Ölçün: İnternette birçok kanal var: arama sonuçları, sosyal medya, web sitesi, reklam. Hepsine aynı anda yetişmek zordur. Hangisine zaman ayıracağınızı tahmin etmek yerine veriyle görmek daha doğrudur. Bunun en basit ve güvenilir yolu şudur: her yeni müşteriye \"Bizi nereden buldunuz?\" diye sorun. Telefonda"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Soru-cevap",
+     "baslik": "İnternetten Nasıl Müşteri Bulurum? Bugün Başlayabileceğiniz…",
+     "alt": "İnternetten müşteri bulmaya bugün başlamak için üç şey yapın: Google İşletme…"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Önce şunu bilin: Müşteri ihtiyacı olunca arar",
+      "Aranınca bulunur olun",
+      "Güven verin",
+      "Fiyatı nasıl anlatmalısınız?"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sorular/internetten-nasil-musteri-bulurum",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Soru-cevap",
+    "baslik": "İnternetten Nasıl Müşteri Bulurum? Bugün…",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "soru_cevap",
+   "tam_maddeler": [
+    "Önce şunu bilin: Müşteri ihtiyacı olunca arar",
+    "Aranınca bulunur olun",
+    "Güven verin",
+    "Fiyatı nasıl anlatmalısınız?"
+   ],
+   "tohum": "markakarnem:2026-11-30",
+   "denenen_formatlar": [
+    "soru_cevap",
+    "yerel_karne",
+    "sektor_ipucu",
+    "ornek_rapor",
+    "arac_demo"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "İnternetten Nasıl Müşteri Bulurum? Bugün Başlayabileceğiniz…\nİnternetten müşteri bulmaya bugün başlamak için üç şey yapın: Google İşletme…\n\nBilmeniz gerekenler\n✔️ Önce şunu bilin: Müşteri ihtiyacı olunca arar\n✔️ Aranınca bulunur olun\n✔️ Güven verin\n✔️ Fiyatı nasıl anlatmalısınız?\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #küçükişletme #sakarya #googleharitalar",
+  "anlatim": [
+   "İnternetten müşteri bulmak için saatler harcamanıza gerek yok; bugün başlayabileceğiniz üç adım var!",
+   "Google profilinizi eksiksiz açın, hizmetinizi ve fiyatınızı netleştirip güven verin, gelen müşteriye nereden bulduğunu sorun.",
+   "Aramalarda görünmenizi sağlayacak bu pratik rehberin tüm ayrıntıları sitemizde sizi bekliyor.",
+   "Kendi işletmenizin durumunu görmek için ücretsiz karnenizi profildeki linkten çıkarın."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: soru_cevap formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-markakarnem.jpg?v=f9913797",
+  "olusturma": "2026-11-24T04:15:09+03:00"
+ },
+ "2026-12-01": {
+  "id": "2026-12-01-markakarnem",
+  "gun": "2026-12-01",
+  "kod": "markakarnem",
+  "format": "sektor_ipucu",
+  "konu": "Sağlık kuruluşları ve muayenehaneler internette nasıl görünüyor?",
+  "anahtar": "sektor:saglik",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "sektor:saglik",
+   "konu": "Sağlık kuruluşları ve muayenehaneler internette nasıl görünüyor?",
+   "anahtar_kelime": "sağlık kuruluşları ve muayenehaneler internette nasıl görünüyor",
+   "olgular": [
+    "Sayfa: Sağlık kuruluşları ve muayenehaneler internette nasıl görünüyor?",
+    "Özet: Muayenehane, klinik ve sağlık kuruluşunuzun web sitesi, Google profili ve iletişim bilgilerinin nasıl göründüğünü ücretsiz analiz edin.",
+    "Müşteri sizi nasıl buluyor?: Sağlık için tipik dijital karar süreci. Sağlık hizmeti arayan kişi için öncelik; doğru uzmanlığa, doğru adrese ve güvenilir bir iletişim yoluna ulaşmaktır. Sağlık hizmetlerinin tanıtımına ilişkin mevzuat sınırlamaları olduğundan bu sektörde bilgilendirici, sade ve doğru içerik öne çıkar. Çalışma saa",
+    "Üç kanal, tek görünüm: Sağlık kuruluşları ve muayenehaneler için her kanalın rolü farklıdır. Analiz üçünü birlikte ve birbiriyle tutarlılığıyla inceler. Profil bilgileri Yorumlar Kategori",
+    "Google görünürlüğü Google İşletme Profili: Haritada doğru kategori, adres, telefon ve çalışma saatleri hastanın ilk baktığı bilgilerdir. Web sitesi ve telefon bilgisinin profil ile tutarlı olması, yanlış numaranın aranmasını önler. Randevu için arayın · Hafta içi 09:00–18:00",
+    "Instagram Sosyal vitrin: Instagram kullanılıyorsa bilgilendirici ve mevzuata uygun paylaşımlar, profilde doğru iletişim ve web sitesi bağlantısı ile tutarlı bir görünüm yeterlidir.",
+    "Web sitesi Dijital merkez: Web sitesi, uzmanlık alanlarını, hekim bilgilerini, adres ve randevu yolunu bilgilendirici bir dille sunmak için uygundur. Mobilde hızlı açılması ve tıkla-ara bağlantısı bulunması, özellikle acil olmayan randevu taleplerinde kolaylık sağlar. 5252kontrolle ölçülür Marka Skoru, bu kontrollerin sonuçla",
+    "Analiz kapsamı: Web sitesi16 SEO15 Google İşletme Profili12 Instagram9",
+    "Nerelerde fırsat olabilir?: Sağlık kuruluşları ve muayenehaneler için sık karşılaşılan dijital görünürlük eksikleri. Kendi raporunuzda yalnızca işletmeniz için ölçülen sonuçları görürsünüz."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sektörünüze özel",
+     "baslik": "Sağlık kuruluşları ve muayenehaneler internette nasıl…",
+     "alt": "Cevabı 15 saniyede"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Müşteri sizi nasıl buluyor?",
+      "Üç kanal, tek görünüm",
+      "Google görünürlüğü Google İşletme Profili",
+      "Instagram Sosyal vitrin"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/sektorler/saglik",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sektörünüze özel",
+    "baslik": "Sağlık kuruluşları ve muayenehaneler internette nasıl…",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "sektor_ipucu",
+   "tam_maddeler": [
+    "Müşteri sizi nasıl buluyor?",
+    "Üç kanal, tek görünüm",
+    "Google görünürlüğü Google İşletme Profili",
+    "Instagram Sosyal vitrin"
+   ],
+   "tohum": "markakarnem:2026-12-01",
+   "denenen_formatlar": [
+    "sektor_ipucu",
+    "ornek_rapor",
+    "soru_cevap",
+    "arac_demo",
+    "yerel_karne"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Sağlık kuruluşları ve muayenehaneler internette nasıl…\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #esnaf #dijitalpazarlama #küçükişletme",
+  "anlatim": [
+   "Sağlık kuruluşları ve muayenehaneler internette nasıl! Cevabı on beş saniyede!",
+   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
+   "Şimdi gerçek ekranda bakalım: Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-markakarnem.jpg?v=994b43ec",
+  "olusturma": "2026-11-24T04:16:00+03:00"
  }
 }

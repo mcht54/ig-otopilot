@@ -226,7 +226,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-davetiyeler.jpg?v=d077e06c",
-  "olusturma": "2026-11-23T03:47:48+03:00"
+  "olusturma": "2026-11-23T03:47:48+03:00",
+  "ses": "7ab9de9ad3",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-26": {
   "id": "2026-11-26-davetiyeler",
@@ -685,5 +687,238 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-davetiyeler.jpg?v=00ab022b",
   "olusturma": "2026-11-23T17:19:22+03:00"
+ },
+ "2026-11-30": {
+  "id": "2026-11-30-davetiyeler",
+  "gun": "2026-11-30",
+  "kod": "davetiyeler",
+  "format": "dijital_davetiye",
+  "konu": "Dijital davetiye modeli: Sunnet Cini",
+  "anahtar": "dijital:ornek-sunnet-cini",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "dijital:ornek-sunnet-cini",
+   "konu": "Dijital davetiye modeli: Sunnet Cini",
+   "anahtar_kelime": "dijital davetiye",
+   "olgular": [
+    "Model: Sunnet Cini (sünnet)",
+    "Ürün açıklaması: Animasyonlu açılışlı, LCV’li, geri sayımlı ve haritalı dijital davetiye. Tek link ile WhatsApp’tan paylaşılır.",
+    "Fiyat: ₺650 (sitedeki fiyat)",
+    "Oluşturma 4 adım: model seç, bilgiler, müzik ve fotoğraf, katılım (LCV) ve kaydet.",
+    "Davetiye tek bağlantıyla WhatsApp'tan paylaşılır; misafir LCV ile katılımını bildirir.",
+    "Canlı örnek: https://www.davetiyeler.tr/d/ornek-sunnet-cini/"
+   ],
+   "sahneler": [
+    {
+     "tur": "sayfa",
+     "url": "https://www.davetiyeler.tr/d/ornek-sunnet-cini/",
+     "sure": 8.5,
+     "ust_yazi": "Sünnet davetiyeniz WhatsApp'ta böyle açılsın",
+     "eylemler": [
+      {
+       "t": 1.6,
+       "tikla": "davetiyeyi aç"
+      },
+      {
+       "t": 4.8,
+       "ust_yazi": "Animasyonlu açılış ve müzikli karşılama"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.davetiyeler.tr/d/ornek-sunnet-cini/",
+     "sure": 6.5,
+     "once_tikla": [
+      "atla"
+     ],
+     "once_js": [
+      "document.querySelectorAll('.__ust').forEach(e=>e.remove())"
+     ],
+     "kaydir": true,
+     "kaydir_px": 2400,
+     "kaydir_bas": 0.4,
+     "ust_yazi": "Harita, geri sayım ve LCV tek linkte"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "4 adımda hazır",
+     "baslik": "Dijital sünnet davetiyesi nasıl hazırlanır?",
+     "maddeler": [
+      "Modelinizi seçin",
+      "Tarih, saat ve salon bilgisini yazın",
+      "Müzik ve fotoğraf ekleyin",
+      "LCV'yi belirleyip WhatsApp'tan paylaşın"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Kargo beklemeden tek linkle anında paylaşın",
+     "alt": "Sunnet Cini dijital davetiye ₺650"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "kayit_url": "https://www.davetiyeler.tr/d/ornek-sunnet-cini/",
+    "etiket": "Sünnet Davetiyesi",
+    "baslik": "Sünnet davetiyeniz telefonda böyle açılsın",
+    "alt": "Canlı örneği profildeki linkten hemen inceleyin"
+   },
+   "format": "dijital_davetiye",
+   "tam_maddeler": [
+    "Modelinizi seçin",
+    "İsim, tarih ve mekânı yazın",
+    "Müzik ve fotoğraf ekleyin",
+    "Linki WhatsApp'tan gönderin"
+   ],
+   "tohum": "davetiyeler:2026-11-30",
+   "denenen_formatlar": [
+    "dijital_davetiye",
+    "model_vitrin",
+    "siparis_nasil",
+    "kampanya"
+   ],
+   "editor": {
+    "puan": null,
+    "uygulandi": false
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "Sünnet için aradığınız dijital davetiye WhatsApp'ta hazır.\n\nSunnet Cini modeli animasyonlu açılışı, müziği, haritası ve geri sayımıyla misafirlerinizi karşılar.\nDavetliler LCV özelliğiyle katılım durumunu anında bildirir, liste takibi kolaylaşır.\n4 kolay adımda hazırlayıp sevdiklerinize hemen ulaştırabilirsiniz. ₺650.\n\nTüm modeller profildeki linkte: davetiyeler.tr\n\n#dijitaldavetiye #sünnetdavetiyesi #davetiye #davetiyemodelleri",
+  "anlatim": [
+   "Şimdi gerçek ekranda bakalım: Sünnet davetiyeniz WhatsApp'ta böyle açılsın!",
+   "Harita, geri sayım ve LCV tek linkte.",
+   "Dijital sünnet davetiyesi nasıl hazırlanır?: Modelinizi seçin, Tarih, saat ve salon bilgisini yazın.",
+   "Kargo beklemeden tek linkle anında paylaşın. Tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: dijital_davetiye formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-davetiyeler.jpg?v=91e3d995",
+  "olusturma": "2026-11-24T04:14:18+03:00"
+ },
+ "2026-12-01": {
+  "id": "2026-12-01-davetiyeler",
+  "gun": "2026-12-01",
+  "kod": "davetiyeler",
+  "format": "model_vitrin",
+  "konu": "Yeni sezon davetiye modelleri",
+  "anahtar": "kategori:yeni-sezon-davetiyeler:2026-12-01",
+  "ek_anahtarlar": [
+   "urun:29169",
+   "urun:29110",
+   "urun:29832",
+   "urun:29137"
+  ],
+  "senaryo": {
+   "anahtar": "kategori:yeni-sezon-davetiyeler:2026-12-01",
+   "ek_anahtarlar": [
+    "urun:29169",
+    "urun:29110",
+    "urun:29832",
+    "urun:29137"
+   ],
+   "konu": "Yeni sezon davetiye modelleri",
+   "anahtar_kelime": "yeni sezon davetiye modelleri",
+   "olgular": [
+    "Kategori: Yeni Sezon Davetiyeler (34 model)",
+    "Model 1: Yatay Dikdörtgen Lacivert Zarf Gümüş Yaldızlı Davetiye – 160 — Yatay Dikdörtgen Lacivert Zarf Gümüş Yaldızlı Davetiye – 160 — yatay dikdörtgen, lacivert zarf, gümüş yaldız. Düğün ve nişan için isim ve ta",
+    "Model 2: Yatay Dikdörtgen Beyaz Zarf Gold Yaldızlı Davetiye – 15 — Yatay Dikdörtgen Beyaz Zarf Gold Yaldızlı Davetiye – 15 — yatay dikdörtgen, beyaz zarf, gold yaldız. Düğün ve nişan için isim ve tarih baskı",
+    "Model 3: Yatay Dikdörtgen Siyah Zarf Gold Yaldızlı Davetiye – 75 — Yatay Dikdörtgen Siyah Zarf Gold Yaldızlı Davetiye – 75 — yatay dikdörtgen, siyah zarf, gold yaldız. Düğün ve nişan için isim ve tarih baskı",
+    "Model 4: Yatay Dikdörtgen Siyah Zarf Gold Yaldızlı Davetiye – 155 — Yatay Dikdörtgen Siyah Zarf Gold Yaldızlı Davetiye – 155 — yatay dikdörtgen, siyah zarf, gold yaldız. Düğün ve nişan için isim ve tarih bask",
+    "Basılı davetiyede fiyat teklif usulüdür; adet 100-1000 arası seçilir.",
+    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye (sitede yazıyor)."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-lacivert-zarf-gumus-yaldizli-model-160-900.webp",
+     "etiket": "Yeni sezon davetiye",
+     "baslik": "Yeni sezon davetiye seçemeyenlere 4 model",
+     "alt": "Sonuna kadar izleyin, favorinizi yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-beyaz-zarf-gold-yaldizli-model-15-900.webp",
+     "etiket": "Model 2",
+     "baslik": "Yatay Dikdörtgen Beyaz Zarf Gold…"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-siyah-zarf-gold-yaldizli-model-75-900.webp",
+     "etiket": "Model 3",
+     "baslik": "Yatay Dikdörtgen Siyah Zarf Gold…"
+    },
+    {
+     "tur": "kart",
+     "tip": "izgara",
+     "sure": 4.0,
+     "zemin": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-siyah-zarf-gold-yaldizli-model-155-900.webp",
+     "gorseller": [
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-lacivert-zarf-gumus-yaldizli-model-160-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-beyaz-zarf-gold-yaldizli-model-15-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-siyah-zarf-gold-yaldizli-model-75-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-siyah-zarf-gold-yaldizli-model-155-900.webp"
+     ],
+     "yazilar": [
+      "Yatay Dikdörtgen Lacivert…",
+      "Yatay Dikdörtgen Beyaz…",
+      "Yatay Dikdörtgen Siyah…",
+      "Yatay Dikdörtgen Siyah…"
+     ],
+     "baslik": "Hangisi sizin tarzınız?",
+     "alt": "Yoruma numarasını yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "34 yeni sezon davetiye modeli",
+     "alt": "Basılı davetiyeye dijital davetiye hediye"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/yatay-dugun-davetiyesi-lacivert-zarf-gumus-yaldizli-model-160-900.webp",
+    "etiket": "Yeni modeller",
+    "baslik": "Yeni sezon davetiye arayanlara 4 öneri",
+    "alt": "Hangisini seçerdiniz?"
+   },
+   "format": "model_vitrin",
+   "tohum": "davetiyeler:2026-12-01",
+   "denenen_formatlar": [
+    "model_vitrin",
+    "siparis_nasil",
+    "kampanya",
+    "dijital_davetiye"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Yeni sezon davetiye seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nYeni sezon davetiye modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #kınadavetiyesi #nişandavetiyesi #gelinadayı",
+  "anlatim": [
+   "Yeni sezon davetiye seçemeyenlere dört model! Sonuna kadar izleyin, favorinizi yazın!",
+   "Yatay Dikdörtgen Beyaz Zarf Gold.",
+   "Yatay Dikdörtgen Siyah Zarf Gold.",
+   "Hangisi sizin tarzınız? Yoruma numarasını yazın.",
+   "otuz dört yeni sezon davetiye modeli. Tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: model_vitrin formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-davetiyeler.jpg?v=98ebb176",
+  "olusturma": "2026-11-24T04:15:52+03:00"
  }
 }

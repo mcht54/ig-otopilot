@@ -180,7 +180,7 @@
   "anlatim": [
    "Gece gelen teklif talebi de kaybolmasın! Sitenize Teklif formu ekleyin!",
    "Teklif formu: tek tıkla açılır.",
-   "Teklif formu 3 adımda: Temanızı seçin, Özellikler sekmesinden açın.",
+   "Teklif formu üç adımda: Temanızı seçin, Özellikler sekmesinden açın.",
    "Siz de deneyin. Profildeki linkten ücretsiz dene!"
   ],
   "anlatim_kaynagi": "kural",
@@ -189,7 +189,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-sitemucidi.jpg?v=492b3329",
-  "olusturma": "2026-11-23T03:48:23+03:00"
+  "olusturma": "2026-11-23T03:48:23+03:00",
+  "ses": "3dfa66aa8e",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-26": {
   "id": "2026-11-26-sitemucidi",
@@ -758,5 +760,197 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-sitemucidi.jpg?v=d92e26bb",
   "olusturma": "2026-11-23T17:20:03+03:00"
+ },
+ "2026-11-30": {
+  "id": "2026-11-30-sitemucidi",
+  "gun": "2026-11-30",
+  "kod": "sitemucidi",
+  "format": "ozellik",
+  "konu": "Site Mucidi özelliği: Harita",
+  "anahtar": "ozellik:map",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "ozellik:map",
+   "konu": "Site Mucidi özelliği: Harita",
+   "anahtar_kelime": "web sitesi özellikleri",
+   "olgular": [
+    "Özellik: Harita — İletişim bölümünde adresinizi gösteren harita",
+    "Esnafın derdi: Müşteri dükkânınızı ararken kaybolmasın",
+    "Örnek tema: Algoritma (Teknoloji ve yazılım, BT hizmetleri)",
+    "Özellikler sihirbazda tek tıkla açılır/kapanır.",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-teknoloji-yazilim-prestij.png",
+     "etiket": "Harita",
+     "baslik": "Müşteri dükkânınızı ararken kaybolmasın",
+     "alt": "Sitenize Harita ekleyin."
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/temalar/teknoloji-yazilim-prestij/onizleme",
+     "kaydir": true,
+     "sure": 7,
+     "kaydir_px": 3600,
+     "ust_yazi": "Harita: tek tıkla açılır"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "file://{{KLASOR}}/kapak-teknoloji-yazilim-prestij.png",
+     "etiket": "Nasıl açılır?",
+     "baslik": "Harita 3 adımda",
+     "maddeler": [
+      "Temanızı seçin",
+      "Özellikler sekmesinden açın",
+      "Önizlemede hemen görün"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Siz de deneyin",
+     "alt": "Site oluşturmak ücretsiz, 7 gün deneme."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-teknoloji-yazilim-prestij.png",
+    "etiket": "İpucu",
+    "baslik": "Müşteri dükkânınızı ararken kaybolmasın",
+    "alt": "Çözüm: Harita"
+   },
+   "format": "ozellik",
+   "tam_maddeler": [
+    "Temanızı seçin",
+    "Özellikler sekmesinden açın",
+    "Önizlemede hemen görün"
+   ],
+   "tohum": "sitemucidi:2026-11-30",
+   "denenen_formatlar": [
+    "ozellik",
+    "sektor_demo",
+    "yz_arama",
+    "tema_paket"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Müşteri dükkânınızı ararken kaybolmasın\nSitenize Harita ekleyin.\n\nHarita 3 adımda\n✔️ Temanızı seçin\n✔️ Özellikler sekmesinden açın\n✔️ Önizlemede hemen görün\n\nWeb sitesi özellikleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #googledaçıkmak #dijitalpazarlama",
+  "anlatim": [
+   "Müşteri dükkânınızı ararken kaybolmasın! Sitenize Harita ekleyin!",
+   "Şimdi gerçek ekranda bakalım: Harita: tek tıkla açılır.",
+   "Harita üç adımda: Temanızı seçin, Özellikler sekmesinden açın.",
+   "Siz de deneyin. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: ozellik formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-sitemucidi.jpg?v=0fea5b4a",
+  "olusturma": "2026-11-24T04:15:41+03:00"
+ },
+ "2026-12-01": {
+  "id": "2026-12-01-sitemucidi",
+  "gun": "2026-12-01",
+  "kod": "sitemucidi",
+  "format": "yz_arama",
+  "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
+  "anahtar": "yz:2",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "yz:2",
+   "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
+   "anahtar_kelime": "yapay zekâda görünmek",
+   "olgular": [
+    "İnsanlar işletme önerisini giderek ChatGPT, Gemini gibi yapay zekâ asistanlarına soruyor.",
+    "Bu asistanlar cevabı web sitelerinden, Google İşletme profillerinden ve yorumlardan derler.",
+    "Hizmetleri, adresi, telefonu ve SSS'si net yazılmış site yapay zekânın okuyabileceği kaynaktır.",
+    "Site Mucidi'nin Gelişmiş SEO paketi yerel işletme yapılandırılmış verisi ve SSS işaretlemesi ekler.",
+    "Örnek soru: Serdivan'da düğün salonu tavsiye eder misin?"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-ivme.png",
+     "etiket": "Yapay zekâ",
+     "baslik": "Siteniz yoksa yapay zekâ sizi önermez",
+     "alt": "“Serdivan'da düğün salonu tavsiye eder misin?”"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.2,
+     "gorsel": "file://{{KLASOR}}/kapak-ivme.png",
+     "etiket": "Yapay zekâ neye bakar?",
+     "baslik": "Cevabı buralardan derler",
+     "maddeler": [
+      "İşletmenin web sitesi",
+      "Google İşletme profili ve yorumlar",
+      "Net yazılmış hizmet, adres ve telefon"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/temalar/ivme/onizleme",
+     "kaydir": true,
+     "sure": 6.5,
+     "kaydir_px": 3000,
+     "ust_yazi": "Hizmet, adres, SSS: düzenli ve okunur"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitesi olmayan önerilmez",
+     "alt": "3 dakikada ücretsiz oluşturun, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-ivme.png",
+    "etiket": "Biliyor muydunuz?",
+    "baslik": "Müşteriler artık yapay zekâya soruyor",
+    "alt": "Siteniz yoksa cevapta yoksunuz"
+   },
+   "format": "yz_arama",
+   "tam_maddeler": [
+    "İşletmenin web sitesi",
+    "Google İşletme profili ve yorumlar",
+    "Net yazılmış hizmet, adres ve telefon"
+   ],
+   "tohum": "sitemucidi:2026-12-01",
+   "denenen_formatlar": [
+    "yz_arama",
+    "sektor_demo",
+    "ozellik",
+    "tema_paket"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Siteniz yoksa yapay zekâ sizi önermez\n“Serdivan'da düğün salonu tavsiye eder misin?”\n\nCevabı buralardan derler\n✔️ İşletmenin web sitesi\n✔️ Google İşletme profili ve yorumlar\n✔️ Net yazılmış hizmet, adres ve telefon\n\nYapay zekâda görünmek arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #küçükişletme #googledaçıkmak #yapayzeka",
+  "anlatim": [
+   "Siteniz yoksa yapay zekâ sizi önermez! “Serdivan'da düğün salonu tavsiye eder misin?”!",
+   "Cevabı buralardan derler: İşletmenin web sitesi, Google İşletme profili ve yorumlar.",
+   "Şimdi gerçek ekranda bakalım: Hizmet, adres, SSS: düzenli ve okunur.",
+   "Sitesi olmayan önerilmez. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yz_arama formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-sitemucidi.jpg?v=fcceb291",
+  "olusturma": "2026-11-24T04:16:22+03:00"
  }
 }
