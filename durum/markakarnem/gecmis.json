@@ -41,6 +41,51 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgFDL0hCAd-/",
    "instagram_hikaye": "http-ig-hikaye:18120057047041723"
+  },
+  "olcum": {
+   "reach": 7,
+   "views": 12,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1,
+   "ig_reels_avg_watch_time": 4547
+  },
+  "olcum_zamani": "2026-11-24T13:06:48.908640+03:00",
+  "skor": 1.0
+ },
+ {
+  "tarih": "2026-11-24",
+  "tur": "reels",
+  "format": "sektor_ipucu",
+  "anahtar": "sektor:hukuk",
+  "ek_anahtarlar": [],
+  "konu": "Hukuk büroları internette nasıl görünüyor?",
+  "baslik": "Hukuk büroları internette nasıl görünüyor?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-24/markakarnem",
+  "anlatim": [
+   "Hukuk büroları internette nasıl görünüyor? Cevabı on beş saniyede!",
+   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
+   "Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "ses_kaynagi": "gemini",
+  "aciklama": "Hukuk büroları internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #markaskoru #sakarya",
+  "video_yedek": "2026-11-24-markakarnem-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-markakarnem.jpg?v=y",
+  "medya_id": "18181748551451696",
+  "link": "https://www.instagram.com/reel/DgHtt5eltBC/",
+  "yayin_zamani": "2026-11-24T13:13:59.370144+03:00",
+  "hikaye_id": "17925090855231067",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1921329825700417",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgHtt5eltBC/",
+   "instagram_hikaye": "http-ig-hikaye:17925090855231067"
   }
  }
 ]
