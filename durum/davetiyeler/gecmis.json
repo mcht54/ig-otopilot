@@ -50,6 +50,56 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgFFd9KCBih/",
    "instagram_hikaye": "http-ig-hikaye:18003175131009948"
+  },
+  "olcum": {
+   "reach": 120,
+   "views": 138,
+   "likes": 1,
+   "comments": 0,
+   "saved": 1,
+   "shares": 0,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 2790
+  },
+  "olcum_zamani": "2026-11-24T19:36:27.887088+03:00",
+  "skor": 1.0
+ },
+ {
+  "tarih": "2026-11-24",
+  "tur": "reels",
+  "format": "kampanya",
+  "anahtar": "kampanya:48",
+  "ek_anahtarlar": [
+   "urun:29216",
+   "urun:29103",
+   "urun:29798",
+   "urun:29706"
+  ],
+  "konu": "Kampanyalı davetiyeler + dijital davetiye hediye",
+  "baslik": "Basılı davetiyeye dijital davetiye hediye",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-24/davetiyeler",
+  "anlatim": [
+   "Basılı davetiyeye dijital davetiye hediye! altı yüz elli lira değerinde, sipariş onayında!",
+   "Kampanyalı modellerden. Hepsi profildeki linkte.",
+   "Hediye dijital davetiye: Basılı davetiyenizi sipariş edin, Kodunuz e-postanıza gelsin.",
+   "İki davetiye, tek sipariş. Tüm modeller profildeki linkte!"
+  ],
+  "ses_kaynagi": "gemini",
+  "aciklama": "Basılı davetiyeye dijital davetiye hediye\n₺650 değerinde, sipariş onayında\n\nHediye dijital davetiye\n✔️ Basılı davetiyenizi sipariş edin\n✔️ Kodunuz e-postanıza gelsin\n✔️ Dijital modelinizi seçip paylaşın\n\nKampanyalı davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #nişandavetiyesi #gelinadayı #nikahdavetiyesi",
+  "video_yedek": "2026-11-24-davetiyeler-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-davetiyeler.jpg?v=y",
+  "medya_id": "17920872444542994",
+  "link": "https://www.instagram.com/reel/DgIaVr4CRx0/",
+  "yayin_zamani": "2026-11-24T19:43:54.560301+03:00",
+  "hikaye_id": "18026901239927872",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1125440597062438",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgIaVr4CRx0/",
+   "instagram_hikaye": "http-ig-hikaye:18026901239927872"
   }
  }
 ]
