@@ -6,8 +6,8 @@ logo: fontlar/davetiyeler-logo.png
 renk: {ana: "#7A1F2B", koyu: "#2A1A16", vurgu: "#C9A15B", acik: "#FBF6EE", yazi: "#FFFFFF"}
 konum: Sakarya
 hedef_kitle: >
-  Düğün, nişan, nikah, kına ve sünnet hazırlığındaki çiftler ve aileler (çoğunlukla 22-35 yaş
-  gelin adayları ve anneleri). Model, fiyat, teslim süresi ve "nasıl sipariş veririm" merak ederler.
+  Düğün, nişan, nikah, kına ve sünnet hazırlığındaki 20-45 yaş gelin ve damat adayları ile anneleri.
+  Model, fiyat, teslim süresi ve "nasıl sipariş veririm" merak ederler.
 ses_tonu: >
   Sıcak, zarif, heyecan paylaşan. Kısa cümleler. Fiyat yalnız sitedeki gerçek fiyattan yazılır;
   uydurma indirim yok. "Siz" diye hitap edilir.
@@ -26,7 +26,8 @@ ses: {gemini: Laomedeia, edge: tr-TR-EmelNeural, ton_en: "warm, joyful and excit
 muzik: {hava: sicak, tempo: 104, ton: F}
 strateji:
   kitle_icgorusu:
-    - Düğün/nişan/sünnet hazırlığındaki çift ve aileler; bütçe, zaman ve "herkese yetişir mi" stresi yaşıyor
+    - Düğün/nişan/sünnet hazırlığındaki 20-45 yaş gelin ve damat adayları ile anneleri; bütçe, zaman ve "herkese yetişir mi" stresi yaşıyor
+    - Pahalı davetiye korkusu - "güzel model pahalıdır" düşüncesi; fiyat teklif usulüdür, uydurma fiyat ya da indirim yazılmaz, adet ve modele göre teklif alınabileceği söylenir
     - Davetiye seçimi Pinterest/Instagram'da görsel ilhamla başlıyor; model detayı (zarf, mühür, yazı tipi, renk) çok dikkat çekiyor
     - Kim gelecek belli olmaması (LCV) ve uzaktaki misafire ulaştırma en büyük dertlerden
     - Yazım hatası korkusu: isim, tarih, salon yanlış basılır mı
