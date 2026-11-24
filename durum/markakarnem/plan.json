@@ -500,18 +500,20 @@
   },
   "aciklama": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #googleharitalar #esnaf #küçükişletme",
   "anlatim": [
-   "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor? Cevabı on beş saniyede!",
-   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
-   "Şimdi gerçek ekranda bakalım: Tamamı sitede, ücretsiz.",
-   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+   "Müşteriler mağazanızı ziyaret etmeden önce internette ne görüyor?",
+   "Google haritanız, Instagram vitrininiz ve web siteniz showroom'unuza gerçekten müşteri çekiyor mu?",
+   "Mobilya mağazanıza özel elli iki farklı noktayı inceliyor, eksiklerinizi ortaya çıkarıyoruz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten hemen çıkarın!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-markakarnem.jpg?v=e60651b0",
-  "olusturma": "2026-11-23T17:18:35+03:00"
+  "olusturma": "2026-11-23T17:18:35+03:00",
+  "ses": "ebf38b66e2",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-29": {
   "id": "2026-11-29-markakarnem",

@@ -465,19 +465,21 @@
   },
   "aciklama": "Hangisi sizin işletmenize uyar?\nBaskı Evi teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #yapayzeka #googledaçıkmak",
   "anlatim": [
-   "Hangisi sizin işletmenize uyar? Baskı Evi teması!",
-   "Yalın paket.",
-   "Vizyon paket.",
-   "Premium paket.",
-   "Yorumlara tercihinizi yazın. Profildeki linkten ücretsiz dene!"
+   "Baskı işletmeniz için tek tasarım yetmez dedik, aynı temayı üç paketle hazırladık!",
+   "Yalın pakette sade bir görünümle anında işe başlayabilirsiniz.",
+   "Vizyon pakette hareket artıyor, ek bölümlerle siteniz güçleniyor.",
+   "Premium pakette ise en çok hareket ve tüm ek bölümler açılıyor!",
+   "Hemen ücretsiz oluşturun, yedi gün boyunca rahatça deneyin!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sitemucidi.jpg?v=760a1566",
-  "olusturma": "2026-11-23T13:34:35+03:00"
+  "olusturma": "2026-11-23T13:34:35+03:00",
+  "ses": "73e883546e",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-28": {
   "id": "2026-11-28-sitemucidi",
@@ -667,19 +669,21 @@
   },
   "aciklama": "Ev temizliği için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.\n✔️ Tam ekran aydınlık fotoğraf\n✔️ Hizmet kartları\n\nEv temizliği web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #googledaçıkmak #girişimcilik",
   "anlatim": [
-   "Ev temizliği için üç dakikada web sitesi! Kod yok, ajans yok, bekleme yok!",
-   "Şimdi gerçek ekranda bakalım: Tasarımınızı seçin.",
-   "Işıl teması, gerçek önizleme.",
-   "Bu temada neler var?: Tam ekran fotoğraflı, hareketli premium düzen, Tam ekran aydınlık fotoğraf.",
-   "Sitenizi şimdi ücretsiz oluşturun. Profildeki linkten ücretsiz dene!"
+   "Temizlik firmanız için ajanslarla uğraşmadan şık bir site ister misiniz?",
+   "Sadece temanızı seçip işletme adınızı yazıyorsunuz, siteniz anında kuruluyor.",
+   "Işıl teması ev temizliğine özel premium animasyonlarıyla ışıl ışıl görünüyor.",
+   "Tam ekran fotoğraflar, hizmet kartları ve müşteri yorumları içinde hazır geliyor.",
+   "Sitenizi hemen oluşturup yedi gün denemek için profildeki linkten ücretsiz dene!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sitemucidi.jpg?v=bcc3de77",
-  "olusturma": "2026-11-23T17:19:08+03:00"
+  "olusturma": "2026-11-23T17:19:08+03:00",
+  "ses": "ecec388364",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-29": {
   "id": "2026-11-29-sitemucidi",

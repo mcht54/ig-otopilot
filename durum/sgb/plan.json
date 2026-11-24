@@ -516,19 +516,21 @@
   },
   "aciklama": "Bungalovun belgesi var mı? Kapora göndermeden bakın\nAdım adım anlatıyoruz\n\nBelge nasıl sorgulanır?\n✔️ Bakanlık belgeli tesis sorgu sayfasını açın\n✔️ İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin\n✔️ Tesis adını yazın ya da listeden bulun\n✔️ Kayıttaki adı, belge türünü ve ilçeyi, size ilanda…\n\nBungalov belge sorgulama arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #balayı #haftasonu #tinyhouse",
   "anlatim": [
-   "Bungalovun belgesi var mı? Kapora göndermeden bakın! Adım adım anlatıyoruz!",
-   "Belge nasıl sorgulanır?: Bakanlık belgeli tesis sorgu sayfasını açın, İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin.",
-   "üç yüz yetmiş dört! Kasım iki bin yirmi altı verisi.",
-   "Şimdi gerçek ekranda bakalım: Biz her tesisi böyle doğruluyoruz.",
-   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+   "Sapanca'da bungalov kiralamadan önce belge sorgulamayı hiç denediniz mi?",
+   "Bakanlığın sorgu sayfasından Sakarya Sapanca'yı seçerek tesis adını doğrudan arayabilirsiniz.",
+   "Şu an Sapanca'da Kasım iki bin yirmi altı verisine göre üç yüz yetmiş dört belgeli tesis var.",
+   "Sitemizde listelenecek tesislerin belge numarasını yayına girmeden Bakanlık kaydıyla doğruluyoruz.",
+   "Tesisinizi ücretsiz ekleyin, başvuru profildeki linkte!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: belge_sorgula formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sgb.jpg?v=d10e39a1",
-  "olusturma": "2026-11-23T17:18:48+03:00"
+  "olusturma": "2026-11-23T17:18:48+03:00",
+  "ses": "abbdc84741",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-29": {
   "id": "2026-11-29-sgb",
