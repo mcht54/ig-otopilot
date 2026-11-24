@@ -405,7 +405,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-markakarnem.jpg?v=2c5230a6",
-  "olusturma": "2026-11-23T13:33:56+03:00"
+  "olusturma": "2026-11-23T13:33:56+03:00",
+  "ses": "31a004e817",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-28": {
   "id": "2026-11-28-markakarnem",

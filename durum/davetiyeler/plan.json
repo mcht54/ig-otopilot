@@ -445,19 +445,21 @@
   },
   "aciklama": "Davetiye siparişi 3 adımda\nKaç adet lazım? Videonun sonunda\n\nSonrası çok kolay\n✔️ İsim, tarih, saat ve mekânı yazın\n✔️ Teklifinizi alın\n✔️ Yazım kontrolü WhatsApp'tan, sonra baskı\n\nDavetiye siparişi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #düğünhazırlığı #gelinadayı",
   "anlatim": [
-   "Davetiye siparişi üç adımda! Kaç adet lazım? Videonun sonunda!",
-   "Şimdi gerçek ekranda bakalım: Modeli seçin, adedi belirleyin.",
-   "Sonrası çok kolay: İsim, tarih, saat ve mekânı yazın, Teklifinizi alın.",
-   "yüzde on fazla! Son dakika davetlileri unutulmasın.",
-   "Dijital davetiye de hediye. Tüm modeller profildeki linkte!"
+   "Davetiye siparişi verirken kaç adet bastırmanız gerektiğini biliyor musunuz?",
+   "Önce modeli seçip yüz ile bin adet arasında ihtiyacınızı belirleyin.",
+   "Bilgilerinizi girip teklif alın, baskı öncesi kontrolü WhatsApp'tan onaylayın.",
+   "Hesap yaparken her davetliye değil, hane başına bir adet ve yedekler ekleyin.",
+   "Basılı siparişinizde dijital davetiye de hediye, tüm modeller profildeki linkte!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: siparis_nasil formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-davetiyeler.jpg?v=7ea63be1",
-  "olusturma": "2026-11-23T13:33:49+03:00"
+  "olusturma": "2026-11-23T13:33:49+03:00",
+  "ses": "bce7d4f158",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-28": {
   "id": "2026-11-28-davetiyeler",
@@ -579,7 +581,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-davetiyeler.jpg?v=f2e837ca",
-  "olusturma": "2026-11-23T17:18:25+03:00"
+  "olusturma": "2026-11-23T17:18:25+03:00",
+  "ses": "2dea9aa81c",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-29": {
   "id": "2026-11-29-davetiyeler",
