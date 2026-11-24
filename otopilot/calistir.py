@@ -533,9 +533,11 @@ def plan_komutu() -> int:
 
 
 def nabiz_tarihi() -> str:
-    """Varsayılan denetim günü: TR saati 06:00'dan önceyse dün (gece yarısını geçen gecikmeli çalıştırma), değilse bugün."""
+    """Varsayılan denetim günü: TR saati 12:00'den önceyse dün, değilse bugün.
+    GitHub zamanlayıcısı 22:00 nabzını ertesi sabaha (ör. 07:09) kaydırabiliyor; günün ilk Reels'i 12:30'da
+    olduğundan öğleden önce 'bugün' denetlenirse her marka yanlışlıkla 'hiç üretim yapılmadı' görünür."""
     s = simdi()
-    return (s.date() - dt.timedelta(days=1)).isoformat() if s.hour < 6 else s.date().isoformat()
+    return (s.date() - dt.timedelta(days=1)).isoformat() if s.hour < 12 else s.date().isoformat()
 
 
 def nabiz(tarih: str | None = None) -> int:
@@ -575,7 +577,7 @@ def main(argv=None) -> int:
     ap.add_argument("--marka", action="append")
     ap.add_argument("--zorla", action="store_true")
     ap.add_argument("--format", help="deneme için formatı zorla")
-    ap.add_argument("--tarih", help="nabiz: denetlenecek gün (YYYY-AA-GG); boşsa 06:00'dan önce dün, sonra bugün")
+    ap.add_argument("--tarih", help="nabiz: denetlenecek gün (YYYY-AA-GG); boşsa 12:00'den önce dün, sonra bugün")
     a = ap.parse_args(argv)
     if a.format:
         os.environ["OTOPILOT_FORMAT"] = a.format

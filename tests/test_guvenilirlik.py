@@ -351,7 +351,9 @@ def test_nabiz_varsayilan_gunu(tmp_path, monkeypatch, capsys):
     assert calistir.nabiz_tarihi() == "2026-11-24"
     monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T00:40")  # gecikmeli 22:00 çalıştırması gece yarısını geçti
     assert calistir.nabiz_tarihi() == "2026-11-24"
-    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T06:00")
+    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T07:09")  # GitHub 22:00 nabzını 9 saat geciktirdi (24.11 gerçek olay)
+    assert calistir.nabiz_tarihi() == "2026-11-24"
+    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T12:00")
     assert calistir.nabiz_tarihi() == "2026-11-25"
     for kod in ortak.marka_kodlari():
         ortak.gecmis_guncelle(kod, {"tarih": "2026-11-24", "tur": "reels", "durum": "yayinlandi", "anahtar": "a", "format": "f"})

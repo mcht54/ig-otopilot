@@ -76,7 +76,7 @@ def test_markakarnem_maskot_yolu():
 
 
 def test_nabiz(gecici_durum, capsys, monkeypatch):
-    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-23T22:00")  # 06:00'dan önce nabız dünü denetler; test saatten bağımsız olsun
+    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-23T22:00")  # 12:00'den önce nabız dünü denetler; test saatten bağımsız olsun
     for kod in ortak.marka_kodlari():
         ortak.gecmis_guncelle(kod, {"tarih": ortak.bugun(), "tur": "reels", "durum": "yayinlandi", "anahtar": "a", "format": "f"})
     assert calistir.nabiz() == 0
