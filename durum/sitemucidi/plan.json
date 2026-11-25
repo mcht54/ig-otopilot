@@ -1,100 +1,4 @@
 {
- "2026-11-24": {
-  "id": "2026-11-24-sitemucidi",
-  "gun": "2026-11-24",
-  "kod": "sitemucidi",
-  "format": "yz_arama",
-  "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
-  "anahtar": "yz:1",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "yz:1",
-   "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
-   "anahtar_kelime": "yapay zekâda görünmek",
-   "olgular": [
-    "İnsanlar işletme önerisini giderek ChatGPT, Gemini gibi yapay zekâ asistanlarına soruyor.",
-    "Bu asistanlar cevabı web sitelerinden, Google İşletme profillerinden ve yorumlardan derler.",
-    "Hizmetleri, adresi, telefonu ve SSS'si net yazılmış site yapay zekânın okuyabileceği kaynaktır.",
-    "Site Mucidi'nin Gelişmiş SEO paketi yerel işletme yapılandırılmış verisi ve SSS işaretlemesi ekler.",
-    "Örnek soru: Adapazarı'nda çocuk diş hekimi var mı?"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "telefon": true,
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/kapak-kervan.png",
-     "etiket": "Yapay zekâ",
-     "baslik": "Yapay zekâ önerdiği işletmeyi nereden biliyor?",
-     "alt": "“Adapazarı'nda çocuk diş hekimi var mı?”"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.2,
-     "gorsel": "file://{{KLASOR}}/kapak-kervan.png",
-     "etiket": "Yapay zekâ neye bakar?",
-     "baslik": "Cevabı buralardan derler",
-     "maddeler": [
-      "İşletmenin web sitesi",
-      "Google İşletme profili ve yorumlar",
-      "Net yazılmış hizmet, adres ve telefon"
-     ]
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://www.sitemucidi.com.tr/temalar/kervan/onizleme",
-     "kaydir": true,
-     "sure": 6.5,
-     "kaydir_px": 3000,
-     "ust_yazi": "Hizmet, adres, SSS: düzenli ve okunur"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Sitesi olmayan önerilmez",
-     "alt": "3 dakikada ücretsiz oluşturun, 7 gün deneyin."
-    }
-   ],
-   "hikaye": {
-    "telefon": true,
-    "gorsel": "file://{{KLASOR}}/kapak-kervan.png",
-    "etiket": "Biliyor muydunuz?",
-    "baslik": "Müşteriler artık yapay zekâya soruyor",
-    "alt": "Siteniz yoksa cevapta yoksunuz"
-   },
-   "format": "yz_arama",
-   "tam_maddeler": [
-    "İşletmenin web sitesi",
-    "Google İşletme profili ve yorumlar",
-    "Net yazılmış hizmet, adres ve telefon"
-   ],
-   "tohum": "sitemucidi:2026-11-24",
-   "denenen_formatlar": [
-    "yz_arama",
-    "ozellik",
-    "sektor_demo",
-    "tema_paket"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Yapay zekâ önerdiği işletmeyi nereden biliyor?\n“Adapazarı'nda çocuk diş hekimi var mı?”\n\nCevabı buralardan derler\n✔️ İşletmenin web sitesi\n✔️ Google İşletme profili ve yorumlar\n✔️ Net yazılmış hizmet, adres ve telefon\n\nYapay zekâda görünmek arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #googledaçıkmak #girişimcilik #sakarya",
-  "anlatim": [
-   "Yapay zekâ önerdiği işletmeyi nereden biliyor? “Adapazarı'nda çocuk diş hekimi var mı?”!",
-   "Cevabı buralardan derler: İşletmenin web sitesi, Google İşletme profili ve yorumlar.",
-   "Hizmet, adres, SSS: düzenli ve okunur.",
-   "Sitesi olmayan önerilmez. Profildeki linkten ücretsiz dene!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: yz_arama formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-sitemucidi.jpg?v=e3c9b272",
-  "olusturma": "2026-11-23T03:47:38+03:00"
- },
  "2026-11-25": {
   "id": "2026-11-25-sitemucidi",
   "gun": "2026-11-25",
@@ -958,5 +862,247 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-sitemucidi.jpg?v=fcceb291",
   "olusturma": "2026-11-24T04:16:22+03:00"
+ },
+ "2026-12-02": {
+  "id": "2026-12-02-sitemucidi",
+  "gun": "2026-12-02",
+  "kod": "sitemucidi",
+  "format": "sektor_demo",
+  "konu": "İşitme cihazı merkezi için Duyu teması ile 3 dakikada site",
+  "anahtar": "tema:isitme-merkezi-prestij",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "tema:isitme-merkezi-prestij",
+   "konu": "İşitme cihazı merkezi için Duyu teması ile 3 dakikada site",
+   "anahtar_kelime": "i̇şitme cihazı merkezi web sitesi",
+   "olgular": [
+    "Tema: Duyu — İşitme cihazı merkezi için premium ve hareketli tasarım",
+    "Uygun sektörler: İşitme cihazı merkezi, Odyoloji, İşitme testi",
+    "Tema açıklaması: İşitme sektörüne özel. Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.",
+    "Öne çıkanlar: Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.; İri, okunaklı yazılar; Randevu ve saat kartı; Cihaz ve hizmet kartları",
+    "Videoda örnek işletme adı: Duyu İşitme cihazı merkezi (gerçek işletme değil)",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir, yayına almak ücretlidir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-isitme-merkezi-prestij.png",
+     "etiket": "İşitme Cihazı Merkezi",
+     "baslik": "Sakarya'da işitme cihazı merkezi sahibiysen izle",
+     "alt": "3 dakikada kod bilmeden sitenizi hazırlayın."
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/olustur?tema=isitme-merkezi-prestij",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "bekle": 0.8,
+     "ust_yazi": "1. Sektör teması Duyu'yu seçin",
+     "sure": 6.72,
+     "eylemler": [
+      {
+       "t": 1.1,
+       "tikla": "Bilgiler"
+      },
+      {
+       "t": 1.2,
+       "ust_yazi": "2. İşletme adınızı yazın"
+      },
+      {
+       "t": 1.6,
+       "odak": "İşletme adı"
+      },
+      {
+       "t": 1.62,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.7000000000000002,
+       "tus": "D"
+      },
+      {
+       "t": 1.7700000000000002,
+       "tus": "u"
+      },
+      {
+       "t": 1.8400000000000003,
+       "tus": "y"
+      },
+      {
+       "t": 1.9100000000000001,
+       "tus": "u"
+      },
+      {
+       "t": 1.9800000000000002,
+       "tus": " "
+      },
+      {
+       "t": 2.0500000000000003,
+       "tus": "İ"
+      },
+      {
+       "t": 2.12,
+       "tus": "ş"
+      },
+      {
+       "t": 2.1900000000000004,
+       "tus": "i"
+      },
+      {
+       "t": 2.2600000000000002,
+       "tus": "t"
+      },
+      {
+       "t": 2.33,
+       "tus": "m"
+      },
+      {
+       "t": 2.4000000000000004,
+       "tus": "e"
+      },
+      {
+       "t": 2.47,
+       "tus": " "
+      },
+      {
+       "t": 2.54,
+       "tus": "c"
+      },
+      {
+       "t": 2.6100000000000003,
+       "tus": "i"
+      },
+      {
+       "t": 2.68,
+       "tus": "h"
+      },
+      {
+       "t": 2.75,
+       "tus": "a"
+      },
+      {
+       "t": 2.8200000000000003,
+       "tus": "z"
+      },
+      {
+       "t": 2.8900000000000006,
+       "tus": "ı"
+      },
+      {
+       "t": 2.9600000000000004,
+       "tus": " "
+      },
+      {
+       "t": 3.0300000000000002,
+       "tus": "m"
+      },
+      {
+       "t": 3.1000000000000005,
+       "tus": "e"
+      },
+      {
+       "t": 3.1700000000000004,
+       "tus": "r"
+      },
+      {
+       "t": 3.24,
+       "tus": "k"
+      },
+      {
+       "t": 3.3100000000000005,
+       "tus": "e"
+      },
+      {
+       "t": 3.3800000000000003,
+       "tus": "z"
+      },
+      {
+       "t": 3.45,
+       "tus": "i"
+      },
+      {
+       "t": 4.0200000000000005,
+       "tikla": "Önizleme"
+      },
+      {
+       "t": 4.12,
+       "ust_yazi": "3. Sitenizi anında önizleyin"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "html_yol": "{{KLASOR}}/onizleme-isitme-merkezi-prestij.html",
+     "kaydir": true,
+     "sure": 7.5,
+     "kaydir_px": 3200,
+     "ust_yazi": "Duyu teması canlı önizleme"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "file://{{KLASOR}}/kapak-isitme-merkezi-prestij.png",
+     "etiket": "Hazır Özellikler",
+     "baslik": "Duyu temasında öne çıkanlar",
+     "maddeler": [
+      "İri ve okunaklı yazılar",
+      "Randevu ve saat kartı",
+      "Cihaz ve hizmet kartları"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitenizi 3 dakikada oluşturun",
+     "alt": "Kod yazmadan oluşturun, 7 gün ücretsiz deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-isitme-merkezi-prestij.png",
+    "etiket": "Duyu Teması",
+    "baslik": "İşitme cihazı merkeziniz için 3 dakikada site",
+    "alt": "Ücretsiz oluşturun, 7 gün boyunca deneyin."
+   },
+   "format": "sektor_demo",
+   "tam_maddeler": [
+    "Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.",
+    "İri, okunaklı yazılar",
+    "Randevu ve saat kartı"
+   ],
+   "tohum": "sitemucidi:2026-12-02",
+   "denenen_formatlar": [
+    "sektor_demo",
+    "yz_arama",
+    "ozellik",
+    "tema_paket"
+   ],
+   "editor": {
+    "puan": null,
+    "uygulandi": false
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "İşitme cihazı merkezi web sitesi 3 dakikada hazır!\n\nOdyoloji ve işitme testi hizmetlerinizi internette kolayca gösterin.\nDuyu teması; iri okunaklı yazıları, randevu ve cihaz kartlarıyla hazır gelir.\nKod yazmadan işletme adınızı yazıp anında önizleyin.\n\nProfildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #hazırsite #sakarya #dijitalpazarlama #girişimcilik",
+  "anlatim": [
+   "Sakarya'da işitme cihazı merkezi sahibiysen izle! üç dakikada kod bilmeden sitenizi hazırlayın!",
+   "Şimdi gerçek ekranda bakalım: Sektör teması Duyu'yu seçin.",
+   "Duyu teması canlı önizleme.",
+   "Duyu temasında öne çıkanlar: İri ve okunaklı yazılar, Randevu ve saat kartı.",
+   "Sitenizi üç dakikada oluşturun. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-sitemucidi.jpg?v=751a83c8",
+  "olusturma": "2026-11-25T03:32:17+03:00"
  }
 }

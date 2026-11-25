@@ -1,122 +1,4 @@
 {
- "2026-11-24": {
-  "id": "2026-11-24-davetiyeler",
-  "gun": "2026-11-24",
-  "kod": "davetiyeler",
-  "format": "kampanya",
-  "konu": "Kampanyalı davetiyeler + dijital davetiye hediye",
-  "anahtar": "kampanya:48",
-  "ek_anahtarlar": [
-   "urun:29216",
-   "urun:29103",
-   "urun:29798",
-   "urun:29706"
-  ],
-  "senaryo": {
-   "anahtar": "kampanya:48",
-   "ek_anahtarlar": [
-    "urun:29216",
-    "urun:29103",
-    "urun:29798",
-    "urun:29706"
-   ],
-   "konu": "Kampanyalı davetiyeler + dijital davetiye hediye",
-   "anahtar_kelime": "kampanyalı davetiye",
-   "olgular": [
-    "Kampanyalı davetiyeler kategorisinde 19 model var.",
-    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye; kod sipariş onayında e-postaya gelir.",
-    "Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 17: Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 17 — dikdörtgen, oval kesim. Düğün, nişan ve kına gecesi için isim ve ta",
-    "Ekonomik – Yatay Gold Yaldız Baskı Detaylı Davetiye – 1: Ekonomik – Yatay Gold Yaldız Baskı Detaylı Davetiye – 1 — gold yaldız. Düğün ve nişan için isim ve tarih baskılı davetiy",
-    "Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 6: Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 6 — dikdörtgen, oval kesim. Düğün, nişan ve kına gecesi için isim ve tar",
-    "Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 4: Kampanyalı Dikdörtgen Zarf – Oval Kesim Model – 4 — dikdörtgen, oval kesim. Düğün, nişan ve kına gecesi için isim ve tar"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-17-900.webp",
-     "etiket": "Kampanya",
-     "baslik": "Basılı davetiyeye dijital davetiye hediye",
-     "alt": "₺650 değerinde, sipariş onayında"
-    },
-    {
-     "tur": "kart",
-     "tip": "izgara",
-     "sure": 4.2,
-     "zemin": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/dugun-davetiyesi-gold-yaldizli-model-1-900.webp",
-     "gorseller": [
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-17-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/dugun-davetiyesi-gold-yaldizli-model-1-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-6-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-4-900.webp"
-     ],
-     "yazilar": [
-      "Kampanyalı Dikdörtgen Zarf…",
-      "Ekonomik – Yatay Gold…",
-      "Kampanyalı Dikdörtgen Zarf…",
-      "Kampanyalı Dikdörtgen Zarf…"
-     ],
-     "baslik": "Kampanyalı modellerden",
-     "alt": "Hepsi profildeki linkte"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 4.6,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-6-900.webp",
-     "etiket": "Nasıl alırım?",
-     "baslik": "Hediye dijital davetiye",
-     "maddeler": [
-      "Basılı davetiyenizi sipariş edin",
-      "Kodunuz e-postanıza gelsin",
-      "Dijital modelinizi seçip paylaşın"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "İki davetiye, tek sipariş",
-     "alt": "Kampanyalı modeller sitede"
-    }
-   ],
-   "hikaye": {
-    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/oval-kesim-dikdortgen-dugun-davetiyesi-model-17-900.webp",
-    "etiket": "Kampanya",
-    "baslik": "Dijital davetiye hediye",
-    "alt": "Basılı davetiye siparişine özel"
-   },
-   "format": "kampanya",
-   "tam_maddeler": [
-    "Basılı davetiyenizi sipariş edin",
-    "Kodunuz e-postanıza gelsin",
-    "Dijital modelinizi seçip paylaşın"
-   ],
-   "tohum": "davetiyeler:2026-11-24",
-   "denenen_formatlar": [
-    "kampanya",
-    "siparis_nasil",
-    "model_vitrin",
-    "dijital_davetiye"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Basılı davetiyeye dijital davetiye hediye\n₺650 değerinde, sipariş onayında\n\nHediye dijital davetiye\n✔️ Basılı davetiyenizi sipariş edin\n✔️ Kodunuz e-postanıza gelsin\n✔️ Dijital modelinizi seçip paylaşın\n\nKampanyalı davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #nişandavetiyesi #gelinadayı #nikahdavetiyesi",
-  "anlatim": [
-   "Basılı davetiyeye dijital davetiye hediye! 650 lira değerinde, sipariş onayında!",
-   "Kampanyalı modellerden. Hepsi profildeki linkte.",
-   "Hediye dijital davetiye: Basılı davetiyenizi sipariş edin, Kodunuz e-postanıza gelsin.",
-   "İki davetiye, tek sipariş. Tüm modeller profildeki linkte!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: kampanya formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-davetiyeler.jpg?v=e1fae7fd",
-  "olusturma": "2026-11-23T03:47:01+03:00"
- },
  "2026-11-25": {
   "id": "2026-11-25-davetiyeler",
   "gun": "2026-11-25",
@@ -692,7 +574,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-davetiyeler.jpg?v=00ab022b",
-  "olusturma": "2026-11-23T17:19:22+03:00"
+  "olusturma": "2026-11-23T17:19:22+03:00",
+  "ses": "75cd160334",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-30": {
   "id": "2026-11-30-davetiyeler",
@@ -807,7 +691,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-davetiyeler.jpg?v=91e3d995",
-  "olusturma": "2026-11-24T04:14:18+03:00"
+  "olusturma": "2026-11-24T04:14:18+03:00",
+  "ses": "4eee8b5c16",
+  "ses_kaynagi": "gemini"
  },
  "2026-12-01": {
   "id": "2026-12-01-davetiyeler",
@@ -926,5 +812,116 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-davetiyeler.jpg?v=98ebb176",
   "olusturma": "2026-11-24T04:15:52+03:00"
+ },
+ "2026-12-02": {
+  "id": "2026-12-02-davetiyeler",
+  "gun": "2026-12-02",
+  "kod": "davetiyeler",
+  "format": "dijital_davetiye",
+  "konu": "Dijital davetiye modeli: Cerceve Bordo",
+  "anahtar": "dijital:ornek-k-cerceve-bordo",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "dijital:ornek-k-cerceve-bordo",
+   "konu": "Dijital davetiye modeli: Cerceve Bordo",
+   "anahtar_kelime": "dijital davetiye",
+   "olgular": [
+    "Model: Cerceve Bordo (düğün/nişan/kına)",
+    "Ürün açıklaması: Animasyonlu açılışlı, LCV’li, geri sayımlı ve haritalı dijital davetiye. Tek link ile WhatsApp’tan paylaşılır.",
+    "Fiyat: ₺650 (sitedeki fiyat)",
+    "Oluşturma 4 adım: model seç, bilgiler, müzik ve fotoğraf, katılım (LCV) ve kaydet.",
+    "Davetiye tek bağlantıyla WhatsApp'tan paylaşılır; misafir LCV ile katılımını bildirir.",
+    "Canlı örnek: https://www.davetiyeler.tr/d/ornek-k-cerceve-bordo/"
+   ],
+   "sahneler": [
+    {
+     "tur": "sayfa",
+     "url": "https://www.davetiyeler.tr/d/ornek-k-cerceve-bordo/",
+     "sure": 8.5,
+     "ust_yazi": "Davetiyeniz WhatsApp'ta böyle açılır",
+     "eylemler": [
+      {
+       "t": 1.6,
+       "tikla": "davetiyeyi aç"
+      },
+      {
+       "t": 4.8,
+       "ust_yazi": "Animasyonlu açılış + müzik"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.davetiyeler.tr/d/ornek-k-cerceve-bordo/",
+     "sure": 6.5,
+     "once_tikla": [
+      "atla"
+     ],
+     "once_js": [
+      "document.querySelectorAll('.__ust').forEach(e=>e.remove())"
+     ],
+     "kaydir": true,
+     "kaydir_px": 2400,
+     "kaydir_bas": 0.4,
+     "ust_yazi": "Geri sayım, harita, LCV tek linkte"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "4 adımda hazır",
+     "baslik": "Dijital davetiye nasıl oluşturulur?",
+     "maddeler": [
+      "Modelinizi seçin",
+      "İsim, tarih ve mekânı yazın",
+      "Müzik ve fotoğraf ekleyin",
+      "Linki WhatsApp'tan gönderin"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Kâğıt yok, kargo yok, bekleme yok",
+     "alt": "Dijital davetiye ₺650"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "kayit_url": "https://www.davetiyeler.tr/d/ornek-k-cerceve-bordo/",
+    "etiket": "Dijital davetiye",
+    "baslik": "Davetiyeniz telefonda böyle açılsın",
+    "alt": "Modeli profildeki linkte"
+   },
+   "format": "dijital_davetiye",
+   "tam_maddeler": [
+    "Modelinizi seçin",
+    "İsim, tarih ve mekânı yazın",
+    "Müzik ve fotoğraf ekleyin",
+    "Linki WhatsApp'tan gönderin"
+   ],
+   "tohum": "davetiyeler:2026-12-02",
+   "denenen_formatlar": [
+    "dijital_davetiye",
+    "siparis_nasil",
+    "model_vitrin",
+    "kampanya"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Dijital davetiye modeli: Cerceve Bordo\n\nDijital davetiye nasıl oluşturulur?\n✔️ Modelinizi seçin\n✔️ İsim, tarih ve mekânı yazın\n✔️ Müzik ve fotoğraf ekleyin\n✔️ Linki WhatsApp'tan gönderin\n\nDijital davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #davetiyemodelleri #düğünhazırlığı #sünnetdavetiyesi",
+  "anlatim": [
+   "Davetiyenizin WhatsApp'ta harika bir müzik ve özel bir animasyonla açılmasını ister misiniz?",
+   "Geri sayım, harita ve LCV katılım bildirimi tek bir şık bağlantıda buluşuyor.",
+   "Model seçip bilgilerinizi ve fotoğrafınızı ekleyerek sadece dört adımda hemen oluşturabilirsiniz.",
+   "Çerçeve Bordo modeli altı yüz elli lira, tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: dijital_davetiye formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-davetiyeler.jpg?v=7b73a1cd",
+  "olusturma": "2026-11-25T03:30:23+03:00"
  }
 }

@@ -1,108 +1,4 @@
 {
- "2026-11-24": {
-  "id": "2026-11-24-markakarnem",
-  "gun": "2026-11-24",
-  "kod": "markakarnem",
-  "format": "sektor_ipucu",
-  "konu": "Hukuk büroları internette nasıl görünüyor?",
-  "anahtar": "sektor:hukuk",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "sektor:hukuk",
-   "konu": "Hukuk büroları internette nasıl görünüyor?",
-   "anahtar_kelime": "hukuk büroları internette nasıl görünüyor",
-   "olgular": [
-    "Sayfa: Hukuk büroları internette nasıl görünüyor?",
-    "Özet: Hukuk büronuzun web sitesi, Google İşletme Profili ve iletişim bilgilerinin nasıl göründüğünü analiz edin; bilgilendirici ve tutarlı bir varlık oluşturun.",
-    "Müşteri sizi nasıl buluyor?: Hukuk için tipik dijital karar süreci. Hukuki destek arayan kişi çoğu zaman stresli bir durumdadır ve önce büronun hangi alanlarda çalıştığını, nerede olduğunu ve nasıl ulaşılabileceğini anlamak ister. Avukatlık mesleğinde tanıtıma ilişkin meslek kuralları bulunduğundan, reklam dili yerine açık, bil",
-    "Üç kanal, tek görünüm: Hukuk büroları için her kanalın rolü farklıdır. Analiz üçünü birlikte ve birbiriyle tutarlılığıyla inceler. Profil bilgileri Yorumlar Kategori",
-    "Google görünürlüğü Google İşletme Profili: Google İşletme Profili, büronun konumunu, çalışma saatlerini ve telefonunu gösterir. Doğru kategori, güncel adres ve web sitesi bağlantısı, büroyu arayan kişinin doğru yere ulaşmasına yardımcı olur. Randevu için büroyu arayın",
-    "Instagram Sosyal vitrin: Instagram bu sektörde birincil kanal olmayabilir; kullanılıyorsa büro bilgileri ve web sitesiyle tutarlı olması, düzenli ve bilgilendirici paylaşımlar yapılması yeterlidir.",
-    "Web sitesi Dijital merkez: Web sitesi; çalışma alanlarını, büro bilgilerini ve iletişim yollarını sade ve bilgilendirici bir dille anlatmak için temel alandır. Meslek kurallarına uygun, tanıtımdan çok bilgilendirmeye odaklanan içerik bu sektörde daha uygundur. Açık sayfa başlıkları ve açıklamalar, arama motorlarının sayfaları",
-    "Analiz kapsamı: Web sitesi16 SEO15 Google İşletme Profili12 Instagram9",
-    "Nerelerde fırsat olabilir?: Hukuk büroları için sık karşılaşılan dijital görünürlük eksikleri. Kendi raporunuzda yalnızca işletmeniz için ölçülen sonuçları görürsünüz."
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": null,
-     "etiket": "Sektörünüze özel",
-     "baslik": "Hukuk büroları internette nasıl görünüyor?",
-     "alt": "Cevabı 15 saniyede"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.4,
-     "etiket": "Kısaca",
-     "baslik": "Bilmeniz gerekenler",
-     "maddeler": [
-      "Müşteri sizi nasıl buluyor?",
-      "Üç kanal, tek görünüm",
-      "Google görünürlüğü Google İşletme Profili",
-      "Instagram Sosyal vitrin"
-     ]
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://markakarnem.com.tr/sektorler/hukuk",
-     "sure": 5.5,
-     "once_tikla": [
-      "Reddet"
-     ],
-     "kaydir": true,
-     "kaydir_px": 1800,
-     "kaydir_bas": 0.5,
-     "ust_yazi": "Tamamı sitede, ücretsiz"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Sizin durumunuz ne?",
-     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
-    }
-   ],
-   "hikaye": {
-    "gorsel": null,
-    "etiket": "Sektörünüze özel",
-    "baslik": "Hukuk büroları internette nasıl görünüyor?",
-    "alt": "Cevap profildeki videoda"
-   },
-   "format": "sektor_ipucu",
-   "tam_maddeler": [
-    "Müşteri sizi nasıl buluyor?",
-    "Üç kanal, tek görünüm",
-    "Google görünürlüğü Google İşletme Profili",
-    "Instagram Sosyal vitrin"
-   ],
-   "tohum": "markakarnem:2026-11-24",
-   "denenen_formatlar": [
-    "sektor_ipucu",
-    "arac_demo",
-    "yerel_karne",
-    "soru_cevap",
-    "ornek_rapor"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Hukuk büroları internette nasıl görünüyor?\nCevabı 15 saniyede\n\nBilmeniz gerekenler\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü Google İşletme Profili\n✔️ Instagram Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #markaskoru #sakarya",
-  "anlatim": [
-   "Hukuk büroları internette nasıl görünüyor? Cevabı 15 saniyede!",
-   "Bilmeniz gerekenler: Müşteri sizi nasıl buluyor?, Üç kanal, tek görünüm.",
-   "Tamamı sitede, ücretsiz.",
-   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: sektor_ipucu formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-markakarnem.jpg?v=dc1e4013",
-  "olusturma": "2026-11-23T03:47:10+03:00"
- },
  "2026-11-25": {
   "id": "2026-11-25-markakarnem",
   "gun": "2026-11-25",
@@ -617,7 +513,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-markakarnem.jpg?v=45893295",
-  "olusturma": "2026-11-23T17:19:31+03:00"
+  "olusturma": "2026-11-23T17:19:31+03:00",
+  "ses": "1429fa9d84",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-30": {
   "id": "2026-11-30-markakarnem",
@@ -826,5 +724,181 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-markakarnem.jpg?v=994b43ec",
   "olusturma": "2026-11-24T04:16:00+03:00"
+ },
+ "2026-12-02": {
+  "id": "2026-12-02-markakarnem",
+  "gun": "2026-12-02",
+  "kod": "markakarnem",
+  "format": "arac_demo",
+  "konu": "Instagram etkileşim oranı nasıl hesaplanır",
+  "anahtar": "arac:2026-12",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "arac:2026-12",
+   "konu": "Instagram etkileşim oranı nasıl hesaplanır",
+   "anahtar_kelime": "instagram etkileşim oranı",
+   "olgular": [
+    "Instagram etkileşim oranınızı ücretsiz hesaplayın: takipçi, beğeni ve yorum sayınızı girin, oranı anında görün. Giriş ya da şifre gerekmez; formül açıkça gösterilir.",
+    "Instagram etkileşim oranı nedir?: Etkileşim oranı, takipçilerinizin ne kadarının paylaşımlarınıza tepki verdiğini gösteren yüzdedir. Takipçi sayısı kitlenizin büyüklüğünü, etkileşim oranı ise o kitlenin ne kadar ilgili olduğunu anlatır. Bir işletme için yüksek takipçi sayısı tek başına müşteri getirmez. Paylaşımlarınıza yorum yazan,",
+    "Etkileşim oranı formülü: (Beğeni + Yorum + Kaydetme + Paylaşım) ÷ Takipçi × 100 Örnek: 2.000 takipçili bir hesabın gönderileri ortalama 70 beğeni, 6 yorum ve 4 kaydetme alıyorsa toplam etkileşim 80 olur. 80 ÷ 2.000 × 100 = %4.",
+    "Etkileşim oranı doğru nasıl ölçülür?: Tek gönderiye bakmayın. Son 10 gönderinin ortalamasını alın; tek bir gönderi yanıltır. Aynı yöntemi kullanın. Bir ay takipçiye, sonraki ay erişime göre hesaplarsanız sonuçlar karşılaştırılamaz. Gönderi türlerini ayırın. Reels, fotoğraf ve kaydırmalı gönderilerin oranını ayrı ayrı hesaplayın. Aydan a",
+    "Sık sorulan sorular: En yaygın yöntem takipçiye göre hesaptır: bir gönderinin aldığı beğeni, yorum, kaydetme ve paylaşım sayıları toplanır, takipçi sayısına bölünür ve 100 ile çarpılır. Tek gönderi yerine son 10 gönderinin ortalamasını kullanmak daha güvenilir sonuç verir. Herkes için geçerli tek bir sayı yoktur. Oran s"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Ücretsiz araç",
+     "baslik": "Instagram etkileşim oranınız kaç?",
+     "alt": "Takipçi sayısı tek başına bir şey söylemez"
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/araclar/instagram-etkilesim-orani-hesaplama",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "sure": 7.1,
+     "ust_yazi": "Rakamlarınızı yazın",
+     "once_js": [
+      "document.querySelector('input')?.scrollIntoView({block:'center'})"
+     ],
+     "eylemler": [
+      {
+       "t": 1.0,
+       "odak": "Takipçi sayısı"
+      },
+      {
+       "t": 1.02,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.1,
+       "tus": "2"
+      },
+      {
+       "t": 1.2200000000000002,
+       "tus": "0"
+      },
+      {
+       "t": 1.34,
+       "tus": "0"
+      },
+      {
+       "t": 1.46,
+       "tus": "0"
+      },
+      {
+       "t": 1.88,
+       "odak": "ortalama beğeni"
+      },
+      {
+       "t": 1.9,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.98,
+       "tus": "7"
+      },
+      {
+       "t": 2.1,
+       "tus": "0"
+      },
+      {
+       "t": 2.52,
+       "odak": "ortalama yorum"
+      },
+      {
+       "t": 2.54,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 2.62,
+       "tus": "6"
+      },
+      {
+       "t": 3.04,
+       "odak": "Ortalama kaydetme"
+      },
+      {
+       "t": 3.06,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 3.14,
+       "tus": "4"
+      },
+      {
+       "t": 3.7600000000000002,
+       "tikla": "Etkileşim oranını hesapla"
+      },
+      {
+       "t": 3.86,
+       "ust_yazi": "Sonuç anında, giriş yok"
+      },
+      {
+       "t": 4.16,
+       "js": "(() => { const b = [...document.querySelectorAll('button')].find(e => /hesapla/i.test(e.innerText)); const y = b ? b.getBoundingClientRect().top + scrollY - 140 : scrollY + 450; scrollTo(0, y); })()"
+      }
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "Doğru ölçüm",
+     "baslik": "Yanılmamak için",
+     "maddeler": [
+      "Son 10 gönderinin ortalamasını alın",
+      "Hep aynı yöntemle hesaplayın",
+      "Reels ve fotoğrafı ayrı ölçün"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Hesaplayın, kaydedin",
+     "alt": "Giriş ve şifre gerekmez"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Ücretsiz araç",
+    "baslik": "Etkileşim oranınızı 10 saniyede hesaplayın",
+    "alt": "Link profilde"
+   },
+   "format": "arac_demo",
+   "tam_maddeler": [
+    "Son 10 gönderinin ortalamasını alın",
+    "Hep aynı yöntemle hesaplayın",
+    "Reels ve fotoğrafı ayrı ölçün"
+   ],
+   "tohum": "markakarnem:2026-12-02",
+   "denenen_formatlar": [
+    "arac_demo",
+    "soru_cevap",
+    "yerel_karne",
+    "sektor_ipucu",
+    "ornek_rapor"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Instagram etkileşim oranınız kaç?\nTakipçi sayısı tek başına bir şey söylemez\n\nYanılmamak için\n✔️ Son 10 gönderinin ortalamasını alın\n✔️ Hep aynı yöntemle hesaplayın\n✔️ Reels ve fotoğrafı ayrı ölçün\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #markaskoru #sakarya #instagramipuçları",
+  "anlatim": [
+   "Binlerce takipçiniz var ama paylaşımlarınız sessiz mi kalıyor?",
+   "Şifre vermeden takipçi, beğeni ve yorumlarınızı girip gerçek etkileşimi görün.",
+   "Yanılmamak için mutlaka son on gönderinizin ortalamasını hesaplayın.",
+   "Ücretsiz karnenizi profildeki linkten çıkarın."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: arac_demo formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-markakarnem.jpg?v=6c3bc7f5",
+  "olusturma": "2026-11-25T03:30:53+03:00"
  }
 }

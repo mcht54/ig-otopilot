@@ -1,106 +1,4 @@
 {
- "2026-11-24": {
-  "id": "2026-11-24-sgb",
-  "gun": "2026-11-24",
-  "kod": "sgb",
-  "format": "guvenlik_ipucu",
-  "konu": "Bungalovda gizli kamera nasıl kontrol edilir?",
-  "anahtar": "rehber:bungalovda-gizli-kamera-nasil-kontrol-edilir",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "rehber:bungalovda-gizli-kamera-nasil-kontrol-edilir",
-   "konu": "Bungalovda gizli kamera nasıl kontrol edilir?",
-   "anahtar_kelime": "sapanca bungalov",
-   "olgular": [
-    "Makale: Bungalovda gizli kamera nasıl kontrol edilir?",
-    "Özet: Bungalov ve kiralık evde gizli kamera nasıl anlaşılır? Priz, duman dedektörü ve ayna kontrolü, telefonla kızılötesi testi, kamera bulursanız yapılacaklar.",
-    "1. Göz kontrolü (2 dakika): Prizler ve uzatma kabloları: Kullanılmayan bir prizde ya da üçlü prizde küçük bir delik veya ışık var mı? Duman dedektörü, saat, şarj aleti, hoparlör: Yatak, duş ya da tuvalete dönük duruyorsa yakından bakın. Yeni ya da yersiz duran nesneler: Raf üstünde tek başına duran kutu, çerçeve, bitki saksısı",
-    "2. Işık ve telefonla kontrol: Karanlık oda testi: Işıkları ve perdeleri kapatın. Küçük kırmızı, mavi ya da yeşil ışıklar görüyorsanız kaynağına bakın. Telefon kamerası: Pek çok gece görüşlü kamera kızılötesi ışık kullanır. Karanlıkta telefonun kamerasını açıp odayı yavaşça tarayın; ekranda mor-beyaz noktalar görürseniz yakından ",
-    "3. Wi-Fi listesi: Tesisin ağına bağlandığınızda telefonunuzun ağ tarama uygulamasında \"camera\", \"IPC\" gibi adlarla görünen cihazlar ipucu olabilir. Uygulamaları yalnız resmi uygulama mağazasından indirin.",
-    "Kamera bulursanız: Cihaza dokunmayın ve sökmeyin; delil niteliğindedir. Bulunduğu yeri ve cihazı fotoğraflayın, videoya alın. Tesisten ayrılın ve 155 Polis İmdat'ı arayın. Kiraladığınız platformu ve bizi şikâyet formundan bilgilendirin.",
-    "İlanlarda kamera beyanı: Sitemizdeki her tesis sayfasında işletmenin kamera beyanı yazar: konaklama alanında kamera olmadığı ya da yalnız giriş ve otopark gibi dış ortak alanlarda bulunduğu. Beyanla uyuşmayan bir durum görürseniz bildirin; tesis incelemeye alınır."
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/somineli-bungalov-salon.jpg",
-     "etiket": "Güvenli tatil",
-     "baslik": "Bungalovda gizli kamera nasıl kontrol edilir?",
-     "alt": "Kaydedin, tatilden önce lazım olacak"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.6,
-     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/ahsap-verandali-bungalov.jpg",
-     "etiket": "Kısaca",
-     "baslik": "Bilmeniz gerekenler",
-     "maddeler": [
-      "Göz kontrolü (2 dakika)",
-      "Işık ve telefonla kontrol",
-      "Wi-Fi listesi",
-      "Kamera bulursanız"
-     ]
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://sapancaguvenilirbungalov.com.tr/rehber/bungalovda-gizli-kamera-nasil-kontrol-edilir/",
-     "sure": 6.0,
-     "kaydir": true,
-     "kaydir_px": 2200,
-     "kaydir_bas": 0.5,
-     "ust_yazi": "Rehberin tamamı sitede"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Kapora göndermeden önce kontrol edin",
-     "alt": "Rehberin tamamı profildeki linkte"
-    }
-   ],
-   "hikaye": {
-    "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/bungalov-ic-mekan-sicak-havuz.jpg",
-    "etiket": "Güvenli tatil",
-    "baslik": "Göz kontrolü (2 dakika)",
-    "alt": "Rehber profilde"
-   },
-   "format": "guvenlik_ipucu",
-   "tam_maddeler": [
-    "Göz kontrolü (2 dakika)",
-    "Işık ve telefonla kontrol",
-    "Wi-Fi listesi",
-    "Kamera bulursanız"
-   ],
-   "tohum": "sgb:2026-11-24",
-   "denenen_formatlar": [
-    "guvenlik_ipucu",
-    "basvuru_adimlari",
-    "belgeli_ayirt",
-    "kurucu_tesis",
-    "isletme_davet",
-    "sahte_ilan_isletme",
-    "belge_sorgula"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Bungalovda gizli kamera nasıl kontrol edilir?\nKaydedin, tatilden önce lazım olacak\n\nBilmeniz gerekenler\n✔️ Göz kontrolü (2 dakika)\n✔️ Işık ve telefonla kontrol\n✔️ Wi-Fi listesi\n✔️ Kamera bulursanız\n\nSapanca bungalov arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #bungalovtatili #sakarya #balayı",
-  "anlatim": [
-   "Bungalovda gizli kamera nasıl kontrol edilir? Kaydedin, tatilden önce lazım olacak!",
-   "Bilmeniz gerekenler: Göz kontrolü, Işık ve telefonla kontrol.",
-   "Rehberin tamamı sitede.",
-   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: guvenlik_ipucu formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-24-sgb.jpg?v=3b9ed37d",
-  "olusturma": "2026-11-23T03:47:23+03:00"
- },
  "2026-11-25": {
   "id": "2026-11-25-sgb",
   "gun": "2026-11-25",
@@ -635,7 +533,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-sgb.jpg?v=fbca7c13",
-  "olusturma": "2026-11-23T17:19:43+03:00"
+  "olusturma": "2026-11-23T17:19:43+03:00",
+  "ses": "571a710cca",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-30": {
   "id": "2026-11-30-sgb",
@@ -835,5 +735,118 @@
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-sgb.jpg?v=04921432",
   "olusturma": "2026-11-24T04:16:10+03:00"
+ },
+ "2026-12-02": {
+  "id": "2026-12-02-sgb",
+  "gun": "2026-12-02",
+  "kod": "sgb",
+  "format": "sahte_ilan_isletme",
+  "konu": "İşletmenin fotoğraflarıyla açılan sahte hesaplar",
+  "anahtar": "sahte-isletme:49",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "sahte-isletme:49",
+   "konu": "İşletmenin fotoğraflarıyla açılan sahte hesaplar",
+   "anahtar_kelime": "sapanca bungalov işletmesi",
+   "olgular": [
+    "Bakanlık belgeli Sapanca bungalov tesisinizi komisyonsuz listeleyin. Misafir sizi doğrudan arar. Kurucu tesisler ücretsiz.",
+    "Nasıl çalışır?: Komisyon yok, rezervasyon aracılığı yok. Misafir sizi telefon ya da WhatsApp ile doğrudan arar; anlaşma sizinle misafir arasındadır. Kurucu tesisler ücretsiz. İlk dönemde katılan tesisler ücretsiz listelenir ve sonraki dönem için indirimli fiyat garantisi alır. Panelinizde gerçek istatistik. İlanınızın görüntülenmesi, telefon ve WhatsApp tıklamaları günlük olarak görünür.",
+    "Kimler başvurabilir?: Kültür ve Turizm Bakanlığı'ndan alınmış Turizm İşletmesi Belgesi, Geçici Turizm İşletmesi Belgesi, Basit Konaklama Turizm İşletmesi Belgesi ya da Turizm Amaçlı Konut İzin Belgesi olan tesisler. Mevzuat gereği belgesiz tesislerin internette tanıtımı yapılamaz; bu nedenle belgesiz başvuruları kabul edemiyoruz.",
+    "Başvuru adımları: Başvuru formunu doldurun: tesis bilgileri, belge türü ve numarası, iletişim bilgileriniz. Belgenin fotoğrafını eklemeniz kontrolü hızlandırır. Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla eşleştirir ve sahiplik ya da yetkinizi teyit etmek için sizi arar. Onaylanınca e-postanıza parola belirleme bağlantısı gelir; panelinizden fotoğraflarınızı, birimlerinizi ve fiyatlarınızı eklersiniz. Tele",
+    "Neden bu kadar kontrol?: Sapanca'da gerçek işletmelerin fotoğraflarıyla açılan sahte hesaplar hem misafirlere hem işletmelere zarar veriyor. Sıkı doğrulama, sizin adınıza açılabilecek sahte ilanlara karşı da koruma sağlar: doğrulanmış numaranız ve belgeniz başka bir hesapta kullanılamaz.",
+    "Tesisinizi ekleyin: Başvuru 5 dakika sürer. Hesabınız varsa panelinize giriş yapın. Başvuru formunu doldurun İşletme girişi"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/ahsap-verandali-bungalov.jpg",
+     "etiket": "Tesis Sahiplerine",
+     "baslik": "Fotoğraflarınızla sahte hesap açılmış olabilir",
+     "alt": "Sıkı doğrulama ile sahte ilanlara karşı korunun"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/orman-icinde-ahsap-bungalov.jpg",
+     "etiket": "Sahte İlana Karşı Koruma",
+     "baslik": "Doğrulanmış Tesis Olun",
+     "maddeler": [
+      "Belgeniz Bakanlık kaydıyla eşleştirilir",
+      "Sahiplik telefonla teyit edilir",
+      "Doğrulanmış numara başka hesapta kullanılamaz"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://sapancaguvenilirbungalov.com.tr/isletmeler-icin/",
+     "sure": 5.5,
+     "kaydir": true,
+     "kaydir_px": 2200,
+     "kaydir_bas": 0.3,
+     "ust_yazi": "Neden bu kadar sıkı kontrol yapıyoruz?"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Tesisinizi Ücretsiz Listeleyin",
+     "alt": "Başvuru 5 dakika sürer, link profilde"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://sapancaguvenilirbungalov.com.tr/img/bungalov/somineli-bungalov-salon.jpg",
+    "etiket": "Tesis Sahipleri",
+    "baslik": "Sahte ilanlara karşı belgenizi doğrulayın",
+    "alt": "Ücretsiz başvuru linki profilde"
+   },
+   "format": "sahte_ilan_isletme",
+   "tam_maddeler": [
+    "Belgeniz Bakanlık kaydıyla eşleştirilir",
+    "Sahiplik telefonla teyit edilir",
+    "Doğrulanmış numaranız başka hesapta kullanılamaz"
+   ],
+   "tohum": "sgb:2026-12-02",
+   "denenen_formatlar": [
+    "sahte_ilan_isletme",
+    "kurucu_tesis",
+    "belgeli_ayirt",
+    "isletme_davet",
+    "basvuru_adimlari",
+    "guvenlik_ipucu",
+    "belge_sorgula"
+   ],
+   "editor": {
+    "puan": 9.0,
+    "uygulandi": false,
+    "puanlar": {
+     "kanca": 8,
+     "kitle": 9,
+     "tek_mesaj": 9,
+     "deger": 9,
+     "cta": 9,
+     "hata": 10,
+     "ozgunluk": 9
+    },
+    "notlar": "Taslak gayet başarılı. Tesis sahiplerinin görsellerinin kopyalanması ve adlarına sahte ilan açılması endişesine doğrudan dokunuyor. Tüm bilgiler OLGULAR metniyle birebir örtüşüyor, dil/yazım hatası yok ve sınırlandırmalara uygun."
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "🛡️ Sapanca bungalov işletmesi fotoğraflarınızla sahte hesap açılmasın.\n\nBakanlık belgeniz ekibimizce doğrulanır ve kayıtlardan teyit edilir.\nDoğrulanmış numaranız ve belgeniz başka bir hesapta kullanılamaz.\nMisafirleriniz komisyonsuz doğrudan size ulaşır.\n\nTesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapancabungalov #sapanca #bungalov #sakarya",
+  "anlatim": [
+   "Bungalovunuzun fotoğraflarıyla sahte hesap açılmış olabileceğini hiç düşündünüz mü?",
+   "Belgelerinizi Bakanlık kaydıyla eşleştirip numaranızı doğrulayarak işletmenizi sahte ilanlara karşı koruyoruz.",
+   "Komisyon ödemeden, misafirlerin telefon veya WhatsApp ile doğrudan sizinle iletişim kurmasını sağlıyoruz.",
+   "Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sahte_ilan_isletme formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-sgb.jpg?v=3ff62330",
+  "olusturma": "2026-11-25T03:31:36+03:00"
  }
 }
