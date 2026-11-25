@@ -72,10 +72,19 @@ def taslak(oge: dict, m: dict) -> dict:
               f"DOĞRU BİLGİLER: {' | '.join(map(str, m['deger_onerisi'] + list(s.get('ozellikler', []))))}")
     istem = (f"{'Gönderi altına yorum' if oge['tur'] == 'yorum' else 'Instagram DM'}: \"{oge['metin'][:800]}\"\n"
              + (f"Gönderinin konusu: {oge['baglam'][:200]}\n" if oge.get("baglam") else "")
-             + 'JSON: {"taslak": "", "not": "", "oncelik": "yuksek|normal|dusuk"} (satın alma/fiyat/rezervasyon sorusu = yuksek)')
+             + 'JSON: {"taslak": "", "not": "", "oncelik": "yuksek|normal|dusuk", "sinif": "satin_alma|soru|sikayet|ovgu|oneri|spam|diger", '
+               '"konu": "", "musteri": {"ad": "", "telefon": "", "ihtiyac": "", "hizmet": ""}}\n'
+               "oncelik: satın alma/fiyat/rezervasyon sorusu = yuksek. sinif: satin_alma = almak, yaptırmak, fiyat/rezervasyon istemek; "
+               "sikayet = memnuniyetsizlik, olumsuz deneyim, kızgınlık (cevabı özür + çözüm + DM/WhatsApp'a davet; savunma yok). "
+               "konu: yorumun konusu 1-3 kelime, küçük harf (ör. 'fiyat', 'teslim süresi', 'tasarım beğenisi'). "
+               "musteri: YALNIZ kişinin kendisinin yazdığı bilgiler (ad, telefon, ne istediği, hangi hizmet); yazmadıysa boş bırak, ASLA tahmin etme.")
     v = llm.json_sor(sistem, istem) or {}
+    sinif = v.get("sinif") if v.get("sinif") in ("satin_alma", "soru", "sikayet", "ovgu", "oneri", "spam", "diger") else None
+    m = v.get("musteri") if isinstance(v.get("musteri"), dict) else {}
+    musteri = {k: str(m.get(k) or "")[:200] for k in ("ad", "telefon", "ihtiyac", "hizmet") if str(m.get(k) or "").strip()}
     return {"taslak": str(v.get("taslak") or "")[:900], "not": str(v.get("not") or "")[:200],
-            "oncelik": v.get("oncelik") if v.get("oncelik") in ("yuksek", "normal", "dusuk") else "normal"}
+            "oncelik": "yuksek" if sinif in ("satin_alma", "sikayet") else (v.get("oncelik") if v.get("oncelik") in ("yuksek", "normal", "dusuk") else "normal"),
+            "sinif": sinif, "konu": str(v.get("konu") or "")[:40].strip().lower(), "musteri": musteri or None}
 
 
 def gonder(oge: dict) -> None:
@@ -130,6 +139,7 @@ def calistir() -> int:
             sonuc.append({"id": g["id"], "durum": "hata", "neden": str(e)[:200]})
     if yeni or sonuc:
         panel.etkilesim({"yeni": yeni, "sonuc": sonuc})
-    log(f"etkileşim: {len(adaylar)} aday, {len(yeni)} yeni (taslak yazıldı), {sum(1 for s in sonuc if s['durum'] == 'gonderildi')} cevap gönderildi, "
+    log(f"etkileşim: {len(adaylar)} aday, {len(yeni)} yeni (taslak yazıldı; {sum(1 for a in yeni if a.get('sinif') == 'satin_alma')} müşteri adayı, "
+        f"{sum(1 for a in yeni if a.get('sinif') == 'sikayet')} şikâyet), {sum(1 for s in sonuc if s['durum'] == 'gonderildi')} cevap gönderildi, "
         f"{sum(1 for s in sonuc if s['durum'] == 'hata')} hata; durum: " + ", ".join(f"{k} yorum={v.get('yorum', '-')[:4]} dm={v.get('dm', '-')[:4]}" for k, v in durumlar.items()))
     return 0

@@ -39,3 +39,18 @@ def test_panel_yoksa_bozulmaz(monkeypatch):
     monkeypatch.setattr(etkilesim, "marka_kodlari", lambda: [])
     monkeypatch.setattr(panel, "etkilesim", lambda yuk: None)
     assert etkilesim.calistir() == 0
+
+
+def test_taslak_sinif_ve_musteri(monkeypatch):
+    """Sınıf geçersizse None; satın alma/şikâyet her zaman yüksek öncelik; boş müşteri alanı atılır (uydurma yok)."""
+    from otopilot import etkilesim
+    m = {"ad": "Site Mucidi", "site_kisa": "sitemucidi.com.tr", "deger_onerisi": ["x"], "strateji": {}}
+    oge = {"tur": "dm", "metin": "Site yaptırmak istiyorum", "baglam": ""}
+    monkeypatch.setattr(etkilesim.llm, "json_sor", lambda s, i: {"taslak": "Merhaba", "oncelik": "normal", "sinif": "satin_alma", "konu": " Fiyat ",
+                                                                  "musteri": {"ad": "Ali", "telefon": "", "ihtiyac": "kuaför sitesi"}})
+    t = etkilesim.taslak(oge, m)
+    assert t["sinif"] == "satin_alma" and t["oncelik"] == "yuksek" and t["konu"] == "fiyat"
+    assert t["musteri"] == {"ad": "Ali", "ihtiyac": "kuaför sitesi"}
+    monkeypatch.setattr(etkilesim.llm, "json_sor", lambda s, i: {"taslak": "", "sinif": "uydurma", "musteri": {"ad": ""}})
+    t = etkilesim.taslak(oge, m)
+    assert t["sinif"] is None and t["musteri"] is None and t["oncelik"] == "normal"
