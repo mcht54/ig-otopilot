@@ -43,16 +43,16 @@
    "instagram_hikaye": "http-ig-hikaye:18120057047041723"
   },
   "olcum": {
-   "reach": 7,
-   "views": 12,
+   "reach": 9,
+   "views": 18,
    "likes": 1,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 4547
+   "ig_reels_avg_watch_time": 5288
   },
-  "olcum_zamani": "2026-11-24T13:06:48.908640+03:00",
+  "olcum_zamani": "2026-11-25T13:07:29.133592+03:00",
   "skor": 1.0
  },
  {
@@ -87,6 +87,40 @@
    "instagram": "https://www.instagram.com/reel/DgHtt5eltBC/",
    "instagram_hikaye": "http-ig-hikaye:17925090855231067",
    "facebook_hikaye": "http-fb-hikaye:1888312615493387"
+  }
+ },
+ {
+  "tarih": "2026-11-25",
+  "tur": "reels",
+  "format": "soru_cevap",
+  "anahtar": "soru:web-sitem-google-da-neden-yukselmiyor",
+  "ek_anahtarlar": [],
+  "konu": "Web Sitem Google'da Neden Yükselmiyor?",
+  "baslik": "Web Sitem Google'da Neden Yükselmiyor?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-25/markakarnem",
+  "anlatim": [
+   "Web Sitem Google'da Neden Yükselmiyor?",
+   "Bilmeniz gerekenler: Kısaca: Sorun çoğu zaman cevap eksikliğidir, En sık beş neden.",
+   "Tamamı sitede, ücretsiz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Web Sitem Google'da Neden Yükselmiyor?\nSiteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…\n\nBilmeniz gerekenler\n✔️ Kısaca: Sorun çoğu zaman cevap eksikliğidir\n✔️ En sık 5 neden\n✔️ Arama niyeti uyuşmuyor\n✔️ İçerik ince\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #yerelseo #dijitalpazarlama #googleharitalar",
+  "video_yedek": "2026-11-25-markakarnem-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-markakarnem.jpg?v=y",
+  "medya_id": "18116855557859611",
+  "link": "https://www.instagram.com/reel/DgKSBRXTYF0/",
+  "yayin_zamani": "2026-11-25T13:09:48.130684+03:00",
+  "hikaye_id": "17896992762436066",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/2827609377633471",
+   "facebook_hikaye": "http-fb-hikaye:1186408043917856",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgKSBRXTYF0/",
+   "instagram_hikaye": "http-ig-hikaye:17896992762436066"
   }
  }
 ]
