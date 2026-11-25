@@ -1097,18 +1097,20 @@
   },
   "aciklama": "İşitme cihazı merkezi web sitesi 3 dakikada hazır!\n\nOdyoloji ve işitme testi hizmetlerinizi internette kolayca gösterin.\nDuyu teması; iri okunaklı yazıları, randevu ve cihaz kartlarıyla hazır gelir.\nKod yazmadan işletme adınızı yazıp anında önizleyin.\n\nProfildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #hazırsite #sakarya #dijitalpazarlama #girişimcilik",
   "anlatim": [
-   "Sakarya'da işitme cihazı merkezi sahibiysen izle! üç dakikada kod bilmeden sitenizi hazırlayın!",
-   "Şimdi gerçek ekranda bakalım: Sektör teması Duyu'yu seçin.",
-   "Duyu teması canlı önizleme.",
-   "Duyu temasında öne çıkanlar: İri ve okunaklı yazılar, Randevu ve saat kartı.",
-   "Sitenizi üç dakikada oluşturun. Profildeki linkten ücretsiz dene!"
+   "İşitme cihazı merkezi sahibiyseniz bu tasarımı sakın kaçırmayın!",
+   "Duyu temasını seçin, işletme adınızı yazıp anında önizleyin.",
+   "İri okunaklı yazıları ve premium tasarımıyla siteniz harika görünüyor!",
+   "Randevu kartı, cihaz listesi ve müşteri yorumları hepsi hazır.",
+   "Hemen oluşturup denemek için profildeki linkten ücretsiz dene!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-sitemucidi.jpg?v=751a83c8",
-  "olusturma": "2026-11-25T03:32:17+03:00"
+  "olusturma": "2026-11-25T03:32:17+03:00",
+  "ses": "22c53c490f",
+  "ses_kaynagi": "gemini"
  }
 }

@@ -924,6 +924,8 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-davetiyeler.jpg?v=7b73a1cd",
-  "olusturma": "2026-11-25T03:30:23+03:00"
+  "olusturma": "2026-11-25T03:30:23+03:00",
+  "ses": "c6cc29661c",
+  "ses_kaynagi": "gemini"
  }
 }
