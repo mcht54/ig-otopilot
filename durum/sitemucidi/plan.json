@@ -658,18 +658,20 @@
   },
   "aciklama": "Hangisi sizin işletmenize uyar?\nLojistik teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #googledaçıkmak #yapayzeka #dijitalpazarlama",
   "anlatim": [
-   "Hangisi sizin işletmenize uyar? Lojistik teması!",
-   "Yalın paket.",
-   "Vizyon paket.",
-   "Yorumlara tercihinizi yazın. Profildeki linkten ücretsiz dene!"
+   "Aynı temanın üç farklı paketle nasıl değiştiğini hiç gördünüz mü?",
+   "Yalın paketle sade bir görünüm yakalarsınız.",
+   "Paket yükseldikçe hareket ve ek bölümler anında artar.",
+   "Profildeki linkten ücretsiz oluşturun ve yedi gün deneyin!"
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-29-sitemucidi.jpg?v=d92e26bb",
-  "olusturma": "2026-11-23T17:20:03+03:00"
+  "olusturma": "2026-11-23T17:20:03+03:00",
+  "ses": "3d8c285662",
+  "ses_kaynagi": "gemini"
  },
  "2026-11-30": {
   "id": "2026-11-30-sitemucidi",
@@ -765,7 +767,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-sitemucidi.jpg?v=0fea5b4a",
-  "olusturma": "2026-11-24T04:15:41+03:00"
+  "olusturma": "2026-11-24T04:15:41+03:00",
+  "ses": "0a4b47fe7e",
+  "ses_kaynagi": "gemini"
  },
  "2026-12-01": {
   "id": "2026-12-01-sitemucidi",

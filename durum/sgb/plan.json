@@ -636,7 +636,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-30-sgb.jpg?v=ed50aa93",
-  "olusturma": "2026-11-24T04:15:25+03:00"
+  "olusturma": "2026-11-24T04:15:25+03:00",
+  "ses": "220992814f",
+  "ses_kaynagi": "gemini"
  },
  "2026-12-01": {
   "id": "2026-12-01-sgb",
