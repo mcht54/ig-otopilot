@@ -799,19 +799,21 @@
   },
   "aciklama": "Yeni sezon davetiye seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nYeni sezon davetiye modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #kınadavetiyesi #nişandavetiyesi #gelinadayı",
   "anlatim": [
-   "Yeni sezon davetiye seçemeyenlere dört model! Sonuna kadar izleyin, favorinizi yazın!",
-   "Yatay Dikdörtgen Beyaz Zarf Gold.",
-   "Yatay Dikdörtgen Siyah Zarf Gold.",
-   "Hangisi sizin tarzınız? Yoruma numarasını yazın.",
-   "otuz dört yeni sezon davetiye modeli. Tüm modeller profildeki linkte!"
+   "Yeni sezonda davetiyenizi henüz seçmediyseniz bu dört modele mutlaka göz atın!",
+   "Beyaz ve lacivert zarflı yaldızlı tasarımlar zarafeti sevenlerin favorisi.",
+   "Siyah zarf ve gold yaldız uyumu ise etkinliğinize asalet katacak.",
+   "Üstelik basılı davetiye alana dijital davetiye de hediye!",
+   "Tüm modeller profildeki linkte."
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: model_vitrin formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-davetiyeler.jpg?v=98ebb176",
-  "olusturma": "2026-11-24T04:15:52+03:00"
+  "olusturma": "2026-11-24T04:15:52+03:00",
+  "ses": "fe2cc067a1",
+  "ses_kaynagi": "gemini"
  },
  "2026-12-02": {
   "id": "2026-12-02-davetiyeler",

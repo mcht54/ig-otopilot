@@ -865,7 +865,9 @@
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-01-sitemucidi.jpg?v=fcceb291",
-  "olusturma": "2026-11-24T04:16:22+03:00"
+  "olusturma": "2026-11-24T04:16:22+03:00",
+  "ses": "5ecb8a81a4",
+  "ses_kaynagi": "gemini"
  },
  "2026-12-02": {
   "id": "2026-12-02-sitemucidi",
