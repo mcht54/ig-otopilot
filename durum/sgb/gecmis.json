@@ -111,14 +111,21 @@
   "aciklama": "Belgeli bungalovunuzu komisyonsuz listeleyin\nMisafir sizi doğrudan arasın\n\nAracı yok, komisyon yok\n✔️ Misafir sizi telefon veya WhatsApp ile arar\n✔️ Kurucu tesisler ücretsiz listelenir\n✔️ Görüntülenme ve tıklamaları panelde görürsünüz\n\nSapanca bungalov işletmesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #sapancagölü #bungalov #tinyhouse",
   "video_yedek": "2026-11-25-sgb-reel.mp4",
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-sgb.jpg?v=y",
-  "hata": "yükleme 400: {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}",
+  "hata": null,
   "platformlar": {
    "facebook": "https://www.facebook.com/reel/2992372527801903",
    "facebook_hikaye": "http-fb-hikaye:1125125816968803",
    "youtube": "atlandı: anahtar yok",
    "tiktok": "atlandı: anahtar yok",
-   "instagram": "HATA: yükleme 400: {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}",
-   "instagram_hikaye": "atlandı"
-  }
+   "instagram": "https://www.instagram.com/reel/DgLKOTVtrvl/",
+   "instagram_hikaye": "http-ig-hikaye:18094167131299912"
+  },
+  "ig_tekrar": 1,
+  "medya_id": "17917534746559497",
+  "link": "https://www.instagram.com/reel/DgLKOTVtrvl/",
+  "yayin_zamani": "2026-11-25T21:20:49.447781+03:00",
+  "hikaye_tekrar": 1,
+  "hikaye_id": "18094167131299912",
+  "hikaye_hata": null
  }
 ]
