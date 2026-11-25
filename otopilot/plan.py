@@ -168,6 +168,7 @@ def ozel_icerik(kod: str, m: dict, istek: str, tarayici, klasor: Path, gun: dt.d
     olgular = [f"Panelden istek: {istek}", *m["deger_onerisi"], *_site_olgulari(m)]
     sistem = (f"Sen {m['ad']} markasının deneyimli sosyal medya yöneticisisin; insan gibi düşünürsün.\n"
               f"Hedef kitle: {m['hedef_kitle'].strip()}\nSes tonu: {m['ses_tonu'].strip()}\n"
+              "İstek kısaltmalı, yazım hatalı ya da sokak ağzıyla yazılmış olabilir; kelimesine değil niyetine bak. "
               "Önce isteği yorumla: ne tanıtılmak isteniyor, kitlenin bu konudaki derdi/merakı ne, hangi açı ve kanca en çok "
               "durdurur ve kaydettirir. Sonra Instagram Reels ekran metinlerini yaz.\n"
               "KURALLAR: Yalnız OLGULAR'daki bilgiye dayan; olmayan rakam, fiyat, süre, kampanya, garanti UYDURMA. "
