@@ -115,14 +115,27 @@ class Instagram:
         """Hesaptaki son gönderiler (etkilesim.py ile aynı uç)."""
         return self._istek("GET", f"{self.kimlik}/media", fields="id,permalink,timestamp", limit=adet).get("data", [])
 
+    def _yukle_tekrarli(self, video: Path, bekleme: int = 90, **alanlar) -> str:
+        """rupload 400 ProcessingFailedError (Meta tarafında aralıklı; aynı dosya bir geçip bir reddediliyor) yayından
+        ÖNCE olur → yeni kapsayıcıyla beklemeli yeniden denemek çift paylaşım yapmaz."""
+        for deneme in range(4):
+            try:
+                return self._yukle(video, **alanlar)
+            except InstagramHatasi as e:
+                if "ProcessingFailedError" not in str(e) or deneme == 3:
+                    raise
+                log(f"yükleme reddedildi (ProcessingFailedError), {bekleme * (deneme + 1)} sn sonra yeni kapsayıcıyla tekrar")
+                time.sleep(bekleme * (deneme + 1))
+        raise InstagramHatasi("yükleme denemeleri bitti")
+
     def reels(self, video: Path, aciklama: str, kapak_ms: int = 1200) -> dict:
-        kap = self._yukle(video, media_type="REELS", caption=aciklama, share_to_feed="true", thumb_offset=str(kapak_ms))
+        kap = self._yukle_tekrarli(video, media_type="REELS", caption=aciklama, share_to_feed="true", thumb_offset=str(kapak_ms))
         b = self._yayinla(kap)
         log(f"Reels yayında: {b.get('permalink')}")
         return b
 
     def hikaye(self, video: Path) -> dict:
-        kap = self._yukle(video, media_type="STORIES")
+        kap = self._yukle_tekrarli(video, media_type="STORIES")
         b = self._yayinla(kap)
         log(f"Hikâye yayında: {b.get('id')}")
         return b

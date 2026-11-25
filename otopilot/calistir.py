@@ -307,9 +307,49 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
     return kayit
 
 
+def _ig_tamamla(kod: str, k: dict, pl: dict, video: Path, aciklama: str, ig_tekrar: bool, hikaye_tekrar: bool) -> int:
+    """Instagram Reels'i (kesin hata almışsa) ve hikâyeyi tamamlar. Hikâyede Reels videosu kullanılır (≤60 sn).
+    Her denemeden önce sayaç kaydedilir; yanıt alınamazsa BELIRSIZ yazılır ve bir daha denenmez."""
+    ig, tamam = Instagram(kod), 0
+    if not ig.hazir:
+        return 0
+    if ig_tekrar:
+        k["ig_tekrar"] = k.get("ig_tekrar", 0) + 1
+        gecmis_guncelle(kod, k)
+        log(f"{kod}: Instagram Reels yeniden deneniyor ({k['ig_tekrar']}. tekrar)")
+        try:
+            b = ig.reels(video, aciklama)
+            k.update(medya_id=b["id"], link=b.get("permalink"), yayin_zamani=simdi().isoformat(), hata=None)
+            pl["instagram"] = b.get("permalink") or f"http-ig-medya:{b['id']}"
+            tamam += 1
+        except InstagramHatasi as e:
+            pl["instagram"] = f"HATA: {str(e)[:290]}"
+        except Exception as e:
+            pl["instagram"] = f"BELIRSIZ: {type(e).__name__}: {str(e)[:250]}"
+            k["not_"] = "Reels yeniden gönderildi ama sonucu alınamadı; elle kontrol, otomatik yeniden paylaşılmaz"
+        k["platformlar"] = pl
+        gecmis_guncelle(kod, k)
+    if hikaye_tekrar and str(pl.get("instagram", "")).startswith("http"):
+        k["hikaye_tekrar"] = k.get("hikaye_tekrar", 0) + 1
+        gecmis_guncelle(kod, k)
+        try:
+            h = ig.hikaye(video)
+            k["hikaye_id"], k["hikaye_hata"] = h["id"], None
+            pl["instagram_hikaye"] = "http-ig-hikaye:" + h["id"]
+            tamam += 1
+        except Exception as e:
+            k["hikaye_hata"] = f"{'BELIRSIZ: ' if isinstance(e, BelirsizYayin) else ''}{str(e)[:280]}"
+            pl["instagram_hikaye"] = f"HATA: {k['hikaye_hata']}"
+            log(f"{kod}: hikâye yine paylaşılamadı: {e}")
+        k["platformlar"] = pl
+        gecmis_guncelle(kod, k)
+    return tamam
+
+
 def eksik(kodlar: list[str] | None = None) -> int:
     """Bugün yayınlanmış ama bir platforma (Facebook vb.) gidememiş içeriği yalnız o platforma gönderir.
-    Instagram'a tekrar göndermez. Video: sürüm yedeği, yoksa Instagram'daki yayından."""
+    Instagram'a yalnız kesin hata (medya kimliği yok) almışsa en çok 3 kez yeniden gönderir; hikâyesi eksikse tamamlar.
+    Video: sürüm yedeği, yoksa Instagram'daki yayından."""
     import requests
     from . import plan
     tarih, tamam = bugun(), 0
@@ -318,7 +358,14 @@ def eksik(kodlar: list[str] | None = None) -> int:
         pl = (k or {}).get("platformlar") or {}
         hatali = [p for p, v in pl.items() if str(v).startswith("HATA") and p not in ("instagram", "instagram_hikaye")]  # BELIRSIZ değil
         hatali += [p for p in dagitim.PLATFORMLAR if pl and p not in pl]  # sonradan eklenen platform (ör. Facebook hikâye)
-        if not k or k.get("durum") != "yayinlandi" or not hatali:
+        # Instagram yalnız KESİN hata ise (yayından önce düştü, medya kimliği yok) yeniden denenir; BELIRSIZ asla
+        ig_tekrar = bool(k) and str(pl.get("instagram", "")).startswith("HATA") and not k.get("medya_id") \
+            and k.get("ig_tekrar", 0) < 3
+        hk = str(pl.get("instagram_hikaye", "atlandı"))
+        hikaye_tekrar = bool(k) and "BELIRSIZ" not in hk and hk.startswith(("HATA", "atlandı")) \
+            and not hk.startswith("atlandı: anahtar") and k.get("hikaye_tekrar", 0) < 3 \
+            and (ig_tekrar or str(pl.get("instagram", "")).startswith("http"))
+        if not k or k.get("durum") != "yayinlandi" or not (hatali or ig_tekrar or hikaye_tekrar):
             continue
         klasor = CIKTI / "eksik" / kod
         klasor.mkdir(parents=True, exist_ok=True)
@@ -339,10 +386,13 @@ def eksik(kodlar: list[str] | None = None) -> int:
         if not video or not aciklama:
             log(f"{kod}: eksik platform için video/açıklama yok")
             continue
-        log(f"{kod}: eksik platformlar tamamlanıyor: {', '.join(hatali)}")
-        k["platformlar"] = dagitim.dagit(kod, video, aciklama, re.findall(r"#\w+", aciklama), onceki=pl)
-        gecmis_guncelle(kod, k)
-        tamam += sum(1 for p in hatali if str(k["platformlar"].get(p, "")).startswith("http"))
+        if ig_tekrar or hikaye_tekrar:
+            tamam += _ig_tamamla(kod, k, pl, video, aciklama, ig_tekrar, hikaye_tekrar)
+        if hatali:
+            log(f"{kod}: eksik platformlar tamamlanıyor: {', '.join(hatali)}")
+            k["platformlar"] = dagitim.dagit(kod, video, aciklama, re.findall(r"#\w+", aciklama), onceki=pl)
+            gecmis_guncelle(kod, k)
+            tamam += sum(1 for p in hatali if str(k["platformlar"].get(p, "")).startswith("http"))
     log(f"eksik: {tamam} platform tamamlandı")
     return 0
 

@@ -409,3 +409,28 @@ def test_gizle_yeni_anahtar_desenleri():
     g = ortak.gizle(metin)
     assert "IGAAKx" not in g and "IGQVJ" not in g and "1//0gAb" not in g
     assert g.count("***") == 3 and "v1//yol kalsın" in g
+
+
+def test_processing_failed_yeni_kapsayiciyla_tekrar(monkeypatch, tmp_path):
+    import pytest
+    from otopilot import instagram as I
+    ig = I.Instagram.__new__(I.Instagram)
+    sayac = {"n": 0}
+
+    def yukle(video, **a):
+        sayac["n"] += 1
+        if sayac["n"] < 3:
+            raise I.InstagramHatasi('yükleme 400: {"type":"ProcessingFailedError"}')
+        return "kap"
+    monkeypatch.setattr(ig, "_yukle", yukle, raising=False)
+    monkeypatch.setattr(I.time, "sleep", lambda s: None)
+    assert ig._yukle_tekrarli(tmp_path / "v.mp4") == "kap" and sayac["n"] == 3
+
+    def baska(video, **a):
+        sayac["n"] += 1
+        raise I.InstagramHatasi("yükleme 403: izin")
+    sayac["n"] = 0
+    monkeypatch.setattr(ig, "_yukle", baska, raising=False)
+    with pytest.raises(I.InstagramHatasi):
+        ig._yukle_tekrarli(tmp_path / "v.mp4")
+    assert sayac["n"] == 1  # başka hatada tekrar yok
