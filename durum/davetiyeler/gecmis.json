@@ -53,15 +53,15 @@
   },
   "olcum": {
    "reach": 120,
-   "views": 138,
+   "views": 139,
    "likes": 1,
    "comments": 0,
    "saved": 1,
    "shares": 0,
    "total_interactions": 2,
-   "ig_reels_avg_watch_time": 2790
+   "ig_reels_avg_watch_time": 2960
   },
-  "olcum_zamani": "2026-11-24T19:36:27.887088+03:00",
+  "olcum_zamani": "2026-11-25T19:36:40.155938+03:00",
   "skor": 1.0
  },
  {
@@ -101,6 +101,40 @@
    "instagram": "https://www.instagram.com/reel/DgIaVr4CRx0/",
    "instagram_hikaye": "http-ig-hikaye:18026901239927872",
    "facebook_hikaye": "http-fb-hikaye:1469523085269527"
+  }
+ },
+ {
+  "tarih": "2026-11-25",
+  "tur": "reels",
+  "format": "dijital_davetiye",
+  "anahtar": "dijital:ornek-cerceve",
+  "ek_anahtarlar": [],
+  "konu": "Dijital davetiye modeli: Cerceve",
+  "baslik": "Dijital davetiye nasıl oluşturulur?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-25/davetiyeler",
+  "anlatim": [
+   "Davetiyeniz WhatsApp'ta böyle açılır!",
+   "Geri sayım, harita, LCV tek linkte.",
+   "Dijital davetiye nasıl oluşturulur?: Modelinizi seçin, İsim, tarih ve mekânı yazın.",
+   "Kâğıt yok, kargo yok, bekleme yok. Tüm modeller profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Dijital davetiye modeli: Cerceve\n\nDijital davetiye nasıl oluşturulur?\n✔️ Modelinizi seçin\n✔️ İsim, tarih ve mekânı yazın\n✔️ Müzik ve fotoğraf ekleyin\n✔️ Linki WhatsApp'tan gönderin\n\nDijital davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #düğünhazırlığı #gelinadayı #nişandavetiyesi",
+  "video_yedek": "2026-11-25-davetiyeler-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-davetiyeler.jpg?v=y",
+  "medya_id": "18049251428836124",
+  "link": "https://www.instagram.com/reel/DgK-prGuAWw/",
+  "yayin_zamani": "2026-11-25T19:39:38.630326+03:00",
+  "hikaye_id": "18143102047628327",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1451570049910176",
+   "facebook_hikaye": "http-fb-hikaye:30097109946558793",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgK-prGuAWw/",
+   "instagram_hikaye": "http-ig-hikaye:18143102047628327"
   }
  }
 ]
