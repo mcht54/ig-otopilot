@@ -53,7 +53,7 @@
    "total_interactions": 1,
    "ig_reels_avg_watch_time": 1802
   },
-  "olcum_zamani": "2026-11-24T18:36:28.136914+03:00",
+  "olcum_zamani": "2026-11-25T18:36:01.189742+03:00",
   "skor": 1.0
  },
  {
@@ -88,6 +88,37 @@
    "instagram": "https://www.instagram.com/reel/DgITS2VhV6e/",
    "instagram_hikaye": "http-ig-hikaye:18435374833147302",
    "facebook_hikaye": "http-fb-hikaye:1669049468018998"
+  }
+ },
+ {
+  "tarih": "2026-11-25",
+  "tur": "reels",
+  "format": "isletme_davet",
+  "anahtar": "isletme:48",
+  "ek_anahtarlar": [],
+  "konu": "Belgeli tesisler için komisyonsuz listeleme",
+  "baslik": "Belgeli bungalovunuzu komisyonsuz listeleyin",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-25/sgb",
+  "anlatim": [
+   "Belgeli bungalovunuzu komisyonsuz listeleyin! Misafir sizi doğrudan arasın!",
+   "Aracı yok, komisyon yok: Misafir sizi telefon veya WhatsApp ile arar, Kurucu tesisler ücretsiz listelenir.",
+   "Başvuru dört adım.",
+   "Kapora göndermeden önce kontrol edin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Belgeli bungalovunuzu komisyonsuz listeleyin\nMisafir sizi doğrudan arasın\n\nAracı yok, komisyon yok\n✔️ Misafir sizi telefon veya WhatsApp ile arar\n✔️ Kurucu tesisler ücretsiz listelenir\n✔️ Görüntülenme ve tıklamaları panelde görürsünüz\n\nSapanca bungalov işletmesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte: sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #sapancagölü #bungalov #tinyhouse",
+  "video_yedek": "2026-11-25-sgb-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-sgb.jpg?v=y",
+  "hata": "yükleme 400: {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/2992372527801903",
+   "facebook_hikaye": "http-fb-hikaye:1125125816968803",
+   "youtube": "atlandı: anahtar yok",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "HATA: yükleme 400: {\"debug_info\":{\"retriable\":false,\"type\":\"ProcessingFailedError\",\"message\":\"Request processing failed\"}}",
+   "instagram_hikaye": "atlandı"
   }
  }
 ]
