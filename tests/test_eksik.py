@@ -43,7 +43,7 @@ def _hazirla(tmp_path, monkeypatch, kayit):
     from otopilot import plan
     monkeypatch.setattr(plan, "indir", lambda ad, hedef: v)
     monkeypatch.setattr(calistir.dagitim, "dagit", lambda *a, **k: (_ for _ in ()).throw(AssertionError("dagit çağrılmamalı")))
-    monkeypatch.setattr(calistir.dagitim, "PLATFORMLAR", {"facebook": None, "facebook_hikaye": None})
+    monkeypatch.setattr(calistir.dagitim, "PLATFORMLAR", {"facebook": (lambda k: False, None), "facebook_hikaye": (lambda k: False, None)})
     return yazilan
 
 
@@ -83,5 +83,25 @@ def test_belirsiz_ve_medyali_ig_yeniden_gonderilmez(tmp_path, monkeypatch):
                  "platformlar": dict(pl), **ek}
         _hazirla(tmp_path, monkeypatch, kayit)
         monkeypatch.setattr(calistir, "Instagram", lambda kod: (_ for _ in ()).throw(AssertionError(f"denenmemeli: {pl}")))
-        monkeypatch.setattr(calistir.dagitim, "PLATFORMLAR", {"facebook": None})
+        monkeypatch.setattr(calistir.dagitim, "PLATFORMLAR", {"facebook": (lambda k: False, None)})
         calistir.eksik(["sgb"])
+
+
+def test_youtube_metni_profil_linkini_ve_basligi_uyarlar():
+    baslik, acik = calistir.dagitim.youtube_meta(
+        "Gece gelen teklif\n\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi", ["#websitesi"], "sitemucidi")
+    assert baslik.startswith("Site Mucidi | ") and baslik.endswith("#shorts")
+    assert "Açıklamadaki linkten" in acik and "rofildeki" not in acik
+    assert acik.index("https://www.sitemucidi.com.tr") < acik.index("#websitesi")
+
+
+def test_anahtari_sonradan_eklenen_platform_bugune_gider(tmp_path, monkeypatch):
+    kayit = {"tarih": "2026-11-25", "tur": "reels", "durum": "yayinlandi", "aciklama": "M", "video_yedek": "x.mp4",
+             "medya_id": "m1", "platformlar": {"instagram": "https://ig/1", "instagram_hikaye": "http-ig-hikaye:1",
+                                               "youtube": "atlandı: anahtar yok"}}
+    _hazirla(tmp_path, monkeypatch, kayit)
+    giden = []
+    monkeypatch.setattr(calistir.dagitim, "PLATFORMLAR", {"youtube": (lambda k: True, None)})
+    monkeypatch.setattr(calistir.dagitim, "dagit", lambda kod, v, a, e, onceki=None: giden.append(kod) or {**onceki, "youtube": "https://yt/1"})
+    calistir.eksik(["sitemucidi"])
+    assert giden == ["sitemucidi"]

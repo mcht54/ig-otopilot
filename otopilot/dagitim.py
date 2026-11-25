@@ -12,12 +12,13 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import time
 from pathlib import Path
 
 import requests
 
-from .ortak import BelirsizYayin, log
+from .ortak import BelirsizYayin, log, marka
 
 GRAPH = "https://graph.facebook.com/v25.0"
 TT_API = "https://open.tiktokapis.com/v2"
@@ -98,10 +99,41 @@ def facebook_hikaye(kod: str, video: Path) -> str:
 
 
 # ---------------- YouTube Shorts (markanın kendi kanalı)
-def youtube_meta(aciklama: str, etiketler: list[str]) -> tuple[str, str]:
+def youtube_metni(kod: str | None, aciklama: str) -> str:
+    """Instagram açıklamasını YouTube'a uyarlar: 'profildeki link' YouTube'da yok → açıklamadaki tam adres.
+    Markalar ortak kanalda (Mücahit Çakır) paylaşıldığı için site adresi her zaman açıkça yazılır."""
+    m = {}
+    try:
+        m = marka(kod) if kod else {}
+    except Exception:
+        pass
+    def cevir(e: re.Match) -> str:
+        yeni = {"linkte": "açıklamadaki linkte", "linkten": "açıklamadaki linkten", "bak": "açıklamadaki linke bak"}[e.group(2)]
+        return yeni[0].upper() + yeni[1:] if e.group(1).isupper() else yeni
+    metin = re.sub(r"([Pp])rofil(?:imdeki|deki|ime|e) (linkte|linkten|bak)", cevir, aciklama)
+    site = m.get("site")
+    if site and site not in metin:
+        satirlar = metin.rstrip().splitlines()
+        bag = f"🔗 {m.get('ad') or 'Site'}: {site}"
+        if satirlar and satirlar[-1].lstrip().startswith("#"):  # etiket satırının üstüne
+            satirlar[-1:-1] = [bag, ""] if satirlar[-2:-1] == [""] else ["", bag, ""]
+            metin = "\n".join(satirlar)
+        else:
+            metin = metin.rstrip() + "\n\n" + bag
+    return metin
+
+
+def youtube_meta(aciklama: str, etiketler: list[str], kod: str | None = None) -> tuple[str, str]:
     ilk = aciklama.strip().splitlines()[0] if aciklama.strip() else "Yeni video"
+    ad = ""
+    try:
+        ad = (marka(kod) or {}).get("ad", "") if kod else ""
+    except Exception:
+        pass
+    if ad and ad.lower() not in ilk.lower():
+        ilk = f"{ad} | {ilk}"
     baslik = ilk[:88].rstrip(" .") + " #shorts"
-    return baslik[:100], aciklama[:4900]
+    return baslik[:100], youtube_metni(kod, aciklama)[:4900]
 
 
 def youtube(kod: str, video: Path, aciklama: str, etiketler: list[str]) -> str:
@@ -110,7 +142,7 @@ def youtube(kod: str, video: Path, aciklama: str, etiketler: list[str]) -> str:
         "refresh_token": _e("YT_<KOD>_REFRESH_TOKEN", kod), "grant_type": "refresh_token"})
     r.raise_for_status()
     a = r.json()["access_token"]
-    baslik, acik = youtube_meta(aciklama, etiketler)
+    baslik, acik = youtube_meta(aciklama, etiketler, kod)
     govde = {"snippet": {"title": baslik, "description": acik, "tags": [e.lstrip("#") for e in etiketler][:15],
                          "categoryId": "22", "defaultLanguage": "tr", "defaultAudioLanguage": "tr"},
              "status": {"privacyStatus": os.environ.get("YT_GIZLILIK", "public"), "selfDeclaredMadeForKids": False}}

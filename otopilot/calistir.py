@@ -358,6 +358,9 @@ def eksik(kodlar: list[str] | None = None) -> int:
         pl = (k or {}).get("platformlar") or {}
         hatali = [p for p, v in pl.items() if str(v).startswith("HATA") and p not in ("instagram", "instagram_hikaye")]  # BELIRSIZ değil
         hatali += [p for p in dagitim.PLATFORMLAR if pl and p not in pl]  # sonradan eklenen platform (ör. Facebook hikâye)
+        # anahtarı sonradan eklenen platform (ör. YouTube): bugünkü içerik de oraya gitsin
+        hatali += [p for p, (hazir, _) in dagitim.PLATFORMLAR.items()
+                   if str(pl.get(p, "")).startswith("atlandı: anahtar") and hazir(kod) and p not in hatali]
         # Instagram yalnız KESİN hata ise (yayından önce düştü, medya kimliği yok) yeniden denenir; BELIRSIZ asla
         ig_tekrar = bool(k) and str(pl.get("instagram", "")).startswith("HATA") and not k.get("medya_id") \
             and k.get("ig_tekrar", 0) < 3
