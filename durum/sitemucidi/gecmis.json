@@ -52,7 +52,7 @@
    "total_interactions": 0,
    "ig_reels_avg_watch_time": 11825
   },
-  "olcum_zamani": "2026-11-25T12:06:11.766876+03:00",
+  "olcum_zamani": "2026-11-26T12:11:01.861303+03:00",
   "skor": 0.5
  },
  {
@@ -87,7 +87,19 @@
    "instagram": "https://www.instagram.com/reel/DgHm1EAEjFo/",
    "instagram_hikaye": "http-ig-hikaye:18147630568520763",
    "facebook_hikaye": "http-fb-hikaye:2144123252882597"
-  }
+  },
+  "olcum": {
+   "reach": 70,
+   "views": 75,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 1,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 2013
+  },
+  "olcum_zamani": "2026-11-26T12:11:02.144121+03:00",
+  "skor": 35749.286
  },
  {
   "tarih": "2026-11-25",
@@ -121,6 +133,53 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgKLGKBspdk/",
    "instagram_hikaye": "http-ig-hikaye:18111207971193254"
+  },
+  "olcum": {
+   "reach": 0,
+   "views": 3,
+   "likes": 0,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0,
+   "ig_reels_avg_watch_time": 5469
+  },
+  "olcum_zamani": "2026-11-26T12:11:02.490273+03:00",
+  "skor": 0.5
+ },
+ {
+  "tarih": "2026-11-26",
+  "tur": "reels",
+  "format": "sektor_demo",
+  "anahtar": "tema:usta",
+  "ek_anahtarlar": [],
+  "konu": "Oto servis ve tamir için Usta teması ile 3 dakikada site",
+  "baslik": "Oto servis ve tamir için 3 dakikada web sitesi",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-26/sitemucidi",
+  "anlatim": [
+   "Oto servis veya tamir işletmeniz varsa bu üç dakikayı hemen izleyin!",
+   "Ajans beklemeden, üç basit adımda kendi sitenizi hemen oluşturun.",
+   "İşletme adınızı yazın, Usta teması anında canlıya hazır görünsün.",
+   "Tek dokunuşla arama, hizmet listesi ve harita konumu hazır geliyor.",
+   "Sitenizi hemen ücretsiz oluşturup yedi gün denemek için profildeki linkten deneyin."
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Oto servis ve tamir için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Kemerli fotoğraf ve saat kartı\n✔️ Telefonla tek dokunuşta arama\n✔️ Hizmet listesi\n\nOto servis ve tamir web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #girişimcilik #küçükişletme",
+  "video_yedek": "2026-11-26-sitemucidi-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-sitemucidi.jpg?v=y",
+  "medya_id": "17965138817996553",
+  "link": "https://www.instagram.com/reel/DgMwcaHKooV/",
+  "yayin_zamani": "2026-11-26T12:14:03.572622+03:00",
+  "hikaye_id": "18036265004856751",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/2231601880786550",
+   "facebook_hikaye": "http-fb-hikaye:2839474163112846",
+   "youtube": "https://youtube.com/shorts/_hvP29GXc4M",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgMwcaHKooV/",
+   "instagram_hikaye": "http-ig-hikaye:18036265004856751"
   }
  }
 ]
