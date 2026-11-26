@@ -87,6 +87,28 @@ def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
             "etiket": h.get("etiket"), "baslik": h.get("baslik") or senaryo["konu"], "alt": h.get("alt")}
 
 
+
+def aciklama_denetle(aciklama: str, kod: str = "") -> str:
+    """Ortak açıklama denetçisi (2026-11-27): TDK yazım + kesik satır + soru işareti + 3-5 hashtag. Hata yayını durdurmaz."""
+    try:
+        from . import aciklama_denetim as ad
+        from . import llm
+
+        def sor(istem: str) -> str:
+            y = llm._gemini("Sen titiz bir Türkçe editörsün. Yalnız istenen JSON'u döndür.", istem)
+            if not y:
+                raise RuntimeError("gemini yok")
+            return y
+
+        r = ad.denetle(aciklama, "instagram", llm=sor if llm.izin("gemini") else None)
+        if r["duzeltmeler"] or r["hatalar"]:
+            log(f"açıklama denetimi [{kod}]: düzeltme={r['duzeltmeler'][:6]} uyarı={r['hatalar'][:3]}")
+        return r["metin"] or aciklama
+    except Exception as e:  # noqa: BLE001
+        log(f"açıklama denetimi çalışmadı: {type(e).__name__}")
+        return aciklama
+
+
 def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama: str, kaynak: str, anlatim: list[str] | None = None,
               hazir_parcalar: list | None = None) -> dict:
     from . import ses
@@ -118,6 +140,7 @@ def _uret_bir(kod: str, m: dict, tarayici, klasor: Path, senaryo: dict, aciklama
     if hh:
         raise RuntimeError(f"hikâye kalite: {hh}")
     senaryo["metin_kaynagi"] = kaynak
+    aciklama = aciklama_denetle(aciklama, kod)
     (klasor / "aciklama.txt").write_text(aciklama, encoding="utf-8")
     json_kaydet(klasor / "senaryo.json", senaryo)
     return {"senaryo": senaryo, "aciklama": aciklama, "reel": reel, "hikaye": hikaye, "kapak": kapak}
