@@ -52,8 +52,8 @@
    "total_interactions": 1,
    "ig_reels_avg_watch_time": 5288
   },
-  "olcum_zamani": "2026-11-25T13:07:29.133592+03:00",
-  "skor": 1.0
+  "olcum_zamani": "2026-11-26T13:06:39.967283+03:00",
+  "skor": 0.739
  },
  {
   "tarih": "2026-11-24",
@@ -87,7 +87,19 @@
    "instagram": "https://www.instagram.com/reel/DgHtt5eltBC/",
    "instagram_hikaye": "http-ig-hikaye:17925090855231067",
    "facebook_hikaye": "http-fb-hikaye:1888312615493387"
-  }
+  },
+  "olcum": {
+   "reach": 105,
+   "views": 119,
+   "likes": 2,
+   "comments": 0,
+   "saved": 0,
+   "shares": 1,
+   "total_interactions": 3,
+   "ig_reels_avg_watch_time": 2214
+  },
+  "olcum_zamani": "2026-11-26T13:06:40.738432+03:00",
+  "skor": 1.261
  },
  {
   "tarih": "2026-11-25",
@@ -121,6 +133,41 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgKSBRXTYF0/",
    "instagram_hikaye": "http-ig-hikaye:17896992762436066"
+  }
+ },
+ {
+  "tarih": "2026-11-26",
+  "tur": "reels",
+  "format": "yerel_karne",
+  "anahtar": "yerel:guzellik-kuafor:2026-11",
+  "ek_anahtarlar": [],
+  "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
+  "baslik": "Sakarya'da güzellik & kuaför işletmelerini ölçtük",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-26/markakarnem",
+  "anlatim": [
+   "Sakarya’da dokuz güzellik ve kuaför salonunu dijitalde ölçtük, bakın neler çıktı!",
+   "İncelenen işletmelerin yüzde yetmiş beş'inde yerel işletme verisi tamamen eksik.",
+   "Salonların yüzde elli'sinde ise yapısal veri eksikliği dikkat çekiyor.",
+   "Tüm bunlara rağmen bölgenin ortanca Marka Skoru yüz üzerinden seksen sekiz.",
+   "Siz de kendi skorunuzu öğrenmek için ücretsiz karnenizi profildeki linkten çıkarın."
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Sakarya'da güzellik & kuaför işletmelerini ölçtük\n9 işletme, gerçek ölçüm\n\nSık görülen sorunlar\n✔️ Yapısal veri (schema.org): %50 eksik\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #sakarya #googleharitalar",
+  "video_yedek": "2026-11-26-markakarnem-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-markakarnem.jpg?v=y",
+  "medya_id": "18099871382143511",
+  "link": "https://www.instagram.com/reel/DgM2tyJTnJo/",
+  "yayin_zamani": "2026-11-26T13:08:50.694833+03:00",
+  "hikaye_id": "18103753034453587",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1159533443709531",
+   "facebook_hikaye": "http-fb-hikaye:1174476402198912",
+   "youtube": "https://youtube.com/shorts/NxAHv5JujQA",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgM2tyJTnJo/",
+   "instagram_hikaye": "http-ig-hikaye:18103753034453587"
   }
  }
 ]
