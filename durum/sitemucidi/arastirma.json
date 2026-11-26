@@ -1,5 +1,45 @@
 {
- "son_deneme": "2026-11-26T14:35:18.278992+03:00",
- "durum": "basarisiz",
- "neden": "yanıt yok"
+ "trendler": [
+  "Gerçek işletme sahiplerinin ağızından gelen 'öncesi-sonrası' dönüşüm hikayeleri",
+  "Yapay zekâ asistanlarının müşteri iletişimini (arama yanıtlama, randevu alma) nasıl otomatize ettiği gösterimleri",
+  "Tek bir araç veya yöntemin basitçe izah edildiği 'hızlı ipucu' formatı",
+  "Jenerik kurumsal tanıtımlar yerine, sahibiyle doğrudan konuşan samimi vaka çalışmaları"
+ ],
+ "kancalar": [
+  "Dolandırıcı aradığında telefonu asistanıma verdiğim an",
+  "Gece 01:00'da bile satış yapmanın tek sırrı",
+  "Web siteniz sizi gece uyurken de çalışıyor mu?",
+  "Google Maps'ten müşteri kaçırmayın: Bu ücretsiz araç",
+  "Eski siteniz sizi mi yavaşlatıyor? İşte farkı yaratan detay"
+ ],
+ "rakip_dersleri": [
+  "En yüksek etkileşimi alan içerikler, teknik jargon içermeyen, işletme sahibinin kendi ağzından anlatılan gerçek hayat senaryolarıdır.",
+  "Yapay zekâ konulu içerikler, soyut fayda yerine somut bir olay (örneğin dolandırıcı araması) üzerinden anlatıldığında viral potansiyeli çok daha yüksektir.",
+  "Kısa videolarda (Reels/Shorts) 'nasıl yapılır' adımları yerine 'sonuç ne oldu' odaklı anlatım, teknikten anlamayan hedef kitlede daha fazla güven oluşturur.",
+  "Ücretsiz araç veya basit yöntem vaat eden başlıklar, pahalı ajans korkusu taşıyan esnaf için engel kırıcı unsurdur."
+ ],
+ "sorular": [],
+ "mevsim": [],
+ "kacinilacak": [
+  "Teknik terimler (SEO, backend, API vb.) kullanmak",
+  "Uzun süreç vurgusu veya 'projelerimiz' gibi jenerik kurumsal dil",
+  "Yalnızca logolu veya marka odaklı tanıtım videoları",
+  "Pahalılık algısı yaratan lüks veya karmaşık özellik seti sunumu",
+  "Korku pompalayarak (kaybetme korkusu) satış yapmaya çalışmak"
+ ],
+ "farklilasma": [
+  "Rakiplerin e-ticaret platformlarına odaklanması yerine, hizmet sektörü (kuaför, servis, klinik) için 'Yerelde Görünürlük' (Google Haritalar + AI Arama) odağında içerik üretmek",
+  "Yapay zekâyı sadece bir 'araç' olarak değil, işini 7/24 yöneten 'sanal çalışan' olarak konumlandırmak",
+  "'Ajans korkusu'nu çözmek için sürecin 48 saatte tamamlandığını ve teknik yükümlülüğün sıfır olduğunu kanıtlayan hızlı kurulum demosları",
+  "Esnafın kendi sesini ve yüzünü kullanan, onlara 'sen işini yap, dijitali biz/askan hallederiz' mesajını veren kişiselleştirilmiş vaka çalışmaları"
+ ],
+ "tarih": "2026-11-26",
+ "son_deneme": "2026-11-26T22:34:51.691729+03:00",
+ "durum": "basarili",
+ "kaynaklar": [
+  "instagram.com/syncoretr",
+  "instagram.com/ikas",
+  "instagram.com/ideasoft",
+  "instagram.com/ticimax"
+ ]
 }
