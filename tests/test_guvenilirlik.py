@@ -312,7 +312,7 @@ def test_eksik_belirsiz_platformu_tekrar_gondermez(monkeypatch):
 
 # ---------------- araştırma kotası ----------------
 
-def test_arastirma_basarisizsa_24_saat_yeniden_denenmez(tmp_path, monkeypatch):
+def test_arastirma_basarisizsa_6_saat_yeniden_denenmez(tmp_path, monkeypatch):
     monkeypatch.setattr(strateji, "DURUM", tmp_path)
     ortak.json_kaydet(tmp_path / "sgb" / "arastirma.json", {"tarih": "2026-11-10", "trendler": ["eski trend"]})
     cagri = []
@@ -323,9 +323,9 @@ def test_arastirma_basarisizsa_24_saat_yeniden_denenmez(tmp_path, monkeypatch):
     assert cagri == [1] and a["trendler"] == ["eski trend"] and a["durum"] == "basarisiz"
     kayit = strateji.arastirma("sgb")
     assert kayit["durum"] == "basarisiz" and kayit["tarih"] == "2026-11-10" and kayit["trendler"] == ["eski trend"]
-    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T09:00")
+    monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-24T15:00")
     strateji.arastir("sgb", m)
-    assert cagri == [1], "24 saat dolmadan yeniden denenmez"
+    assert cagri == [1], "6 saat dolmadan yeniden denenmez"
     monkeypatch.setenv("OTOPILOT_SAAT", "2026-11-25T10:30")
     monkeypatch.setattr(strateji.llm, "ara", lambda istem: cagri.append(1) or {"metin": '{"trendler": ["yeni"]}', "kaynaklar": []})
     a = strateji.arastir("sgb", m)
