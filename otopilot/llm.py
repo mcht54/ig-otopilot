@@ -150,6 +150,9 @@ def _gemini(sistem: str, istem: str) -> str | None:
     return None
 
 
+_groq_bekleme = 0  # bir çalıştırmada en çok 3 dakikalık-sınır beklemesi
+
+
 def _groq(sistem: str, istem: str) -> str | None:
     anahtar = os.environ.get("GROQ_API_KEY")
     if not anahtar or not izin("groq"):
@@ -168,8 +171,25 @@ def _groq(sistem: str, istem: str) -> str | None:
                 timeout=90,
             )
             if r.status_code == 429:
-                kota_doldu("groq", r.text)
-                return None
+                # Ücretsiz katmanda iki tür sınır var: dakikalık (TPM/RPM, birkaç saniye sonra açılır) ve günlük.
+                # Kısa bekleme isteniyorsa bekleyip AYNI ücretsiz anahtarla bir kez daha denenir; günlükse durulur. Ücretliye asla geçilmez.
+                try:
+                    bekle = float(r.headers.get("retry-after") or 0)
+                except ValueError:
+                    bekle = 0
+                gunluk_mu = "per day" in r.text.lower() or "tpd" in r.text.lower() or "rpd" in r.text.lower() or bekle > 120
+                if not gunluk_mu and _groq_bekleme < 3:
+                    globals()["_groq_bekleme"] = _groq_bekleme + 1
+                    log(f"groq dakikalık sınır; {int(bekle or 20)} sn bekleniyor (ücretsiz katman)")
+                    time.sleep(min(max(bekle, 5), 65))
+                    r = requests.post("https://api.groq.com/openai/v1/chat/completions", headers={"Authorization": f"Bearer {anahtar}"},
+                                      json={"model": model, "temperature": 0.9, "response_format": {"type": "json_object"},
+                                            "messages": [{"role": "system", "content": sistem}, {"role": "user", "content": istem}]}, timeout=90)
+                    if r.ok:
+                        return r.json()["choices"][0]["message"]["content"]
+                if r.status_code == 429:
+                    kota_doldu("groq", r.text)
+                    return None
             if r.status_code in (400, 404) and "model" in r.text.lower():  # model kaldırılmış/desteklenmiyor → sıradaki
                 log(f"groq {model} kullanılamıyor ({r.status_code}); sıradaki model")
                 continue
