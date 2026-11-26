@@ -54,3 +54,12 @@ def test_taslak_sinif_ve_musteri(monkeypatch):
     monkeypatch.setattr(etkilesim.llm, "json_sor", lambda s, i: {"taslak": "", "sinif": "uydurma", "musteri": {"ad": ""}})
     t = etkilesim.taslak(oge, m)
     assert t["sinif"] is None and t["musteri"] is None and t["oncelik"] == "normal"
+
+
+def test_uygunsuz_yorum_spam_ve_taslaksiz(monkeypatch):
+    from otopilot import etkilesim
+    monkeypatch.setattr(etkilesim.llm, "json_sor", lambda s, i: (_ for _ in ()).throw(AssertionError("yapay zekâya gitmemeli")))
+    m = {"ad": "x", "site_kisa": "x", "deger_onerisi": [], "strateji": {}}
+    for metin in ("Deneme bonusu veren siteler profilimde", "C a s i n o kazandırıyor", "+18 içerik dm"):
+        t = etkilesim.taslak({"tur": "yorum", "metin": metin, "kullanici": "x"}, m)
+        assert t["sinif"] == "spam" and t["taslak"] == "" and t["musteri"] is None

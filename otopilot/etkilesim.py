@@ -14,6 +14,7 @@ import os
 import requests
 
 from . import llm
+from .guvenlik import uygunsuz
 from .dagitim import GRAPH, _sayfa_anahtari
 from .instagram import Instagram
 from .ortak import log, marka, marka_kodlari, simdi
@@ -64,6 +65,9 @@ def mesajlar(kod: str, sinir: dt.datetime) -> list[dict]:
 
 def taslak(oge: dict, m: dict) -> dict:
     """Cevap taslağı. Spam/hakaret/alakasızsa boş taslak + not."""
+    kat = uygunsuz(oge.get("metin", ""), oge.get("kullanici", ""))
+    if kat:  # bahis/kumar/+18/argo: cevap yazılmaz, müşteri adayı sayılmaz
+        return {"taslak": "", "not": f"Uygunsuz içerik ({kat}); cevap yazılmadı.", "oncelik": "dusuk", "sinif": "spam", "konu": "", "musteri": None}
     s = m.get("strateji") or {}
     sistem = (f"Sen {m['ad']} Instagram hesabını yöneten, sıcak ve yardımsever bir müşteri temsilcisisin. Türkçe, 'siz' diye, kısa (en çok 2-3 cümle) "
               "ve doğal yaz; robot gibi değil. Soruyu doğrudan cevapla. Yalnız aşağıdaki DOĞRU BİLGİLERE dayan; fiyat, stok, süre, kampanya gibi "
