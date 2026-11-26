@@ -61,8 +61,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 2960
   },
-  "olcum_zamani": "2026-11-25T19:36:40.155938+03:00",
-  "skor": 1.0
+  "olcum_zamani": "2026-11-26T19:36:45.569971+03:00",
+  "skor": 1.168
  },
  {
   "tarih": "2026-11-24",
@@ -101,7 +101,19 @@
    "instagram": "https://www.instagram.com/reel/DgIaVr4CRx0/",
    "instagram_hikaye": "http-ig-hikaye:18026901239927872",
    "facebook_hikaye": "http-fb-hikaye:1469523085269527"
-  }
+  },
+  "olcum": {
+   "reach": 116,
+   "views": 133,
+   "likes": 2,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 2572
+  },
+  "olcum_zamani": "2026-11-26T19:36:46.658099+03:00",
+  "skor": 0.832
  },
  {
   "tarih": "2026-11-25",
@@ -135,6 +147,46 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgK-prGuAWw/",
    "instagram_hikaye": "http-ig-hikaye:18143102047628327"
+  }
+ },
+ {
+  "tarih": "2026-11-26",
+  "tur": "reels",
+  "format": "model_vitrin",
+  "anahtar": "kategori:nikah-davetiyeleri:2026-11-26",
+  "ek_anahtarlar": [
+   "urun:22912",
+   "urun:22480",
+   "urun:22648",
+   "urun:22816"
+  ],
+  "konu": "Nikah davetiyesi modelleri",
+  "baslik": "Nikah davetiyesi seçemeyenlere 4 model",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-26/davetiyeler",
+  "anlatim": [
+   "Nikahınız için şeffaf davetiye arayıp kararsız mı kaldınız?",
+   "Şeffaf kare tasarımıyla Model yedi bin altmış dokuz sade şıklık isteyenlere birebir.",
+   "Model yedi bin seksen dört ise zarafetiyle nikahınıza çok yakışacak.",
+   "Peki bu şeffaf modellerden hangisi sizin tarzınız?",
+   "Basılı davetiye alana dijital davetiye hediye, tüm modeller profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Nikah davetiyesi seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nNikah davetiyesi modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #dijitaldavetiye #nikahdavetiyesi",
+  "video_yedek": "2026-11-26-davetiyeler-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-davetiyeler.jpg?v=y",
+  "medya_id": "18139057219663052",
+  "link": "https://www.instagram.com/reel/DgNjeOphsWu/",
+  "yayin_zamani": "2026-11-26T19:39:54.624983+03:00",
+  "hikaye_id": "18444720511183999",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1639943163894418",
+   "facebook_hikaye": "http-fb-hikaye:28950217937983082",
+   "youtube": "https://youtube.com/shorts/xciemJAK4TI",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgNjeOphsWu/",
+   "instagram_hikaye": "http-ig-hikaye:18444720511183999"
   }
  }
 ]
