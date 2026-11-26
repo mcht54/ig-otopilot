@@ -1,1 +1,36 @@
-{}
+{
+ "trendler": [
+  "Somut, görsel kanıtları (ö. ticari mekan detayları) içerik olarak paketlenmesi",
+  "Teknik hata çözüm videoları (Reklam hesabı aktif değil vb.)",
+  "Kısa ve net 'sonuç odaklı' vaatte bulunulan tanıtımlar"
+ ],
+ "kancalar": [
+  "\"Bu çikolata oraya tesadüfen konmadı\" (Merak uyandıran, bağlama dayalı açılış)",
+  "\"Dükkanınızı taşımadan daha işlek bir sokağa nasıl taşırsınız?\" (Çözüm odaklı soru)",
+  "\"Google reklamında boşa para harcamayı durdurun\" (Acı noktasına dokunan uyarı)"
+ ],
+ "rakip_dersleri": [
+  "Fuarcılık gibi büyük etkinliklerde bulunan ajanslar, 'arkadaşlık' ve 'güçlü marka' algısı yaratmak için geri plan videoları çekerek 24 katı etkileşim almıştır; bu, 'biz sizin yanınızdayız' mesajının samimiyetle verildiği",
+  "Teknik sorunları (örneğin reklam hesabı hatası) 60 saniyeden kısa sürede, direkt ekranda göstererek anlatan Shorts formatı, hedef kitle (esnaf) tarafından ilgi görmüştür çünkü esnaf teknik kelimelerden değil, görünen hat",
+  "Kullanıcı yorumları veya etkileşimi yüksek olan içeriklerde, markanın kendi hizmet listesini (NFC, web, logo) bir bütün olarak değil, spesifik bir probleme (kartvizit yığınının çözümlenmesi) odaklanmıştır."
+ ],
+ "sorular": [],
+ "mevsim": [],
+ "kacinilacak": [
+  "Sadece 'Sakarya Reklam Ajansı olarak...' ile başlayan, markanın kendini beğenip hizmet listesini sunan statik feed paylaşımları (Bu format rakiplerde 1.0-1.2 kat gibi düşük performans göstermiştir).",
+  "Esnafın anlayamayacağı teknik jargonlar (SEO algoritmaları, backlink vb.) içeren, 'profesyonel çözümler sunuyoruz' gibi soyut cümleler.",
+  "Görsel kanıtı olmayan, sadece metin tabanlı 'dijital güç' vaatleri."
+ ],
+ "farklilasma": [
+  "Rakipler 'ajans hizmetini' tanıtırken, biz 'esnafın Google Haritalar'daki sıralamasını' göstererek sonuç odaklı büyüme paylaşacağız.",
+  "Teknik hatalar yerine, 'Google'da neden çıkmıyorum?' sorusuna basit, görsel ve adım adım (screen recording) çözümler sunarak teknik bilginin eksikliğini gideren bir 'esnaf tercümanı' rolü üstleneceğiz.",
+  "Fuarcılık gibi etkinlik kovalamak yerine, yerel mekanların (restoran, kuaför) kendi caddelerinde çekilen, 'seni buraya çıkıyoruz' diyen niş odaklı mikro içerikler üreteceğiz."
+ ],
+ "tarih": "2026-11-26",
+ "son_deneme": "2026-11-26T14:29:52.592196+03:00",
+ "durum": "basarili",
+ "kaynaklar": [
+  "instagram.com/eleganzaajans",
+  "instagram.com/sovaajans"
+ ]
+}
