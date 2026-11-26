@@ -63,3 +63,19 @@ def test_uygunsuz_yorum_spam_ve_taslaksiz(monkeypatch):
     for metin in ("Deneme bonusu veren siteler profilimde", "C a s i n o kazandırıyor", "+18 içerik dm"):
         t = etkilesim.taslak({"tur": "yorum", "metin": metin, "kullanici": "x"}, m)
         assert t["sinif"] == "spam" and t["taslak"] == "" and t["musteri"] is None
+
+
+def test_rakip_radari_arastirmaya_girer(monkeypatch):
+    """Rakiplerin gerçek tutan paylaşımları araştırma istemine girer; uygunsuz açıklamalı paylaşım atılır."""
+    import datetime as dt
+    from otopilot import radar, strateji
+    from otopilot import instagram
+    yeni = dt.datetime.now(dt.timezone.utc).isoformat()
+    sahte = {"kullanici": "rakip", "takipci": 1000, "paylasimlar": [
+        {"caption": "Gece 1'de bile satış", "like_count": 900, "comments_count": 20, "media_product_type": "REELS", "timestamp": yeni},
+        {"caption": "Deneme bonusu veren siteler", "like_count": 5000, "comments_count": 0, "media_product_type": "REELS", "timestamp": yeni},
+        {"caption": "sıradan", "like_count": 10, "comments_count": 0, "media_product_type": "FEED", "timestamp": yeni}]}
+    monkeypatch.setattr(radar, "hesap_oku", lambda *a, **k: sahte)
+    monkeypatch.setattr(instagram.Instagram, "hazir", property(lambda self: True))
+    v = strateji._rakip_verisi("sitemucidi")
+    assert "Gece 1" in v and "bonus" not in v

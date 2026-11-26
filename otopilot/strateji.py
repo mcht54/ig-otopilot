@@ -18,6 +18,25 @@ from . import llm
 from .ortak import DURUM, gecmis, json_kaydet, log, simdi
 
 ARASTIRMA_GUN = 7
+# Rakip / sektörde güçlü hesaplar (2026-11-26 API ile okunabildiği doğrulandı). Gerçek, herkese açık paylaşım verisi araştırmaya girer.
+RAKIP = {"sitemucidi": ["syncoretr", "ikas", "ideasoft", "ticimax"], "davetiyeler": ["davetiyeci", "davetiyem"],
+         "sgb": ["sapancabungalov", "sapancatatil", "sapancaevleri"], "markakarnem": ["eleganzaajans", "sovaajans"]}
+
+
+def _rakip_verisi(kod: str) -> str:
+    """Rakiplerin son 60 günde en çok tutan paylaşımları (radar). Okunamazsa boş; araştırma yine yapılır."""
+    try:
+        from . import radar
+        from .instagram import Instagram
+        ig = Instagram(kod)
+        hs = [h for h in (radar.hesap_oku(ig.kimlik, ig.anahtar, u) for u in RAKIP.get(kod, [])) if h] if ig.hazir else []
+        t = radar.tutanlar(hs, en_cok=8)
+        if t:
+            log(f"{kod} rakip radarı: {len(hs)} hesap, {len(t)} tutan paylaşım")
+        return json.dumps([{k: x[k] for k in ("tur", "begeni", "yorum", "kat", "aciklama")} for x in t], ensure_ascii=False)[:5000] if t else ""
+    except Exception as e:  # noqa: BLE001
+        log(f"{kod} rakip radarı okunamadı: {type(e).__name__}")
+        return ""
 BASARISIZ_SAAT = 24  # başarısız araştırma her plan çalıştırmasında yeniden denenip kota yakmasın
 NIS = {
     "sitemucidi": "esnaf ve küçük işletmeler için web sitesi kurma, Google'da ve yapay zekâ aramasında görünme",
@@ -81,7 +100,12 @@ def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
              "4) İnsanların bu konuda en çok sorduğu sorular ve en büyük endişeleri\n"
              "5) Bu ay ve önümüzdeki haftalar için mevsim/gündem fırsatları\n"
              "6) Bu alanda izleyiciyi kaçıran, kaçınılması gereken hatalar\n"
-             'Yalnız JSON döndür: {"trendler": [""], "kancalar": [""], "rakip_dersleri": [""], "sorular": [""], "mevsim": [""], "kacinilacak": [""]}')
+             'Yalnız JSON döndür: {"trendler": [""], "kancalar": [""], "rakip_dersleri": [""], "sorular": [""], "mevsim": [""], "kacinilacak": [""], "farklilasma": [""]}')
+    rv = _rakip_verisi(kod)
+    if rv:
+        istem += ("\n\nRAKİPLERİN GERÇEK VERİSİ (Instagram, son 60 gün, en çok tutan paylaşımlar; kat = hesabın kendi ortalamasının kaç katı): " + rv +
+                  "\nBunlardan rakip_dersleri'ni ÇIKAR (neden tuttu?) ve 'farklilasma'ya rakiplerin yapmadığı, bizim öne çıkacağımız açıları yaz. "
+                  "Rakip adını ve metnini içeriğe KOPYALAMA. Argo, bahis/kumar, alkol, +18 fikir verme.")
     try:
         sonuc = llm.ara(istem)
     except Exception as e:
@@ -91,7 +115,9 @@ def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
     if not veri:
         log(f"{kod} araştırma yanıtı {'alınamadı' if not sonuc else 'çözülemedi'}; eski araştırma kullanılıyor, {BASARISIZ_SAAT} saat yeniden denenmeyecek")
         return _basarisiz(kod, eski, "yanıt yok" if not sonuc else "yanıt çözülemedi")
-    temiz = {k: [str(x)[:220] for x in (veri.get(k) or [])][:8] for k in ("trendler", "kancalar", "rakip_dersleri", "sorular", "mevsim", "kacinilacak")}
+    from .guvenlik import uygunsuz
+    temiz = {k: [str(x)[:220] for x in (veri.get(k) or []) if not uygunsuz(str(x))][:8]
+             for k in ("trendler", "kancalar", "rakip_dersleri", "sorular", "mevsim", "kacinilacak", "farklilasma")}
     temiz.update(tarih=simdi().date().isoformat(), son_deneme=simdi().isoformat(), durum="basarili", kaynaklar=[k for k in (sonuc.get("kaynaklar") or [])][:12])
     json_kaydet(_yol(kod), temiz)
     log(f"{kod} araştırma güncellendi: {len(temiz['trendler'])} trend, {len(temiz['kancalar'])} kanca, {len(temiz['sorular'])} soru")
@@ -125,7 +151,8 @@ def baglam(kod: str, m: dict) -> str:
             parcalar.append(f"{baslik}: " + " | ".join(map(str, s[anahtar])))
     if a:
         for baslik, anahtar in (("BU HAFTA TUTAN İÇERİKLER (araştırma)", "trendler"), ("TUTAN KANCALAR (araştırma)", "kancalar"),
-                                ("RAKİPLERDEN DERSLER", "rakip_dersleri"), ("İNSANLARIN SORDUĞU SORULAR", "sorular"),
+                                ("RAKİPLERDEN DERSLER (gerçek veriden)", "rakip_dersleri"), ("RAKİPLERDEN FARKIMIZ", "farklilasma"),
+                                ("İNSANLARIN SORDUĞU SORULAR", "sorular"),
                                 ("MEVSİM/GÜNDEM", "mevsim"), ("İZLEYİCİYİ KAÇIRAN HATALAR", "kacinilacak")):
             if a.get(anahtar):
                 parcalar.append(f"{baslik}: " + " | ".join(a[anahtar][:6]))
