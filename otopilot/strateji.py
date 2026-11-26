@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import pathlib
 import os
 import re
 
@@ -177,6 +178,10 @@ def baglam(kod: str, m: dict) -> str:
     son = son_konular(kod)
     if son:
         parcalar.append("SON İÇERİKLER (aynı konuyu/kancayı TEKRAR ETME, farklı açı bul): " + " | ".join(son[-20:]))
+    from .gundem_notu import metin as _gundem  # doğrulanmış, tarihli gündem (2026-11-27): haftada 3 gün, süresi geçen düşer
+    g = _gundem(pathlib.Path(__file__).parent / "gundem" / f"{kod}.json")
+    if g:
+        parcalar.append(g)
     return "\n".join(parcalar)
 
 
