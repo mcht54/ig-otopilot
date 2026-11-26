@@ -1,0 +1,82 @@
+name: Düzelt (panel düğmesi)
+
+# Panel › İçerik takvimi › Paylaşım tablosu › "Düzelt": VDS tetikleyicisi panel kuyruğunu görünce bu akışı başlatır (≤2 dk).
+# Bağlantıları OKUYARAK denetler, bugünkü içerikte KESİN hata almış platformları yeniden gönderir (sonucu belirsiz olan asla),
+# adım adım raporu panele yazar. Yeni içerik üretmez, saati gelmemiş içeriği göndermez.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: otopilot          # günlük akışla aynı anda çalışmaz (aynı kayıtlara yazar)
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write  # panel senkronu (GitHub OIDC)
+
+jobs:
+  duzelt:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      TZ: Europe/Istanbul
+      PYTHONPATH: .
+      YAYIN: ${{ vars.YAYIN }}
+      IG_API: ${{ vars.IG_API }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+      IG_SITEMUCIDI_ID: ${{ secrets.IG_SITEMUCIDI_ID }}
+      IG_SITEMUCIDI_TOKEN: ${{ secrets.IG_SITEMUCIDI_TOKEN }}
+      IG_DAVETIYELER_ID: ${{ secrets.IG_DAVETIYELER_ID }}
+      IG_DAVETIYELER_TOKEN: ${{ secrets.IG_DAVETIYELER_TOKEN }}
+      IG_SGB_ID: ${{ secrets.IG_SGB_ID }}
+      IG_SGB_TOKEN: ${{ secrets.IG_SGB_TOKEN }}
+      IG_MARKAKARNEM_ID: ${{ secrets.IG_MARKAKARNEM_ID }}
+      IG_MARKAKARNEM_TOKEN: ${{ secrets.IG_MARKAKARNEM_TOKEN }}
+      IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      TT_CLIENT_KEY: ${{ secrets.TT_CLIENT_KEY }}
+      TT_CLIENT_SECRET: ${{ secrets.TT_CLIENT_SECRET }}
+      META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
+      META_SITEMUCIDI_PAGE_ID: ${{ secrets.META_SITEMUCIDI_PAGE_ID }}
+      YT_SITEMUCIDI_REFRESH_TOKEN: ${{ secrets.YT_SITEMUCIDI_REFRESH_TOKEN }}
+      TT_SITEMUCIDI_REFRESH_TOKEN: ${{ secrets.TT_SITEMUCIDI_REFRESH_TOKEN }}
+      META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
+      META_DAVETIYELER_PAGE_ID: ${{ secrets.META_DAVETIYELER_PAGE_ID }}
+      YT_DAVETIYELER_REFRESH_TOKEN: ${{ secrets.YT_DAVETIYELER_REFRESH_TOKEN }}
+      TT_DAVETIYELER_REFRESH_TOKEN: ${{ secrets.TT_DAVETIYELER_REFRESH_TOKEN }}
+      META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}
+      META_SGB_PAGE_ID: ${{ secrets.META_SGB_PAGE_ID }}
+      YT_SGB_REFRESH_TOKEN: ${{ secrets.YT_SGB_REFRESH_TOKEN }}
+      TT_SGB_REFRESH_TOKEN: ${{ secrets.TT_SGB_REFRESH_TOKEN }}
+      META_MARKAKARNEM_IG_ID: ${{ secrets.META_MARKAKARNEM_IG_ID }}
+      META_MARKAKARNEM_PAGE_ID: ${{ secrets.META_MARKAKARNEM_PAGE_ID }}
+      YT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.YT_MARKAKARNEM_REFRESH_TOKEN }}
+      TT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.TT_MARKAKARNEM_REFRESH_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Araçlar
+        run: |
+          for i in 1 2 3; do
+            sudo apt-get update -qq && sudo apt-get install -y -qq --fix-missing ffmpeg >/dev/null && break
+            echo "apt denemesi $i başarısız"; sleep 20
+          done
+          pip install -q -r requirements.txt
+      - name: Düzelt
+        run: python -m otopilot.duzelt
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          git config user.name "ig-otopilot"
+          git config user.email "ig-otopilot@users.noreply.github.com"
+          git add durum
+          if ! git diff --cached --quiet; then
+            git commit -qm "durum: düzelt $(date +%F_%H:%M)"
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          fi

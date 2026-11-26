@@ -81,8 +81,10 @@ def ozet(gun: int = 14) -> list[dict]:
 
 def ekler() -> dict:
     from . import plan
+    from .duzelt import oku as baglanti_oku
     return {"urunler": [{"anahtar": k, "ad": marka(k)["ad"]} for k in marka_kodlari()],
-            "markalar": {k: plan.buyume(k) for k in marka_kodlari()}}
+            "markalar": {k: plan.buyume(k) for k in marka_kodlari()},
+            "baglanti": {k: v for k, v in baglanti_oku().items() if k in marka_kodlari()}}  # panel tablosundaki bağlantı rozetleri
 
 
 def _yanit_ozeti(r) -> str:
@@ -120,7 +122,7 @@ def gonder(donus: bool = False):
 
 
 def onay(yuk: dict) -> None:
-    if not any(yuk.get(k) for k in ("uygulanan", "reddedilen", "tanitim")):
+    if not any(yuk.get(k) for k in ("uygulanan", "reddedilen", "tanitim", "duzelt")):
         return
     try:
         r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}/onay", json=yuk, timeout=60,

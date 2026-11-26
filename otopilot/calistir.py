@@ -346,10 +346,12 @@ def _ig_tamamla(kod: str, k: dict, pl: dict, video: Path, aciklama: str, ig_tekr
     return tamam
 
 
-def eksik(kodlar: list[str] | None = None) -> int:
+def eksik(kodlar: list[str] | None = None, elle: bool = False) -> int:
     """Bugün yayınlanmış ama bir platforma (Facebook vb.) gidememiş içeriği yalnız o platforma gönderir.
     Instagram'a yalnız kesin hata (medya kimliği yok) almışsa en çok 3 kez yeniden gönderir; hikâyesi eksikse tamamlar.
-    Video: sürüm yedeği, yoksa Instagram'daki yayından."""
+    Video: sürüm yedeği, yoksa Instagram'daki yayından.
+    elle=True (panel "Düzelt"): otomatik deneme sayısı (3) dolmuş olsa da bir kez daha dener; BELIRSIZ yine ASLA yeniden gönderilmez."""
+    sinir = 99 if elle else 3
     import requests
     from . import plan
     tarih, tamam = bugun(), 0
@@ -363,10 +365,10 @@ def eksik(kodlar: list[str] | None = None) -> int:
                    if str(pl.get(p, "")).startswith("atlandı: anahtar") and hazir(kod) and p not in hatali]
         # Instagram yalnız KESİN hata ise (yayından önce düştü, medya kimliği yok) yeniden denenir; BELIRSIZ asla
         ig_tekrar = bool(k) and str(pl.get("instagram", "")).startswith("HATA") and not k.get("medya_id") \
-            and k.get("ig_tekrar", 0) < 3
+            and k.get("ig_tekrar", 0) < sinir
         hk = str(pl.get("instagram_hikaye", "atlandı"))
         hikaye_tekrar = bool(k) and "BELIRSIZ" not in hk and hk.startswith(("HATA", "atlandı")) \
-            and not hk.startswith("atlandı: anahtar") and k.get("hikaye_tekrar", 0) < 3 \
+            and not hk.startswith("atlandı: anahtar") and k.get("hikaye_tekrar", 0) < sinir \
             and (ig_tekrar or str(pl.get("instagram", "")).startswith("http"))
         if not k or k.get("durum") != "yayinlandi" or not (hatali or ig_tekrar or hikaye_tekrar):
             continue
