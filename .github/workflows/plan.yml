@@ -27,6 +27,11 @@ jobs:
       YZ_ISTEK_TAVANI: "60"   # plan 7 gün dolu; günde ~4 yeni içerik yeter. Ücretsiz kotayı paylaşım üretimine bırakır
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
       IG_TOKEN: ${{ secrets.IG_TOKEN }}
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_SITEMUCIDI_REFRESH_TOKEN: ${{ secrets.YT_SITEMUCIDI_REFRESH_TOKEN }}
+      YT_DAVETIYELER_REFRESH_TOKEN: ${{ secrets.YT_DAVETIYELER_REFRESH_TOKEN }}
+      YT_MARKAKARNEM_REFRESH_TOKEN: ${{ secrets.YT_MARKAKARNEM_REFRESH_TOKEN }}
       META_SITEMUCIDI_IG_ID: ${{ secrets.META_SITEMUCIDI_IG_ID }}
       META_DAVETIYELER_IG_ID: ${{ secrets.META_DAVETIYELER_IG_ID }}
       META_SGB_IG_ID: ${{ secrets.META_SGB_IG_ID }}

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import re
 
 from . import llm
@@ -19,6 +20,8 @@ from .ortak import DURUM, gecmis, json_kaydet, log, simdi
 
 ARASTIRMA_GUN = 7
 # Rakip / sektörde güçlü hesaplar (2026-11-26 API ile okunabildiği doğrulandı). Gerçek, herkese açık paylaşım verisi araştırmaya girer.
+YT_SORGU = {"sitemucidi": ["esnaf web sitesi", "web sitesi kurma", "google haritalar işletme"], "davetiyeler": ["dijital davetiye", "düğün davetiyesi fikir"],
+            "sgb": ["sapanca bungalov", "bungalov tatil", "hafta sonu kaçamak"], "markakarnem": ["işletme instagram hataları", "küçük işletme pazarlama"]}
 RAKIP = {"sitemucidi": ["syncoretr", "ikas", "ideasoft", "ticimax"], "davetiyeler": ["davetiyeci", "davetiyem"],
          "sgb": ["sapancabungalov", "sapancatatil", "sapancaevleri"], "markakarnem": ["eleganzaajans", "sovaajans"]}
 
@@ -31,9 +34,12 @@ def _rakip_verisi(kod: str) -> str:
         ig = Instagram(kod)
         hs = [h for h in (radar.hesap_oku(ig.kimlik, ig.anahtar, u) for u in RAKIP.get(kod, [])) if h] if ig.hazir else []
         t = radar.tutanlar(hs, en_cok=8)
+        e = radar.yt_erisim(os.environ.get("YT_CLIENT_ID", ""), os.environ.get("YT_CLIENT_SECRET", ""),
+                            os.environ.get(f"YT_{kod.upper()}_REFRESH_TOKEN") or os.environ.get("YT_SITEMUCIDI_REFRESH_TOKEN", ""))
+        t += radar.yt_trend(e, YT_SORGU.get(kod, []), en_cok=6)
         if t:
             log(f"{kod} rakip radarı: {len(hs)} hesap, {len(t)} tutan paylaşım")
-        return json.dumps([{k: x[k] for k in ("tur", "begeni", "yorum", "kat", "aciklama")} for x in t], ensure_ascii=False)[:5000] if t else ""
+        return json.dumps([{k: x.get(k) for k in ("tur", "izlenme", "begeni", "yorum", "kat", "aciklama")} for x in t], ensure_ascii=False)[:6000] if t else ""
     except Exception as e:  # noqa: BLE001
         log(f"{kod} rakip radarı okunamadı: {type(e).__name__}")
         return ""

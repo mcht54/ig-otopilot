@@ -57,8 +57,8 @@ def tutanlar(hesaplar: list[dict], gun: int = 60, en_cok: int = 10) -> list[dict
 
 
 ISTEM = """Sen {marka} için çalışan deneyimli bir sosyal medya stratejistisin. Hedef kitle: {kitle}.
-Aşağıda rakiplerin ve sektörde güçlü hesapların son 60 günde EN ÇOK TUTAN Instagram paylaşımları var (kat = hesabın kendi ortalamasının
-kaç katı etkileşim aldı). {tiktok}
+Aşağıda rakiplerin ve sektörde güçlü hesapların son 60 günde EN ÇOK TUTAN Instagram paylaşımları (kat = hesabın kendi ortalamasının
+kaç katı etkileşim aldı) ve Türkiye'de son 30 günde bu alanda EN ÇOK İZLENEN YouTube Shorts videoları (izlenme) var. {tiktok}
 Görevin: neden tuttuklarını çıkar ve {marka} için KOPYA OLMAYAN, kendi diliyle uygulanabilir fikirlere çevir.
 Kurallar: yalnız verilen paylaşımlardan ve aramada bulduğun kaynaklardan çıkarım yap; rakam/trend UYDURMA. Rakip adını içerikte kullanma.
 Argo, bahis/kumar, alkol, +18, siyaset içeren hiçbir fikir verme.
@@ -72,7 +72,7 @@ def ozet(sor, marka: str, kitle: str, tutan: list[dict], tiktok_metni: str = "")
     """sor(istem) -> dict (hattın kendi Gemini sarmalayıcısı). Hata olursa boş özet; hat yine çalışır."""
     if not tutan and not tiktok_metni:
         return {}
-    veri = json.dumps([{k: x[k] for k in ("hesap", "tur", "begeni", "yorum", "kat", "aciklama", "link")} for x in tutan], ensure_ascii=False)
+    veri = json.dumps([{k: x.get(k) for k in ("hesap", "tur", "izlenme", "begeni", "yorum", "kat", "aciklama", "link")} for x in tutan], ensure_ascii=False)
     tk = f"Ayrıca bu haftanın Türkiye TikTok/Reels trend araştırması: {tiktok_metni[:2500]}" if tiktok_metni else ""
     try:
         v = sor(ISTEM.format(marka=marka, kitle=kitle, veri=veri, tiktok=tk)) or {}
@@ -116,3 +116,51 @@ def ara(gemini_anahtari: str, soru: str, modeller=("gemini-flash-latest", "gemin
 
 TIKTOK_SORU = ("Bu hafta ({tarih}) Türkiye'de TikTok ve Instagram Reels'te {konu} alanında hangi video formatları, akımlar ve sesler "
                "viral oluyor? Yalnız bulduğun kaynaklara dayan, uydurma. Argo, bahis, kumar, +18 içerikleri dahil etme. 5 maddede, kısa yaz.")
+
+
+def yt_erisim(istemci: str, sir: str, yenileme: str) -> str:
+    """YouTube OAuth yenileme anahtarından kısa ömürlü erişim anahtarı ("" olursa YouTube trendi atlanır)."""
+    try:
+        veri = urllib.parse.urlencode({"client_id": istemci, "client_secret": sir, "refresh_token": yenileme, "grant_type": "refresh_token"}).encode()
+        with urllib.request.urlopen(urllib.request.Request("https://oauth2.googleapis.com/token", data=veri), timeout=30) as r:
+            return json.loads(r.read()).get("access_token", "")
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def yt_trend(erisim: str, sorgular: list[str], gun: int = 30, en_cok: int = 8, api_anahtari: str = "") -> list[dict]:
+    """Türkiye'de son `gun` günde en çok izlenen Shorts (sorgu başına 10 aday → izlenmeye göre). Ücretsiz kota: sorgu başına ~101 birim.
+    Kimlik: OAuth erişim anahtarı ya da YouTube API anahtarı."""
+    if not erisim and not api_anahtari:
+        return []
+    h = {"Authorization": f"Bearer {erisim}"} if erisim else {}
+    ek = {"key": api_anahtari} if api_anahtari and not erisim else {}
+    sinir = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=gun)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    idler = []
+    for q in sorgular[:4]:
+        p = {"part": "id", "q": q, "type": "video", "videoDuration": "short", "regionCode": "TR", "relevanceLanguage": "tr",
+             "publishedAfter": sinir, "order": "viewCount", "maxResults": 10, **ek}
+        try:
+            with urllib.request.urlopen(urllib.request.Request("https://www.googleapis.com/youtube/v3/search?" + urllib.parse.urlencode(p), headers=h), timeout=30) as r:
+                idler += [x["id"]["videoId"] for x in json.loads(r.read()).get("items", []) if x.get("id", {}).get("videoId")]
+        except Exception:  # noqa: BLE001
+            continue
+    if not idler:
+        return []
+    try:
+        p = {"part": "snippet,statistics", "id": ",".join(dict.fromkeys(idler))[:2000], **ek}
+        with urllib.request.urlopen(urllib.request.Request("https://www.googleapis.com/youtube/v3/videos?" + urllib.parse.urlencode(p), headers=h), timeout=30) as r:
+            v = json.loads(r.read()).get("items", [])
+    except Exception:  # noqa: BLE001
+        return []
+    out = []
+    for x in v:
+        sn, st = x.get("snippet", {}), x.get("statistics", {})
+        baslik = sn.get("title", "")
+        if uygunsuz(baslik, sn.get("description", "")[:300], sn.get("channelTitle", "")):
+            continue
+        out.append({"hesap": sn.get("channelTitle", ""), "tur": "YouTube Shorts", "izlenme": int(st.get("viewCount") or 0),
+                    "begeni": int(st.get("likeCount") or 0), "yorum": int(st.get("commentCount") or 0), "kat": 0,
+                    "aciklama": baslik[:200], "link": f"https://www.youtube.com/shorts/{x['id']}"})
+    out.sort(key=lambda x: -x["izlenme"])
+    return out[:en_cok]
