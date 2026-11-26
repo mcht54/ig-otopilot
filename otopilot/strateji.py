@@ -112,6 +112,18 @@ def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
         log(f"{kod} araştırma yapılamadı: {e}")
         return _basarisiz(kod, eski, f"{type(e).__name__}")
     veri = _json_bul((sonuc or {}).get("metin", ""))
+    if not veri and rv:  # arama kotası (429) düştüyse: rakiplerin GERÇEK verisinden aramasız çıkarım (Gemini/Groq) — boş kalmasın
+        try:
+            v2 = llm.json_sor("Sen deneyimli bir sosyal medya stratejistisin. Web araması yapamıyorsun; YALNIZ verilen rakip verisinden "
+                              "çıkarım yap, olmayan trend/rakam uydurma. Yalnız JSON döndür.", istem.split("Şunları bul", 1)[0] +
+                              "\nGörev: aşağıdaki gerçek rakip verisinden trendler (tutan video türleri), kancalar, rakip_dersleri, "
+                              "kacinilacak ve farklilasma çıkar; sorular ve mevsim boş kalabilir.\n" + istem.split("RAKİPLERİN GERÇEK VERİSİ", 1)[-1] +
+                              '\nJSON: {"trendler": [""], "kancalar": [""], "rakip_dersleri": [""], "sorular": [], "mevsim": [], "kacinilacak": [""], "farklilasma": [""]}')
+            if isinstance(v2, dict) and any(v2.get(k) for k in ("trendler", "rakip_dersleri", "kancalar")):
+                veri, sonuc = v2, {"kaynaklar": [f"instagram.com/{u}" for u in RAKIP.get(kod, [])]}
+                log(f"{kod} arama yok; araştırma rakip verisinden çıkarıldı")
+        except Exception as e:  # noqa: BLE001
+            log(f"{kod} rakip verisinden çıkarım yapılamadı: {type(e).__name__}")
     if not veri:
         log(f"{kod} araştırma yanıtı {'alınamadı' if not sonuc else 'çözülemedi'}; eski araştırma kullanılıyor, {BASARISIZ_SAAT} saat yeniden denenmeyecek")
         return _basarisiz(kod, eski, "yanıt yok" if not sonuc else "yanıt çözülemedi")

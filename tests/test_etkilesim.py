@@ -79,3 +79,14 @@ def test_rakip_radari_arastirmaya_girer(monkeypatch):
     monkeypatch.setattr(instagram.Instagram, "hazir", property(lambda self: True))
     v = strateji._rakip_verisi("sitemucidi")
     assert "Gece 1" in v and "bonus" not in v
+
+
+def test_arama_dusunce_rakip_verisinden_arastirma(monkeypatch, tmp_path):
+    from otopilot import strateji, llm
+    monkeypatch.setattr(strateji, "DURUM", tmp_path)
+    monkeypatch.setattr(strateji, "_rakip_verisi", lambda kod: '[{"tur": "REELS", "kat": 18, "aciklama": "Gece 1de satış"}]')
+    monkeypatch.setattr(llm, "ara", lambda istem: None)
+    monkeypatch.setattr(llm, "json_sor", lambda s, i: {"trendler": ["esnaf müşteri hikâyesi"], "kancalar": ["Eskiden kepenk..."], "rakip_dersleri": ["gerçek esnaf"], "farklilasma": ["mahalle dili"]})
+    m = {"ad": "Site Mucidi", "hedef_kitle": "esnaf"}
+    v = strateji.arastir("sitemucidi", m, zorla=True)
+    assert v["durum"] == "basarili" and v["trendler"] == ["esnaf müşteri hikâyesi"] and v["farklilasma"] == ["mahalle dili"]
