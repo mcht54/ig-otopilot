@@ -43,7 +43,9 @@ def _gemini_modelleri(anahtar: str) -> list[str]:
             log(f"gemini model listesi alınamadı: {str(e)[:160]}")
             _kesif = []
     return list(dict.fromkeys(GEMINI_MODELLER + _kesif))
-GROQ_MODEL = os.environ.get("GROQ_MODEL", "llama-3.3-70b-versatile")
+# 2026-11-26: llama-3.3-70b-versatile Groq'tan kaldırıldı; sıra = Türkçesi en doğal olan önce. Kaldırılan model atlanır.
+GROQ_MODELLER = [m for m in (os.environ.get("GROQ_MODEL", ""), "qwen/qwen3.8-27b", "openai/gpt-oss-120b") if m]
+GROQ_MODEL = GROQ_MODELLER[0]
 
 # ÜCRET FRENİ: yalnız ücretsiz katman. Gemini projelerine ödeme hesabı BAĞLANMAZ (bağlı değilken kota dolunca Google
 # ücret yazmaz, 429 döner). Ek güvence: çalıştırma başına istek tavanı + günlük kota dolunca o çalıştırmada bir daha denenmez.
@@ -152,26 +154,30 @@ def _groq(sistem: str, istem: str) -> str | None:
     anahtar = os.environ.get("GROQ_API_KEY")
     if not anahtar or not izin("groq"):
         return None
-    try:
-        r = requests.post(
-            "https://api.groq.com/openai/v1/chat/completions",
-            headers={"Authorization": f"Bearer {anahtar}"},
-            json={
-                "model": GROQ_MODEL,
-                "temperature": 0.9,
-                "response_format": {"type": "json_object"},
-                "messages": [{"role": "system", "content": sistem}, {"role": "user", "content": istem}],
-            },
-            timeout=90,
-        )
-        if r.status_code == 429:
-            kota_doldu("groq", r.text)
-            return None
-        r.raise_for_status()
-        return r.json()["choices"][0]["message"]["content"]
-    except Exception as e:
-        log(f"groq hata: {str(e)[:160]}")
-        return None
+    for model in dict.fromkeys(GROQ_MODELLER):
+        try:
+            r = requests.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {anahtar}"},
+                json={
+                    "model": model,
+                    "temperature": 0.9,
+                    "response_format": {"type": "json_object"},
+                    "messages": [{"role": "system", "content": sistem}, {"role": "user", "content": istem}],
+                },
+                timeout=90,
+            )
+            if r.status_code == 429:
+                kota_doldu("groq", r.text)
+                return None
+            if r.status_code in (400, 404) and "model" in r.text.lower():  # model kaldırılmış/desteklenmiyor → sıradaki
+                log(f"groq {model} kullanılamıyor ({r.status_code}); sıradaki model")
+                continue
+            r.raise_for_status()
+            return r.json()["choices"][0]["message"]["content"]
+        except Exception as e:
+            log(f"groq {model} hata: {str(e)[:160]}")
+    return None
 
 
 def json_sor(sistem: str, istem: str) -> dict | None:
