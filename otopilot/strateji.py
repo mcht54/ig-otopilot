@@ -43,7 +43,7 @@ def _rakip_verisi(kod: str) -> str:
     except Exception as e:  # noqa: BLE001
         log(f"{kod} rakip radarı okunamadı: {type(e).__name__}")
         return ""
-BASARISIZ_SAAT = 24  # başarısız araştırma her plan çalıştırmasında yeniden denenip kota yakmasın
+BASARISIZ_SAAT = 6  # (2026-11-26: 24 → 6) başarısız araştırma her plan çalıştırmasında yeniden denenip kota yakmasın
 NIS = {
     "sitemucidi": "esnaf ve küçük işletmeler için web sitesi kurma, Google'da ve yapay zekâ aramasında görünme",
     "davetiyeler": "düğün, nişan, kına ve sünnet davetiyesi; dijital davetiye; düğün hazırlığı",
@@ -112,8 +112,8 @@ def arastir(kod: str, m: dict, zorla: bool = False) -> dict:
         istem += ("\n\nRAKİPLERİN GERÇEK VERİSİ (Instagram, son 60 gün, en çok tutan paylaşımlar; kat = hesabın kendi ortalamasının kaç katı): " + rv +
                   "\nBunlardan rakip_dersleri'ni ÇIKAR (neden tuttu?) ve 'farklilasma'ya rakiplerin yapmadığı, bizim öne çıkacağımız açıları yaz. "
                   "Rakip adını ve metnini içeriğe KOPYALAMA. Argo, bahis/kumar, alkol, +18 fikir verme.")
-    try:
-        sonuc = llm.ara(istem)
+    try:  # ücretsiz katmanda Google araması sürekli 429 (2026-11-26 ölçüldü): rakip verisi varsa arama denenmez, doğrudan veriden çıkarılır
+        sonuc = None if rv else llm.ara(istem)
     except Exception as e:
         log(f"{kod} araştırma yapılamadı: {e}")
         return _basarisiz(kod, eski, f"{type(e).__name__}")
