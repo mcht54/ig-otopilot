@@ -1,110 +1,4 @@
 {
- "2026-11-25": {
-  "id": "2026-11-25-markakarnem",
-  "gun": "2026-11-25",
-  "kod": "markakarnem",
-  "format": "soru_cevap",
-  "konu": "Web Sitem Google'da Neden Yükselmiyor?",
-  "anahtar": "soru:web-sitem-google-da-neden-yukselmiyor",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "soru:web-sitem-google-da-neden-yukselmiyor",
-   "konu": "Web Sitem Google'da Neden Yükselmiyor?",
-   "anahtar_kelime": "web sitem google'da neden yükselmiyor",
-   "olgular": [
-    "Sayfa: Web Sitem Google'da Neden Yükselmiyor?",
-    "Özet: Siteniz dizinde ama yükselmiyorsa en sık nedenler: arama niyetine uymayan sayfa, ince içerik, karışık konular, zayıf mobil deneyim ve güven eksikliği.",
-    "Kısa cevap: Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği aramaya tam cevap vermemesidir: sayfa başka bir soruya cevap veriyor, içerik çok kısa ya da genel, birden fazla konu tek sayfada karışmış olabilir. Bunlara zayıf mobil deneyim ve işletmenin çevrimiçi bilinirliğinin dü",
-    "Kısaca: Sorun çoğu zaman cevap eksikliğidir: Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği aramaya tam cevap vermemesidir. Sayfa başka bir soruya cevap veriyor olabilir. İçerik çok kısa ya da genel olabilir. Birden fazla konu da tek sayfada karışmış olabilir. Bunlara zayıf mobil deneyim ve işletmenin çevrim",
-    "En sık 5 neden: ",
-    "Arama niyeti uyuşmuyor: Google, aramanın arkasındaki amacı anlamaya çalışır. Birisi \"halı nasıl yıkanır\" yazıyorsa bilgi arıyordur. \"Halı yıkama fiyatları\" yazıyorsa hizmet almaya yakındır. Sayfanız ürün ya da hizmet satıyorsa ama arayan bilgi istiyorsa (ya da tersi), sayfa ne kadar düzgün olursa olsun yükselmekte zorlanab",
-    "İçerik ince: Birkaç cümlelik bir hizmet açıklaması, arayanın sorularını karşılamaz. Örneğin bir diş kliniği sayfasında yalnızca \"implant hizmeti veriyoruz\" yazıyorsa, insanların merak ettiği şeyler cevapsız kalır: Süreç nasıl işliyor? Kimler için uygun? Önce ne yapılıyor? Randevu nasıl alınıyor? Müşterilerinizin",
-    "Konu karışık: Tüm hizmetlerin tek sayfada toplandığı sitelerde, hiçbir hizmet için güçlü bir sayfa olmaz. Google hangi sayfayı hangi aramaya göstereceğini seçmekte zorlanır. Okuyan kişi de aradığını bulmak için uzun uzun kaydırmak zorunda kalır. Her ana hizmet için ayrı bir sayfa düşünün. Her sayfada tek bir ana ",
-    "Deneyim zayıf: Sayfa mobilde okunmuyorsa, çok yavaş açılıyorsa ya da iletişim bilgisine ulaşmak zorsa, ziyaretçi hızla çıkar. Yerel işletmeler için bu özellikle önemlidir, çünkü insanlar çoğunlukla telefondan arar. Sitenizi kendi telefonunuzdan açıp bir müşteri gibi gezin. Yazılar küçük mü, düğmelere basmak zor mu"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": null,
-     "etiket": "Soru-cevap",
-     "baslik": "Web Sitem Google'da Neden Yükselmiyor?",
-     "alt": "Siteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.4,
-     "etiket": "Kısaca",
-     "baslik": "Bilmeniz gerekenler",
-     "maddeler": [
-      "Kısaca: Sorun çoğu zaman cevap eksikliğidir",
-      "En sık 5 neden",
-      "Arama niyeti uyuşmuyor",
-      "İçerik ince"
-     ]
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://markakarnem.com.tr/sorular/web-sitem-google-da-neden-yukselmiyor",
-     "sure": 5.5,
-     "once_tikla": [
-      "Reddet"
-     ],
-     "kaydir": true,
-     "kaydir_px": 1800,
-     "kaydir_bas": 0.5,
-     "ust_yazi": "Tamamı sitede, ücretsiz"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Sizin durumunuz ne?",
-     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
-    }
-   ],
-   "hikaye": {
-    "gorsel": null,
-    "etiket": "Soru-cevap",
-    "baslik": "Web Sitem Google'da Neden Yükselmiyor?",
-    "alt": "Cevap profildeki videoda"
-   },
-   "format": "soru_cevap",
-   "tam_maddeler": [
-    "Kısaca: Sorun çoğu zaman cevap eksikliğidir",
-    "En sık 5 neden",
-    "Arama niyeti uyuşmuyor",
-    "İçerik ince"
-   ],
-   "tohum": "markakarnem:2026-11-25",
-   "denenen_formatlar": [
-    "arac_demo",
-    "soru_cevap",
-    "ornek_rapor",
-    "yerel_karne",
-    "sektor_ipucu"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Web Sitem Google'da Neden Yükselmiyor?\nSiteniz Google'da görünüyor ama yükselmiyorsa en sık neden, sayfaların hedeflediği…\n\nBilmeniz gerekenler\n✔️ Kısaca: Sorun çoğu zaman cevap eksikliğidir\n✔️ En sık 5 neden\n✔️ Arama niyeti uyuşmuyor\n✔️ İçerik ince\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #yerelseo #dijitalpazarlama #googleharitalar",
-  "anlatim": [
-   "Web Sitem Google'da Neden Yükselmiyor?",
-   "Bilmeniz gerekenler: Kısaca: Sorun çoğu zaman cevap eksikliğidir, En sık beş neden.",
-   "Tamamı sitede, ücretsiz.",
-   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten çıkarın!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: soru_cevap formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-markakarnem.jpg?v=72ea0493",
-  "olusturma": "2026-11-23T03:47:56+03:00",
-  "ses": "958c17d432",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-26": {
   "id": "2026-11-26-markakarnem",
   "gun": "2026-11-26",
@@ -905,6 +799,122 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-markakarnem.jpg?v=6c3bc7f5",
   "olusturma": "2026-11-25T03:30:53+03:00",
   "ses": "c94b56ec2d",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-03": {
+  "id": "2026-12-03-markakarnem",
+  "gun": "2026-12-03",
+  "kod": "markakarnem",
+  "format": "yerel_karne",
+  "konu": "Sakarya Otel & Konaklama dijital karnesi",
+  "anahtar": "yerel:otel-konaklama:2026-12",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "yerel:otel-konaklama:2026-12",
+   "konu": "Sakarya Otel & Konaklama dijital karnesi",
+   "anahtar_kelime": "sakarya otel & konaklama",
+   "olgular": [
+    "Sakarya'daki 17 otel & konaklama işletmesinin ölçülen dijital görünürlüğü: medyan Marka Skoru 77/100 ve en sık görülen eksikler.",
+    "Çalışma saatleri: ölçülen işletmelerin %53'sinde eksik",
+    "Yerel işletme (LocalBusiness) verisi: ölçülen işletmelerin %82'sinde eksik",
+    "Yöntem: Bu sayfa, Ekim 2026 – Kasım 2026 arasında MarkaKarnem ile analiz edilen 17 farklı Sakarya otel & konaklama işletmesinin herkese açık verilerinden (web sitesi ve Google İşletme Profili) hesaplanır. Her işletmenin en son analizi kullanılır; i"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sakarya Otel Karnesi",
+     "baslik": "Sakarya'daki otellerin %82'sinde bu kritik eksik var",
+     "alt": "17 konaklama işletmesinin dijital verilerini analiz ettik."
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.6,
+     "etiket": "Çalışma Saatleri",
+     "rakam": "%53",
+     "baslik": "İşletmelerin %53'ünde çalışma saatleri girilmemiş",
+     "alt": "Her iki otelden birinde bu temel bilgi profilde eksik."
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "Teknik Eksik: %82",
+     "baslik": "%82'sinde yerel işletme (LocalBusiness) verisi yok",
+     "maddeler": [
+      "Web sitelerinde yerel işletme verisi bulunmuyor"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.4,
+     "etiket": "Sektör Skor Durumu",
+     "rakam": "77",
+     "baslik": "Medyan Marka Skoru: 77/100",
+     "alt": "Sizin konaklama işletmeniz bu puanın neresinde?"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "İşletmenizin Marka Skorunu ücretsiz görün",
+     "alt": "Web sitesi ve profiliniz için 52 kontrolle analiz yapın."
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sakarya Otelleri",
+    "baslik": "Otellerin %82'sinde aynı eksik var: Sizde durum ne?",
+    "alt": "17 işletmenin analiz sonuçları için videoyu inceleyin."
+   },
+   "format": "yerel_karne",
+   "tam_maddeler": [
+    "Yerel işletme (LocalBusiness) verisi: %82 eksik"
+   ],
+   "tohum": "markakarnem:2026-12-03",
+   "denenen_formatlar": [
+    "yerel_karne",
+    "soru_cevap",
+    "sektor_ipucu",
+    "ornek_rapor",
+    "arac_demo"
+   ],
+   "editor": {
+    "puan": 6.9,
+    "uygulandi": true,
+    "puanlar": {
+     "kanca": 6,
+     "kitle": 7,
+     "tek_mesaj": 7,
+     "deger": 8,
+     "cta": 7,
+     "hata": 8,
+     "ozgunluk": 5
+    },
+    "notlar": "Daha önce işlenen Sakarya otelleri konusu tekrarlandığı için özgünlük ve kanca puanı düşük kaldı. İlk ekrandaki kanca, merak uyandıracak somut eksik verisi (%82) öne çıkarılarak güçlendirildi. Esnafın kolay anlayabileceği daha doğrudan bir dil kullanıldı."
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "Sakarya'daki 17 otel & konaklama işletmesinin dijital görünürlüğünü analiz ettik.\n\nÖlçülen işletmelerin %82'sinde yerel işletme (LocalBusiness) verisi, %53'ünde ise çalışma saatleri eksik çıktı. Sektörün medyan Marka Skoru ise 77/100.\n\nKendi işletmenizin durumunu 52 kontrolle ücretsiz öğrenmek için profildeki linke tıklayın: markakarnem.com.tr\n\n#sakarya #googleişletmeprofili #markaskoru #yerelseo #otelisletmeciligi",
+  "anlatim": [
+   "Sakarya'daki otellerin yüzde seksen ikisi internette çok kritik bir eksiğe sahip.",
+   "İncelediğimiz işletmelerin yüzde elli üçünde en basit çalışma saatleri bile girilmemiş.",
+   "Yüzde seksen ikisinin web sitesinde ise yerel işletme verisi bulunmuyor.",
+   "Sektörün medyan Marka Skoru yetmiş yedi, peki sizinki kaç?",
+   "Ücretsiz karnenizi profildeki linkten çıkarın."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yerel_karne formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-03-markakarnem.jpg?v=027276e3",
+  "olusturma": "2026-11-26T03:24:24+03:00",
+  "ses": "1ba0097bf4",
   "ses_kaynagi": "gemini"
  }
 }

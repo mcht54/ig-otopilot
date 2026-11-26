@@ -1,117 +1,4 @@
 {
- "2026-11-25": {
-  "id": "2026-11-25-davetiyeler",
-  "gun": "2026-11-25",
-  "kod": "davetiyeler",
-  "format": "dijital_davetiye",
-  "konu": "Dijital davetiye modeli: Cerceve",
-  "anahtar": "dijital:ornek-cerceve",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "dijital:ornek-cerceve",
-   "konu": "Dijital davetiye modeli: Cerceve",
-   "anahtar_kelime": "dijital davetiye",
-   "olgular": [
-    "Model: Cerceve (düğün/nişan/kına)",
-    "Ürün açıklaması: Animasyonlu açılışlı, LCV’li, geri sayımlı ve haritalı dijital davetiye. Tek link ile WhatsApp’tan paylaşılır.",
-    "Fiyat: ₺650 (sitedeki fiyat)",
-    "Oluşturma 4 adım: model seç, bilgiler, müzik ve fotoğraf, katılım (LCV) ve kaydet.",
-    "Davetiye tek bağlantıyla WhatsApp'tan paylaşılır; misafir LCV ile katılımını bildirir.",
-    "Canlı örnek: https://www.davetiyeler.tr/d/ornek-cerceve/"
-   ],
-   "sahneler": [
-    {
-     "tur": "sayfa",
-     "url": "https://www.davetiyeler.tr/d/ornek-cerceve/",
-     "sure": 8.5,
-     "ust_yazi": "Davetiyeniz WhatsApp'ta böyle açılır",
-     "eylemler": [
-      {
-       "t": 1.6,
-       "tikla": "davetiyeyi aç"
-      },
-      {
-       "t": 4.8,
-       "ust_yazi": "Animasyonlu açılış + müzik"
-      }
-     ]
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://www.davetiyeler.tr/d/ornek-cerceve/",
-     "sure": 6.5,
-     "once_tikla": [
-      "atla"
-     ],
-     "once_js": [
-      "document.querySelectorAll('.__ust').forEach(e=>e.remove())"
-     ],
-     "kaydir": true,
-     "kaydir_px": 2400,
-     "kaydir_bas": 0.4,
-     "ust_yazi": "Geri sayım, harita, LCV tek linkte"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.0,
-     "etiket": "4 adımda hazır",
-     "baslik": "Dijital davetiye nasıl oluşturulur?",
-     "maddeler": [
-      "Modelinizi seçin",
-      "İsim, tarih ve mekânı yazın",
-      "Müzik ve fotoğraf ekleyin",
-      "Linki WhatsApp'tan gönderin"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Kâğıt yok, kargo yok, bekleme yok",
-     "alt": "Dijital davetiye ₺650"
-    }
-   ],
-   "hikaye": {
-    "gorsel": null,
-    "kayit_url": "https://www.davetiyeler.tr/d/ornek-cerceve/",
-    "etiket": "Dijital davetiye",
-    "baslik": "Davetiyeniz telefonda böyle açılsın",
-    "alt": "Modeli profildeki linkte"
-   },
-   "format": "dijital_davetiye",
-   "tam_maddeler": [
-    "Modelinizi seçin",
-    "İsim, tarih ve mekânı yazın",
-    "Müzik ve fotoğraf ekleyin",
-    "Linki WhatsApp'tan gönderin"
-   ],
-   "tohum": "davetiyeler:2026-11-25",
-   "denenen_formatlar": [
-    "dijital_davetiye",
-    "model_vitrin",
-    "kampanya",
-    "siparis_nasil"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Dijital davetiye modeli: Cerceve\n\nDijital davetiye nasıl oluşturulur?\n✔️ Modelinizi seçin\n✔️ İsim, tarih ve mekânı yazın\n✔️ Müzik ve fotoğraf ekleyin\n✔️ Linki WhatsApp'tan gönderin\n\nDijital davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #düğünhazırlığı #gelinadayı #nişandavetiyesi",
-  "anlatim": [
-   "Davetiyeniz WhatsApp'ta böyle açılır!",
-   "Geri sayım, harita, LCV tek linkte.",
-   "Dijital davetiye nasıl oluşturulur?: Modelinizi seçin, İsim, tarih ve mekânı yazın.",
-   "Kâğıt yok, kargo yok, bekleme yok. Tüm modeller profildeki linkte!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: dijital_davetiye formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-davetiyeler.jpg?v=d077e06c",
-  "olusturma": "2026-11-23T03:47:48+03:00",
-  "ses": "7ab9de9ad3",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-26": {
   "id": "2026-11-26-davetiyeler",
   "gun": "2026-11-26",
@@ -926,6 +813,126 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-davetiyeler.jpg?v=7b73a1cd",
   "olusturma": "2026-11-25T03:30:23+03:00",
   "ses": "c6cc29661c",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-03": {
+  "id": "2026-12-03-davetiyeler",
+  "gun": "2026-12-03",
+  "kod": "davetiyeler",
+  "format": "model_vitrin",
+  "konu": "Nişan davetiyesi modelleri",
+  "anahtar": "kategori:nisan-davetiyeleri:2026-12-03",
+  "ek_anahtarlar": [
+   "urun:28597",
+   "urun:28251",
+   "urun:28252",
+   "urun:28467"
+  ],
+  "senaryo": {
+   "anahtar": "kategori:nisan-davetiyeleri:2026-12-03",
+   "ek_anahtarlar": [
+    "urun:28597",
+    "urun:28251",
+    "urun:28252",
+    "urun:28467"
+   ],
+   "konu": "Nişan davetiyesi modelleri",
+   "anahtar_kelime": "nişan davetiyesi modelleri",
+   "olgular": [
+    "Kategori: Nişan Davetiyeleri (777 model)",
+    "Model 1: Dikdörtgen Beyaz Zarf Gold Yaldızlı Davetiye 100 — Dikdörtgen Beyaz Zarf Gold Yaldızlı Davetiye 100 — dikdörtgen, beyaz zarf, gold yaldız. Düğün ve nişan için isim ve tarih baskılı davetiye; ",
+    "Model 2: Kare Düğün Davetiyesi – Model 9340 — Kare Düğün Davetiyesi – Model 9340 — kare. Düğün ve nişan için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Model 3: Kare Düğün Davetiyesi – Model 9341 — Kare Düğün Davetiyesi – Model 9341 — kare. Düğün ve nişan için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Model 4: Kare Düğün Davetiyesi – Model 9358 — Kare Düğün Davetiyesi – Model 9358 — kare. Düğün ve nişan için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
+    "Basılı davetiyede fiyat teklif usulüdür; adet 100-1000 arası seçilir.",
+    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye (sitede yazıyor)."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/dikdortgen-dugun-davetiyesi-beyaz-zarf-gold-yaldizli-model-100-900.webp",
+     "etiket": "Nişan davetiyesi",
+     "baslik": "Nişan davetiyesi seçemeyenlere 4 model",
+     "alt": "Sonuna kadar izleyin, favorinizi yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9340-900.webp",
+     "etiket": "Model 2",
+     "baslik": "Kare Düğün – Model 9340"
+    },
+    {
+     "tur": "kart",
+     "tip": "urun",
+     "sure": 2.6,
+     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9341-900.webp",
+     "etiket": "Model 3",
+     "baslik": "Kare Düğün – Model 9341"
+    },
+    {
+     "tur": "kart",
+     "tip": "izgara",
+     "sure": 4.0,
+     "zemin": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9358-900.webp",
+     "gorseller": [
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/dikdortgen-dugun-davetiyesi-beyaz-zarf-gold-yaldizli-model-100-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9340-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9341-900.webp",
+      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/kare-dugun-davetiyesi-model-9358-900.webp"
+     ],
+     "yazilar": [
+      "Dikdörtgen Beyaz Zarf Gold…",
+      "Kare Düğün – Model 9340",
+      "Kare Düğün – Model 9341",
+      "Kare Düğün – Model 9358"
+     ],
+     "baslik": "Hangisi sizin tarzınız?",
+     "alt": "Yoruma numarasını yazın"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "777 nişan davetiyesi modeli",
+     "alt": "Basılı davetiyeye dijital davetiye hediye"
+    }
+   ],
+   "hikaye": {
+    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/dikdortgen-dugun-davetiyesi-beyaz-zarf-gold-yaldizli-model-100-900.webp",
+    "etiket": "Yeni modeller",
+    "baslik": "Nişan davetiyesi arayanlara 4 öneri",
+    "alt": "Hangisini seçerdiniz?"
+   },
+   "format": "model_vitrin",
+   "tohum": "davetiyeler:2026-12-03",
+   "denenen_formatlar": [
+    "model_vitrin",
+    "kampanya",
+    "siparis_nasil",
+    "dijital_davetiye"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Nişan davetiyesi seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nNişan davetiyesi modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #nişandavetiyesi #düğünhazırlığı #nikahdavetiyesi",
+  "anlatim": [
+   "Nişan davetiyesi seçemeyenlere dört model! Sonuna kadar izleyin, favorinizi yazın!",
+   "Kare Düğün – Model dokuz bin üç yüz kırk.",
+   "Kare Düğün – Model dokuz bin üç yüz kırk bir.",
+   "Hangisi sizin tarzınız? Yoruma numarasını yazın.",
+   "yedi yüz yetmiş yedi nişan davetiyesi modeli. Tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: model_vitrin formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-03-davetiyeler.jpg?v=bdddcdb0",
+  "olusturma": "2026-11-26T03:15:03+03:00",
+  "ses": "d39d954825",
   "ses_kaynagi": "gemini"
  }
 }

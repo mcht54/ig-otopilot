@@ -1,102 +1,4 @@
 {
- "2026-11-25": {
-  "id": "2026-11-25-sitemucidi",
-  "gun": "2026-11-25",
-  "kod": "sitemucidi",
-  "format": "ozellik",
-  "konu": "Site Mucidi özelliği: Teklif formu",
-  "anahtar": "ozellik:quote_form",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "ozellik:quote_form",
-   "konu": "Site Mucidi özelliği: Teklif formu",
-   "anahtar_kelime": "web sitesi özellikleri",
-   "olgular": [
-    "Özellik: Teklif formu — Ziyaretçi hizmet seçip bütçesini yazarak teklif ister",
-    "Esnafın derdi: Gece gelen teklif talebi de kaybolmasın",
-    "Örnek tema: Pırıl (Ev temizliği, Ofis temizliği)",
-    "Özellikler sihirbazda tek tıkla açılır/kapanır.",
-    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir."
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "telefon": true,
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/kapak-piril.png",
-     "etiket": "Teklif formu",
-     "baslik": "Gece gelen teklif talebi de kaybolmasın",
-     "alt": "Sitenize Teklif formu ekleyin."
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://www.sitemucidi.com.tr/temalar/piril/onizleme",
-     "kaydir": true,
-     "sure": 7,
-     "kaydir_px": 3600,
-     "ust_yazi": "Teklif formu: tek tıkla açılır"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 4.6,
-     "gorsel": "file://{{KLASOR}}/kapak-piril.png",
-     "etiket": "Nasıl açılır?",
-     "baslik": "Teklif formu 3 adımda",
-     "maddeler": [
-      "Temanızı seçin",
-      "Özellikler sekmesinden açın",
-      "Önizlemede hemen görün"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Siz de deneyin",
-     "alt": "Site oluşturmak ücretsiz, 7 gün deneme."
-    }
-   ],
-   "hikaye": {
-    "telefon": true,
-    "gorsel": "file://{{KLASOR}}/kapak-piril.png",
-    "etiket": "İpucu",
-    "baslik": "Gece gelen teklif talebi de kaybolmasın",
-    "alt": "Çözüm: Teklif formu"
-   },
-   "format": "ozellik",
-   "tam_maddeler": [
-    "Temanızı seçin",
-    "Özellikler sekmesinden açın",
-    "Önizlemede hemen görün"
-   ],
-   "tohum": "sitemucidi:2026-11-25",
-   "denenen_formatlar": [
-    "ozellik",
-    "yz_arama",
-    "sektor_demo",
-    "tema_paket"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Gece gelen teklif talebi de kaybolmasın\nSitenize Teklif formu ekleyin.\n\nTeklif formu 3 adımda\n✔️ Temanızı seçin\n✔️ Özellikler sekmesinden açın\n✔️ Önizlemede hemen görün\n\nWeb sitesi özellikleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #girişimcilik #googledaçıkmak #yapayzeka",
-  "anlatim": [
-   "Gece gelen teklif talebi de kaybolmasın! Sitenize Teklif formu ekleyin!",
-   "Teklif formu: tek tıkla açılır.",
-   "Teklif formu üç adımda: Temanızı seçin, Özellikler sekmesinden açın.",
-   "Siz de deneyin. Profildeki linkten ücretsiz dene!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: ozellik formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-25-sitemucidi.jpg?v=492b3329",
-  "olusturma": "2026-11-23T03:48:23+03:00",
-  "ses": "3dfa66aa8e",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-26": {
   "id": "2026-11-26-sitemucidi",
   "gun": "2026-11-26",
@@ -1111,6 +1013,104 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-02-sitemucidi.jpg?v=751a83c8",
   "olusturma": "2026-11-25T03:32:17+03:00",
   "ses": "22c53c490f",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-03": {
+  "id": "2026-12-03-sitemucidi",
+  "gun": "2026-12-03",
+  "kod": "sitemucidi",
+  "format": "yz_arama",
+  "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
+  "anahtar": "yz:0",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "yz:0",
+   "konu": "Yapay zekâ aramaları ve web sitesinin önemi",
+   "anahtar_kelime": "yapay zekâda görünmek",
+   "olgular": [
+    "İnsanlar işletme önerisini giderek ChatGPT, Gemini gibi yapay zekâ asistanlarına soruyor.",
+    "Bu asistanlar cevabı web sitelerinden, Google İşletme profillerinden ve yorumlardan derler.",
+    "Hizmetleri, adresi, telefonu ve SSS'si net yazılmış site yapay zekânın okuyabileceği kaynaktır.",
+    "Site Mucidi'nin Gelişmiş SEO paketi yerel işletme yapılandırılmış verisi ve SSS işaretlemesi ekler.",
+    "Örnek soru: Sakarya'da güvenilir bir oto servis önerir misin?"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-onarim.png",
+     "etiket": "Yapay zekâ",
+     "baslik": "Müşteriler artık Google'dan önce yapay zekâya soruyor",
+     "alt": "“Sakarya'da güvenilir bir oto servis önerir misin?”"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.2,
+     "gorsel": "file://{{KLASOR}}/kapak-onarim.png",
+     "etiket": "Yapay zekâ neye bakar?",
+     "baslik": "Cevabı buralardan derler",
+     "maddeler": [
+      "İşletmenin web sitesi",
+      "Google İşletme profili ve yorumlar",
+      "Net yazılmış hizmet, adres ve telefon"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/temalar/onarim/onizleme",
+     "kaydir": true,
+     "sure": 6.5,
+     "kaydir_px": 3000,
+     "ust_yazi": "Hizmet, adres, SSS: düzenli ve okunur"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitesi olmayan önerilmez",
+     "alt": "3 dakikada ücretsiz oluşturun, 7 gün deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-onarim.png",
+    "etiket": "Biliyor muydunuz?",
+    "baslik": "Müşteriler artık yapay zekâya soruyor",
+    "alt": "Siteniz yoksa cevapta yoksunuz"
+   },
+   "format": "yz_arama",
+   "tam_maddeler": [
+    "İşletmenin web sitesi",
+    "Google İşletme profili ve yorumlar",
+    "Net yazılmış hizmet, adres ve telefon"
+   ],
+   "tohum": "sitemucidi:2026-12-03",
+   "denenen_formatlar": [
+    "yz_arama",
+    "ozellik",
+    "sektor_demo",
+    "tema_paket"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Müşteriler artık Google'dan önce yapay zekâya soruyor\n“Sakarya'da güvenilir bir oto servis önerir misin?”\n\nCevabı buralardan derler\n✔️ İşletmenin web sitesi\n✔️ Google İşletme profili ve yorumlar\n✔️ Net yazılmış hizmet, adres ve telefon\n\nYapay zekâda görünmek arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #googledaçıkmak #esnaf",
+  "anlatim": [
+   "Müşteriler artık Google'dan önce yapay zekâya soruyor! “Sakarya'da güvenilir bir oto servis önerir misin?”!",
+   "Cevabı buralardan derler: İşletmenin web sitesi, Google İşletme profili ve yorumlar.",
+   "Şimdi gerçek ekranda bakalım: Hizmet, adres, SSS: düzenli ve okunur.",
+   "Sitesi olmayan önerilmez. Profildeki linkten ücretsiz dene!"
+  ],
+  "anlatim_kaynagi": "kural",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yz_arama formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-03-sitemucidi.jpg?v=41aebf8c",
+  "olusturma": "2026-11-26T03:36:38+03:00",
+  "ses": "92abae06dc",
   "ses_kaynagi": "gemini"
  }
 }
