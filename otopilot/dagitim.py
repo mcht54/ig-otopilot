@@ -30,6 +30,13 @@ def _e(ad: str, kod: str) -> str:
     return os.environ.get(ad.replace("<KOD>", kod.upper()), "")
 
 
+def _yt_anahtar(kod: str) -> str:
+    """Markanın YouTube yenileme anahtarı; yoksa ortak kanal (Mücahit Çakır @mucahitcakr9266) anahtarı.
+    2026-11-27 kullanıcı: "tüm hesaplar YouTube'da da paylaşılsın" → SGB de ortak kanala (önceki karar: SGB gitmez, kaldırıldı)."""
+    return _e("YT_<KOD>_REFRESH_TOKEN", kod) or next(
+        (os.environ[k] for k in ("YT_SITEMUCIDI_REFRESH_TOKEN", "YT_MARKAKARNEM_REFRESH_TOKEN", "YT_DAVETIYELER_REFRESH_TOKEN") if os.environ.get(k)), "")
+
+
 # ---------------- Facebook sayfası Reels
 def _sayfa_anahtari(kod: str) -> tuple[str, str]:
     sayfa = _e("META_<KOD>_PAGE_ID", kod)
@@ -139,7 +146,7 @@ def youtube_meta(aciklama: str, etiketler: list[str], kod: str | None = None) ->
 def youtube(kod: str, video: Path, aciklama: str, etiketler: list[str]) -> str:
     r = requests.post("https://oauth2.googleapis.com/token", timeout=30, data={
         "client_id": os.environ["YT_CLIENT_ID"], "client_secret": os.environ["YT_CLIENT_SECRET"],
-        "refresh_token": _e("YT_<KOD>_REFRESH_TOKEN", kod), "grant_type": "refresh_token"})
+        "refresh_token": _yt_anahtar(kod), "grant_type": "refresh_token"})
     r.raise_for_status()
     a = r.json()["access_token"]
     baslik, acik = youtube_meta(aciklama, etiketler, kod)
@@ -198,7 +205,7 @@ PLATFORMLAR = {
                  lambda k, v, a, e: facebook(k, v, a)),
     "facebook_hikaye": (lambda k: _e("META_<KOD>_PAGE_ID", k) and (os.environ.get("IG_TOKEN") or _e("META_<KOD>_PAGE_TOKEN", k)),
                         lambda k, v, a, e: facebook_hikaye(k, v)),
-    "youtube": (lambda k: os.environ.get("YT_CLIENT_ID") and _e("YT_<KOD>_REFRESH_TOKEN", k),
+    "youtube": (lambda k: os.environ.get("YT_CLIENT_ID") and _yt_anahtar(k),
                 lambda k, v, a, e: youtube(k, v, a, e)),
     "tiktok": (lambda k: os.environ.get("TT_CLIENT_KEY") and _e("TT_<KOD>_REFRESH_TOKEN", k),
                lambda k, v, a, e: tiktok(k, v, a)),
