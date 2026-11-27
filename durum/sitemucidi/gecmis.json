@@ -43,16 +43,16 @@
    "instagram_hikaye": "http-ig-hikaye:17987015396901631"
   },
   "olcum": {
-   "reach": 1,
-   "views": 1,
+   "reach": 4,
+   "views": 5,
    "likes": 0,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0,
-   "ig_reels_avg_watch_time": 11825
+   "ig_reels_avg_watch_time": 6122
   },
-  "olcum_zamani": "2026-11-26T12:11:01.861303+03:00",
+  "olcum_zamani": "2026-11-27T12:06:42.874038+03:00",
   "skor": 0.5
  },
  {
@@ -89,17 +89,17 @@
    "facebook_hikaye": "http-fb-hikaye:2144123252882597"
   },
   "olcum": {
-   "reach": 70,
-   "views": 75,
-   "likes": 1,
+   "reach": 74,
+   "views": 80,
+   "likes": 3,
    "comments": 0,
    "saved": 0,
    "shares": 1,
-   "total_interactions": 2,
-   "ig_reels_avg_watch_time": 2013
+   "total_interactions": 4,
+   "ig_reels_avg_watch_time": 2033
   },
-  "olcum_zamani": "2026-11-26T12:11:02.144121+03:00",
-  "skor": 35749.286
+  "olcum_zamani": "2026-11-27T12:06:43.168747+03:00",
+  "skor": 9.75
  },
  {
   "tarih": "2026-11-25",
@@ -135,17 +135,17 @@
    "instagram_hikaye": "http-ig-hikaye:18111207971193254"
   },
   "olcum": {
-   "reach": 0,
-   "views": 3,
-   "likes": 0,
+   "reach": 3,
+   "views": 8,
+   "likes": 2,
    "comments": 0,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 0,
-   "ig_reels_avg_watch_time": 5469
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 4234
   },
-  "olcum_zamani": "2026-11-26T12:11:02.490273+03:00",
-  "skor": 0.5
+  "olcum_zamani": "2026-11-27T12:06:43.481762+03:00",
+  "skor": 3.899
  },
  {
   "tarih": "2026-11-26",
@@ -180,6 +180,41 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgMwcaHKooV/",
    "instagram_hikaye": "http-ig-hikaye:18036265004856751"
+  }
+ },
+ {
+  "tarih": "2026-11-27",
+  "tur": "reels",
+  "format": "tema_paket",
+  "anahtar": "paket:baskievi",
+  "ek_anahtarlar": [],
+  "konu": "Baskı Evi teması üç pakette",
+  "baslik": "Hangisi sizin işletmenize uyar?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-27/sitemucidi",
+  "anlatim": [
+   "Baskı işletmeniz için tek tasarım yetmez dedik, aynı temayı üç paketle hazırladık!",
+   "Yalın pakette sade bir görünümle anında işe başlayabilirsiniz.",
+   "Vizyon pakette hareket artıyor, ek bölümlerle siteniz güçleniyor.",
+   "Premium pakette ise en çok hareket ve tüm ek bölümler açılıyor!",
+   "Hemen ücretsiz oluşturun, yedi gün boyunca rahatça deneyin!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Hangisi sizin işletmenize uyar?\nBaskıevi teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #yapayzeka #googledaçıkmak",
+  "video_yedek": "2026-11-27-sitemucidi-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sitemucidi.jpg?v=y",
+  "medya_id": "18114057140250072",
+  "link": "https://www.instagram.com/reel/DgPVEwyINHK/",
+  "yayin_zamani": "2026-11-27T12:12:35.740755+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1161501643134010",
+   "facebook_hikaye": "http-fb-hikaye:1177670924776683",
+   "youtube": "https://youtube.com/shorts/1ZAgVOPhi18",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgPVEwyINHK/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }
 ]
