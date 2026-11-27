@@ -1,124 +1,4 @@
 {
- "2026-11-26": {
-  "id": "2026-11-26-davetiyeler",
-  "gun": "2026-11-26",
-  "kod": "davetiyeler",
-  "format": "model_vitrin",
-  "konu": "Nikah davetiyesi modelleri",
-  "anahtar": "kategori:nikah-davetiyeleri:2026-11-26",
-  "ek_anahtarlar": [
-   "urun:22912",
-   "urun:22480",
-   "urun:22648",
-   "urun:22816"
-  ],
-  "senaryo": {
-   "anahtar": "kategori:nikah-davetiyeleri:2026-11-26",
-   "ek_anahtarlar": [
-    "urun:22912",
-    "urun:22480",
-    "urun:22648",
-    "urun:22816"
-   ],
-   "konu": "Nikah davetiyesi modelleri",
-   "anahtar_kelime": "nikah davetiyesi modelleri",
-   "olgular": [
-    "Kategori: Nikah Davetiyeleri (875 model)",
-    "Model 1: Şeffaf Kare Düğün Davetiyesi – Model 7111 — Şeffaf Kare Düğün Davetiyesi – Model 7111 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
-    "Model 2: Şeffaf Kare Düğün Davetiyesi – Model 7069 — Şeffaf Kare Düğün Davetiyesi – Model 7069 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
-    "Model 3: Şeffaf Kare Düğün Davetiyesi – Model 7084 — Şeffaf Kare Düğün Davetiyesi – Model 7084 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
-    "Model 4: Şeffaf Kare Düğün Davetiyesi – Model 7098 — Şeffaf Kare Düğün Davetiyesi – Model 7098 — şeffaf. Düğün ve nikah için isim ve tarih baskılı davetiye; fiyatı görün, online sipariş verin.",
-    "Basılı davetiyede fiyat teklif usulüdür; adet 100-1000 arası seçilir.",
-    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye (sitede yazıyor)."
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
-     "etiket": "Nikah davetiyesi",
-     "baslik": "Nikah davetiyesi seçemeyenlere 4 model",
-     "alt": "Sonuna kadar izleyin, favorinizi yazın"
-    },
-    {
-     "tur": "kart",
-     "tip": "urun",
-     "sure": 2.6,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7069-900.webp",
-     "etiket": "Model 2",
-     "baslik": "Şeffaf Kare Düğün – Model 7069"
-    },
-    {
-     "tur": "kart",
-     "tip": "urun",
-     "sure": 2.6,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7084-900.webp",
-     "etiket": "Model 3",
-     "baslik": "Şeffaf Kare Düğün – Model 7084"
-    },
-    {
-     "tur": "kart",
-     "tip": "izgara",
-     "sure": 4.0,
-     "zemin": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7098-900.webp",
-     "gorseller": [
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7069-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7084-900.webp",
-      "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7098-900.webp"
-     ],
-     "yazilar": [
-      "Şeffaf Kare Düğün – Model…",
-      "Şeffaf Kare Düğün – Model…",
-      "Şeffaf Kare Düğün – Model…",
-      "Şeffaf Kare Düğün – Model…"
-     ],
-     "baslik": "Hangisi sizin tarzınız?",
-     "alt": "Yoruma numarasını yazın"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "875 nikah davetiyesi modeli",
-     "alt": "Basılı davetiyeye dijital davetiye hediye"
-    }
-   ],
-   "hikaye": {
-    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/seffaf-kare-dugun-davetiyesi-model-7111-900.webp",
-    "etiket": "Yeni modeller",
-    "baslik": "Nikah davetiyesi arayanlara 4 öneri",
-    "alt": "Hangisini seçerdiniz?"
-   },
-   "format": "model_vitrin",
-   "tohum": "davetiyeler:2026-11-26",
-   "denenen_formatlar": [
-    "model_vitrin",
-    "dijital_davetiye",
-    "siparis_nasil",
-    "kampanya"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Nikah davetiyesi seçemeyenlere 4 model\nSonuna kadar izleyin, favorinizi yazın\n\nNikah davetiyesi modelleri arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #dijitaldavetiye #nikahdavetiyesi",
-  "anlatim": [
-   "Nikahınız için şeffaf davetiye arayıp kararsız mı kaldınız?",
-   "Şeffaf kare tasarımıyla Model yedi bin altmış dokuz sade şıklık isteyenlere birebir.",
-   "Model yedi bin seksen dört ise zarafetiyle nikahınıza çok yakışacak.",
-   "Peki bu şeffaf modellerden hangisi sizin tarzınız?",
-   "Basılı davetiye alana dijital davetiye hediye, tüm modeller profildeki linkte!"
-  ],
-  "anlatim_kaynagi": "gemini",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: model_vitrin formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-davetiyeler.jpg?v=e84df04d",
-  "olusturma": "2026-11-23T13:32:58+03:00",
-  "ses": "fb7111df35",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-27": {
   "id": "2026-11-27-davetiyeler",
   "gun": "2026-11-27",
@@ -933,6 +813,91 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-03-davetiyeler.jpg?v=bdddcdb0",
   "olusturma": "2026-11-26T03:15:03+03:00",
   "ses": "d39d954825",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-04": {
+  "id": "2026-12-04-davetiyeler",
+  "gun": "2026-12-04",
+  "kod": "davetiyeler",
+  "format": "yedek",
+  "konu": "Neden Davetiyeler.TR?",
+  "anahtar": "yedek:2026-12-04",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "format": "yedek",
+   "anahtar": "yedek:2026-12-04",
+   "konu": "Neden Davetiyeler.TR?",
+   "anahtar_kelime": "dijital davetiye",
+   "olgular": [
+    "Düğün, nişan, nikah, kına, sünnet için 1.700+…",
+    "Basılı davetiyede siparişten önce tasarım taslağı…",
+    "Dijital davetiye animasyonlu açılış, LCV, geri sayım…",
+    "Sakarya'dan Türkiye'nin her yerine gönderim"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "etiket": "Davetiyeler.TR",
+     "baslik": "Neden Davetiyeler.TR?",
+     "alt": "Tüm modeller profildeki linkte"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.6,
+     "etiket": "Kısaca",
+     "baslik": "Davetiyeler.TR ile",
+     "maddeler": [
+      "Düğün, nişan, nikah, kına, sünnet için 1.700+…",
+      "Basılı davetiyede siparişten önce tasarım taslağı…",
+      "Dijital davetiye animasyonlu açılış, LCV, geri sayım…",
+      "Sakarya'dan Türkiye'nin her yerine gönderim"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Davetiyeler.TR"
+    }
+   ],
+   "hikaye": {
+    "etiket": "Davetiyeler.TR",
+    "baslik": "Neden Davetiyeler.TR?",
+    "alt": "Tüm modeller profildeki linkte"
+   },
+   "tam_maddeler": [
+    "Düğün, nişan, nikah, kına, sünnet için 1.700+ davetiye modeli",
+    "Basılı davetiyede siparişten önce tasarım taslağı onayınıza gelir",
+    "Dijital davetiye animasyonlu açılış, LCV, geri sayım ve harita ile tek linkle WhatsApp'tan paylaşılır",
+    "Sakarya'dan Türkiye'nin her yerine gönderim"
+   ],
+   "tohum": "davetiyeler:2026-12-04",
+   "denenen_formatlar": [
+    "siparis_nasil",
+    "model_vitrin",
+    "dijital_davetiye",
+    "kampanya",
+    "yedek"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Neden Davetiyeler.TR?\nTüm modeller profildeki linkte\n\nDavetiyeler.TR ile\n✔️ Düğün, nişan, nikah, kına, sünnet için 1.700+ davetiye modeli\n✔️ Basılı davetiyede siparişten önce tasarım taslağı onayınıza gelir\n✔️ Dijital davetiye animasyonlu açılış, LCV, geri sayım ve harita ile tek linkle WhatsApp'tan paylaşılır\n✔️ Sakarya'dan Türkiye'nin her yerine gönderim\n\nDijital davetiye arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #nişandavetiyesi #sünnetdavetiyesi #kınadavetiyesi",
+  "anlatim": [
+   "Davetiye seçerken kararsız kalıp sürprizlerle karşılaşmak istemiyor musunuz?",
+   "Düğünden kınaya bin yedi yüzden fazla model, sipariş öncesi tasarım taslağı ve LCV'li dijital seçenekler Sakarya'dan tüm Türkiye'ye ulaşıyor.",
+   "Siz de hayalinizdeki tasarımı keşfetmek için tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yedek formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-davetiyeler.jpg?v=03b59c7c",
+  "olusturma": "2026-11-27T03:28:20+03:00",
+  "ses": "38d86c5a0e",
   "ses_kaynagi": "gemini"
  }
 }

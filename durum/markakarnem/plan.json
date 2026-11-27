@@ -1,106 +1,4 @@
 {
- "2026-11-26": {
-  "id": "2026-11-26-markakarnem",
-  "gun": "2026-11-26",
-  "kod": "markakarnem",
-  "format": "yerel_karne",
-  "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
-  "anahtar": "yerel:guzellik-kuafor:2026-11",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "yerel:guzellik-kuafor:2026-11",
-   "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
-   "anahtar_kelime": "sakarya güzellik & kuaför",
-   "olgular": [
-    "Sakarya'daki 9 güzellik & kuaför işletmesinin ölçülen dijital görünürlüğü: medyan Marka Skoru 88/100 ve en sık görülen eksikler.",
-    "Yerel işletme (LocalBusiness) verisi: ölçülen işletmelerin %75'sinde eksik",
-    "Yapısal veri (schema.org): ölçülen işletmelerin %50'sinde eksik",
-    "Yöntem: Bu sayfa, Ekim 2026 – Kasım 2026 arasında MarkaKarnem ile analiz edilen 9 farklı Sakarya güzellik & kuaför işletmesinin herkese açık verilerinden (web sitesi ve Google İşletme Profili) hesaplanır. Her işletmenin en son analizi kullanılır; i"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": null,
-     "etiket": "Sakarya verisi",
-     "baslik": "Sakarya'da güzellik & kuaför işletmelerini ölçtük",
-     "alt": "9 işletme, gerçek ölçüm"
-    },
-    {
-     "tur": "kart",
-     "tip": "rakam",
-     "sure": 3.6,
-     "etiket": "En sık eksik",
-     "rakam": "%75",
-     "baslik": "Yerel işletme (LocalBusiness) verisi eksik",
-     "alt": "Ölçülen işletmeler içinde"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.0,
-     "etiket": "Diğer eksikler",
-     "baslik": "Sık görülen sorunlar",
-     "maddeler": [
-      "Yapısal veri (schema.org): %50 eksik"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "rakam",
-     "sure": 3.4,
-     "etiket": "Bölge medyanı",
-     "rakam": "88",
-     "baslik": "Ortanca Marka Skoru (100 üzerinden)",
-     "alt": "Siz bunun neresindesiniz?"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Kendi skorunuzu görün",
-     "alt": "Ücretsiz, 52 kontrol"
-    }
-   ],
-   "hikaye": {
-    "gorsel": null,
-    "etiket": "Sakarya verisi",
-    "baslik": "Güzellik & Kuaför: en sık eksik yerel işletme…",
-    "alt": "Ölçülenlerin %75'inde"
-   },
-   "format": "yerel_karne",
-   "tam_maddeler": [
-    "Yapısal veri (schema.org): %50 eksik"
-   ],
-   "tohum": "markakarnem:2026-11-26",
-   "denenen_formatlar": [
-    "yerel_karne",
-    "sektor_ipucu",
-    "ornek_rapor",
-    "arac_demo",
-    "soru_cevap"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Sakarya'da güzellik & kuaför işletmelerini ölçtük\n9 işletme, gerçek ölçüm\n\nSık görülen sorunlar\n✔️ Yapısal veri (schema.org): %50 eksik\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #instagramipuçları #sakarya #googleharitalar",
-  "anlatim": [
-   "Sakarya’da dokuz güzellik ve kuaför salonunu dijitalde ölçtük, bakın neler çıktı!",
-   "İncelenen işletmelerin yüzde yetmiş beş'inde yerel işletme verisi tamamen eksik.",
-   "Salonların yüzde elli'sinde ise yapısal veri eksikliği dikkat çekiyor.",
-   "Tüm bunlara rağmen bölgenin ortanca Marka Skoru yüz üzerinden seksen sekiz.",
-   "Siz de kendi skorunuzu öğrenmek için ücretsiz karnenizi profildeki linkten çıkarın."
-  ],
-  "anlatim_kaynagi": "gemini",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: yerel_karne formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-26-markakarnem.jpg?v=2536e95b",
-  "olusturma": "2026-11-23T13:33:06+03:00",
-  "ses": "6dae1443f8",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-27": {
   "id": "2026-11-27-markakarnem",
   "gun": "2026-11-27",
@@ -915,6 +813,112 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-03-markakarnem.jpg?v=027276e3",
   "olusturma": "2026-11-26T03:24:24+03:00",
   "ses": "1ba0097bf4",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-04": {
+  "id": "2026-12-04-markakarnem",
+  "gun": "2026-12-04",
+  "kod": "markakarnem",
+  "format": "yerel_karne",
+  "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
+  "anahtar": "yerel:guzellik-kuafor:2026-12",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "yerel:guzellik-kuafor:2026-12",
+   "konu": "Sakarya Güzellik & Kuaför dijital karnesi",
+   "anahtar_kelime": "sakarya güzellik & kuaför",
+   "olgular": [
+    "Sakarya'daki 9 güzellik & kuaför işletmesinin ölçülen dijital görünürlüğü: medyan Marka Skoru 88/100 ve en sık görülen eksikler.",
+    "Yerel işletme (LocalBusiness) verisi: ölçülen işletmelerin %75'sinde eksik",
+    "Yapısal veri (schema.org): ölçülen işletmelerin %50'sinde eksik",
+    "Yöntem: Bu sayfa, Ekim 2026 – Kasım 2026 arasında MarkaKarnem ile analiz edilen 9 farklı Sakarya güzellik & kuaför işletmesinin herkese açık verilerinden (web sitesi ve Google İşletme Profili) hesaplanır. Her işletmenin en son analizi kullanılır; i"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Sakarya Güncel Veri",
+     "baslik": "Mağazanız haritada üstte mi?",
+     "alt": "9 işletmeyi analiz ettik"
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.6,
+     "etiket": "Ana Eksik (%75)",
+     "rakam": "%75",
+     "baslik": "Yerel işletme bilgisi yok",
+     "alt": "Google sizi tanıyamaz"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.0,
+     "etiket": "Teknik Detay",
+     "baslik": "Diğer Sık Görülen Hata",
+     "maddeler": [
+      "Yapısal veri (schema.org): %50"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "rakam",
+     "sure": 3.4,
+     "etiket": "Sektör Ortalaması",
+     "rakam": "88",
+     "baslik": "Medyan Skor: 88/100",
+     "alt": "Siz kaçıncı sıradasınız?"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Siz de ölçtürün",
+     "alt": "52 kontrol, ücretsiz"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Sakarya Kaartı",
+    "baslik": "Güzellik & Kuaförde kritik hata",
+    "alt": "Veri yoksa sıralama zayıf"
+   },
+   "format": "yerel_karne",
+   "tam_maddeler": [
+    "Yapısal veri (schema.org): %50 eksik"
+   ],
+   "tohum": "markakarnem:2026-12-04",
+   "denenen_formatlar": [
+    "yerel_karne",
+    "sektor_ipucu",
+    "soru_cevap",
+    "arac_demo",
+    "ornek_rapor"
+   ],
+   "editor": {
+    "puan": null,
+    "uygulandi": false
+   },
+   "metin_kaynagi": "groq"
+  },
+  "aciklama": "Güzellik salonunuz Google'ı görüyor mu?\nSakarya'dan 9 işletmeyi inceledik.\nYerel verisi eksik olan %75'te.\nSkorunuzu öğrenin, adım atın.\n\nÜcretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#sakaryagüzellik #kuafor #esnaf #yerelseo #markaskoru",
+  "anlatim": [
+   "Sakarya Veri: Mağazanız Haritada Üstte mi?",
+   "Ana Eksik yüzde yetmiş beş: Yerel İşletme Bilgisi Yok",
+   "Teknik Detay: Diğer Sık Görülen Hata – Yapısal Veri yüzde elli",
+   "Sektör Ortalaması: Medyan Skor yüz üzerinden seksen sekiz",
+   "Siz de ölçtürün: elli iki kontrol ücretsiz"
+  ],
+  "anlatim_kaynagi": "groq",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yerel_karne formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-markakarnem.jpg?v=ca328c08",
+  "olusturma": "2026-11-27T03:28:33+03:00",
+  "ses": "dc6889c529",
   "ses_kaynagi": "gemini"
  }
 }
