@@ -84,7 +84,20 @@ def ekler() -> dict:
     from .duzelt import oku as baglanti_oku
     return {"urunler": [{"anahtar": k, "ad": marka(k)["ad"]} for k in marka_kodlari()],
             "markalar": {k: plan.buyume(k) for k in marka_kodlari()},
-            "baglanti": {k: v for k, v in baglanti_oku().items() if k in marka_kodlari()}}  # panel tablosundaki bağlantı rozetleri
+            "baglanti": _baglanti_kota(baglanti_oku())}  # panel tablosundaki bağlantı rozetleri (+ yapay zekâ kotası)
+
+
+def _baglanti_kota(bg: dict) -> dict:
+    out = {k: dict(v) for k, v in bg.items() if k in marka_kodlari() and isinstance(v, dict)}
+    try:
+        import pathlib
+        from .kota_kaydi import rozet
+        r = rozet(pathlib.Path(__file__).resolve().parent.parent / "durum")
+        for k in marka_kodlari():
+            out.setdefault(k, {})["gemini"] = r
+    except Exception:  # noqa: BLE001
+        pass
+    return out
 
 
 def _yanit_ozeti(r) -> str:

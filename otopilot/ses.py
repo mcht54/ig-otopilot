@@ -417,6 +417,13 @@ def seslendir(satirlar: list[str], marka: dict) -> tuple[list[np.ndarray] | None
         log(f"gemini sesi ({ses_adi}) dinleme denetiminden geçmedi → başka sesle yeniden")
     if not ayar.get("edge_izinli"):
         log("geçerli ses yok → içerik bu çalıştırmada yayınlanmayacak, ertelenir (kötü ses ya da anlatımsız video yayınlanmaz)")
+        if any(k.startswith("gemini-ses") for k in llm._kota_doldu):  # panel "Yapay zekâ" rozeti: seslendirme kotası yüzünden ertelendi
+            try:
+                import pathlib
+                from .kota_kaydi import kaydet
+                kaydet(pathlib.Path(__file__).resolve().parent.parent / "durum", "gemini_ses")
+            except Exception:  # noqa: BLE001
+                pass
         return None, "yok"
     log("edge-tts deneniyor")
     parcalar = _edge_ses(satirlar, marka)

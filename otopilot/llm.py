@@ -71,6 +71,15 @@ def kota_doldu(saglayici: str, yanit_metni: str = "") -> None:
     if saglayici not in _kota_doldu:
         log(f"{saglayici}: günlük ücretsiz kota doldu; bu çalıştırmada bir daha denenmeyecek (ücretli katmana geçilmez)")
     _kota_doldu.add(saglayici)
+    try:  # panel "Yapay zekâ" rozeti (2026-11-27): durum/kota.json (rakam/anahtar yok)
+        import pathlib
+        from .kota_kaydi import kaydet
+        tur = "groq" if saglayici == "groq" else ("_ses" if saglayici.startswith("gemini-ses") else
+                                                    ("_ara" if saglayici.startswith("gemini-ara") else "gemini_metin"))
+        if not tur.startswith("_"):
+            kaydet(pathlib.Path(__file__).resolve().parent.parent / "durum", tur)
+    except Exception:  # noqa: BLE001
+        pass
 
 
 def kota_ayrinti(r) -> tuple[str, bool]:
