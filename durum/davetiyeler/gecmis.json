@@ -61,8 +61,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 2960
   },
-  "olcum_zamani": "2026-11-26T19:36:45.569971+03:00",
-  "skor": 1.168
+  "olcum_zamani": "2026-11-27T19:36:07.109405+03:00",
+  "skor": 1.22
  },
  {
   "tarih": "2026-11-24",
@@ -112,8 +112,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 2572
   },
-  "olcum_zamani": "2026-11-26T19:36:46.658099+03:00",
-  "skor": 0.832
+  "olcum_zamani": "2026-11-27T19:36:10.165418+03:00",
+  "skor": 0.856
  },
  {
   "tarih": "2026-11-25",
@@ -147,7 +147,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgK-prGuAWw/",
    "instagram_hikaye": "http-ig-hikaye:18143102047628327"
-  }
+  },
+  "olcum": {
+   "reach": 216,
+   "views": 229,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 1,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 1503
+  },
+  "olcum_zamani": "2026-11-27T19:36:10.786217+03:00",
+  "skor": 1.4
  },
  {
   "tarih": "2026-11-26",
@@ -187,6 +199,41 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgNjeOphsWu/",
    "instagram_hikaye": "http-ig-hikaye:18444720511183999"
+  }
+ },
+ {
+  "tarih": "2026-11-27",
+  "tur": "reels",
+  "format": "siparis_nasil",
+  "anahtar": "siparis:48",
+  "ek_anahtarlar": [],
+  "konu": "Basılı davetiye nasıl sipariş edilir",
+  "baslik": "Davetiye siparişi 3 adımda",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-27/davetiyeler",
+  "anlatim": [
+   "Davetiye siparişi verirken kaç adet bastırmanız gerektiğini biliyor musunuz?",
+   "Önce modeli seçip yüz ile bin adet arasında ihtiyacınızı belirleyin.",
+   "Bilgilerinizi girip teklif alın, baskı öncesi kontrolü WhatsApp'tan onaylayın.",
+   "Hesap yaparken her davetliye değil, hane başına bir adet ve yedekler ekleyin.",
+   "Basılı siparişinizde dijital davetiye de hediye, tüm modeller profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Davetiye siparişi 3 adımda\nKaç adet lazım? Videonun sonunda\n\nSonrası çok kolay\n✔️ İsim, tarih, saat ve mekânı yazın\n✔️ Teklifinizi alın\n✔️ Yazım kontrolü WhatsApp'tan, sonra baskı\n\nDavetiye siparişi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #düğünhazırlığı #gelinadayı",
+  "video_yedek": "2026-11-27-davetiyeler-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-davetiyeler.jpg?v=y",
+  "medya_id": "18135834781749727",
+  "link": "https://www.instagram.com/reel/DgQI2g2orTs/",
+  "yayin_zamani": "2026-11-27T19:45:03.186952+03:00",
+  "hikaye_id": "18111033908195119",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/4036599416482358",
+   "facebook_hikaye": "http-fb-hikaye:1212804834555166",
+   "youtube": "https://youtube.com/shorts/ooAveYOlUlw",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgQI2g2orTs/",
+   "instagram_hikaye": "http-ig-hikaye:18111033908195119"
   }
  }
 ]
