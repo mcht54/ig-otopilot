@@ -434,3 +434,12 @@ def test_processing_failed_yeni_kapsayiciyla_tekrar(monkeypatch, tmp_path):
     with pytest.raises(I.InstagramHatasi):
         ig._yukle_tekrarli(tmp_path / "v.mp4")
     assert sayac["n"] == 1  # başka hatada tekrar yok
+
+
+def test_robot_markasinda_ayri_hikaye_atilmaz(ortam, monkeypatch):
+    """Hikâye Robotu'nun kapsadığı markada video hikâyesi yüklenmez; panelde hata/atlandı görünmez, eksik() yeniden denemez."""
+    monkeypatch.setattr(calistir, "ROBOT_HIKAYE", {"sgb"})
+    k = calistir.gunluk("sgb")
+    assert k["durum"] == "yayinlandi" and k.get("hikaye_robot") is True
+    assert ortam.yayin["STORIES"] == [] and "hikaye_id" not in k and not k.get("hikaye_hata")
+    assert k["platformlar"]["instagram_hikaye"].startswith("robot:")

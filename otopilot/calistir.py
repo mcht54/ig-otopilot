@@ -88,6 +88,10 @@ def hikaye_sahnesi(senaryo: dict, kapak_uri: str) -> dict:
 
 
 
+# Bu markaların hikâyesini Mac'teki Hikâye Robotu atar (Reels'i "hikâyene ekle" ile, tıklanabilir + çıkartmalı).
+# Ayrı video hikâyesi bu markalarda ATILMAZ (2026-11-27 kullanıcı kararı). Robotta oturumu olmayan marka listeye girmez.
+ROBOT_HIKAYE = {x.strip() for x in os.environ.get("ROBOT_HIKAYE", "sitemucidi,sgb,markakarnem").split(",") if x.strip()}
+
 def aciklama_denetle(aciklama: str, kod: str = "") -> str:
     """Ortak açıklama denetçisi (2026-11-27): TDK yazım + kesik satır + soru işareti + 3-5 hashtag. Hata yayını durdurmaz."""
     try:
@@ -297,7 +301,9 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
                 log(f"Reels BELİRSİZ ({type(e).__name__}): {e} — hikâye ve diğer platformlar bu çalıştırmada atlandı")
             if kayit["durum"] in ("yayinlandi", "belirsiz"):
                 gecmis_guncelle(kod, kayit)  # sonraki adımlar çökse/iş kesilse de kimlik ve durum kalsın
-            if kayit["durum"] == "yayinlandi":
+            if kayit["durum"] == "yayinlandi" and kod in ROBOT_HIKAYE:
+                kayit["hikaye_robot"] = True
+            elif kayit["durum"] == "yayinlandi":
                 try:
                     h = ig.hikaye(sonuc["hikaye"])
                     kayit["hikaye_id"] = h["id"]
@@ -316,7 +322,7 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
         kayit["platformlar"]["instagram"] = kayit.get("link") or (
             f"http-ig-medya:{kayit['medya_id']}" if kayit.get("medya_id") else
             (f"HATA: {kayit['hata']}" if kayit.get("hata") else "atlandı: anahtar yok"))
-        kayit["platformlar"]["instagram_hikaye"] = ("http-ig-hikaye:" + kayit["hikaye_id"]) if kayit.get("hikaye_id") else (
+        kayit["platformlar"]["instagram_hikaye"] = "robot: Hikâye Robotu paylaşır" if kayit.get("hikaye_robot") else ("http-ig-hikaye:" + kayit["hikaye_id"]) if kayit.get("hikaye_id") else (
             f"HATA: {kayit['hikaye_hata']}" if kayit.get("hikaye_hata") else "atlandı")
         degerler = [str(v) for v in kayit["platformlar"].values()]
         if any(v.startswith(("http", "tiktok-taslak")) for v in degerler):
@@ -390,7 +396,7 @@ def eksik(kodlar: list[str] | None = None, elle: bool = False) -> int:
         ig_tekrar = bool(k) and str(pl.get("instagram", "")).startswith("HATA") and not k.get("medya_id") \
             and k.get("ig_tekrar", 0) < sinir
         hk = str(pl.get("instagram_hikaye", "atlandı"))
-        hikaye_tekrar = bool(k) and "BELIRSIZ" not in hk and hk.startswith(("HATA", "atlandı")) \
+        hikaye_tekrar = bool(k) and kod not in ROBOT_HIKAYE and "BELIRSIZ" not in hk and hk.startswith(("HATA", "atlandı")) \
             and not hk.startswith("atlandı: anahtar") and k.get("hikaye_tekrar", 0) < sinir \
             and (ig_tekrar or str(pl.get("instagram", "")).startswith("http"))
         if not k or k.get("durum") != "yayinlandi" or not (hatali or ig_tekrar or hikaye_tekrar):
