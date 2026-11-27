@@ -23,7 +23,7 @@ from pathlib import Path
 from PIL import Image, ImageStat
 from playwright.sync_api import sync_playwright
 
-from . import beyin, dagitim
+from . import beyin, dagitim, platform_ayar
 from .film import film_yap, kapak_kare
 from .instagram import Instagram, InstagramHatasi
 from .ortak import (CIKTI, TR, BelirsizYayin, bugun, gizle, gecmis, gecmis_guncelle, gecmis_yaz, json_kaydet, log, marka,
@@ -211,6 +211,16 @@ def bugun_paylasildi_mi(ig: Instagram, kod: str) -> bool | None:
     return False
 
 
+def yayinlanabilir(kod: str, ig: Instagram | None = None, panel: bool = True) -> bool:
+    """Panelde açık VE anahtarı olan en az bir platform var mı? (Instagram Reels ya da dağıtım platformlarından biri)
+    panel=False: panel ayarına bakmadan yalnız anahtarlar."""
+    ig = ig or Instagram(kod)
+    acik = platform_ayar.acik if panel else (lambda _k, _p: True)
+    if ig.hazir and acik(kod, "instagram"):
+        return True
+    return any(acik(kod, p) and hazir(kod) for p, (hazir, _) in dagitim.PLATFORMLAR.items())
+
+
 def _bugunku_kayit(kod: str, tarih: str) -> dict | None:
     return next((k for k in gecmis(kod) if k.get("tarih") == tarih and k.get("tur") == "reels"), None)
 
@@ -228,6 +238,10 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
             return {**onceki, "atlandi": True}
     from . import plan
     ig = Instagram(kod)
+    if yayin_acik and not zorla and not yayinlanabilir(kod, ig):
+        # panelde bu hesabın paylaşılabilecek her platformu kapalı: üretim yapılmaz, kayıt yazılmaz (açılırsa sonraki koşu üretir)
+        log(f"{kod}: panelde tüm platformlar kapalı → bugün üretilmedi")
+        return {"tarih": tarih, "tur": "reels", "durum": "atlandi", "atlandi": True, "not_": "panelde tüm platformlar kapalı"}
     if ig.hazir:
         try:
             olc(kod, ig)
@@ -282,8 +296,12 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
             kayit["gorsel"] = plan.gorsel_url(on.name, "y")
     except Exception as e:
         log(f"kapak panele yüklenemedi: {e}")
+    ig_acik = platform_ayar.acik(kod, "instagram")
     if yayin_acik:
-        if not ig.hazir:
+        if not ig_acik:  # panelde Instagram Reels kapalı → Reels de hikâye de atlanır; diğer platformlar yine denenir
+            kayit["ig_kapali"] = True
+            log(f"{kod} instagram → {platform_ayar.NOT}")
+        elif not ig.hazir:
             kayit["hata"] = f"Instagram anahtarı yok (IG_{kod.upper()}_ID/TOKEN ya da IG_TOKEN + META_{kod.upper()}_IG_ID)"
             kayit["durum"] = "hata"
             log(kayit["hata"])
@@ -301,7 +319,10 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
                 log(f"Reels BELİRSİZ ({type(e).__name__}): {e} — hikâye ve diğer platformlar bu çalıştırmada atlandı")
             if kayit["durum"] in ("yayinlandi", "belirsiz"):
                 gecmis_guncelle(kod, kayit)  # sonraki adımlar çökse/iş kesilse de kimlik ve durum kalsın
-            if kayit["durum"] == "yayinlandi" and kod in ROBOT_HIKAYE:
+            if kayit["durum"] == "yayinlandi" and not platform_ayar.acik(kod, "instagram_hikaye"):
+                kayit["hikaye_kapali"] = True
+                log(f"{kod} instagram_hikaye → {platform_ayar.NOT}")
+            elif kayit["durum"] == "yayinlandi" and kod in ROBOT_HIKAYE:
                 kayit["hikaye_robot"] = True
             elif kayit["durum"] == "yayinlandi":
                 try:
@@ -318,15 +339,26 @@ def gunluk(kod: str, zorla: bool = False) -> dict:
             return kayit
         # Diğer platformlar (Facebook, YouTube Shorts, TikTok) Instagram'dan bağımsız denenir
         etiketler = re.findall(r"#\w+", sonuc["aciklama"])
+        if kod in _SUREN:
+            _SUREN[kod]["yayin_basladi"] = True  # dağıtım başladı: beklenmeyen hata 'belirsiz' yazılsın, yeniden paylaşılmasın
         kayit["platformlar"] = dagitim.dagit(kod, sonuc["reel"], sonuc["aciklama"], etiketler)
-        kayit["platformlar"]["instagram"] = kayit.get("link") or (
-            f"http-ig-medya:{kayit['medya_id']}" if kayit.get("medya_id") else
-            (f"HATA: {kayit['hata']}" if kayit.get("hata") else "atlandı: anahtar yok"))
-        kayit["platformlar"]["instagram_hikaye"] = "robot: Hikâye Robotu paylaşır" if kayit.get("hikaye_robot") else ("http-ig-hikaye:" + kayit["hikaye_id"]) if kayit.get("hikaye_id") else (
-            f"HATA: {kayit['hikaye_hata']}" if kayit.get("hikaye_hata") else "atlandı")
+        if kayit.get("ig_kapali"):
+            kayit["platformlar"]["instagram"] = kayit["platformlar"]["instagram_hikaye"] = platform_ayar.NOT
+        else:
+            kayit["platformlar"]["instagram"] = kayit.get("link") or (
+                f"http-ig-medya:{kayit['medya_id']}" if kayit.get("medya_id") else
+                (f"HATA: {kayit['hata']}" if kayit.get("hata") else "atlandı: anahtar yok"))
+            kayit["platformlar"]["instagram_hikaye"] = platform_ayar.NOT if kayit.get("hikaye_kapali") else \
+                "robot: Hikâye Robotu paylaşır" if kayit.get("hikaye_robot") else ("http-ig-hikaye:" + kayit["hikaye_id"]) if kayit.get("hikaye_id") else (
+                f"HATA: {kayit['hikaye_hata']}" if kayit.get("hikaye_hata") else "atlandı")
         degerler = [str(v) for v in kayit["platformlar"].values()]
         if any(v.startswith(("http", "tiktok-taslak")) for v in degerler):
             kayit["durum"] = "yayinlandi"
+        elif kayit.get("ig_kapali") and any(v.startswith("BELIRSIZ") for v in degerler):
+            # Instagram panelde kapalı, başka platform belirsiz: 'onizleme' kalırsa sonraki koşu yeniden paylaşırdı
+            kayit.update(durum="belirsiz", not_="bir platformda sonuç alınamadı; elle kontrol, otomatik yeniden paylaşılmaz")
+        elif kayit.get("ig_kapali") and any(v.startswith("HATA") for v in degerler):
+            kayit.update(durum="hata", hata=next(v for v in degerler if v.startswith("HATA"))[:300])
         elif all(v.startswith("atlandı") for v in degerler if v) and not ig.hazir:
             # bu markanın hiçbir hesabı henüz bağlı değil: hata sayma, önizleme olarak kalsın
             kayit.update(durum="onizleme", hata=None, not_="hiçbir platform anahtarı yok")
@@ -394,10 +426,11 @@ def eksik(kodlar: list[str] | None = None, elle: bool = False) -> int:
                    if str(pl.get(p, "")).startswith("atlandı: anahtar") and hazir(kod) and p not in hatali]
         # Instagram yalnız KESİN hata ise (yayından önce düştü, medya kimliği yok) yeniden denenir; BELIRSIZ asla
         ig_tekrar = bool(k) and str(pl.get("instagram", "")).startswith("HATA") and not k.get("medya_id") \
-            and k.get("ig_tekrar", 0) < sinir
+            and k.get("ig_tekrar", 0) < sinir and platform_ayar.acik(kod, "instagram")
         hk = str(pl.get("instagram_hikaye", "atlandı"))
         hikaye_tekrar = bool(k) and kod not in ROBOT_HIKAYE and "BELIRSIZ" not in hk and hk.startswith(("HATA", "atlandı")) \
-            and not hk.startswith("atlandı: anahtar") and k.get("hikaye_tekrar", 0) < sinir \
+            and not hk.startswith(("atlandı: anahtar", platform_ayar.NOT)) and k.get("hikaye_tekrar", 0) < sinir \
+            and platform_ayar.acik(kod, "instagram_hikaye") \
             and (ig_tekrar or str(pl.get("instagram", "")).startswith("http"))
         if not k or k.get("durum") != "yayinlandi" or not (hatali or ig_tekrar or hikaye_tekrar):
             continue
@@ -631,6 +664,8 @@ def nabiz(tarih: str | None = None) -> int:
     sorun = []
     for kod in marka_kodlari():
         k = next((x for x in gecmis(kod) if x.get("tarih") == tarih and x.get("tur") == "reels"), None)
+        if not k and not yayinlanabilir(kod) and yayinlanabilir(kod, panel=False):
+            continue  # anahtarı olan platformların hepsi panelde kapalı: bilerek üretilmedi, sorun değil
         if not k:
             sorun.append(f"- **{marka(kod)['ad']}**: {tarih} günü hiç üretim yapılmadı")
         elif k.get("durum") != "yayinlandi":
@@ -684,6 +719,9 @@ def main(argv=None) -> int:
     if a.komut == "eksik":
         return eksik(a.marka)
     kodlar = a.marka or (zamani_gelenler() if a.komut == "otomatik" else marka_kodlari())
+    if kodlar and a.komut != "olc" and os.environ.get("YAYIN") == "acik":
+        from . import panel
+        panel.gonder()  # paylaşımdan önce panelin güncel platform ayarları (ulaşılamazsa son bilinen ayar kullanılır)
     hata = 0
     for kod in kodlar:
         try:

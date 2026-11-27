@@ -127,8 +127,16 @@ def gonder(donus: bool = False):
         r = requests.post(f"{PANEL}/api/icerik-takvimi/senkron/{KANAL}", json={"bolumler": ozet(), "ekler": ekler()}, timeout=60,
                           headers={"Authorization": f"Bearer {_belge()}", "X-Requested-With": "ajans-web"})
         log(f"panel: {_yanit_ozeti(r)}")
+        j = {}
+        if r.ok:
+            try:
+                j = r.json()
+            except ValueError:
+                j = {}
+            from . import platform_ayar
+            platform_ayar.kaydet(j)  # hesap başına platform aç/kapa → durum/platform_ayarlari.json (son bilinen ayar)
         if donus:
-            return r.json() if r.ok else {}
+            return j if isinstance(j, dict) else {}
     except Exception as e:
         log(f"panel senkronu atlandı: {e}")
     return {} if donus else 0

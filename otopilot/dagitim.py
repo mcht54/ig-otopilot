@@ -18,6 +18,7 @@ from pathlib import Path
 
 import requests
 
+from . import platform_ayar
 from .ortak import BelirsizYayin, log, marka
 
 GRAPH = "https://graph.facebook.com/v25.0"
@@ -221,6 +222,10 @@ def dagit(kod: str, video: Path, aciklama: str, etiketler: list[str], onceki: di
     sonuc = dict(onceki or {})
     for p, (hazir, gonder) in PLATFORMLAR.items():
         if str(sonuc.get(p, "")).startswith(("http", "tiktok-taslak", "BELIRSIZ")):  # belirsiz: elle kontrol, tekrar gönderilmez
+            continue
+        if not platform_ayar.acik(kod, p):  # panelde kapalı: hata değil, eksik/Düzelt yeniden denemez
+            sonuc[p] = platform_ayar.NOT
+            log(f"{kod} {p} → {platform_ayar.NOT}")
             continue
         if not hazir(kod):
             sonuc[p] = "atlandı: anahtar yok"
