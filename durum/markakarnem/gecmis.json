@@ -52,8 +52,8 @@
    "total_interactions": 1,
    "ig_reels_avg_watch_time": 5288
   },
-  "olcum_zamani": "2026-11-26T13:06:39.967283+03:00",
-  "skor": 0.739
+  "olcum_zamani": "2026-11-27T13:06:48.116753+03:00",
+  "skor": 1.006
  },
  {
   "tarih": "2026-11-24",
@@ -98,8 +98,8 @@
    "total_interactions": 3,
    "ig_reels_avg_watch_time": 2214
   },
-  "olcum_zamani": "2026-11-26T13:06:40.738432+03:00",
-  "skor": 1.261
+  "olcum_zamani": "2026-11-27T13:06:48.410923+03:00",
+  "skor": 5.536
  },
  {
   "tarih": "2026-11-25",
@@ -133,7 +133,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgKSBRXTYF0/",
    "instagram_hikaye": "http-ig-hikaye:17896992762436066"
-  }
+  },
+  "olcum": {
+   "reach": 10,
+   "views": 18,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1,
+   "ig_reels_avg_watch_time": 2593
+  },
+  "olcum_zamani": "2026-11-27T13:06:48.715429+03:00",
+  "skor": 1.0
  },
  {
   "tarih": "2026-11-26",
@@ -168,6 +180,40 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgM2tyJTnJo/",
    "instagram_hikaye": "http-ig-hikaye:18103753034453587"
+  }
+ },
+ {
+  "tarih": "2026-11-27",
+  "tur": "reels",
+  "format": "ornek_rapor",
+  "anahtar": "ornek:2026-11",
+  "ek_anahtarlar": [],
+  "konu": "MarkaKarnem raporunda neler var",
+  "baslik": "İşletmenizin dijital karnesi böyle görünür",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-27/markakarnem",
+  "anlatim": [
+   "İşletmenizin dijital karnesi böyle görünür! Örnek işletme üzerinden!",
+   "Şimdi gerçek ekranda bakalım: Skor, öncelikli bulgular, kanal kanal kontrol.",
+   "Üç kanal birden: Web sitesi, Google İşletme Profili.",
+   "Kendi karnenizi çıkarın. Ücretsiz karnenizi profildeki linkten çıkarın!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "İşletmenizin dijital karnesi böyle görünür.\nÖrnek işletme üzerinden.\n\nÜç kanal birden:\n✔️ Web sitesi\n✔️ Google İşletme Profili\n✔️ Instagram\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #markaskoru #instagramipuçları #sakarya",
+  "video_yedek": "2026-11-27-markakarnem-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-markakarnem.jpg?v=y",
+  "medya_id": "17979039594150456",
+  "link": "https://www.instagram.com/reel/DgPb4FaJ7LQ/",
+  "yayin_zamani": "2026-11-27T13:11:59.802447+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/2764805757248073",
+   "facebook_hikaye": "http-fb-hikaye:2056226564875362",
+   "youtube": "https://youtube.com/shorts/RMxB1l8i75g",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgPb4FaJ7LQ/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }
 ]
