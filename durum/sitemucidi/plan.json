@@ -986,17 +986,19 @@
   },
   "aciklama": "Hangisi sizin işletmenize uyar?\nEgitim-Kurs teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #sakarya #dijitalpazarlama",
   "anlatim": [
-   "Hangisi sizin işletmenize uyar? Egitim-Kurs teması!",
-   "Yalın paket.",
-   "Vizyon paket.",
-   "Yorumlara tercihinizi yazın. Profildeki linkten ücretsiz dene!"
+   "Eğitim merkeziniz için tek bir tasarımla üç farklı havayı yakalamak ister misiniz?",
+   "Yalın paketle sade, anlaşılır ve doğrudan derslerinize odaklanan bir başlangıç yapabilirsiniz.",
+   "Vizyon pakette ise artan hareketli bölümler ve zengin detaylarla kursunuz anında fark edilir.",
+   "Sizce hangisi daha şık; profildeki linkten ücretsiz oluşturup yedi gün deneyin."
   ],
-  "anlatim_kaynagi": "kural",
+  "anlatim_kaynagi": "gemini",
   "kaynak": "otomatik",
   "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
   "tanitim_id": null,
   "varlik": true,
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-sitemucidi.jpg?v=3d9cfacb",
-  "olusturma": "2026-11-27T03:30:29+03:00"
+  "olusturma": "2026-11-27T03:30:29+03:00",
+  "ses": "b856c447d7",
+  "ses_kaynagi": "gemini"
  }
 }
