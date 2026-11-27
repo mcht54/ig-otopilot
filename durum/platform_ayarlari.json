@@ -1,0 +1,106 @@
+{
+ "hesaplar": {
+  "mchttasarim": {
+   "instagram": true,
+   "instagram_deneme": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "muhit": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": false
+  },
+  "sitemucidi": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "davetiyeler": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "sgb": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "markakarnem": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "dijitalcirak": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "kartvizitci": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  },
+  "cuzdan": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": false
+  },
+  "siteciabi": {
+   "instagram": true,
+   "instagram_hikaye": true,
+   "facebook": true,
+   "facebook_hikaye": true,
+   "facebook_gruplar": true,
+   "youtube": true,
+   "tiktok": true,
+   "whatsapp": true
+  }
+ },
+ "zaman": "2026-11-28T02:39:54+03:00"
+}
