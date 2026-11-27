@@ -44,17 +44,17 @@
    "instagram_hikaye": "http-ig-hikaye:18034155644683260"
   },
   "olcum": {
-   "reach": 105,
-   "views": 111,
+   "reach": 108,
+   "views": 113,
    "likes": 1,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 1802
+   "ig_reels_avg_watch_time": 1965
   },
-  "olcum_zamani": "2026-11-26T18:36:24.265476+03:00",
-  "skor": 0.754
+  "olcum_zamani": "2026-11-27T18:36:41.658547+03:00",
+  "skor": 1.019
  },
  {
   "tarih": "2026-11-24",
@@ -90,17 +90,17 @@
    "facebook_hikaye": "http-fb-hikaye:1669049468018998"
   },
   "olcum": {
-   "reach": 99,
-   "views": 119,
+   "reach": 104,
+   "views": 122,
    "likes": 0,
    "comments": 0,
    "saved": 1,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 2324
+   "ig_reels_avg_watch_time": 2982
   },
-  "olcum_zamani": "2026-11-26T18:36:24.922581+03:00",
-  "skor": 1.246
+  "olcum_zamani": "2026-11-27T18:36:42.016817+03:00",
+  "skor": 2.058
  },
  {
   "tarih": "2026-11-25",
@@ -138,7 +138,19 @@
   "yayin_zamani": "2026-11-25T21:20:49.447781+03:00",
   "hikaye_tekrar": 1,
   "hikaye_id": "18094167131299912",
-  "hikaye_hata": null
+  "hikaye_hata": null,
+  "olcum": {
+   "reach": 96,
+   "views": 103,
+   "likes": 0,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0,
+   "ig_reels_avg_watch_time": 3766
+  },
+  "olcum_zamani": "2026-11-27T18:36:42.462071+03:00",
+  "skor": 0.462
  },
  {
   "tarih": "2026-11-26",
@@ -173,6 +185,40 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgNcvQcs46T/",
    "instagram_hikaye": "http-ig-hikaye:18002390160013105"
+  }
+ },
+ {
+  "tarih": "2026-11-27",
+  "tur": "reels",
+  "format": "basvuru_adimlari",
+  "anahtar": "basvuru:48",
+  "ek_anahtarlar": [],
+  "konu": "Tesis başvurusu adım adım",
+  "baslik": "Belgeli tesisinizi listelemek 4 adım",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-27/sgb",
+  "anlatim": [
+   "Belgeli tesisinizi listelemek dört adım! Kimler başvurabilir? Videonun sonunda!",
+   "Başvuru nasıl işler?: Başvuru formunu doldurun: tesis bilgileri, belge, Ekibimiz belgeyi Kültür ve Turizm Bakanlığı kaydıyla.",
+   "Bakanlık belgesi olan tesisler: Turizm İşletmesi Belgesi, Basit Konaklama belgesi.",
+   "Tesisinizi ücretsiz ekleyin. Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Belgeli tesisinizi listelemek 4 adım.\nKimler başvurabilir? Videonun sonunda.\n\nBaşvuru nasıl işler?\n✔️ Telefon doğrulaması tamamlanınca ilanınız yayına girer.\n\nBungalov işletme başvurusu yapmak istiyorsanız bu videoyu kaydedin, lâzım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: Başvuru profildeki linkte, sapancaguvenilirbungalov.com.tr.\n\n#sapanca #sapancabungalov #balayı #haftasonu #bungalov",
+  "video_yedek": "2026-11-27-sgb-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sgb.jpg?v=y",
+  "medya_id": "18136773094747821",
+  "link": "https://www.instagram.com/reel/DgQBtEATtYV/",
+  "yayin_zamani": "2026-11-27T18:42:33.354046+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/2193551591197064",
+   "facebook_hikaye": "http-fb-hikaye:1876703960025276",
+   "youtube": "https://youtube.com/shorts/qsbzm18RLAs",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgQBtEATtYV/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }
 ]
