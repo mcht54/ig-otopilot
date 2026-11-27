@@ -9,6 +9,8 @@ import time
 
 import requests
 
+from . import gemini_havuz as _gh
+from . import ortak as _ortak
 from .ortak import log
 
 # Model adları sabit yazılmaz: Google eski modelleri emekliye ayırınca (404) otomasyon kural metnine düşüyordu.
@@ -28,21 +30,65 @@ def model_sirala(adlar: list[str]) -> list[str]:
     return sorted(dict.fromkeys(secilen), key=puan, reverse=True)
 
 
-def _gemini_modelleri(anahtar: str) -> list[str]:
-    global _kesif
-    if _kesif is None:
+def model_listesi() -> list[dict]:
+    """Hesabın erişebildiği modeller (ilk anahtar geçersizse sıradakiyle). Olmazsa []."""
+    son = None
+    for k in gemini_anahtarlari()[:3]:
         try:
             r = requests.get("https://generativelanguage.googleapis.com/v1beta/models", params={"pageSize": 200},
-                             headers={"x-goog-api-key": anahtar}, timeout=30)
+                             headers={"x-goog-api-key": k}, timeout=30)
             r.raise_for_status()
-            adlar = [m["name"].removeprefix("models/") for m in r.json().get("models", [])
-                     if "generateContent" in m.get("supportedGenerationMethods", [])]
-            _kesif = model_sirala(adlar)[:4]
-            log(f"gemini modelleri: {', '.join(_kesif) or 'yok'}")
+            return r.json().get("models", [])
         except Exception as e:
-            log(f"gemini model listesi alınamadı: {str(e)[:160]}")
-            _kesif = []
+            son = e
+            log(f"gemini model listesi alınamadı [{_gh.parmak(k)}]: {str(e)[:120]}")
+    if son is None:
+        log("gemini model listesi alınamadı: anahtar yok")
+    return []
+
+
+def _gemini_modelleri(anahtar: str | None = None) -> list[str]:
+    global _kesif
+    if _kesif is None:
+        adlar = [m["name"].removeprefix("models/") for m in model_listesi()
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+        _kesif = model_sirala(adlar)[:4]
+        log(f"gemini modelleri: {', '.join(_kesif) or 'yok'}")
     return list(dict.fromkeys(GEMINI_MODELLER + _kesif))
+
+
+# ---- Anahtar havuzu (2026-11-28): GEMINI_API_KEY, GEMINI_API_KEY_2 … _9 (ayrı Gmail hesaplarının ücretsiz projeleri).
+# Günlük kotası dolan anahtar o model için o Google günü (TR 11:00'e kadar) atlanır: durum/gemini-havuz.json (yalnız
+# sha256[:8] parmak izi; durum/ commit'lendiği için çalıştırmalar arası da geçerli). Hepsi doluysa kural metni / Groq.
+class TavanDoldu(Exception):
+    """Bu çalıştırmanın istek tavanı doldu (izin() False)."""
+
+
+def gemini_anahtarlari() -> list[str]:
+    return _gh.anahtarlar()
+
+
+def havuz(etiket: str = "gemini") -> "_gh.Havuz":
+    def gonder(model, govde, anahtar, zaman, yol="generateContent"):
+        if not izin(etiket):
+            raise TavanDoldu(etiket)
+        r = requests.post(f"{_gh.API}/models/{model}:{yol}", headers={"x-goog-api-key": anahtar}, json=govde, timeout=zaman)
+        return r.status_code, (getattr(r, "text", "") or "")
+    return _gh.Havuz(_ortak.DURUM / "gemini-havuz.json", gemini_anahtarlari, gunluk=log, gonder=gonder)
+
+
+def gemini_cagir(model: str, govde: dict, etiket: str = "gemini", zaman: float = 90, deneme: int = 2) -> dict | None:
+    """Havuzla tek model çağrısı. Yanıt JSON'u ya da None (bu model olmadı → sıradaki model).
+    Bütün anahtarların günlük kotası doluysa kota_doldu(f"{etiket}:{model}"). İstek tavanı dolarsa TavanDoldu fırlar."""
+    try:
+        return havuz(etiket).cagir(model, govde, zaman=zaman, deneme=deneme)
+    except _gh.GunlukKota:
+        kota_doldu(f"{etiket}:{model}")
+    except _gh.AnahtarYok:
+        pass
+    except _gh.GeminiHatasi as e:
+        log(f"{etiket} {model} hata: {str(e)[:160]}")
+    return None
 # 2026-11-26: llama-3.3-70b-versatile Groq'tan kaldırıldı; sıra = Türkçesi en doğal olan önce. Kaldırılan model atlanır.
 GROQ_MODELLER = [m for m in (os.environ.get("GROQ_MODEL", ""), "qwen/qwen3.8-27b", "openai/gpt-oss-120b") if m]
 GROQ_MODEL = GROQ_MODELLER[0]
@@ -119,43 +165,24 @@ def _json_ayikla(metin: str):
 
 
 def _gemini(sistem: str, istem: str) -> str | None:
-    anahtar = os.environ.get("GEMINI_API_KEY")
-    if not anahtar:
+    if not gemini_anahtarlari():
         return None
-    for model in _gemini_modelleri(anahtar):
+    govde = {"systemInstruction": {"parts": [{"text": sistem}]},
+             "contents": [{"role": "user", "parts": [{"text": istem}]}],
+             "generationConfig": {"temperature": 0.9, "responseMimeType": "application/json"}}
+    for model in _gemini_modelleri():
         if f"gemini:{model}" in _kota_doldu:
             continue
-        for deneme in range(2):
-            if not izin("gemini"):
-                return None
-            try:
-                r = requests.post(
-                    f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                    headers={"x-goog-api-key": anahtar},
-                    json={
-                        "systemInstruction": {"parts": [{"text": sistem}]},
-                        "contents": [{"role": "user", "parts": [{"text": istem}]}],
-                        "generationConfig": {"temperature": 0.9, "responseMimeType": "application/json"},
-                    },
-                    timeout=90,
-                )
-                if r.status_code == 429:
-                    ayrinti, gunluk = kota_ayrinti(r)
-                    log(f"gemini {model} HTTP 429 ({ayrinti})")
-                    if gunluk:
-                        kota_doldu(f"gemini:{model}", r.text)  # kota model başına: sıradaki ücretsiz modele geç
-                        break
-                if r.status_code == 429 or r.status_code >= 500:
-                    log(f"gemini {model} {r.status_code}, bekleniyor")
-                    time.sleep(8 * (deneme + 1))
-                    continue
-                if r.status_code >= 400:
-                    log(f"gemini {model} HTTP {r.status_code}")
-                r.raise_for_status()
-                return r.json()["candidates"][0]["content"]["parts"][0]["text"]
-            except Exception as e:  # ağ, kota, beklenmeyen yanıt
-                log(f"gemini {model} hata: {str(e)[:160]}")
-                break
+        try:
+            j = gemini_cagir(model, govde, "gemini", zaman=90, deneme=2)
+        except TavanDoldu:
+            return None
+        if j is None:
+            continue
+        try:
+            return j["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:  # beklenmeyen yanıt
+            log(f"gemini {model} hata: {str(e)[:160]}")
     return None
 
 
@@ -227,40 +254,29 @@ def json_sor(sistem: str, istem: str) -> dict | None:
 
 def ara(istem: str) -> dict | None:
     """Google Arama destekli Gemini çağrısı (ücretsiz katman). {"metin", "kaynaklar": [{uri, baslik}]} ya da None."""
-    anahtar = os.environ.get("GEMINI_API_KEY")
-    if not anahtar:
+    if not gemini_anahtarlari():
         return None
-    for model in _gemini_modelleri(anahtar):
+    govde = {"contents": [{"parts": [{"text": istem}]}], "tools": [{"google_search": {}}],
+             "generationConfig": {"temperature": 0.4}}
+    for model in _gemini_modelleri():
         if f"gemini-ara:{model}" in _kota_doldu:
             continue
-        for deneme in range(2):
-            if not izin("gemini-ara"):
-                return None
-            try:
-                r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                                  headers={"x-goog-api-key": anahtar}, timeout=120,
-                                  json={"contents": [{"parts": [{"text": istem}]}], "tools": [{"google_search": {}}],
-                                        "generationConfig": {"temperature": 0.4}})
-                if r.status_code >= 400:  # yalnız durum kodu (gövde/anahtar loglanmaz)
-                    ayrinti = f" ({kota_ayrinti(r)[0]})" if r.status_code == 429 else ""
-                    log(f"gemini arama {model} HTTP {r.status_code}{ayrinti}")
-                if r.status_code == 429 and kota_ayrinti(r)[1]:
-                    kota_doldu(f"gemini-ara:{model}", r.text)
-                    break
-                if r.status_code in (429, 500, 503):
-                    time.sleep(8 * (deneme + 1))
-                    continue
-                r.raise_for_status()
-                c = r.json()["candidates"][0]
-                gm = c.get("groundingMetadata") or {}
-                return {"metin": "".join(p.get("text", "") for p in c["content"]["parts"]),
-                        "kaynaklar": [{"uri": ch.get("web", {}).get("uri", ""), "baslik": ch.get("web", {}).get("title", "")}
-                                      for ch in gm.get("groundingChunks", [])]}
-            except Exception as e:
-                log(f"gemini arama {model} hata: {str(e)[:160]}")
-                break
+        try:
+            j = gemini_cagir(model, govde, "gemini-ara", zaman=120, deneme=2)
+        except TavanDoldu:
+            return None
+        if j is None:
+            continue
+        try:
+            c = j["candidates"][0]
+            gm = c.get("groundingMetadata") or {}
+            return {"metin": "".join(p.get("text", "") for p in c["content"]["parts"]),
+                    "kaynaklar": [{"uri": ch.get("web", {}).get("uri", ""), "baslik": ch.get("web", {}).get("title", "")}
+                                  for ch in gm.get("groundingChunks", [])]}
+        except Exception as e:
+            log(f"gemini arama {model} hata: {str(e)[:160]}")
     return None
 
 
 def var_mi() -> bool:
-    return bool(os.environ.get("GEMINI_API_KEY") or os.environ.get("GROQ_API_KEY"))
+    return bool(gemini_anahtarlari() or os.environ.get("GROQ_API_KEY"))

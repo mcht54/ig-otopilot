@@ -176,22 +176,16 @@ def anlatim_yaz(senaryo: dict, marka: dict, kod: str | None = None) -> tuple[lis
 
 # ---------------- seslendirme ----------------
 
-def _ses_modelleri(anahtar: str) -> list[str]:
+def _ses_modelleri(anahtar: str | None = None) -> list[str]:
     global _tts_modeller
     if _tts_modeller is None:
-        try:
-            r = requests.get(f"{GEMINI}/models", params={"pageSize": 200}, headers={"x-goog-api-key": anahtar}, timeout=30)
-            r.raise_for_status()
-            adlar = [m["name"].removeprefix("models/") for m in r.json().get("models", [])
-                     if "tts" in m["name"] and "generateContent" in m.get("supportedGenerationMethods", [])]
-            def puan(a):
-                s = re.search(r"gemini-(\d+(?:\.\d+)?)", a)
-                return ("flash" in a, float(s.group(1)) if s else 0.0, not re.search(r"preview|exp", a))
-            _tts_modeller = sorted(adlar, key=puan, reverse=True)[:3]
-            log(f"gemini ses modelleri: {', '.join(_tts_modeller) or 'yok'}")
-        except Exception as e:
-            log(f"gemini ses modeli listesi alınamadı: {str(e)[:160]}")
-            _tts_modeller = []
+        adlar = [m["name"].removeprefix("models/") for m in llm.model_listesi()
+                 if "tts" in m["name"] and "generateContent" in m.get("supportedGenerationMethods", [])]
+        def puan(a):
+            s = re.search(r"gemini-(\d+(?:\.\d+)?)", a)
+            return ("flash" in a, float(s.group(1)) if s else 0.0, not re.search(r"preview|exp", a))
+        _tts_modeller = sorted(adlar, key=puan, reverse=True)[:3]
+        log(f"gemini ses modelleri: {', '.join(_tts_modeller) or 'yok'}")
     return _tts_modeller
 
 
@@ -205,39 +199,29 @@ def _yeniden_ornekle(x: np.ndarray, kaynak: int) -> np.ndarray:
 def _gemini_ses(satirlar: list[str], marka: dict, ses_adi: str) -> np.ndarray | None:
     """Gemini TTS. HİÇBİR YÖNERGE VERİLMEZ: model Türkçe talimatı da İngilizce kısa yönergeyi de sesli okudu
     (2026-11-23, iki ayrı hata). Yalnız okunacak Türkçe metin gider; ton ünlem/noktalama ve ses seçimiyle gelir."""
-    anahtar = os.environ.get("GEMINI_API_KEY")
-    if not anahtar:
+    if not llm.gemini_anahtarlari():
         return None
     metin = "\n".join(satirlar)
     govde = {"contents": [{"parts": [{"text": metin}]}],
              "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {
                  "voiceConfig": {"prebuiltVoiceConfig": {"voiceName": ses_adi}}}}}
-    for model in _ses_modelleri(anahtar):
+    for model in _ses_modelleri():
         if f"gemini-ses:{model}" in llm._kota_doldu:
             continue
-        for deneme in range(2):
-            if not llm.izin("gemini-ses"):
-                return None
-            try:
-                r = requests.post(f"{GEMINI}/models/{model}:generateContent", json=govde, timeout=180,
-                                  headers={"x-goog-api-key": anahtar})
-                if r.status_code == 429 and ("PerDay" in r.text or "per day" in r.text.lower()):
-                    llm.kota_doldu(f"gemini-ses:{model}", r.text)
-                    break
-                if r.status_code in (429, 500, 503):
-                    log(f"gemini ses {model} {r.status_code}, bekleniyor")
-                    import time
-                    time.sleep(10 * (deneme + 1))
-                    continue
-                r.raise_for_status()
-                veri = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]
-                pcm = np.frombuffer(base64.b64decode(veri["data"]), dtype="<i2").astype(np.float32) / 32768
-                oran = int(re.search(r"rate=(\d+)", veri.get("mimeType", "")).group(1)) if "rate=" in veri.get("mimeType", "") else 24000
-                log(f"ses: gemini {model} ({ses_adi})")
-                return _yeniden_ornekle(pcm, oran)
-            except Exception as e:
-                log(f"gemini ses {model} hata: {str(e)[:160]}")
-                break
+        try:  # anahtar havuzu: TTS kotası metinden ayrı (model × anahtar); dolan anahtar bugün atlanır
+            j = llm.gemini_cagir(model, govde, "gemini-ses", zaman=180, deneme=2)
+        except llm.TavanDoldu:
+            return None
+        if j is None:
+            continue
+        try:
+            veri = j["candidates"][0]["content"]["parts"][0]["inlineData"]
+            pcm = np.frombuffer(base64.b64decode(veri["data"]), dtype="<i2").astype(np.float32) / 32768
+            oran = int(re.search(r"rate=(\d+)", veri.get("mimeType", "")).group(1)) if "rate=" in veri.get("mimeType", "") else 24000
+            log(f"ses: gemini {model} ({ses_adi})")
+            return _yeniden_ornekle(pcm, oran)
+        except Exception as e:
+            log(f"gemini ses {model} hata: {str(e)[:160]}")
     return None
 
 

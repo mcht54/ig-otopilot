@@ -72,6 +72,7 @@ developers.facebook.com → Uygulamalarım → **Mchttasarım Marka Yönetim** �
 ```bash
 R=mcht54/ig-otopilot
 gh secret set GEMINI_API_KEY -R $R        # aistudio.google.com/apikey (ücretsiz)
+gh secret set GEMINI_API_KEY_2 -R $R      # anahtar havuzu: AYRI Gmail hesabından ücretsiz anahtar (…_9'a kadar); biri dolunca sıradaki
 gh secret set GROQ_API_KEY -R $R          # isteğe bağlı yedek: console.groq.com (ücretsiz)
 for K in SITEMUCIDI DAVETIYELER SGB MARKAKARNEM; do gh secret set IG_${K}_ID -R $R; gh secret set IG_${K}_TOKEN -R $R; done
 gh secret set GH_PAT -R $R                # anahtar yenileme için: yalnız bu depoda "Secrets: write" izinli ince taneli token
