@@ -201,11 +201,16 @@ def parlat(senaryo: dict, marka: dict, kod: str, rnd: random.Random) -> tuple[di
         "format": senaryo["format"], "konu": senaryo["konu"], "anahtar_kelime": senaryo.get("anahtar_kelime"),
         "konum": marka.get("konum"), "OLGULAR": senaryo["olgular"],
         "slotlar": sinirli,
+        "kanca_kurali": ("Yazmadan önce en az 5 FARKLI tipte kanca düşün (merak boşluğu, beklenmedik gerçek/karşıtlık, doğrudan soru, "
+                         "sonucu başta gösterme, hata/uyarı, somut sahne); bunları kanca_adaylari listesine yaz ve içeriğin gerçekten "
+                         "karşıladığı en güçlüsünü ilk slotta kullan. Selam/giriş cümlesiyle başlama. son_kancalar_tekrar_etme'deki "
+                         "açılışları ve son formatın kanca tipini TEKRARLAMA."),
         "son_kancalar_tekrar_etme": onceki,
         "en_iyi_performans_kancalari": [k["baslik"] for k in iyi[:3]],
         "en_zayif_performans_kancalari": [k["baslik"] for k in iyi[-3:]] if len(iyi) > 5 else [],
         "hashtag_havuzu": marka["etiketler"],
-        "cikti_bicimi": {"slotlar": {"<aynı anahtar>": "<yeni metin>"}, "aciklama": "<caption>", "neden": "<1 cümle: bu açıyı neden seçtin>"},
+        "cikti_bicimi": {"slotlar": {"<aynı anahtar>": "<yeni metin>"}, "aciklama": "<caption>", "neden": "<1 cümle: bu açıyı neden seçtin>",
+                        "kanca_adaylari": ["<isteğe bağlı: en az 5 farklı tipte kanca adayı>"]},
     }, ensure_ascii=False)
     from . import strateji
     yanit = llm.json_sor(_sistem(marka) + "\n" + strateji.baglam(kod, marka), istem)
@@ -231,8 +236,21 @@ def _rakamlar(s: str) -> set[str]:
     return set(re.findall(r"\d+(?:[.,]\d+)?", s))
 
 
+# Kural 1 (içerik stratejisti): açılışta selam/giriş kalıbı yok, ilk cümle doğrudan kanca.
+SELAM_KALIBI = re.compile(r"^[\W_]*(merhaba|selam(?:lar|ın|ınız)?|arkadaşlar|herkese merhaba|bugün size|bugün sizlere)(?!\w)", re.IGNORECASE)
+
+
+def selamla_basliyor(metin: str) -> bool:
+    return bool(SELAM_KALIBI.match((metin or "").strip().lower()))
+
+
 def metin_denetle(senaryo: dict, aciklama: str, marka: dict, referans: dict | None = None) -> list[str]:
     hatalar = []
+    for k, v in slotlar(senaryo).items():
+        if k.startswith("s0.") and selamla_basliyor(v):
+            hatalar.append(f"{k} selam/giriş kalıbıyla açılıyor (doğrudan kanca olmalı): {v}")
+    if aciklama and selamla_basliyor(aciklama.splitlines()[0] if aciklama.strip() else ""):
+        hatalar.append("açıklama selam/giriş kalıbıyla açılıyor (ilk satır kanca olmalı)")
     yasak = [y.lower() for y in marka["yasak_ifadeler"] + GENEL_YASAK]
     izinli_rakam = _rakamlar(" ".join(senaryo.get("olgular", [])) + " " + json.dumps(referans or senaryo, ensure_ascii=False))
     for k, v in slotlar(senaryo).items():

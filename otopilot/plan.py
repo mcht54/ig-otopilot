@@ -179,7 +179,8 @@ def ozel_icerik(kod: str, m: dict, istek: str, tarayici, klasor: Path, gun: dt.d
              "\"konu\": \"\", \"anahtar_kelime\": \"Instagram aramasında aranacak 2-4 kelime\", "
              "\"kapak\": {\"etiket\": \"≤26 karakter\", \"baslik\": \"≤62 karakter kanca\", \"alt\": \"≤84\"}, "
              "\"liste\": {\"etiket\": \"≤26\", \"baslik\": \"≤62\", \"maddeler\": [\"3 madde, her biri ≤54 karakter\"]}, "
-             "\"cta\": {\"baslik\": \"≤62\", \"alt\": \"≤84\"}, \"hikaye\": {\"etiket\": \"≤26\", \"baslik\": \"≤62\", \"alt\": \"≤84\"}}")
+             "\"cta\": {\"baslik\": \"≤62\", \"alt\": \"≤84\"}, \"hikaye\": {\"etiket\": \"≤26\", \"baslik\": \"≤62\", \"alt\": \"≤84\"}, "
+             "\"kanca_adaylari\": [\"isteğe bağlı: en az 5 farklı tipte kanca; en güçlüsünü kapak.baslik'ta kullan\"]}")
     from . import strateji
     v = llm.json_sor(sistem + "\n" + strateji.baglam(kod, m), istem)
     if not v:

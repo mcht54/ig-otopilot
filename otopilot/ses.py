@@ -126,6 +126,9 @@ def anlatim_denetle(satirlar, senaryo: dict, marka: dict) -> list[str]:
     izinli = _rakamlar(" ".join(map(str, senaryo.get("olgular", [])))
                        + " " + " ".join(y for sh in senaryo["sahneler"] for y in _sahne_yazilari(sh)))
     yasak = [y.lower() for y in marka.get("yasak_ifadeler", []) + GENEL_YASAK]
+    from .beyin import selamla_basliyor
+    if satirlar and selamla_basliyor(str(satirlar[0] or "")):
+        hatalar.append("0: selam/giriş kalıbıyla açılıyor (ilk satır doğrudan kanca olmalı)")
     for i, s in enumerate(satirlar):
         s = str(s or "")
         if not s.strip():
@@ -160,7 +163,8 @@ def anlatim_yaz(senaryo: dict, marka: dict, kod: str | None = None) -> tuple[lis
         from . import strateji
         sistem += "\n" + strateji.baglam(kod or marka["kod"], marka)
     istem = ("OLGULAR:\n- " + "\n- ".join(map(str, senaryo.get("olgular", []))) + "\n\nSAHNELER:\n" + "\n".join(sahneler)
-             + f'\n\nYalnız JSON döndür: {{"satirlar": [{len(sahneler)} satır]}}')
+             + f'\n\nÖnce en az 5 farklı tipte açılış kancası düşün, en güçlüsünü 1. satırda kullan; selamla/girişle başlama.'
+             f'\nYalnız JSON döndür: {{"satirlar": [{len(sahneler)} satır], "kanca_adaylari": ["isteğe bağlı: 5 aday"]}}')
     try:
         veri = llm.json_sor(sistem, istem)
         if veri:

@@ -161,6 +161,15 @@ def baglam(kod: str, m: dict) -> str:
         "neye güvenir, neyi kaydedip arkadaşına gönderir? Tek videoda tek net mesaj. Kitlenin en çok dikkat ettiği şeyi öne çıkar. "
         "Ekran yazısı 1 saniyede okunur olsun; yazım ve dil hatası yapma.",
     ]
+    kural = pathlib.Path(__file__).parent / "icerik-stratejisti.md"   # kullanıcı kuralı (2026-11-28): tüm metin istemleri
+    try:
+        if kural.exists():
+            parcalar.append(kural.read_text(encoding="utf-8").strip())
+    except OSError:
+        pass
+    sf = [k.get("format") for k in gecmis(kod) if k.get("tur") == "reels" and k.get("format")][-5:]
+    if sf:
+        parcalar.append("SON KULLANILAN FORMATLAR (art arda aynısını kullanma, farklı kanca tipi seç): " + " | ".join(sf))
     if m.get("asama") == "kurulus":
         parcalar.append("AŞAMA: Sitede henüz listelenen tesis yok. Tesis sahiplerine hitap et; misafire 'listede tesis var' izlenimi verme.")
     for baslik, anahtar in (("KİTLE İÇGÖRÜSÜ", "kitle_icgorusu"), ("EN ÇOK DİKKAT ETTİKLERİ", "dikkat_ettikleri"), ("İTİRAZLARI", "itirazlar"),

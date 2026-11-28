@@ -125,3 +125,20 @@ def test_instagram_sistem_anahtari(monkeypatch):
     monkeypatch.setenv("IG_TOKEN", "sistem"); monkeypatch.setenv("META_SGB_IG_ID", "178")
     ig = Instagram("sgb")
     assert ig.hazir and ig.kimlik == "178" and "graph.facebook.com" in ig.kok
+
+
+def test_denetim_selamla_acilisi_reddeder():
+    s, m = ornek_senaryo(), {"yasak_ifadeler": [], "site_kisa": "x.com"}
+    for acilis in ("Merhaba arkadaşlar, kapora", "Selamlar! Kapora", "Bugün size kapora", "Arkadaşlar kapora"):
+        kotu = json.loads(json.dumps(s))
+        kotu["sahneler"][0]["baslik"] = acilis
+        assert any("selam" in x for x in beyin.metin_denetle(kotu, "", m)), acilis
+    assert not beyin.selamla_basliyor("Selamlıkta oturmadan önce 3 kontrol")
+    assert not beyin.selamla_basliyor("Kapora göndermeden 3 kontrol")
+    assert any("açıklama selam" in x for x in beyin.metin_denetle(s, "Merhaba!\nx.com", m))
+
+
+def test_baglam_icerik_kurallarini_icerir(gecici_durum):
+    from otopilot import strateji
+    m = {"ad": "Deneme", "hedef_kitle": "x"}
+    assert "EN AZ 5 KANCA" in strateji.baglam("deneme", m)
