@@ -1,96 +1,4 @@
 {
- "2026-11-27": {
-  "id": "2026-11-27-sitemucidi",
-  "gun": "2026-11-27",
-  "kod": "sitemucidi",
-  "format": "tema_paket",
-  "konu": "Baskı Evi teması üç pakette",
-  "anahtar": "paket:baskievi",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "paket:baskievi",
-   "konu": "Baskı Evi teması üç pakette",
-   "anahtar_kelime": "hazır web sitesi",
-   "olgular": [
-    "Baskı Evi temasının Yalın, Vizyon ve Premium paketleri var; paket yükseldikçe hareket ve ek bölümler artar.",
-    "Önizlemeler sitedeki gerçek tema önizlemesidir.",
-    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir."
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "telefon": true,
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/paket-baskievi.png",
-     "etiket": "Aynı tema, 3 paket",
-     "baslik": "Hangisi sizin işletmenize uyar?",
-     "alt": "Baskı Evi teması"
-    },
-    {
-     "tur": "kart",
-     "tip": "telefon",
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/paket-baskievi-yalin.png",
-     "baslik": "Yalın paket"
-    },
-    {
-     "tur": "kart",
-     "tip": "telefon",
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/paket-baskievi-vizyon.png",
-     "baslik": "Vizyon paket"
-    },
-    {
-     "tur": "kart",
-     "tip": "telefon",
-     "sure": 3.0,
-     "gorsel": "file://{{KLASOR}}/paket-baskievi.png",
-     "baslik": "Premium paket"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Yorumlara tercihinizi yazın",
-     "alt": "Ücretsiz oluşturun, 7 gün deneyin."
-    }
-   ],
-   "hikaye": {
-    "telefon": true,
-    "gorsel": "file://{{KLASOR}}/paket-baskievi-yalin.png",
-    "etiket": "Anket",
-    "baslik": "Yalın mı, Premium mu?",
-    "alt": "Videoda üçünü karşılaştırdık"
-   },
-   "format": "tema_paket",
-   "tohum": "sitemucidi:2026-11-27",
-   "denenen_formatlar": [
-    "tema_paket",
-    "ozellik",
-    "yz_arama",
-    "sektor_demo"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Hangisi sizin işletmenize uyar?\nBaskı Evi teması\n\nHazır web sitesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #esnaf #yapayzeka #googledaçıkmak",
-  "anlatim": [
-   "Baskı işletmeniz için tek tasarım yetmez dedik, aynı temayı üç paketle hazırladık!",
-   "Yalın pakette sade bir görünümle anında işe başlayabilirsiniz.",
-   "Vizyon pakette hareket artıyor, ek bölümlerle siteniz güçleniyor.",
-   "Premium pakette ise en çok hareket ve tüm ek bölümler açılıyor!",
-   "Hemen ücretsiz oluşturun, yedi gün boyunca rahatça deneyin!"
-  ],
-  "anlatim_kaynagi": "gemini",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: tema_paket formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-sitemucidi.jpg?v=760a1566",
-  "olusturma": "2026-11-23T13:34:35+03:00",
-  "ses": "73e883546e",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-28": {
   "id": "2026-11-28-sitemucidi",
   "gun": "2026-11-28",
@@ -999,6 +907,212 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-sitemucidi.jpg?v=3d9cfacb",
   "olusturma": "2026-11-27T03:30:29+03:00",
   "ses": "b856c447d7",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-05": {
+  "id": "2026-12-05-sitemucidi",
+  "gun": "2026-12-05",
+  "kod": "sitemucidi",
+  "format": "sektor_demo",
+  "konu": "Lojistik için Ambar teması ile 3 dakikada site",
+  "anahtar": "tema:ambar",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "tema:ambar",
+   "konu": "Lojistik için Ambar teması ile 3 dakikada site",
+   "anahtar_kelime": "lojistik web sitesi",
+   "olgular": [
+    "Tema: Ambar — Depo ve nakliye için tam ekran, slaytlı kapak",
+    "Uygun sektörler: Lojistik, Nakliye ve taşımacılık, Depolama, Gümrük müşavirliği",
+    "Tema açıklaması: Profesyonel tasarım. Tam ekran fotoğraf slaytı, şeffaf menü, çizgili çağrı bandı ve koyu müşteri yorumları. Sayfalar kayarak geçer.",
+    "Öne çıkanlar: Tam ekran fotoğraf slaytı, şeffaf menü, çizgili çağrı bandı ve koyu müşteri yorumları. Sayfalar kayarak geçer.; Sayfalar arası animasyonlu geçiş, kelime kelime açılan başlıklar ve sayaçlar; Kapak fotoğraf slaytı ve kaydırma ilerleme çubuğu; Liman fotoğraflı 3B giriş",
+    "Videoda örnek işletme adı: Hızlı Nakliyat (gerçek işletme değil)",
+    "Site oluşturmak ücretsiz; kaydedince 7 gün denenir, yayına almak ücretlidir."
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "telefon": true,
+     "sure": 3.0,
+     "gorsel": "file://{{KLASOR}}/kapak-ambar.png",
+     "etiket": "Nakliye & Lojistik",
+     "baslik": "Nakliye firması sahibiysen bu 3 dakikayı izle",
+     "alt": "Kod bilmeden Hızlı Nakliyat gibi sitenizi ücretsiz oluşturun."
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://www.sitemucidi.com.tr/olustur?tema=ambar",
+     "once_tikla": [
+      "Reddet"
+     ],
+     "bekle": 0.8,
+     "ust_yazi": "1. Ambar temasını seçin",
+     "sure": 5.88,
+     "eylemler": [
+      {
+       "t": 1.1,
+       "tikla": "Bilgiler"
+      },
+      {
+       "t": 1.2,
+       "ust_yazi": "2. İşletme adınızı yazın"
+      },
+      {
+       "t": 1.6,
+       "odak": "İşletme adı"
+      },
+      {
+       "t": 1.62,
+       "js": "document.execCommand && document.execCommand('delete')"
+      },
+      {
+       "t": 1.7000000000000002,
+       "tus": "H"
+      },
+      {
+       "t": 1.7700000000000002,
+       "tus": "ı"
+      },
+      {
+       "t": 1.8400000000000003,
+       "tus": "z"
+      },
+      {
+       "t": 1.9100000000000001,
+       "tus": "l"
+      },
+      {
+       "t": 1.9800000000000002,
+       "tus": "ı"
+      },
+      {
+       "t": 2.0500000000000003,
+       "tus": " "
+      },
+      {
+       "t": 2.12,
+       "tus": "N"
+      },
+      {
+       "t": 2.1900000000000004,
+       "tus": "a"
+      },
+      {
+       "t": 2.2600000000000002,
+       "tus": "k"
+      },
+      {
+       "t": 2.33,
+       "tus": "l"
+      },
+      {
+       "t": 2.4000000000000004,
+       "tus": "i"
+      },
+      {
+       "t": 2.47,
+       "tus": "y"
+      },
+      {
+       "t": 2.54,
+       "tus": "a"
+      },
+      {
+       "t": 2.6100000000000003,
+       "tus": "t"
+      },
+      {
+       "t": 3.18,
+       "tikla": "Önizleme"
+      },
+      {
+       "t": 3.2800000000000002,
+       "ust_yazi": "3. Siteniz anında önizlensin"
+      }
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "html_yol": "{{KLASOR}}/onizleme-ambar.html",
+     "kaydir": true,
+     "sure": 7.5,
+     "kaydir_px": 3200,
+     "ust_yazi": "Ambar teması canlı önizleme"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 4.6,
+     "gorsel": "file://{{KLASOR}}/kapak-ambar.png",
+     "etiket": "Öne Çıkan Özellikler",
+     "baslik": "Sitenizde öne çıkan özellikler",
+     "maddeler": [
+      "Tam ekran fotoğraf slaytı ve şeffaf menü",
+      "Animasyonlu geçişler ve kelime kelime açılan başlıklar",
+      "Koyu müşteri yorumları ve çizgili çağrı bandı"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sitenizi hemen ücretsiz oluşturun",
+     "alt": "Sihirbazla kurun, 7 gün boyunca ücretsiz deneyin."
+    }
+   ],
+   "hikaye": {
+    "telefon": true,
+    "gorsel": "file://{{KLASOR}}/kapak-ambar.png",
+    "etiket": "Nakliye & Lojistik",
+    "baslik": "Nakliye firması sahibiysen bu 3 dakikayı izle",
+    "alt": "Ambar temasıyla sitenizi ajans beklemeden kurun."
+   },
+   "format": "sektor_demo",
+   "tam_maddeler": [
+    "Tam ekran fotoğraf slaytı, şeffaf menü, çizgili çağrı bandı ve koyu müşteri yorumları. Sayfalar kayarak geçer.",
+    "Sayfalar arası animasyonlu geçiş, kelime kelime açılan başlıklar ve sayaçlar",
+    "Kapak fotoğraf slaytı ve kaydırma ilerleme çubuğu"
+   ],
+   "tohum": "sitemucidi:2026-12-05",
+   "denenen_formatlar": [
+    "sektor_demo",
+    "ozellik",
+    "yz_arama",
+    "tema_paket"
+   ],
+   "editor": {
+    "puan": 6.4,
+    "uygulandi": true,
+    "puanlar": {
+     "kanca": 5,
+     "kitle": 6,
+     "tek_mesaj": 7,
+     "deger": 6,
+     "cta": 7,
+     "hata": 10,
+     "ozgunluk": 4
+    },
+    "notlar": "Mevcut kanca başlığı yakın zamanda yayınlanan lojistik içeriğiyle çok benzer olduğu için özgünlük ve kanca puanı düşük kalmıştır. Kanca 'Nakliye firması sahibiysen bu 3 dakikayı izle' kalıbıyla yenilenmiş, sektör odağı netleştirilmiş ve tüm karakter sınırlarına uyulmuştur."
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "Nakliye ve taşımacılık işiniz için Ambar teması hazır! Kod bilmeden, ajans beklemeden sitenizi 3 dakikada kurun. Tam ekran slayt, animasyonlu geçişler ve koyu müşteri yorumları ile hizmetlerinizi sergileyin.\n\nSitenizi ücretsiz oluşturun, 7 gün boyunca deneyin: sitemucidi.com.tr\n\n#nakliye #lojistik #tasimacilik #depolama #websitesi",
+  "anlatim": [
+   "Nakliye firmanız var ama internette profesyonel görünmüyor musunuz?",
+   "Ambar temasını seçip işletme adınızı yazın, siteniz anında hazırlansın.",
+   "Tam ekran fotoğraf slaytı ve animasyonlu geçişlerle güven verin.",
+   "Çizgili çağrı bandı ve koyu müşteri yorumlarıyla fark yaratın.",
+   "Sihirbazla hemen oluşturun, profildeki linkten yedi gün ücretsiz deneyin."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: sektor_demo formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-05-sitemucidi.jpg?v=048c6416",
+  "olusturma": "2026-11-28T03:23:20+03:00",
+  "ses": "bd5ae810f6",
   "ses_kaynagi": "gemini"
  }
 }

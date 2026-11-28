@@ -1,115 +1,4 @@
 {
- "2026-11-27": {
-  "id": "2026-11-27-davetiyeler",
-  "gun": "2026-11-27",
-  "kod": "davetiyeler",
-  "format": "siparis_nasil",
-  "konu": "Basılı davetiye nasıl sipariş edilir",
-  "anahtar": "siparis:48",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "siparis:48",
-   "konu": "Basılı davetiye nasıl sipariş edilir",
-   "anahtar_kelime": "davetiye siparişi",
-   "olgular": [
-    "Adet seçilir: 100, 200, 300, 400, 500, 600, 700, 800 veya 1000. Hane başına bir adet + birkaç yedek önerilir.",
-    "Sipariş formuna isimler, tarih, saat ve mekân yazılır.",
-    "Fiyat için teklif istenir; baskı öncesi metin ve yazım kontrolü WhatsApp'tan yapılır.",
-    "Basılı davetiye alana ₺650+KDV değerinde dijital davetiye hediye; kod sipariş onayında e-postaya gelir.",
-    "Örnek model: Lüks Kare Düğün Davetiyesi – Model 5150"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
-     "etiket": "Sipariş rehberi",
-     "baslik": "Davetiye siparişi 3 adımda",
-     "alt": "Kaç adet lazım? Videonun sonunda"
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://www.davetiyeler.tr/urun/luks-davetiye-5150/",
-     "sure": 6.0,
-     "once_tikla": [
-      "Kabul",
-      "Tamam"
-     ],
-     "kaydir": true,
-     "kaydir_px": 650,
-     "ust_yazi": "1. Modeli seçin, adedi belirleyin"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.4,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
-     "etiket": "Adım adım",
-     "baslik": "Sonrası çok kolay",
-     "maddeler": [
-      "İsim, tarih, saat ve mekânı yazın",
-      "Teklifinizi alın",
-      "Yazım kontrolü WhatsApp'tan, sonra baskı"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "rakam",
-     "sure": 3.6,
-     "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
-     "etiket": "İpucu",
-     "rakam": "+%10",
-     "baslik": "Hane sayısına yedek ekleyin",
-     "alt": "Son dakika davetlileri unutulmasın"
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Dijital davetiye de hediye",
-     "alt": "Basılı davetiye siparişine ₺650 değerinde"
-    }
-   ],
-   "hikaye": {
-    "gorsel": "https://www.davetiyeler.tr/wp-content/uploads/2026/11/luks-kare-dugun-davetiyesi-model-5150-t-900.webp",
-    "etiket": "Sipariş ipucu",
-    "baslik": "Kaç davetiye bastırmalı?",
-    "alt": "Hane sayısı + %10 yedek"
-   },
-   "format": "siparis_nasil",
-   "tam_maddeler": [
-    "İsim, tarih, saat ve mekânı yazın",
-    "Teklifinizi alın",
-    "Yazım kontrolü WhatsApp'tan, sonra baskı"
-   ],
-   "tohum": "davetiyeler:2026-11-27",
-   "denenen_formatlar": [
-    "siparis_nasil",
-    "dijital_davetiye",
-    "model_vitrin",
-    "kampanya"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "Davetiye siparişi 3 adımda\nKaç adet lazım? Videonun sonunda\n\nSonrası çok kolay\n✔️ İsim, tarih, saat ve mekânı yazın\n✔️ Teklifinizi alın\n✔️ Yazım kontrolü WhatsApp'tan, sonra baskı\n\nDavetiye siparişi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #sünnetdavetiyesi #düğünhazırlığı #gelinadayı",
-  "anlatim": [
-   "Davetiye siparişi verirken kaç adet bastırmanız gerektiğini biliyor musunuz?",
-   "Önce modeli seçip yüz ile bin adet arasında ihtiyacınızı belirleyin.",
-   "Bilgilerinizi girip teklif alın, baskı öncesi kontrolü WhatsApp'tan onaylayın.",
-   "Hesap yaparken her davetliye değil, hane başına bir adet ve yedekler ekleyin.",
-   "Basılı siparişinizde dijital davetiye de hediye, tüm modeller profildeki linkte!"
-  ],
-  "anlatim_kaynagi": "gemini",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: siparis_nasil formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-davetiyeler.jpg?v=7ea63be1",
-  "olusturma": "2026-11-23T13:33:49+03:00",
-  "ses": "bce7d4f158",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-28": {
   "id": "2026-11-28-davetiyeler",
   "gun": "2026-11-28",
@@ -898,6 +787,105 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-davetiyeler.jpg?v=03b59c7c",
   "olusturma": "2026-11-27T03:28:20+03:00",
   "ses": "38d86c5a0e",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-05": {
+  "id": "2026-12-05-davetiyeler",
+  "gun": "2026-12-05",
+  "kod": "davetiyeler",
+  "format": "yedek",
+  "konu": "Davetiyeler.TR ne işe yarar?",
+  "anahtar": "yedek:2026-12-05",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "format": "yedek",
+   "anahtar": "yedek:2026-12-05",
+   "konu": "Davetiyeler.TR ne işe yarar?",
+   "anahtar_kelime": "dijital davetiye",
+   "olgular": [
+    "Düğün, nişan, kına için 1.700+ davetiye modeli",
+    "Baskı öncesi WhatsApp'tan tasarım taslağı onayı",
+    "Dijital davetiye: LCV, harita ve animasyon",
+    "Sakarya'dan Türkiye'nin her yerine gönderim"
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "etiket": "Davetiyeler.TR",
+     "baslik": "Davetiye sürecinde size nasıl kolaylık sağlıyoruz?",
+     "alt": "Modeller ve detaylar profildeki linkte"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.6,
+     "etiket": "Kısaca Hizmetlerimiz",
+     "baslik": "Davetiyeler.TR ile Kolay Sipariş",
+     "maddeler": [
+      "Düğün, nişan, kına için 1.700+ davetiye modeli",
+      "Baskı öncesi WhatsApp'tan tasarım taslağı onayı",
+      "Dijital davetiye: LCV, harita ve animasyon",
+      "Sakarya'dan Türkiye'nin her yerine gönderim"
+     ]
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Tüm modeller profildeki linkte: davetiyeler.tr"
+    }
+   ],
+   "hikaye": {
+    "etiket": "Davetiyeler.TR",
+    "baslik": "Davetiye siparişinde sizi neler bekliyor?",
+    "alt": "Detaylar profildeki linkte"
+   },
+   "tam_maddeler": [
+    "Düğün, nişan, nikah, kına, sünnet için 1.700+ davetiye modeli",
+    "Basılı davetiyede siparişten önce tasarım taslağı onayınıza gelir",
+    "Dijital davetiye animasyonlu açılış, LCV, geri sayım ve harita ile tek linkle WhatsApp'tan paylaşılır",
+    "Sakarya'dan Türkiye'nin her yerine gönderim"
+   ],
+   "tohum": "davetiyeler:2026-12-05",
+   "denenen_formatlar": [
+    "dijital_davetiye",
+    "kampanya",
+    "model_vitrin",
+    "siparis_nasil",
+    "yedek"
+   ],
+   "editor": {
+    "puan": 6.1,
+    "uygulandi": false,
+    "puanlar": {
+     "kanca": 4,
+     "kitle": 5,
+     "tek_mesaj": 6,
+     "deger": 6,
+     "cta": 7,
+     "hata": 10,
+     "ozgunluk": 5
+    },
+    "notlar": "Kanca cümlesi jenerik ve kurumsal kalıyor, akışta kullanıcıyı durdurma gücü düşük. Hedef kitlenin en büyük kaygısı olan 'yazım hatası' ve 'stressiz süreç' öne çıkarılarak kanca ve başlıklar yenilendi. Ortalama puan 6.1 olduğu için slotlar güncellendi."
+   },
+   "metin_kaynagi": "gemini"
+  },
+  "aciklama": "En özel gününüz için dijital davetiye ve basılı modeller bir arada!\n\n1.700+ model seçeneğiyle düğün, nişan ve kına hazırlıklarınızı kolaylaştırıyoruz.\nBaskı öncesi onayınıza gelen tasarım taslağı ile hata riskini ortadan kaldırın.\nAnimasyon, LCV ve konum içeren dijital davetiyenizi WhatsApp'tan tek tıkla paylaşın.\nSakarya'dan tüm Türkiye'ye güvenle ulaştırıyoruz. ✉️✨\n\nTüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #dijitaldavetiye #düğünhazırlığı #gelinadayı #davetiyemodelleri",
+  "anlatim": [
+   "Davetiye sürecinde yazım hatası yaşama stresine tamamen son veriyoruz!",
+   "Düğün, nişan ve kına için bin yedi yüzden fazla seçenek sunuyor, baskı öncesi WhatsApp'tan onay alıyoruz; LCV, harita ve animasyonlu dijital davetiyelerinizi Sakarya'dan tüm Türkiye'ye ulaştırıyoruz!",
+   "Siz de hemen inceleyin, tüm modeller profildeki linkte!"
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: yedek formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-05-davetiyeler.jpg?v=9c30b4d3",
+  "olusturma": "2026-11-28T03:04:57+03:00",
+  "ses": "2a1cb5682a",
   "ses_kaynagi": "gemini"
  }
 }

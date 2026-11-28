@@ -1,102 +1,4 @@
 {
- "2026-11-27": {
-  "id": "2026-11-27-markakarnem",
-  "gun": "2026-11-27",
-  "kod": "markakarnem",
-  "format": "ornek_rapor",
-  "konu": "MarkaKarnem raporunda neler var",
-  "anahtar": "ornek:2026-11",
-  "ek_anahtarlar": [],
-  "senaryo": {
-   "anahtar": "ornek:2026-11",
-   "konu": "MarkaKarnem raporunda neler var",
-   "anahtar_kelime": "ücretsiz seo analizi",
-   "olgular": [
-    "Tam MarkaKarnenin neler içerdiğini gösteren örnek rapor. İşletme ve değerler örnektir; gerçek bir işletmeye ait değildir.",
-    "Web sitesi, Google İşletme Profili ve Instagram 52 kontrolle analiz edilir.",
-    "Rapor bölümleri: Marka Skoru, Analiz kapsamı, Toplam tespit, Öncelikli alan, Öncelikli bulgular, Kanal skorları, Kontrol sonuçları, Tespit akışı"
-   ],
-   "sahneler": [
-    {
-     "tur": "kart",
-     "tip": "kapak",
-     "sure": 2.8,
-     "gorsel": null,
-     "etiket": "Örnek rapor",
-     "baslik": "İşletmenizin dijital karnesi böyle görünür",
-     "alt": "Örnek işletme üzerinden"
-    },
-    {
-     "tur": "sayfa",
-     "url": "https://markakarnem.com.tr/ornek-rapor",
-     "once_tikla": [
-      "Reddet"
-     ],
-     "sure": 8.0,
-     "kaydir": true,
-     "kaydir_px": 3200,
-     "kaydir_oran": 0.8,
-     "ust_yazi": "Skor, öncelikli bulgular, kanal kanal kontrol"
-    },
-    {
-     "tur": "kart",
-     "tip": "liste",
-     "sure": 5.0,
-     "etiket": "52 kontrol",
-     "baslik": "Üç kanal birden",
-     "maddeler": [
-      "Web sitesi",
-      "Google İşletme Profili",
-      "Instagram"
-     ]
-    },
-    {
-     "tur": "kart",
-     "tip": "cta",
-     "sure": 3.2,
-     "baslik": "Kendi karnenizi çıkarın",
-     "alt": "Ücretsiz, birkaç dakika"
-    }
-   ],
-   "hikaye": {
-    "gorsel": null,
-    "etiket": "Örnek rapor",
-    "baslik": "Dijital karneniz kaç puan?",
-    "alt": "Örneği profilde izleyin"
-   },
-   "format": "ornek_rapor",
-   "tam_maddeler": [
-    "Web sitesi",
-    "Google İşletme Profili",
-    "Instagram"
-   ],
-   "tohum": "markakarnem:2026-11-27",
-   "denenen_formatlar": [
-    "ornek_rapor",
-    "sektor_ipucu",
-    "arac_demo",
-    "soru_cevap",
-    "yerel_karne"
-   ],
-   "metin_kaynagi": "kural"
-  },
-  "aciklama": "İşletmenizin dijital karnesi böyle görünür\nÖrnek işletme üzerinden\n\nÜç kanal birden\n✔️ Web sitesi\n✔️ Google İşletme Profili\n✔️ Instagram\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #markaskoru #instagramipuçları #sakarya",
-  "anlatim": [
-   "İşletmenizin dijital karnesi böyle görünür! Örnek işletme üzerinden!",
-   "Şimdi gerçek ekranda bakalım: Skor, öncelikli bulgular, kanal kanal kontrol.",
-   "Üç kanal birden: Web sitesi, Google İşletme Profili.",
-   "Kendi karnenizi çıkarın. Ücretsiz karnenizi profildeki linkten çıkarın!"
-  ],
-  "anlatim_kaynagi": "kural",
-  "kaynak": "otomatik",
-  "neden": "Otomatik plan: ornek_rapor formatı (performansa göre ağırlıklı seçim)",
-  "tanitim_id": null,
-  "varlik": true,
-  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-27-markakarnem.jpg?v=2c5230a6",
-  "olusturma": "2026-11-23T13:33:56+03:00",
-  "ses": "31a004e817",
-  "ses_kaynagi": "gemini"
- },
  "2026-11-28": {
   "id": "2026-11-28-markakarnem",
   "gun": "2026-11-28",
@@ -919,6 +821,112 @@
   "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-04-markakarnem.jpg?v=ca328c08",
   "olusturma": "2026-11-27T03:28:33+03:00",
   "ses": "dc6889c529",
+  "ses_kaynagi": "gemini"
+ },
+ "2026-12-05": {
+  "id": "2026-12-05-markakarnem",
+  "gun": "2026-12-05",
+  "kod": "markakarnem",
+  "format": "soru_cevap",
+  "konu": "Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler",
+  "anahtar": "soru:meta-aciklama-nasil-yazilir",
+  "ek_anahtarlar": [],
+  "senaryo": {
+   "anahtar": "soru:meta-aciklama-nasil-yazilir",
+   "konu": "Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler",
+   "anahtar_kelime": "meta açıklama nasıl yazılır",
+   "olgular": [
+    "Sayfa: Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler",
+    "Özet: Meta açıklama her sayfa için benzersiz olmalı, sayfayı doğru özetlemeli ve anahtar kelime dizisi olmamalı. Google'ın önerileri, uzunluk ve örnekler.",
+    "Kısa cevap: Meta açıklama, sayfanın ne sunduğunu bir iki cümleyle anlatan ve arama sonucunda başlığın altında görünebilen metindir. Google her sayfa için benzersiz, sayfanın içeriğini doğru özetleyen bir açıklama yazmayı; uzun anahtar kelime dizilerinden kaçınmayı önerir. Google'a göre resmi bir uzunluk sınırı ",
+    "Kısa cevap: Meta açıklama, sayfanın ne sunduğunu bir iki cümleyle anlatan metindir. Arama sonucunda başlığın altında görünebilir. İyi bir meta açıklama o sayfaya özgüdür, içeriği doğru özetler ve anahtar kelime listesi gibi okunmaz. Google için resmi bir uzunluk sınırı yoktur, ancak sonuç cihaz genişliğine göre",
+    "Meta açıklama ne işe yarar?: Meta açıklama, sayfanın HTML kodundaki <meta name=\"description\" content=\"...\"> etiketidir. Google, bu metin sayfayı içerikteki diğer bölümlerden daha iyi anlatıyorsa onu arama sonucundaki özet (snippet) olarak kullanabilir. Bu her zaman olmaz. Google, yapılan aramaya göre sayfadaki başka bir bölümü ",
+    "Meta açıklama nasıl yazılır?: Yazmadan önce şu soruları yanıtlayın: Bu sayfayı kim, hangi ihtiyaçla arıyor olabilir? Sayfada o kişinin aradığı hangi bilgi var? Rakip sonuçlardan ayrılan, gerçekten doğru olan bir yön var mı? Örneğin hızlı randevu, şehir içi teslimat ya da belirli bir hizmet.",
+    "Google'ın önerileri: Her sayfa için benzersiz yazın. Google, sitedeki tüm sayfalarda aynı ya da benzer açıklamaların faydalı olmadığını belirtir. Hizmet sayfanızla iletişim sayfanızın açıklaması aynı olmamalı. Çok sayıda ürün sayfanız varsa her birinin ayırt edici bilgisini (ör. içerik, boyut, kullanım alanı) yazın. Say",
+    "Uzunluk: Google'a göre meta açıklamanın resmi bir uzunluk sınırı yoktur. Ancak arama sonucunda cihaz genişliğine göre kısaltılır; aynı metin telefonda ve bilgisayarda farklı yerde kesilebilir. Bu yüzden karakter sayısı peşinde koşmak yerine şunu yapın: en önemli bilgiyi ilk cümleye koyun. Metin kısaltılsa bi",
+    "Örnekler: "
+   ],
+   "sahneler": [
+    {
+     "tur": "kart",
+     "tip": "kapak",
+     "sure": 2.8,
+     "gorsel": null,
+     "etiket": "Soru-cevap",
+     "baslik": "Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler",
+     "alt": "Meta açıklama, sayfanın ne sunduğunu bir iki cümleyle anlatan ve arama sonucunda…"
+    },
+    {
+     "tur": "kart",
+     "tip": "liste",
+     "sure": 5.4,
+     "etiket": "Kısaca",
+     "baslik": "Bilmeniz gerekenler",
+     "maddeler": [
+      "Meta açıklama ne işe yarar?",
+      "Meta açıklama nasıl yazılır?",
+      "Google'ın önerileri",
+      "Uzunluk"
+     ]
+    },
+    {
+     "tur": "sayfa",
+     "url": "https://markakarnem.com.tr/rehber/meta-aciklama-nasil-yazilir",
+     "sure": 5.5,
+     "once_tikla": [
+      "Reddet"
+     ],
+     "kaydir": true,
+     "kaydir_px": 1800,
+     "kaydir_bas": 0.5,
+     "ust_yazi": "Tamamı sitede, ücretsiz"
+    },
+    {
+     "tur": "kart",
+     "tip": "cta",
+     "sure": 3.2,
+     "baslik": "Sizin durumunuz ne?",
+     "alt": "52 kontrollü ücretsiz karnenizi çıkarın"
+    }
+   ],
+   "hikaye": {
+    "gorsel": null,
+    "etiket": "Soru-cevap",
+    "baslik": "Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler",
+    "alt": "Cevap profildeki videoda"
+   },
+   "format": "soru_cevap",
+   "tam_maddeler": [
+    "Meta açıklama ne işe yarar?",
+    "Meta açıklama nasıl yazılır?",
+    "Google'ın önerileri",
+    "Uzunluk"
+   ],
+   "tohum": "markakarnem:2026-12-05",
+   "denenen_formatlar": [
+    "arac_demo",
+    "soru_cevap",
+    "ornek_rapor",
+    "sektor_ipucu",
+    "yerel_karne"
+   ],
+   "metin_kaynagi": "kural"
+  },
+  "aciklama": "Meta Açıklama Nasıl Yazılır? Google'ın Önerileri ve Örnekler\nMeta açıklama, sayfanın ne sunduğunu bir iki cümleyle anlatan ve arama sonucunda…\n\nBilmeniz gerekenler\n✔️ Meta açıklama ne işe yarar?\n✔️ Meta açıklama nasıl yazılır?\n✔️ Google'ın önerileri\n✔️ Uzunluk\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #küçükişletme #sakarya #markaskoru",
+  "anlatim": [
+   "Google'da arama sonuçlarının altında ne yazdığını hiç düşündünüz mü?",
+   "Her sayfanıza özel, içeriği net özetleyen ve ilk cümlesi güçlü metinler yazmalısınız.",
+   "Google'ın tüm önerilerini ve örneklerini sitemizdeki sade rehberde topladık.",
+   "Ücretsiz karnenizi profildeki linkten çıkarın."
+  ],
+  "anlatim_kaynagi": "gemini",
+  "kaynak": "otomatik",
+  "neden": "Otomatik plan: soru_cevap formatı (performansa göre ağırlıklı seçim)",
+  "tanitim_id": null,
+  "varlik": true,
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-12-05-markakarnem.jpg?v=3f4caa79",
+  "olusturma": "2026-11-28T03:10:48+03:00",
+  "ses": "b3a5c5943c",
   "ses_kaynagi": "gemini"
  }
 }
