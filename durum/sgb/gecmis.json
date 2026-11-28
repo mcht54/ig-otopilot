@@ -44,17 +44,17 @@
    "instagram_hikaye": "http-ig-hikaye:18034155644683260"
   },
   "olcum": {
-   "reach": 108,
-   "views": 113,
+   "reach": 110,
+   "views": 116,
    "likes": 1,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 1965
+   "ig_reels_avg_watch_time": 2029
   },
-  "olcum_zamani": "2026-11-27T18:36:41.658547+03:00",
-  "skor": 1.019
+  "olcum_zamani": "2026-11-28T18:35:57.410562+03:00",
+  "skor": 1.023
  },
  {
   "tarih": "2026-11-24",
@@ -90,17 +90,17 @@
    "facebook_hikaye": "http-fb-hikaye:1669049468018998"
   },
   "olcum": {
-   "reach": 104,
-   "views": 122,
+   "reach": 106,
+   "views": 125,
    "likes": 0,
    "comments": 0,
    "saved": 1,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 2982
+   "ig_reels_avg_watch_time": 3371
   },
-  "olcum_zamani": "2026-11-27T18:36:42.016817+03:00",
-  "skor": 2.058
+  "olcum_zamani": "2026-11-28T18:35:58.089384+03:00",
+  "skor": 2.089
  },
  {
   "tarih": "2026-11-25",
@@ -140,17 +140,17 @@
   "hikaye_id": "18094167131299912",
   "hikaye_hata": null,
   "olcum": {
-   "reach": 96,
-   "views": 103,
+   "reach": 98,
+   "views": 106,
    "likes": 0,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 0,
-   "ig_reels_avg_watch_time": 3766
+   "ig_reels_avg_watch_time": 3701
   },
-  "olcum_zamani": "2026-11-27T18:36:42.462071+03:00",
-  "skor": 0.462
+  "olcum_zamani": "2026-11-28T18:35:59.894319+03:00",
+  "skor": 0.454
  },
  {
   "tarih": "2026-11-26",
@@ -185,7 +185,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgNcvQcs46T/",
    "instagram_hikaye": "http-ig-hikaye:18002390160013105"
-  }
+  },
+  "olcum": {
+   "reach": 116,
+   "views": 123,
+   "likes": 1,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 1,
+   "ig_reels_avg_watch_time": 9121
+  },
+  "olcum_zamani": "2026-11-28T18:36:01.226361+03:00",
+  "skor": 1.024
  },
  {
   "tarih": "2026-11-27",
@@ -218,6 +230,41 @@
    "youtube": "https://youtube.com/shorts/qsbzm18RLAs",
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgQBtEATtYV/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
+  }
+ },
+ {
+  "tarih": "2026-11-28",
+  "tur": "reels",
+  "format": "belge_sorgula",
+  "anahtar": "belge:48",
+  "ek_anahtarlar": [],
+  "konu": "Bungalov belgesi nasıl sorgulanır",
+  "baslik": "Bungalovun belgesi var mı? Kapora göndermeden bakın",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-28/sgb",
+  "anlatim": [
+   "Sapanca'da bungalov kiralamadan önce belge sorgulamayı hiç denediniz mi?",
+   "Bakanlığın sorgu sayfasından Sakarya Sapanca'yı seçerek tesis adını doğrudan arayabilirsiniz.",
+   "Şu an Sapanca'da Kasım iki bin yirmi altı verisine göre üç yüz yetmiş dört belgeli tesis var.",
+   "Sitemizde listelenecek tesislerin belge numarasını yayına girmeden Bakanlık kaydıyla doğruluyoruz.",
+   "Tesisinizi ücretsiz ekleyin, başvuru profildeki linkte!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Bungalovun belgesi var mı? Kapora göndermeden bakın\nAdım adım anlatıyoruz\n\nBelge nasıl sorgulanır?\n✔️ Bakanlık belgeli tesis sorgu sayfasını açın\n✔️ İl olarak Sakarya'yı, ilçe olarak Sapanca'yı seçin\n✔️ Tesis adını yazın ya da listeden bulun\n\nBungalov belge sorgulama arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tesisinizi ücretsiz ekleyin: başvuru profildeki linkte, sapancaguvenilirbungalov.com.tr\n\n#sapanca #sapancabungalov #balayı #haftasonu #tinyhouse",
+  "video_yedek": "2026-11-28-sgb-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sgb.jpg?v=y",
+  "medya_id": "18166221217496578",
+  "link": "https://www.instagram.com/reel/DgSoQObASgB/",
+  "yayin_zamani": "2026-11-28T18:57:56.731782+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/3055549878139026",
+   "facebook_hikaye": "http-fb-hikaye:1615971053070397",
+   "youtube": "https://youtube.com/shorts/_s6tbk78uRk",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgSoQObASgB/",
    "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }
