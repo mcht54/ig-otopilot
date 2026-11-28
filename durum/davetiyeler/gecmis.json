@@ -61,8 +61,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 2960
   },
-  "olcum_zamani": "2026-11-27T19:36:07.109405+03:00",
-  "skor": 1.22
+  "olcum_zamani": "2026-11-28T19:36:56.196306+03:00",
+  "skor": 1.319
  },
  {
   "tarih": "2026-11-24",
@@ -112,8 +112,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 2572
   },
-  "olcum_zamani": "2026-11-27T19:36:10.165418+03:00",
-  "skor": 0.856
+  "olcum_zamani": "2026-11-28T19:36:57.176104+03:00",
+  "skor": 0.904
  },
  {
   "tarih": "2026-11-25",
@@ -158,8 +158,8 @@
    "total_interactions": 2,
    "ig_reels_avg_watch_time": 1503
   },
-  "olcum_zamani": "2026-11-27T19:36:10.786217+03:00",
-  "skor": 1.4
+  "olcum_zamani": "2026-11-28T19:36:57.650290+03:00",
+  "skor": 1.462
  },
  {
   "tarih": "2026-11-26",
@@ -199,7 +199,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgNjeOphsWu/",
    "instagram_hikaye": "http-ig-hikaye:18444720511183999"
-  }
+  },
+  "olcum": {
+   "reach": 123,
+   "views": 137,
+   "likes": 2,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 2096
+  },
+  "olcum_zamani": "2026-11-28T19:36:58.791533+03:00",
+  "skor": 0.909
  },
  {
   "tarih": "2026-11-27",
@@ -234,6 +246,39 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgQI2g2orTs/",
    "instagram_hikaye": "http-ig-hikaye:18111033908195119"
+  }
+ },
+ {
+  "tarih": "2026-11-28",
+  "tur": "reels",
+  "format": "yedek",
+  "anahtar": "yedek:2026-11-28",
+  "ek_anahtarlar": [],
+  "konu": "Neden Davetiyeler.TR?",
+  "baslik": "Neden Davetiyeler.TR?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-28/davetiyeler",
+  "anlatim": [
+   "Davetiyeniz basıldıktan sonra bir yazım hatasıyla karşılaşmaktan mı korkuyorsunuz?",
+   "Bin yedi yüzden fazla model arasından seçin, baskı öncesi taslağınızı görün; animasyonlu ve LCV bildirimli dijital davetiyeniz Sakarya'dan kapınıza gelsin.",
+   "Hayalinizdeki davetiyeyi bulmak için tüm modeller profildeki linkte."
+  ],
+  "ses_kaynagi": "gemini",
+  "aciklama": "Neden Davetiyeler.TR?\nTüm modeller profildeki linkte\n\nDavetiyeler.TR ile\n✔️ Düğün, nişan, nikâh, kına, sünnet için 1.700+ davetiye modeli\n✔️ Basılı davetiyede siparişten önce tasarım taslağı onayınıza gelir\n✔️ Dijital davetiye animasyonlu açılış, LCV, geri sayım ve harita ile tek linkle WhatsApp'tan paylaşılır\n✔️ Sakarya'dan Türkiye'nin her yerine gönderim\n\nSünnet davetiyesi arıyorsanız bu videoyu kaydedin, lazım olduğunda elinizin altında olsun.\n👉 Tüm modeller profildeki linkte: davetiyeler.tr\n\n#davetiye #düğündavetiyesi #düğünhazırlığı #sünnetdavetiyesi #nikahdavetiyesi",
+  "video_yedek": "2026-11-28-davetiyeler-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-davetiyeler.jpg?v=y",
+  "medya_id": "18078939047749501",
+  "link": "https://www.instagram.com/reel/DgSuacsAUsj/",
+  "yayin_zamani": "2026-11-28T19:51:38.199939+03:00",
+  "hikaye_id": "18141581638654166",
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1207895155236151",
+   "facebook_hikaye": "http-fb-hikaye:1147527214350156",
+   "youtube": "https://youtube.com/shorts/J_-eTtNyGss",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgSuacsAUsj/",
+   "instagram_hikaye": "http-ig-hikaye:18141581638654166"
   }
  }
 ]
