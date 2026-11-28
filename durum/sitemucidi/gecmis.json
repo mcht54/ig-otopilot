@@ -43,17 +43,17 @@
    "instagram_hikaye": "http-ig-hikaye:17987015396901631"
   },
   "olcum": {
-   "reach": 4,
-   "views": 5,
-   "likes": 0,
+   "reach": 5,
+   "views": 6,
+   "likes": 1,
    "comments": 0,
    "saved": 0,
    "shares": 0,
-   "total_interactions": 0,
-   "ig_reels_avg_watch_time": 6122
+   "total_interactions": 1,
+   "ig_reels_avg_watch_time": 5605
   },
-  "olcum_zamani": "2026-11-27T12:06:42.874038+03:00",
-  "skor": 0.5
+  "olcum_zamani": "2026-11-28T12:06:18.816312+03:00",
+  "skor": 0.836
  },
  {
   "tarih": "2026-11-24",
@@ -89,17 +89,17 @@
    "facebook_hikaye": "http-fb-hikaye:2144123252882597"
   },
   "olcum": {
-   "reach": 74,
-   "views": 80,
-   "likes": 3,
+   "reach": 77,
+   "views": 85,
+   "likes": 4,
    "comments": 0,
    "saved": 0,
    "shares": 1,
-   "total_interactions": 4,
-   "ig_reels_avg_watch_time": 2033
+   "total_interactions": 5,
+   "ig_reels_avg_watch_time": 2676
   },
-  "olcum_zamani": "2026-11-27T12:06:43.168747+03:00",
-  "skor": 9.75
+  "olcum_zamani": "2026-11-28T12:06:19.090153+03:00",
+  "skor": 5.085
  },
  {
   "tarih": "2026-11-25",
@@ -135,17 +135,17 @@
    "instagram_hikaye": "http-ig-hikaye:18111207971193254"
   },
   "olcum": {
-   "reach": 3,
-   "views": 8,
+   "reach": 5,
+   "views": 9,
    "likes": 2,
    "comments": 0,
    "saved": 0,
    "shares": 0,
    "total_interactions": 2,
-   "ig_reels_avg_watch_time": 4234
+   "ig_reels_avg_watch_time": 3966
   },
-  "olcum_zamani": "2026-11-27T12:06:43.481762+03:00",
-  "skor": 3.899
+  "olcum_zamani": "2026-11-28T12:06:19.513640+03:00",
+  "skor": 1.36
  },
  {
   "tarih": "2026-11-26",
@@ -180,7 +180,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgMwcaHKooV/",
    "instagram_hikaye": "http-ig-hikaye:18036265004856751"
-  }
+  },
+  "olcum": {
+   "reach": 11,
+   "views": 18,
+   "likes": 2,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 2,
+   "ig_reels_avg_watch_time": 13651
+  },
+  "olcum_zamani": "2026-11-28T12:06:19.857733+03:00",
+  "skor": 1.164
  },
  {
   "tarih": "2026-11-27",
@@ -214,6 +226,41 @@
    "youtube": "https://youtube.com/shorts/1ZAgVOPhi18",
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgPVEwyINHK/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
+  }
+ },
+ {
+  "tarih": "2026-11-28",
+  "tur": "reels",
+  "format": "sektor_demo",
+  "anahtar": "tema:temizlik-prestij",
+  "ek_anahtarlar": [],
+  "konu": "Ev temizliği için Işıl teması ile 3 dakikada site",
+  "baslik": "Ev temizliği için 3 dakikada web sitesi",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-28/sitemucidi",
+  "anlatim": [
+   "Temizlik firmanız için ajanslarla uğraşmadan şık bir site ister misiniz?",
+   "Sadece temanızı seçip işletme adınızı yazıyorsunuz, siteniz anında kuruluyor.",
+   "Işıl teması ev temizliğine özel premium animasyonlarıyla ışıl ışıl görünüyor.",
+   "Tam ekran fotoğraflar, hizmet kartları ve müşteri yorumları içinde hazır geliyor.",
+   "Sitenizi hemen oluşturup yedi gün denemek için profildeki linkten ücretsiz dene!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Ev temizliği için 3 dakikada web sitesi\nKod yok, ajans yok, bekleme yok.\n\nBu temada neler var?\n✔️ Tam ekran fotoğraflı, hareketli premium düzen; müşteri yorumları ve gelişmiş animasyonlar.\n✔️ Tam ekran aydınlık fotoğraf.\n✔️ Hizmet kartları.\n\nEv temizliği web sitesi arıyorsanız bu videoyu kaydedin, lâzım olduğunda elinizin altında olsun.\n👉 Profildeki linkten ücretsiz dene: sitemucidi.com.tr\n\n#websitesi #websitesikurma #sakarya #googledaçıkmak #girişimcilik",
+  "video_yedek": "2026-11-28-sitemucidi-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-sitemucidi.jpg?v=y",
+  "medya_id": "18054976850814856",
+  "link": "https://www.instagram.com/reel/DgR6Q1Iuk05/",
+  "yayin_zamani": "2026-11-28T12:15:58.167276+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1172763995147302",
+   "facebook_hikaye": "http-fb-hikaye:1828847784927184",
+   "youtube": "https://youtube.com/shorts/9TumIn9TOOA",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgR6Q1Iuk05/",
    "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }

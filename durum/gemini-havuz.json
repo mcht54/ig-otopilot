@@ -1,9 +1,4 @@
 {
- "dolu": {
-  "gemini-3.7-flash|76c082ce": "gunluk 2026-11-28T00:04:24Z",
-  "gemini-3.7-flash|d7b82828": "gunluk 2026-11-28T00:19:08Z",
-  "gemini-3.8-flash|76c082ce": "gunluk 2026-11-28T00:05:00Z",
-  "gemini-3.8-flash|d7b82828": "gunluk 2026-11-28T00:23:02Z"
- },
- "gun": "2026-11-27"
+ "dolu": {},
+ "gun": "2026-11-28"
 }
