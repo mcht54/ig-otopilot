@@ -50,10 +50,10 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 5288
+   "ig_reels_avg_watch_time": 8737
   },
-  "olcum_zamani": "2026-11-27T13:06:48.116753+03:00",
-  "skor": 1.006
+  "olcum_zamani": "2026-11-28T13:06:43.637977+03:00",
+  "skor": 1.181
  },
  {
   "tarih": "2026-11-24",
@@ -96,10 +96,10 @@
    "saved": 0,
    "shares": 1,
    "total_interactions": 3,
-   "ig_reels_avg_watch_time": 2214
+   "ig_reels_avg_watch_time": 2227
   },
-  "olcum_zamani": "2026-11-27T13:06:48.410923+03:00",
-  "skor": 5.536
+  "olcum_zamani": "2026-11-28T13:06:44.593005+03:00",
+  "skor": 5.89
  },
  {
   "tarih": "2026-11-25",
@@ -142,10 +142,10 @@
    "saved": 0,
    "shares": 0,
    "total_interactions": 1,
-   "ig_reels_avg_watch_time": 2593
+   "ig_reels_avg_watch_time": 2623
   },
-  "olcum_zamani": "2026-11-27T13:06:48.715429+03:00",
-  "skor": 1.0
+  "olcum_zamani": "2026-11-28T13:06:45.224148+03:00",
+  "skor": 1.163
  },
  {
   "tarih": "2026-11-26",
@@ -180,7 +180,19 @@
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgM2tyJTnJo/",
    "instagram_hikaye": "http-ig-hikaye:18103753034453587"
-  }
+  },
+  "olcum": {
+   "reach": 7,
+   "views": 10,
+   "likes": 0,
+   "comments": 0,
+   "saved": 0,
+   "shares": 0,
+   "total_interactions": 0,
+   "ig_reels_avg_watch_time": 5949
+  },
+  "olcum_zamani": "2026-11-28T13:06:45.875908+03:00",
+  "skor": 0.368
  },
  {
   "tarih": "2026-11-27",
@@ -213,6 +225,40 @@
    "youtube": "https://youtube.com/shorts/RMxB1l8i75g",
    "tiktok": "atlandı: anahtar yok",
    "instagram": "https://www.instagram.com/reel/DgPb4FaJ7LQ/",
+   "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
+  }
+ },
+ {
+  "tarih": "2026-11-28",
+  "tur": "reels",
+  "format": "sektor_ipucu",
+  "anahtar": "sektor:mobilya-dekorasyon",
+  "ek_anahtarlar": [],
+  "konu": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+  "baslik": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?",
+  "metin_kaynagi": "kural",
+  "durum": "yayinlandi",
+  "klasor": "cikti/2026-11-28/markakarnem",
+  "anlatim": [
+   "Müşteriler mağazanızı ziyaret etmeden önce internette ne görüyor?",
+   "Google haritanız, Instagram vitrininiz ve web siteniz showroom'unuza gerçekten müşteri çekiyor mu?",
+   "Mobilya mağazanıza özel elli iki farklı noktayı inceliyor, eksiklerinizi ortaya çıkarıyoruz.",
+   "Sizin durumunuz ne? Ücretsiz karnenizi profildeki linkten hemen çıkarın!"
+  ],
+  "ses_kaynagi": "plan-hazir",
+  "aciklama": "Mobilya ve dekorasyon mağazaları internette nasıl görünüyor?\nCevabı 15 saniyede.\n\nBilmeniz gerekenler:\n✔️ Müşteri sizi nasıl buluyor?\n✔️ Üç kanal, tek görünüm\n✔️ Google görünürlüğü: Google İşletme Profili\n✔️ Instagram: Sosyal vitrin\n\nİşletmenizin Google'da nasıl göründüğünü merak ediyorsanız bu videoyu kaydedin.\n👉 Ücretsiz karnenizi profildeki linkten çıkarın: markakarnem.com.tr\n\n#seo #googleişletmeprofili #googleharitalar #esnaf #küçükişletme",
+  "video_yedek": "2026-11-28-markakarnem-reel.mp4",
+  "gorsel": "https://github.com/mcht54/ig-otopilot/releases/download/plan/2026-11-28-markakarnem.jpg?v=y",
+  "medya_id": "18156734995536670",
+  "link": "https://www.instagram.com/reel/DgSAn4jSnie/",
+  "yayin_zamani": "2026-11-28T13:11:36.680021+03:00",
+  "hikaye_robot": true,
+  "platformlar": {
+   "facebook": "https://www.facebook.com/reel/1735878791327741",
+   "facebook_hikaye": "http-fb-hikaye:1678763447234170",
+   "youtube": "https://youtube.com/shorts/UtIjFjHUBjc",
+   "tiktok": "atlandı: anahtar yok",
+   "instagram": "https://www.instagram.com/reel/DgSAn4jSnie/",
    "instagram_hikaye": "robot: Hikâye Robotu paylaşır"
   }
  }
