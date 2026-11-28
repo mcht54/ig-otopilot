@@ -182,6 +182,10 @@ def baglam(kod: str, m: dict) -> str:
     g = _gundem(pathlib.Path(__file__).parent / "gundem" / f"{kod}.json")
     if g:
         parcalar.append(g)
+    ogr = pathlib.Path(__file__).parent / "ogrenme" / f"{kod}.md"   # öğrenme döngüsü (2026-11-28): sunucu Pzt/Per yazar
+    if ogr.exists():
+        parcalar.append("KENDİ ÖLÇÜMÜMÜZDEN DERSLER (bu hesabın gerçek izlenme verisi; marka kurallarıyla çelişirse marka kuralları geçerli):\n"
+                        + ogr.read_text(encoding="utf-8")[:3000])
     return "\n".join(parcalar)
 
 
